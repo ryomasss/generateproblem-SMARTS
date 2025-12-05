@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>有机化学反应出题器 - RDKit重构版</title>
+
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+
+
+  <!-- 升级到最新 RDKit.js 版本 (2025.3.4-1.0.0) - 包含完整反应支持 -->
+  <script src="https://unpkg.com/@rdkit/rdkit@2025.3.4-1.0.0/dist/RDKit_minimal.js"></script>
+  
+  <!-- 配置RDKit模块以确保正确的WASM文件路径 -->
+  <script>
+    // 改进的 RDKit 模块配置
+    window.Module = {
+      locateFile: (path, scriptDirectory) => {
+        // 如果是 WASM 文件，从 CDN 加载
+        if (path.endsWith('.wasm')) {
+          return 'https://unpkg.com/@rdkit/rdkit@2025.3.4-1.0.0/dist/' + path;
+        }
+        return scriptDirectory + path;
+      },
+      onRuntimeInitialized: function() {
+        console.log("✅ RDKit WASM runtime initialized - Version 2025.3.4 with full reaction support");
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>有机化学反应出题器 - RDKit重构版</h1>
+  <div class="sub">
+    使用 RDKit.js 和 SMILES 渲染化学结构式
+  </div>
+  <div class="container">
+    <section class="card panel">
+      <label>难度</label>
+      <select id="difficulty">
+        <option value="easy" selected>简单</option>
+        <option value="medium">中等</option>
+        <option value="hard">高级</option>
+        <option value="custom">自定义</option>
+      </select>
+      <label class="mt-10">反应类型 (请至少选择一项)</label>
+     <label class="mt-10">选择生成的反应类型：</label>
+      <div id="reactionTypes">
+       <label><input type="checkbox" id="chk_amide" value="amide" checked /> 酰胺成反应</label><br />
+  <label><input type="checkbox" id="chk_ester" value="ester" /> 酯化反应</label><br />
+  <label><input type="checkbox" id="chk_alkyl" value="alkyl" /> 醚化反应 (威廉姆逊合成)</label><br />
+  <label><input type="checkbox" id="chk_alkene_br2" value="alkene_br2" /> 烯烃溴化 (亲电加成)</label><br />
+  <label><input type="checkbox" id="chk_alkene_hx" value="alkene_hx" /> 烯烃氢卤化 (马氏规则)</label><br />
+  <label><input type="checkbox" id="chk_alkyne_red" value="alkyne_red" /> 炔烃还原 (完全氢化)</label><br />
+</div>
+
+ <div class="adaptive-controls">
+  <div class="size-controls">
+    <label for="baseSize">基准尺寸:</label>
+    <input type="number" id="baseSize" min="200" max="800" step="50" value="400" />
+  </div>
+  <div class="size-controls">
+    <label for="basePadding">内边距:</label>
+    <input type="number" id="basePadding" min="10" max="100" step="5" value="50" />
+  </div>
+
+  <div class="size-controls mt-10">
+    <label for="bondWidth">键宽粗细:</label>
+    <input type="number" id="bondWidth" min="1.0" max="6.0" step="0.2" value="2.8" />
+  </div>
+
+  <div class="size-controls">
+    <label for="fontSize">字号:</label>
+    <input type="number" id="fontSize" min="12" max="36" step="1" value="18" />
+  </div>
+</div>
+    <div class="size-controls mt-10 pt-10 border-top-dashed">
+  <label for="fixedLength">固定键长:</label>
+  <input type="number" id="fixedLength" min="-1" max="150" step="5" value="40" placeholder="推荐40" />
+</div>
+<div style="font-size: 12px; color: #94a3b8; margin-bottom: 10px;">
+  * 设为 -1 为自动布局，推荐数值 40 可强制统一键长
+</div>
+<div class="size-controls mt-10">
+  <label for="structureColor">结构颜色:</label>
+  <input type="color" id="structureColor" value="#ffffff" />
+</div>
+      <div class="row mt-14">
+        <button class="btn" id="gen">🎲 生成题目</button>
+        <button class="btn-ghost" id="toggle">👁️ 显示答案</button>
+      </div>
+      <div class="row no-print mt-10">
+        <button class="btn-ghost" id="printWS">🖨️ 打印作业</button>
+        <button class="btn-ghost" id="printAK">🖨️ 打印答案</button>
+      </div>
+
+      <div class="smiles-help">
+        <strong>化学式英文对照：</strong>
+        <ul>
+          <li>Benzene - 苯</li>
+          <li>Bromobenzene - 溴苯</li>
+          <li>Toluene - 甲苯</li>
+          <li>Nitrobenzene - 硝基苯</li>
+          <li>Ethanol - 乙醇</li>
+          <li>Acetone - 丙酮</li>
+        </ul>
+      </div>
+    </section>
+    <section class="card panel">
+      <div id="statusArea"></div>
+      <div id="problems"></div>
+    </section>
+  </div>
+
+  <template id="problem-template">
+  <div class="problem">
+    <div>
+      <span class="index"></span>
+      <span class="problem-type"></span>
+    </div>
+
+    <div class="reaction-equation">
+      <div class="structure-container">
+        <div class="structure reactant"></div>
+      </div>
+
+      <div class="reaction-arrow">
+        <span class="arrow-text">???</span>
+        <div class="reaction-arrow-main"></div>
+      </div>
+
+      <div class="structure-container product-placeholder">
+        ?
+      </div>
+
+      <div class="structure-container answer-structure">
+        <div class="structure product"></div>
+      </div>
+    </div>
+
+    <div class="ans">
+      参考答案：<span class="answer-text"></span>
+    </div>
+  </div>
+</template>
+
+  <!-- 加载反应数据库 -->
+  <script src="reactions.js"></script>
+  
+  <!-- 使用 ES6 模块加载主入口 -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>

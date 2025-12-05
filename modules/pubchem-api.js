@@ -1,0 +1,288 @@
+// --- PubChem API 模块 ---
+// 处理与 PubChem 数据库的交互
+// 优化版本：支持 localStorage 持久化缓存、增加获取数量、分子复杂度过滤
+
+import { appState } from './state.js';
+import { showStatus } from './utils.js';
+import { REACTION_DB } from './state.js';
+
+// 缓存配置
+const CACHE_CONFIG = {
+    storageKey: 'pubchem_molecule_cache',
+    expiryHours: 24, // 缓存过期时间（小时）
+    maxRecords: 50   // 每次从 PubChem 获取的最大记录数
+};
+
+// 缓存统计
+export const cacheStats = {
+    hits: 0,
+    misses: 0,
+    fromStorage: 0,
+    lastUpdated: null
+};
+
+/**
+ * 从 localStorage 加载缓存
+ */
+export function loadCacheFromStorage() {
+    try {
+        const stored = localStorage.getItem(CACHE_CONFIG.storageKey);
+        if (!stored) return;
+
+        const parsed = JSON.parse(stored);
+        const now = Date.now();
+        const expiryMs = CACHE_CONFIG.expiryHours * 60 * 60 * 1000;
+
+        // 检查是否过期
+        if (parsed.timestamp && (now - parsed.timestamp) < expiryMs) {
+            appState.moleculeCache = parsed.data || {};
+            cacheStats.fromStorage = Object.keys(appState.moleculeCache).length;
+            console.log(`✅ 从 localStorage 加载了 ${cacheStats.fromStorage} 条缓存数据`);
+        } else {
+            console.log('⏰ 缓存已过期，将重新获取');
+            localStorage.removeItem(CACHE_CONFIG.storageKey);
+        }
+    } catch (e) {
+        console.warn('加载缓存失败:', e);
+    }
+}
+
+/**
+ * 保存缓存到 localStorage
+ */
+function saveCacheToStorage() {
+    try {
+        const data = {
+            timestamp: Date.now(),
+            data: appState.moleculeCache
+        };
+        localStorage.setItem(CACHE_CONFIG.storageKey, JSON.stringify(data));
+        cacheStats.lastUpdated = new Date().toISOString();
+    } catch (e) {
+        console.warn('保存缓存失败 (可能超出配额):', e);
+    }
+}
+
+/**
+ * Helper to fetch with retry logic
+ */
+async function fetchWithRetry(url, retries = 3, delay = 1000) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            const response = await fetch(url);
+            if (response.ok) return response;
+            
+            // If 503 or 429 (Too Many Requests), retry
+            if (response.status === 503 || response.status === 429) {
+                console.warn(`PubChem API ${response.status}. Retrying in ${delay}ms... (${i + 1}/${retries})`);
+                await new Promise(r => setTimeout(r, delay));
+                delay *= 2; // Exponential backoff
+                continue;
+            }
+            
+            // Other errors, throw immediately
+            throw new Error(`PubChem API error: ${response.status}`);
+        } catch (e) {
+            if (i === retries - 1) throw e;
+            console.warn(`Fetch failed: ${e.message}. Retrying...`);
+            await new Promise(r => setTimeout(r, delay));
+            delay *= 2;
+        }
+    }
+}
+
+/**
+ * 检查分子复杂度是否合适（过滤太简单或太复杂的分子）
+ * @param {string} smiles - SMILES 字符串
+ * @returns {boolean} 是否通过复杂度检查
+ */
+function checkMoleculeComplexity(smiles) {
+    if (!smiles) return false;
+    
+    // 简单估算：计算非括号、非数字字符的数量作为原子数的粗略估计
+    const atomCount = smiles.replace(/[\[\]()0-9@\\\/=#+-]/g, '').length;
+    
+    // 过滤掉原子数少于3或多于50的分子
+    return atomCount >= 3 && atomCount <= 50;
+}
+
+/**
+ * 从 PubChem 获取匹配 SMARTS 的分子
+ * @param {string} smarts - SMARTS 模式
+ * @param {string} verificationSmarts - 用于验证的反应 SMARTS
+ * @returns {Promise<string[]>} SMILES 字符串数组
+ */
+export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = null) {
+    if (!smarts) return [];
+    
+    // Check memory cache first
+    const cacheKey = smarts + (verificationSmarts ? `|${verificationSmarts}` : "");
+    if (appState.moleculeCache[cacheKey] && appState.moleculeCache[cacheKey].length > 0) {
+        cacheStats.hits++;
+        console.log(`📦 缓存命中: ${smarts} (${appState.moleculeCache[cacheKey].length} 个分子)`);
+        return appState.moleculeCache[cacheKey];
+    }
+    
+    cacheStats.misses++;
+    console.log(`🔍 从 PubChem 搜索: ${smarts}`);
+    
+    // 使用增加的 MaxRecords
+    const url = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastsubstructure/smarts/${encodeURIComponent(smarts)}/cids/JSON?MaxRecords=${CACHE_CONFIG.maxRecords}`;
+
+    try {
+        const response = await fetchWithRetry(url);
+        if (!response.ok) {
+            if (response.status === 404) return []; // No results
+            throw new Error(`PubChem API error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        if (!data.IdentifierList || !data.IdentifierList.CID) return [];
+        
+        const cids = data.IdentifierList.CID;
+        if (cids.length === 0) return [];
+        
+        console.log(`📥 获取到 ${cids.length} 个 CID`);
+
+        // Fetch properties (SMILES) for these CIDs
+        // 注意：只请求 SMILES，PubChem 会返回 "SMILES" 字段
+        const cidsStr = cids.join(',');
+        const propsUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cidsStr}/property/IsomericSMILES/JSON`;
+        
+        // 增加延迟，避免触发限流
+        await new Promise(r => setTimeout(r, 500));
+        
+        const propsResponse = await fetchWithRetry(propsUrl);
+        const propsData = await propsResponse.json();
+        
+        if (!propsData.PropertyTable || !propsData.PropertyTable.Properties) {
+            console.warn("属性表为空");
+            return [];
+        }
+        
+        // PubChem 返回的字段名可能是 SMILES, IsomericSMILES, 或 CanonicalSMILES
+        let smilesList = propsData.PropertyTable.Properties
+            .map(p => p.SMILES || p.IsomericSMILES || p.CanonicalSMILES)
+            .filter(s => s); // 只过滤掉空值
+        
+        console.log(`✅ 获取到 ${smilesList.length} 个分子 SMILES`);
+            
+        // 简化处理：只做基本的 SMILES 有效性检查（可选）
+        if (appState.rdkitModule && smilesList.length > 0) {
+            const originalCount = smilesList.length;
+            
+            // 只验证 SMILES 是否能被 RDKit 解析，不做 SMARTS 匹配
+            smilesList = smilesList.filter(s => {
+                let mol = null;
+                try {
+                    mol = appState.rdkitModule.get_mol(s);
+                    const valid = mol && mol.is_valid();
+                    return valid;
+                } catch (e) {
+                    return false;
+                } finally {
+                    if (mol && typeof mol.delete === "function") {
+                        mol.delete();
+                    }
+                }
+            });
+            
+            if (smilesList.length < originalCount) {
+                console.log(`🔬 有效性验证: ${originalCount} -> ${smilesList.length}`);
+            }
+        }
+
+        // Update cache and persist
+        if (smilesList.length > 0) {
+            appState.moleculeCache[cacheKey] = smilesList;
+            saveCacheToStorage();
+            console.log(`✅ 缓存更新: ${smarts} (${smilesList.length} 个分子)`);
+        }
+        
+        return smilesList;
+        
+    } catch (e) {
+        console.error("PubChem fetch failed:", e);
+        return [];
+    }
+}
+
+/**
+ * 预加载常用分子到缓存
+ */
+export async function preloadCommonMolecules() {
+    const commonSmarts = [
+        "C=C",           // 烯烃
+        "C#C",           // 炔烃
+        "c1ccccc1",      // 苯环
+        "[CH2][OH]",     // 伯醇
+        "[CH]([OH])",    // 仲醇
+        "C=O",           // 羰基
+        "[CX3](=O)[OH]"  // 羧酸
+    ];
+    
+    console.log("🚀 预加载常用分子...");
+    showStatus("预加载分子库...", "loading");
+    
+    for (const smarts of commonSmarts) {
+        // 跳过已缓存的
+        if (appState.moleculeCache[smarts] && appState.moleculeCache[smarts].length > 0) {
+            console.log(`📦 已缓存: ${smarts}`);
+            continue;
+        }
+        await fetchMoleculesFromPubChem(smarts);
+        // 增加延迟到 1 秒，避免触发 PubChem 限流
+        await new Promise(r => setTimeout(r, 1000));
+    }
+    
+    console.log("✅ 预加载完成");
+}
+
+/**
+ * 为选定的反应类型准备分子池
+ * @param {string[]} availableTypes - 可用的反应类型键数组
+ */
+export async function prepareMoleculePools(availableTypes) {
+    const neededSmarts = new Set();
+    
+    for (const typeKey of availableTypes) {
+        const def = REACTION_DB[typeKey];
+        if (def && def.search_smarts) {
+            def.search_smarts.forEach(s => {
+                if (s) {
+                    neededSmarts.add(JSON.stringify({ search: s, verification: def.smarts }));
+                }
+            });
+        }
+    }
+    
+    if (neededSmarts.size === 0) return;
+    
+    // 计算需要从网络获取的数量
+    const smartsList = Array.from(neededSmarts);
+    let needFetch = 0;
+    for (const jsonStr of smartsList) {
+        const item = JSON.parse(jsonStr);
+        const cacheKey = item.search + (item.verification ? `|${item.verification}` : "");
+        if (!appState.moleculeCache[cacheKey] || appState.moleculeCache[cacheKey].length === 0) {
+            needFetch++;
+        }
+    }
+    
+    if (needFetch === 0) {
+        showStatus("使用缓存数据", "success");
+        return;
+    }
+    
+    showStatus(`正在从 PubChem 获取 ${needFetch}/${neededSmarts.size} 类分子...`, "loading");
+    
+    // Fetch sequentially to avoid hitting rate limits
+    for (const jsonStr of smartsList) {
+        const item = JSON.parse(jsonStr);
+        await fetchMoleculesFromPubChem(item.search, item.verification);
+        // 增加延迟到 1 秒，避免触发限流
+        await new Promise(r => setTimeout(r, 1000));
+    }
+    
+    console.log(`📊 缓存统计: 命中=${cacheStats.hits}, 未命中=${cacheStats.misses}`);
+}
