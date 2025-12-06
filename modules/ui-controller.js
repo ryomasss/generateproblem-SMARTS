@@ -7,6 +7,9 @@ import { prepareMoleculePools } from './pubchem-api.js';
 import { runReactionWithRDKit } from './reaction-engine.js';
 import { createStructureSVG } from './renderer.js';
 
+// 配置：每次生成的题目数量（控制 API 请求数量）
+const PROBLEM_COUNT = 5;
+
 const problemsEl = $("#problems");
 
 /**
@@ -40,7 +43,7 @@ export async function generateProblems() {
   grid.className = "grid";
   const template = document.getElementById("problem-template");
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < PROBLEM_COUNT; i++) {
     // 1. 随机选择反应类型
     const typeKey = availableTypes[Math.floor(Math.random() * availableTypes.length)];
     const def = REACTION_DB[typeKey];

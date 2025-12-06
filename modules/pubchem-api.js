@@ -167,17 +167,43 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
         
         console.log(`✅ 获取到 ${smilesList.length} 个分子 SMILES`);
             
-        // 简化处理：只做基本的 SMILES 有效性检查（可选）
+        // 严格验证：确保分子真正匹配 SMARTS 模式
         if (appState.rdkitModule && smilesList.length > 0) {
             const originalCount = smilesList.length;
+            const rdkit = appState.rdkitModule;
             
-            // 只验证 SMILES 是否能被 RDKit 解析，不做 SMARTS 匹配
+            // 创建 SMARTS 模式用于验证（针对脂肪族双键使用更严格的模式）
+            let verificationPattern = null;
+            try {
+                // 对于 C=C（烯烃），使用更严格的 SMARTS 来排除芳香族
+                // [#6;!a]=[#6;!a] 匹配任意两个非芳香碳原子之间的双键
+                let strictSmarts = smarts;
+                if (smarts === "C=C") {
+                    strictSmarts = "[#6;!a]=[#6;!a]";  // 排除芳香碳
+                } else if (smarts === "C#C") {
+                    strictSmarts = "[#6;!a]#[#6;!a]";  // 排除芳香碳
+                }
+                verificationPattern = rdkit.get_qmol(strictSmarts);
+            } catch (e) {
+                console.warn(`无法创建验证 SMARTS: ${smarts}`, e);
+            }
+            
             smilesList = smilesList.filter(s => {
                 let mol = null;
                 try {
-                    mol = appState.rdkitModule.get_mol(s);
-                    const valid = mol && mol.is_valid();
-                    return valid;
+                    mol = rdkit.get_mol(s);
+                    if (!mol || !mol.is_valid()) return false;
+                    
+                    // 如果有验证模式，检查分子是否匹配
+                    if (verificationPattern) {
+                        const matches = mol.get_substruct_match(verificationPattern);
+                        if (!matches || matches === "{}") {
+                            console.log(`🚫 过滤不匹配的分子: ${s}`);
+                            return false;
+                        }
+                    }
+                    
+                    return true;
                 } catch (e) {
                     return false;
                 } finally {
@@ -187,8 +213,13 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
                 }
             });
             
+            // 清理验证模式
+            if (verificationPattern && typeof verificationPattern.delete === "function") {
+                verificationPattern.delete();
+            }
+            
             if (smilesList.length < originalCount) {
-                console.log(`🔬 有效性验证: ${originalCount} -> ${smilesList.length}`);
+                console.log(`🔬 SMARTS 验证: ${originalCount} -> ${smilesList.length} (${smarts})`);
             }
         }
 
@@ -286,3 +317,19 @@ export async function prepareMoleculePools(availableTypes) {
     
     console.log(`📊 缓存统计: 命中=${cacheStats.hits}, 未命中=${cacheStats.misses}`);
 }
+
+/**
+ * 清除分子缓存（内存和 localStorage）
+ * 在调试或发现缓存数据有问题时使用
+ */
+export function clearMoleculeCache() {
+    appState.moleculeCache = {};
+    localStorage.removeItem(CACHE_CONFIG.storageKey);
+    cacheStats.hits = 0;
+    cacheStats.misses = 0;
+    cacheStats.fromStorage = 0;
+    console.log('🗑️ 分子缓存已清除');
+}
+
+// 暴露到 window 以便在控制台调试
+window.clearMoleculeCache = clearMoleculeCache;

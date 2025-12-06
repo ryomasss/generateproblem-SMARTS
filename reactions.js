@@ -20,14 +20,17 @@ window.REACTION_DB_EXTENDED = {
   "alkene_addition_hbr": {
     category: "alkene",
     name: "烯烃与HBr加成",
-    smarts: "[C:1]=[C:2].[H][Br]>>[C:1]([H])-[C:2]([Br])",
+    // 简化 SMARTS: 只需要烯烃，HBr 作为条件参与
+    smarts: "[C:1]=[C:2]>>[C:1]-[C:2]([Br])",
     source: ["alkenes", "reagents_hbr"],
+    search_smarts: ["C=C"],
     condition: "HBr"
   },
   "alkene_addition_h2o": {
     category: "alkene",
     name: "烯烃水合反应",
-    smarts: "[C:1]=[C:2].[O:3][H:4]>>[C:1](-[H:4])-[C:2]-[O:3]",
+    // 简化 SMARTS: 只需要烯烃，水作为条件参与
+    smarts: "[C:1]=[C:2]>>[C:1]-[C:2]([OH])",
     source: ["alkenes", "reagents_h2o"],
     search_smarts: ["C=C"],
     condition: "H⁺, H₂O"
@@ -61,7 +64,8 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_addition_hbr_1": {
     category: "alkyne",
     name: "炔烃与HBr加成 (1eq)",
-    smarts: "[C:1]#[C:2].[H:3][Br:4]>>[C:1]([Br:4])=[C:2][H:3]",
+    // 简化 SMARTS: 炔烃转化为溴代烯烃
+    smarts: "[C:1]#[C:2]>>[C:1]([Br])=[C:2]",
     source: ["alkynes", "reagents_hbr"],
     search_smarts: ["C#C"],
     condition: "HBr (1 eq)"
@@ -69,7 +73,8 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_hydration_terminal": {
     category: "alkyne",
     name: "末端炔烃水合 (Markovnikov)",
-    smarts: "[C;H1:1]#[C:2].[O:3][H:4]>>[C:1](=[O:3])-[C:2]([H:4])",
+    // 末端炔烃水合生成甲基酮
+    smarts: "[CH1:1]#[C:2]>>[C:1](=O)-[C:2]",
     source: ["alkynes_terminal", "reagents_h2o"],
     search_smarts: ["[CH]#C"],
     condition: "HgSO₄, H₂SO₄"
@@ -195,7 +200,8 @@ window.REACTION_DB_EXTENDED = {
   "esterification": {
     category: "alcohol",
     name: "酯化反应",
-    smarts: "[C:1](=[O:2])[O:3][H].[O:4][C:5]>>[C:1](=[O:2])[O:4][C:5]",
+    // 简化 SMARTS: 羧酸 + 醇 -> 酯
+    smarts: "[C:1](=O)O.[O:2]C>>[C:1](=O)[O:2]C",
     source: ["acids", "alcohols"],
     search_smarts: ["[CX3](=O)[OX2H1]", "[#6][OX2H1]"],
     condition: "H₂SO₄, Heat"
@@ -203,14 +209,14 @@ window.REACTION_DB_EXTENDED = {
 };
 
 window.CHEMICAL_CABINET_EXTENDED = {
-  // 基础试剂
+  // 基础试剂 (注意：这些在简化后的 SMARTS 中不直接参与反应模式)
   reagents_br2: ["BrBr"],
   reagents_cl2: ["ClCl"],
-  reagents_hbr: ["[H]Br"],
+  reagents_hbr: ["Br"],    // HBr 简化表示
   reagents_h2o: ["O"],
-  reagents_h2: ["[H][H]"],
+  reagents_h2: ["[H][H]"], // 氢气保持原样，用于显示
   reagents_peracid: ["CC(=O)OO"],
-  reagents_hno3: ["[N+](=O)([O-])O"],
+  reagents_hno3: ["[O-][N+](=O)O"],
 
   // 烃类
   alkenes: [

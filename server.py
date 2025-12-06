@@ -31,16 +31,21 @@ def run_reaction():
         smarts = data.get('smarts')
         reactants_smiles = data.get('reactants', [])
 
-        print(f"Received request - SMARTS: {smarts}, Reactants: {reactants_smiles}")
+        print(f"\n{'='*60}")
+        print(f"Received request - SMARTS: {smarts}")
+        print(f"Reactants: {reactants_smiles}")
 
         if not smarts or not reactants_smiles:
-            return jsonify({'error': 'Missing smarts or reactants'}), 400
+            return jsonify({'error': 'Missing smarts or reactants', 'products': []}), 400
 
         # Create reaction from SMARTS
         rxn = AllChem.ReactionFromSmarts(smarts)
         if rxn is None:
             print(f"Invalid SMARTS: {smarts}")
-            return jsonify({'error': 'Invalid SMARTS'}), 400
+            return jsonify({'error': 'Invalid SMARTS', 'products': []}), 400
+
+        # Log reaction details
+        print(f"Reaction: {rxn.GetNumReactantTemplates()} reactants -> {rxn.GetNumProductTemplates()} products")
 
         # Create reactant molecules
         reactants = []
@@ -48,15 +53,26 @@ def run_reaction():
             mol = Chem.MolFromSmiles(smi)
             if mol:
                 reactants.append(mol)
+                print(f"  Reactant: {smi} (valid)")
             else:
-                print(f"Invalid reactant SMILES: {smi}")
-                return jsonify({'error': f'Invalid reactant SMILES: {smi}'}), 400
+                print(f"  Reactant: {smi} (INVALID)")
+                return jsonify({'error': f'Invalid reactant SMILES: {smi}', 'products': []}), 400
 
+        # Check if number of reactants matches the reaction template
+        num_required = rxn.GetNumReactantTemplates()
+        if len(reactants) < num_required:
+            print(f"Warning: Need {num_required} reactants, got {len(reactants)}")
+            # Try with what we have, but may produce no products
+        
         # Run reaction
         # RunReactants returns a tuple of tuples of products (Mol objects)
-        products_tuple = rxn.RunReactants(tuple(reactants))
-        
-        print(f"Reaction produced {len(products_tuple)} product sets")
+        try:
+            products_tuple = rxn.RunReactants(tuple(reactants))
+            print(f"Reaction produced {len(products_tuple)} product sets")
+        except Exception as run_error:
+            # If reaction fails (e.g., reactants don't match template), return empty
+            print(f"Reaction run failed: {run_error}")
+            return jsonify({'products': [], 'error': f'Reaction failed: {run_error}'})
 
         unique_products = set()
         
@@ -67,20 +83,27 @@ def run_reaction():
                     Chem.SanitizeMol(mol)
                     smi = Chem.MolToSmiles(mol)
                     unique_products.add(smi)
-                    print(f"Product SMILES: {smi}")
+                    print(f"  Product: {smi}")
                 except Exception as sanitize_error:
-                    print(f"Sanitization error: {sanitize_error}")
+                    print(f"  Sanitization error: {sanitize_error}")
                     continue
 
         result = list(unique_products)
-        print(f"Returning {len(result)} unique products: {result}")
+        
+        if len(result) == 0:
+            print(f"No products generated - reactants may not match SMARTS pattern")
+        else:
+            print(f"Returning {len(result)} unique products")
+        
+        print(f"{'='*60}\n")
         return jsonify({'products': result})
 
     except Exception as e:
         import traceback
         error_msg = f"Error executing reaction: {e}\n{traceback.format_exc()}"
         print(error_msg)
-        return jsonify({'error': str(e)}), 500
+        # Return empty products instead of 500 error for graceful degradation
+        return jsonify({'products': [], 'error': str(e)})
 
 if __name__ == '__main__':
     print("Starting Flask Reaction Server on port 8000...")

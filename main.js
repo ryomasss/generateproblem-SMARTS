@@ -53,6 +53,32 @@ async function init() {
       $("#gen")?.addEventListener("click", generateProblems);
       $("#toggle")?.addEventListener("click", toggleAnswers);
       
+      // 刷新分子库按钮
+      $("#refreshMolecules")?.addEventListener("click", async () => {
+        if (!confirm("确定要清除缓存并重新从 PubChem 获取分子吗？这可能需要一些时间。")) {
+          return;
+        }
+        
+        showStatus("正在清除缓存...", "loading");
+        
+        // 清除 localStorage 缓存
+        localStorage.removeItem('pubchem_molecule_cache');
+        appState.moleculeCache = {};
+        
+        console.log("🗑️ 已清除分子缓存");
+        
+        showStatus("正在从 PubChem 重新获取分子...", "loading");
+        
+        // 重新预加载分子
+        await preloadCommonMolecules();
+        
+        showStatus("分子库刷新完成！", "success");
+        console.log("✅ 分子库刷新完成");
+        
+        // 重新生成题目
+        generateProblems();
+      });
+      
       const inputs = ["structureColor", "baseSize", "bondWidth", "fixedLength"];
       inputs.forEach(id => {
          document.getElementById(id)?.addEventListener("change", () => {
