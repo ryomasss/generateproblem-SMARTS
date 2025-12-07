@@ -1,9 +1,14 @@
+// 难度等级定义：
+// 1 = easy (简单) - 基础反应，如简单加成、氢化
+// 2 = medium (中等) - 需要理解选择性或机理，如马氏规则、Lindlar催化剂
+// 3 = hard (高级) - 复杂反应，如格氏反应、羟醛缩合、多步反应
+
 window.REACTION_DB_EXTENDED = {
   // --- 烯烃 (Alkenes) ---
   "alkene_addition_br2": {
     category: "alkene",
     name: "烯烃与溴加成",
-    // 保持原样，这个通常比较稳定
+    difficulty: 1,  // 简单：基础加成反应
     smarts: "[C:1]=[C:2].[Br][Br]>>[C:1]([Br])-[C:2]([Br])",
     source: ["alkenes", "reagents_br2"],
     search_smarts: ["C=C"],
@@ -12,6 +17,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_addition_cl2": {
     category: "alkene",
     name: "烯烃与氯加成",
+    difficulty: 1,  // 简单
     smarts: "[C:1]=[C:2].[Cl][Cl]>>[C:1]([Cl])-[C:2]([Cl])",
     source: ["alkenes", "reagents_cl2"],
     search_smarts: ["C=C"],
@@ -20,7 +26,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_addition_hbr": {
     category: "alkene",
     name: "烯烃与HBr加成",
-    // 简化 SMARTS: 只需要烯烃，HBr 作为条件参与
+    difficulty: 2,  // 中等：需要理解马氏规则
     smarts: "[C:1]=[C:2]>>[C:1]-[C:2]([Br])",
     source: ["alkenes", "reagents_hbr"],
     search_smarts: ["C=C"],
@@ -29,7 +35,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_addition_h2o": {
     category: "alkene",
     name: "烯烃水合反应",
-    // 简化 SMARTS: 只需要烯烃，水作为条件参与
+    difficulty: 2,  // 中等：需要理解马氏规则
     smarts: "[C:1]=[C:2]>>[C:1]-[C:2]([OH])",
     source: ["alkenes", "reagents_h2o"],
     search_smarts: ["C=C"],
@@ -38,6 +44,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_epoxidation": {
     category: "alkene",
     name: "烯烃环氧化",
+    difficulty: 2,  // 中等：特殊反应类型
     smarts: "[C:1]=[C:2].[O:3][O:4][C:5]>>[C:1]1[C:2][O:3]1",
     source: ["alkenes", "reagents_peracid"],
     search_smarts: ["C=C"],
@@ -46,6 +53,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_ozonolysis": {
     category: "alkene",
     name: "烯烃臭氧氧化分解",
+    difficulty: 3,  // 高级：需要理解断键位置和产物
     smarts: "[C:1]=[C:2]>>[C:1]=O.O=[C:2]",
     source: ["alkenes"],
     search_smarts: ["C=C"],
@@ -54,6 +62,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_hydrogenation": {
     category: "alkene",
     name: "烯烃催化氢化",
+    difficulty: 1,  // 简单：基础还原
     smarts: "[C:1]=[C:2]>>[C:1]-[C:2]",
     source: ["alkenes", "reagents_h2"],
     search_smarts: ["C=C"],
@@ -64,7 +73,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_addition_hbr_1": {
     category: "alkyne",
     name: "炔烃与HBr加成 (1eq)",
-    // 简化 SMARTS: 炔烃转化为溴代烯烃
+    difficulty: 2,  // 中等：需要理解部分加成
     smarts: "[C:1]#[C:2]>>[C:1]([Br])=[C:2]",
     source: ["alkynes", "reagents_hbr"],
     search_smarts: ["C#C"],
@@ -73,7 +82,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_hydration_terminal": {
     category: "alkyne",
     name: "末端炔烃水合 (Markovnikov)",
-    // 末端炔烃水合生成甲基酮
+    difficulty: 3,  // 高级：需要理解区域选择性和酮醇互变
     smarts: "[CH1:1]#[C:2]>>[C:1](=O)-[C:2]",
     source: ["alkynes_terminal", "reagents_h2o"],
     search_smarts: ["[CH]#C"],
@@ -82,6 +91,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_hydrogenation_full": {
     category: "alkyne",
     name: "炔烃完全氢化",
+    difficulty: 1,  // 简单：基础还原
     smarts: "[C:1]#[C:2]>>[C:1]-[C:2]",
     source: ["alkynes", "reagents_h2"],
     search_smarts: ["C#C"],
@@ -90,6 +100,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_hydrogenation_lindlar": {
     category: "alkyne",
     name: "炔烃部分氢化 (Lindlar)",
+    difficulty: 2,  // 中等：需要理解选择性催化剂
     smarts: "[C:1]#[C:2]>>[C:1]=[C:2]",
     source: ["alkynes", "reagents_h2"],
     search_smarts: ["C#C"],
@@ -100,6 +111,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_oxidation_primary": {
     category: "alcohol",
     name: "伯醇氧化为醛",
+    difficulty: 2,  // 中等：需要区分伯/仲/叔醇
     smarts: "[C:1][C:2][O:3]>>[C:1][C:2]=[O:3]",
     source: ["alcohols_primary"],
     search_smarts: ["[CH2][OH]"],
@@ -108,6 +120,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_oxidation_secondary": {
     category: "alcohol",
     name: "仲醇氧化为酮",
+    difficulty: 2,  // 中等
     smarts: "[C:1][C:2]([O:3])[C:4]>>[C:1][C:2](=[O:3])[C:4]",
     source: ["alcohols_secondary"],
     search_smarts: ["[CH]([C])([C])[OH]"],
@@ -116,6 +129,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_dehydration_intra": {
     category: "alcohol",
     name: "醇分子内脱水 (消除)",
+    difficulty: 2,  // 中等：需要理解消除反应
     smarts: "[C:1][C:2][O:3]>>[C:1]=[C:2]",
     source: ["alcohols"],
     search_smarts: ["[CH2][CH2][OH]"],
@@ -124,19 +138,18 @@ window.REACTION_DB_EXTENDED = {
   "williamson_ether": {
     category: "alcohol",
     name: "威廉姆逊醚合成",
+    difficulty: 3,  // 高级：多步反应
     smarts: "[C:1][O:2].[C:3][Br:4]>>[C:1][O:2][C:3]",
     source: ["alcohols", "halides"],
-    search_smarts: ["[OH]", "[C][Br]"],
+    search_smarts: ["[CX4][OH]", "[CX4][Br]"],
     condition: "1. NaH 2. R-X"
   },
 
   // --- 苯及其同系物 (Benzene) ---
-  // *** 重点修复区域 ***
   "benzene_halogenation_br": {
     category: "benzene",
     name: "苯的溴代",
-    // 修改点：使用 [cH:1] 明确指定反应发生在含氢的芳香碳上
-    // 同时简化了 SMARTS，不再强求匹配整个苯环结构，只要是苯环上的 CH 即可，兼容性更好
+    difficulty: 1,  // 简单：基础取代反应
     smarts: "[c;H1:1].[Br][Br]>>[c:1][Br]",
     source: ["benzenes", "reagents_br2"],
     search_smarts: ["c1ccccc1"],
@@ -145,7 +158,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_nitration": {
     category: "benzene",
     name: "苯的硝化",
-    // 修改点：简化硝酸试剂的 SMARTS 匹配，并指定反应位点为 [cH]
+    difficulty: 1,  // 简单
     smarts: "[c;H1:1].[N+](=O)([O-])[O]>>[c:1][N+](=O)[O-]",
     source: ["benzenes", "reagents_hno3"],
     search_smarts: ["c1ccccc1"],
@@ -154,7 +167,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_friedel_crafts_alkyl": {
     category: "benzene",
     name: "傅-克烷基化",
-    // 修改点：简化反应位点为 [cH:1]
+    difficulty: 2,  // 中等：需要理解傅-克反应机理
     smarts: "[c;H1:1].[C:2][Cl]>>[c:1][C:2]",
     source: ["benzenes", "halides_alkyl"],
     search_smarts: ["c1ccccc1"],
@@ -163,7 +176,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_friedel_crafts_acyl": {
     category: "benzene",
     name: "傅-克酰基化",
-    // 修改点：简化反应位点为 [cH:1]
+    difficulty: 2,  // 中等
     smarts: "[c;H1:1].[C:2](=[O:3])[Cl]>>[c:1][C:2](=[O:3])",
     source: ["benzenes", "halides_acyl"],
     search_smarts: ["c1ccccc1"],
@@ -174,7 +187,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_reduction_alcohol": {
     category: "carbonyl",
     name: "醛/酮还原为醇",
-    // 注意：还原反应通常只涉及底物变化，SMARTS 不需要写出 H2
+    difficulty: 1,  // 简单：基础还原
     smarts: "[C:1]=[O:2]>>[C:1][O:2]",
     source: ["carbonyls", "reagents_h2"],
     search_smarts: ["C=O"],
@@ -183,7 +196,7 @@ window.REACTION_DB_EXTENDED = {
   "grignard_addition": {
     category: "carbonyl",
     name: "格氏试剂加成",
-    // 修正 SMARTS 以更好地匹配格氏试剂 (MgCl 部分在产物中离去)
+    difficulty: 3,  // 高级：需要理解格氏反应机理
     smarts: "[C:1](=[O:2]).[C:3][Mg]>>[C:1]([OH:2])([C:3])",
     source: ["carbonyls", "grignard_reagents"],
     search_smarts: ["[CH]=O", "C(=O)C"],
@@ -192,6 +205,7 @@ window.REACTION_DB_EXTENDED = {
   "aldol_condensation": {
     category: "carbonyl",
     name: "羟醛缩合 (简化)",
+    difficulty: 3,  // 高级：复杂反应机理
     smarts: "[C:1][C:2](=O).[C:3][C:4](=O)>>[C:1][C:2](=O)[C:3][C:4](=O)",
     source: ["carbonyls"],
     search_smarts: ["CC=O", "CC(=O)C"],
@@ -200,7 +214,7 @@ window.REACTION_DB_EXTENDED = {
   "esterification": {
     category: "alcohol",
     name: "酯化反应",
-    // 简化 SMARTS: 羧酸 + 醇 -> 酯
+    difficulty: 2,  // 中等：需要理解可逆反应
     smarts: "[C:1](=O)O.[O:2]C>>[C:1](=O)[O:2]C",
     source: ["acids", "alcohols"],
     search_smarts: ["[CX3](=O)[OX2H1]", "[#6][OX2H1]"],
@@ -208,13 +222,44 @@ window.REACTION_DB_EXTENDED = {
   }
 };
 
+// 难度等级名称映射
+window.DIFFICULTY_NAMES = {
+  1: "简单",
+  2: "中等",
+  3: "高级"
+};
+
+// 根据难度等级获取反应列表
+window.getReactionsByDifficulty = function(level) {
+  const result = {};
+  for (const key in window.REACTION_DB_EXTENDED) {
+    const reaction = window.REACTION_DB_EXTENDED[key];
+    if (reaction.difficulty === level) {
+      result[key] = reaction;
+    }
+  }
+  return result;
+};
+
+// 根据难度范围获取反应列表 (例如：level 1-2)
+window.getReactionsByDifficultyRange = function(minLevel, maxLevel) {
+  const result = {};
+  for (const key in window.REACTION_DB_EXTENDED) {
+    const reaction = window.REACTION_DB_EXTENDED[key];
+    if (reaction.difficulty >= minLevel && reaction.difficulty <= maxLevel) {
+      result[key] = reaction;
+    }
+  }
+  return result;
+};
+
 window.CHEMICAL_CABINET_EXTENDED = {
-  // 基础试剂 (注意：这些在简化后的 SMARTS 中不直接参与反应模式)
+  // 基础试剂
   reagents_br2: ["BrBr"],
   reagents_cl2: ["ClCl"],
-  reagents_hbr: ["Br"],    // HBr 简化表示
+  reagents_hbr: ["Br"],
   reagents_h2o: ["O"],
-  reagents_h2: ["[H][H]"], // 氢气保持原样，用于显示
+  reagents_h2: ["[H][H]"],
   reagents_peracid: ["CC(=O)OO"],
   reagents_hno3: ["[O-][N+](=O)O"],
 
@@ -233,6 +278,9 @@ window.CHEMICAL_CABINET_EXTENDED = {
   alcohols: ["CO", "CCO", "CCCO", "CC(O)C", "OCc1ccccc1", "C1CCCCC1O"],
   alcohols_primary: ["CO", "CCO", "CCCO", "OCc1ccccc1"],
   alcohols_secondary: ["CC(O)C", "C1CCCCC1O"],
+  
+  // 羧酸
+  acids: ["CC(=O)O", "CCC(=O)O", "c1ccccc1C(=O)O"],
 
   // 卤代烃
   halides: ["CBr", "CCBr", "CCCCl", "CI", "BrCc1ccccc1", "CC(C)Cl"],
@@ -246,12 +294,3 @@ window.CHEMICAL_CABINET_EXTENDED = {
   carbonyls: ["CC=O", "CCC=O", "CC(=O)C", "c1ccccc1C=O", "c1ccccc1C(=O)C"],
   grignard_reagents: ["C[Mg]Cl", "CC[Mg]Cl", "c1ccccc1[Mg]Cl"]
 };
-// 简化了芳香族 SMARTS：
-//
-// 原代码：[c:1]1[c:2][c:3][c:4][c:5][c:6]1... （试图匹配整个苯环，如果 RDKit 解析时原子顺序不对或有取代基，容易失败）。
-//
-// 新代码：[c;H1:1]... （只匹配带有一个氢原子的芳香碳）。这是 RDKit 中进行芳香族亲电取代最标准、最健壮的写法。
-//
-// 修复了格氏试剂 SMARTS：
-//
-// 稍微简化了格氏试剂的匹配部分，移除了对 Cl 的强依赖，使其更通用。

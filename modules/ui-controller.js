@@ -13,6 +13,49 @@ const PROBLEM_COUNT = 5;
 const problemsEl = $("#problems");
 
 /**
+ * 验证并选择一个合适的分子
+ * 确保分子不会太复杂导致渲染失败
+ * @param {string[]} pool - 分子池
+ * @param {number} maxAttempts - 最大尝试次数
+ * @returns {string|null} 有效的 SMILES 或 null
+ */
+function selectValidMolecule(pool, maxAttempts = 10) {
+    if (!pool || pool.length === 0) return null;
+    
+    for (let i = 0; i < maxAttempts; i++) {
+        const smiles = pool[Math.floor(Math.random() * pool.length)];
+        
+        // 基本检查
+        if (!smiles || typeof smiles !== 'string') continue;
+        
+        // 长度检查
+        if (smiles.length > 60) {
+            console.log(`🚫 跳过复杂分子: ${smiles.substring(0, 30)}...`);
+            continue;
+        }
+        
+        // 用 RDKit 验证
+        if (appState.rdkitModule) {
+            try {
+                const mol = appState.rdkitModule.get_mol(smiles);
+                if (mol && mol.is_valid()) {
+                    mol.delete();
+                    return smiles;
+                }
+                if (mol) mol.delete();
+            } catch (e) {
+                continue;
+            }
+        } else {
+            return smiles;
+        }
+    }
+    
+    // 如果多次尝试都失败，返回池中最短的分子
+    const sorted = [...pool].sort((a, b) => a.length - b.length);
+    return sorted[0] || null;
+}
+/**
  * 生成化学反应题目
  */
 export async function generateProblems() {
@@ -58,18 +101,14 @@ export async function generateProblems() {
         // Construct cache key matching pubchem-api.js logic
         const cacheKey = s + (def.smarts ? `|${def.smarts}` : "");
         const pool = appState.moleculeCache[cacheKey];
-        if (pool && pool.length > 0) {
-            r1 = pool[Math.floor(Math.random() * pool.length)];
-        }
+        r1 = selectValidMolecule(pool);
     }
     
     // R1 的回退方案
     if (!r1) {
         const poolName1 = def.source[0];
         const pool1 = CHEMICAL_CABINET[poolName1];
-        if (pool1 && pool1.length > 0) {
-            r1 = pool1[Math.floor(Math.random() * pool1.length)];
-        }
+        r1 = selectValidMolecule(pool1);
     }
 
     // 尝试获取 R2（如果需要）
@@ -80,9 +119,7 @@ export async function generateProblems() {
             // Construct cache key matching pubchem-api.js logic
             const cacheKey = s + (def.smarts ? `|${def.smarts}` : "");
             const pool = appState.moleculeCache[cacheKey];
-            if (pool && pool.length > 0) {
-                r2 = pool[Math.floor(Math.random() * pool.length)];
-            }
+            r2 = selectValidMolecule(pool);
         }
         
         // R2 的回退方案
@@ -97,9 +134,7 @@ export async function generateProblems() {
                 }
             }
             
-            if (pool2 && pool2.length > 0) {
-                r2 = pool2[Math.floor(Math.random() * pool2.length)];
-            }
+            r2 = selectValidMolecule(pool2);
         }
     }
 
@@ -164,23 +199,54 @@ export async function generateProblems() {
           answerContainer.innerHTML = ""; // 清空默认的占位符
 
           if (Array.isArray(productSmilesArray)) {
-              productSmilesArray.forEach((smi, idx) => {
-                  if (idx > 0) {
-                      const plus = document.createElement("div");
-                      plus.className = "plus";
-                      plus.textContent = "+";
-                      plus.style.margin = "0 10px";
-                      plus.style.color = "#ffffff";
-                      plus.style.fontSize = "24px";
-                      plus.style.fontWeight = "bold";
-                      answerContainer.appendChild(plus);
-                  }
+              // 过滤掉无效的产物 SMILES
+              const validProducts = productSmilesArray.filter(smi => {
+                  if (!smi || typeof smi !== 'string') return false;
+                  if (smi === 'FAILED' || smi === '?' || smi.trim() === '') return false;
                   
-                  const structDiv = document.createElement("div");
-                  structDiv.className = "structure product";
-                  structDiv.appendChild(createStructureSVG(smi));
-                  answerContainer.appendChild(structDiv);
+                  // 尝试用 RDKit 验证 SMILES
+                  if (appState.rdkitModule) {
+                      try {
+                          const mol = appState.rdkitModule.get_mol(smi);
+                          if (mol && mol.is_valid()) {
+                              mol.delete();
+                              return true;
+                          }
+                          if (mol) mol.delete();
+                          console.warn(`🔴 产物 SMILES 无效 (RDKit 无法解析): ${smi}`);
+                          return false;
+                      } catch (e) {
+                          console.warn(`🔴 产物 SMILES 验证失败: ${smi}`, e.message);
+                          return false;
+                      }
+                  }
+                  return true;
               });
+              
+              if (validProducts.length === 0) {
+                  console.warn("⚠️ 没有有效的产物可渲染");
+                  const errorDiv = document.createElement("div");
+                  errorDiv.innerHTML = `<span style="color:#ef4444;font-size:12px;">⚠️ 产物生成失败</span>`;
+                  answerContainer.appendChild(errorDiv);
+              } else {
+                  validProducts.forEach((smi, idx) => {
+                      if (idx > 0) {
+                          const plus = document.createElement("div");
+                          plus.className = "plus";
+                          plus.textContent = "+";
+                          plus.style.margin = "0 10px";
+                          plus.style.color = "#ffffff";
+                          plus.style.fontSize = "24px";
+                          plus.style.fontWeight = "bold";
+                          answerContainer.appendChild(plus);
+                      }
+                      
+                      const structDiv = document.createElement("div");
+                      structDiv.className = "structure product";
+                      structDiv.appendChild(createStructureSVG(smi));
+                      answerContainer.appendChild(structDiv);
+                  });
+              }
           }
       }
 
@@ -259,6 +325,18 @@ export function renderReactionCheckboxes() {
         "other": "其他反应"
     };
 
+    const difficultyColors = {
+        1: "#22c55e",  // 绿色 - 简单
+        2: "#f59e0b",  // 橙色 - 中等
+        3: "#ef4444"   // 红色 - 高级
+    };
+    
+    const difficultyNames = {
+        1: "★",
+        2: "★★",
+        3: "★★★"
+    };
+
     for (let cat in groups) {
         const groupDiv = document.createElement("div");
         groupDiv.style.marginBottom = "10px";
@@ -268,9 +346,62 @@ export function renderReactionCheckboxes() {
             const label = document.createElement("label");
             label.style.display = "inline-block";
             label.style.marginRight = "10px";
-            label.innerHTML = `<input type="checkbox" value="${r.key}" checked /> ${r.name}`;
+            label.dataset.difficulty = r.difficulty || 1;
+            
+            const diffLevel = r.difficulty || 1;
+            const diffColor = difficultyColors[diffLevel];
+            const diffStar = difficultyNames[diffLevel];
+            
+            label.innerHTML = `<input type="checkbox" value="${r.key}" data-difficulty="${diffLevel}" checked /> ${r.name} <span style="color:${diffColor};font-size:10px;">${diffStar}</span>`;
             groupDiv.appendChild(label);
         });
         container.appendChild(groupDiv);
+    }
+}
+
+/**
+ * 根据难度设置更新复选框状态
+ */
+export function updateCheckboxesByDifficulty() {
+    const difficultySelect = document.getElementById("difficulty");
+    if (!difficultySelect) return;
+    
+    const selectedDifficulty = difficultySelect.value;
+    const checkboxes = document.querySelectorAll("#reactionTypes input[type='checkbox']");
+    
+    checkboxes.forEach(chk => {
+        const reactionDifficulty = parseInt(chk.dataset.difficulty) || 1;
+        
+        switch (selectedDifficulty) {
+            case "easy":
+                chk.checked = reactionDifficulty === 1;
+                break;
+            case "medium":
+                chk.checked = reactionDifficulty <= 2;
+                break;
+            case "hard":
+                chk.checked = true;  // 高级模式包含所有反应
+                break;
+            case "custom":
+                // 自定义模式不改变复选框状态
+                break;
+        }
+    });
+    
+    console.log(`📊 难度设置: ${selectedDifficulty}`);
+}
+
+/**
+ * 初始化难度选择器事件
+ */
+export function initDifficultySelector() {
+    const difficultySelect = document.getElementById("difficulty");
+    if (difficultySelect) {
+        difficultySelect.addEventListener("change", () => {
+            updateCheckboxesByDifficulty();
+        });
+        
+        // 初始化时应用默认难度
+        updateCheckboxesByDifficulty();
     }
 }

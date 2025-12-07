@@ -99,11 +99,28 @@ async function fetchWithRetry(url, retries = 3, delay = 1000) {
 function checkMoleculeComplexity(smiles) {
     if (!smiles) return false;
     
-    // 简单估算：计算非括号、非数字字符的数量作为原子数的粗略估计
-    const atomCount = smiles.replace(/[\[\]()0-9@\\\/=#+-]/g, '').length;
+    // 1. 限制 SMILES 字符串长度（过长的分子浏览器端 RDKit 可能无法解析）
+    if (smiles.length > 80) {
+        console.log(`🚫 分子过于复杂 (长度 ${smiles.length}): ${smiles.substring(0, 40)}...`);
+        return false;
+    }
     
-    // 过滤掉原子数少于3或多于50的分子
-    return atomCount >= 3 && atomCount <= 50;
+    // 2. 计算原子数的粗略估计
+    const atomCount = smiles.replace(/[\[\]()0-9@\\\\/=#+-]/g, '').length;
+    
+    // 3. 过滤掉原子数少于3或多于30的分子
+    if (atomCount < 3 || atomCount > 30) {
+        return false;
+    }
+    
+    // 4. 排除含有典型生物大分子特征的 SMILES（如多个肽键）
+    const peptideBondCount = (smiles.match(/C\(=O\)N/g) || []).length;
+    if (peptideBondCount >= 2) {
+        console.log(`🚫 可能是生物大分子: ${smiles.substring(0, 40)}...`);
+        return false;
+    }
+    
+    return true;
 }
 
 /**
@@ -163,9 +180,10 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
         // PubChem 返回的字段名可能是 SMILES, IsomericSMILES, 或 CanonicalSMILES
         let smilesList = propsData.PropertyTable.Properties
             .map(p => p.SMILES || p.IsomericSMILES || p.CanonicalSMILES)
-            .filter(s => s); // 只过滤掉空值
+            .filter(s => s) // 只过滤掉空值
+            .filter(s => checkMoleculeComplexity(s)); // 过滤太复杂或太简单的分子
         
-        console.log(`✅ 获取到 ${smilesList.length} 个分子 SMILES`);
+        console.log(`✅ 获取到 ${smilesList.length} 个分子 SMILES (经过复杂度过滤)`);
             
         // 严格验证：确保分子真正匹配 SMARTS 模式
         if (appState.rdkitModule && smilesList.length > 0) {

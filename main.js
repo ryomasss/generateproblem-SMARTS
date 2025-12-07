@@ -3,7 +3,7 @@
 
 import { appState } from './modules/state.js';
 import { $, showStatus } from './modules/utils.js';
-import { generateProblems, toggleAnswers, renderReactionCheckboxes } from './modules/ui-controller.js';
+import { generateProblems, toggleAnswers, renderReactionCheckboxes, initDifficultySelector } from './modules/ui-controller.js';
 import { loadCacheFromStorage, preloadCommonMolecules, cacheStats } from './modules/pubchem-api.js';
 
 /**
@@ -47,6 +47,7 @@ async function init() {
       }
       
       renderReactionCheckboxes();
+      initDifficultySelector();  // 初始化难度选择器
       showStatus("就绪", "success");
 
       // 绑定事件监听器

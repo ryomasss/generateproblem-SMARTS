@@ -13,7 +13,15 @@ export function createStructureSVG(smiles) {
   const container = document.createElement("div");
   container.className = "image-container";
 
-  if (!smiles || smiles === "FAILED" || smiles === "PREDEFINED_PRODUCT") {
+  // 检测更多无效 SMILES 格式
+  const invalidPatterns = ["FAILED", "PREDEFINED_PRODUCT", "?", "undefined", "null"];
+  const isInvalid = !smiles || 
+                    typeof smiles !== 'string' || 
+                    smiles.trim() === "" ||
+                    invalidPatterns.includes(smiles.trim());
+  
+  if (isInvalid) {
+    console.warn("🔴 无效 SMILES 被过滤:", smiles);
     container.innerHTML = `
       <div class="empty-structure" style="display:flex;flex-direction:column;align-items:center;justify-content:center;color:#ef4444;text-align:center;padding:10px;">
         <span style="font-size:24px;margin-bottom:5px;">⚠️</span>
@@ -21,6 +29,8 @@ export function createStructureSVG(smiles) {
       </div>`;
     return container;
   }
+  
+  console.log("🎨 准备渲染 SMILES:", smiles);
 
   // 延迟渲染
   setTimeout(() => {
