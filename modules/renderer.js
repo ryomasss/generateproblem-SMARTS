@@ -93,11 +93,32 @@ export function renderStructureSync(smiles, container) {
       return;
     }
 
-    // 特殊处理：氢气分子和其他简单双原子分子
-    // 这些分子默认可能显示为竖直，我们强制设置为水平显示
-    if (smiles === '[H][H]' || smiles === 'H' || smiles.match(/^\[?H\]?\[?H\]?$/)) {
-      // 对于氢气，直接显示为文本 "H₂"
-      container.innerHTML = `<div class="structure-text" style="display:flex;align-items:center;justify-content:center;height:${baseSize}px;font-size:32px;color:${colorHex};">H₂</div>`;
+    // 特殊处理：双原子分子 (氢气、卤素等)
+    // 这些分子应以化学式下标形式显示 (如 H₂, Br₂, Cl₂)，而不是结构式
+    const diatomicMolecules = {
+      // 氢气
+      '[H][H]': 'H₂',
+      'H': 'H₂',
+      // 卤素
+      'BrBr': 'Br₂',
+      '[Br][Br]': 'Br₂',
+      'ClCl': 'Cl₂',
+      '[Cl][Cl]': 'Cl₂',
+      'FF': 'F₂',
+      '[F][F]': 'F₂',
+      'II': 'I₂',
+      '[I][I]': 'I₂',
+      // 氧气和氮气
+      'O=O': 'O₂',
+      '[O]=[O]': 'O₂',
+      'N#N': 'N₂',
+      '[N]#[N]': 'N₂'
+    };
+
+    // 检查是否为双原子分子
+    const diatomicFormula = diatomicMolecules[smiles];
+    if (diatomicFormula) {
+      container.innerHTML = `<div class="structure-text" style="display:flex;align-items:center;justify-content:center;height:${baseSize}px;font-size:32px;color:${colorHex};">${diatomicFormula}</div>`;
       if (mol && typeof mol.delete === 'function') {
         mol.delete();
         mol = null;  // 防止 finally 块再次删除
