@@ -164,7 +164,7 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
         // Fetch properties (SMILES) for these CIDs
         // 注意：只请求 SMILES，PubChem 会返回 "SMILES" 字段
         const cidsStr = cids.join(',');
-        const propsUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cidsStr}/property/IsomericSMILES/JSON`;
+        const propsUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cidsStr}/property/SMILES/JSON`;
         
         // 增加延迟，避免触发限流
         await new Promise(r => setTimeout(r, 500));
