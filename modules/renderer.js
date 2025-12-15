@@ -95,30 +95,36 @@ export function renderStructureSync(smiles, container) {
 
     // 特殊处理：双原子分子 (氢气、卤素等)
     // 这些分子应以化学式下标形式显示 (如 H₂, Br₂, Cl₂)，而不是结构式
+    // 使用 HTML 格式（元素符号 + 下标数字）以便精确控制样式
     const diatomicMolecules = {
       // 氢气
-      '[H][H]': 'H₂',
-      'H': 'H₂',
+      '[H][H]': { symbol: 'H', count: '2' },
+      'H': { symbol: 'H', count: '2' },
       // 卤素
-      'BrBr': 'Br₂',
-      '[Br][Br]': 'Br₂',
-      'ClCl': 'Cl₂',
-      '[Cl][Cl]': 'Cl₂',
-      'FF': 'F₂',
-      '[F][F]': 'F₂',
-      'II': 'I₂',
-      '[I][I]': 'I₂',
+      'BrBr': { symbol: 'Br', count: '2' },
+      '[Br][Br]': { symbol: 'Br', count: '2' },
+      'ClCl': { symbol: 'Cl', count: '2' },
+      '[Cl][Cl]': { symbol: 'Cl', count: '2' },
+      'FF': { symbol: 'F', count: '2' },
+      '[F][F]': { symbol: 'F', count: '2' },
+      'II': { symbol: 'I', count: '2' },
+      '[I][I]': { symbol: 'I', count: '2' },
       // 氧气和氮气
-      'O=O': 'O₂',
-      '[O]=[O]': 'O₂',
-      'N#N': 'N₂',
-      '[N]#[N]': 'N₂'
+      'O=O': { symbol: 'O', count: '2' },
+      '[O]=[O]': { symbol: 'O', count: '2' },
+      'N#N': { symbol: 'N', count: '2' },
+      '[N]#[N]': { symbol: 'N', count: '2' }
     };
 
     // 检查是否为双原子分子
-    const diatomicFormula = diatomicMolecules[smiles];
-    if (diatomicFormula) {
-      container.innerHTML = `<div class="structure-text" style="display:flex;align-items:center;justify-content:center;height:${baseSize}px;font-size:32px;color:${colorHex};">${diatomicFormula}</div>`;
+    const diatomicData = diatomicMolecules[smiles];
+    if (diatomicData) {
+      // 根据 baseSize 计算字号，与 RDKit SVG 中原子标签大小保持一致
+      // RDKit 的原子标签字号大约是画布尺寸的 1/14 到 1/18
+      const atomFontSize = Math.round(baseSize / 16);
+      // 下标字号设为主字号的 0.7 倍，符合化学式排版标准
+      const subFontSize = Math.round(atomFontSize * 0.7);
+      container.innerHTML = `<div class="structure-text" style="display:flex;align-items:center;justify-content:center;height:${baseSize}px;font-size:${atomFontSize}px;color:${colorHex};font-family:Arial,sans-serif;font-weight:normal;">${diatomicData.symbol}<sub style="font-size:${subFontSize}px;">${diatomicData.count}</sub></div>`;
       if (mol && typeof mol.delete === 'function') {
         mol.delete();
         mol = null;  // 防止 finally 块再次删除

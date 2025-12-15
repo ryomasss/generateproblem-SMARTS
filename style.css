@@ -9,8 +9,22 @@
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   --radius: 18px;
 }
+
+/* 确保全屏宽度正确 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
+  padding: 0 20px;
+  width: 100%;
   font-family: "Times New Roman", Times, serif;
   background: radial-gradient(
       1000px 600px at 20% -10%,
@@ -27,6 +41,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
 }
 h1 {
   margin: 24px 0 6px;
@@ -45,11 +61,13 @@ h1 {
   max-width: 600px;
 }
 .container {
-  width: min(1080px, 96%);
+  width: 96%;
+  max-width: 100vw;
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 18px;
-  margin-bottom: 40px;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 20px;
+  margin: 0 auto 40px auto;
+  overflow: hidden;
 }
 .card {
   background: var(--card);
@@ -275,10 +293,13 @@ button.btn:hover {
   /* transition: transform 0.2s; (移到大壳子上) */
   max-width: 100%;
   flex: 1; /* 确保均匀分配空间 */
-  width: 400px; /* 默认宽度 */
-  min-width: 300px; /* 固定最小宽度 */
-  height: 400px; /* 默认高度 */
-  min-height: 300px; /* 固定最小高度 */
+  
+  /* 响应式尺寸：使用 clamp() 根据视口自动调整 */
+  width: clamp(150px, 15vw, 350px);
+  height: clamp(150px, 15vw, 350px);
+  min-width: 140px;
+  min-height: 140px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -302,7 +323,7 @@ button.btn:hover {
   color: var(--muted);
 }
 
-/* --- 奶奶改动的地方 (4) --- */
+
 /* 反应箭头容器 */
 .reaction-arrow-container {
   display: flex;
@@ -655,7 +676,7 @@ button.btn:hover {
 /* 1. 将 .reaction-equation 设为“大盒子” */
 .reaction-equation {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 15px;
   justify-content: center;
@@ -698,12 +719,12 @@ button.btn:hover {
   background: transparent !important;
   box-shadow: none !important;
 
-  /* 确保它填满 .structure-container */
+  /* 响应式尺寸 */
   flex: 1;
-  width: 400px;
-  min-width: 300px;
-  height: 400px;
-  min-height: 300px;
+  width: clamp(150px, 15vw, 350px);
+  min-width: 180px;
+  height: clamp(150px, 15vw, 350px);
+  min-height: 180px;
 
   /* 保留原有的其他样式 */
   padding: 12px;
@@ -862,14 +883,14 @@ button.btn:hover {
   align-items: center;
   justify-content: center;
 
-  /* 尺寸设置，使其与真实的结构式容器大小一致，防止切换时页面跳动 */
-  width: 400px;
-  min-width: 300px;
-  height: 400px;
-  min-height: 300px;
+  /* 响应式尺寸 */
+  width: clamp(150px, 15vw, 350px);
+  min-width: 180px;
+  height: clamp(150px, 15vw, 350px);
+  min-height: 180px;
 
-  /* 字体样式 */
-  font-size: 120px;
+  /* 字体样式 - 也使用响应式 */
+  font-size: clamp(60px, 8vw, 120px);
   font-weight: bold;
   color: rgba(255, 255, 255, 0.15); /* 淡淡的白色 */
   user-select: none; /*防止被选中*/
@@ -914,20 +935,19 @@ button.btn:hover {
   align-items: center;
   justify-content: center;
 
-  /* 尺寸设置 */
-  width: 100%;
-  min-width: 300px; /* 保持与其他结构式一致的最小宽度 */
-  height: 300px;    /* 保持高度一致 */
+  /* 响应式尺寸 */
+  width: clamp(150px, 15vw, 350px);
+  min-width: 180px;
+  height: clamp(150px, 15vw, 350px);
   flex: 1;
 
-  /* 字体样式 */
-  font-size: 100px;
+  /* 响应式字体 */
+  font-size: clamp(50px, 7vw, 100px);
   font-weight: 800;
   color: rgba(255, 255, 255, 0.1);
 
   /* --- 修改点：去除边框 --- */
   border: none;
-  /* 原来是: border: 3px dashed rgba(255, 255, 255, 0.1); */
 
   border-radius: 12px;
   user-select: none;
