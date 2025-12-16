@@ -232,12 +232,8 @@ export async function generateProblems() {
                   validProducts.forEach((smi, idx) => {
                       if (idx > 0) {
                           const plus = document.createElement("div");
-                          plus.className = "plus";
+                          plus.className = "plus-sign";
                           plus.textContent = "+";
-                          plus.style.margin = "0 10px";
-                          plus.style.color = "#ffffff";
-                          plus.style.fontSize = "24px";
-                          plus.style.fontWeight = "bold";
                           answerContainer.appendChild(plus);
                       }
                       
@@ -279,12 +275,8 @@ export function toggleAnswers() {
             products.forEach((smi, i) => {
                 if (i > 0) {
                     const plus = document.createElement("div");
-                    plus.className = "plus";
+                    plus.className = "plus-sign";
                     plus.textContent = "+";
-                    plus.style.margin = "0 10px";
-                    plus.style.color = "#ffffff";
-                    plus.style.fontSize = "24px";
-                    plus.style.fontWeight = "bold";
                     answerContainer.appendChild(plus);
                 }
                 
