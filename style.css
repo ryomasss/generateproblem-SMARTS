@@ -271,11 +271,11 @@ button.btn:hover {
   
   /* 关键：允许缩小以适应可用空间 */
   flex: 1 1 auto; /* 允许伸展和收缩 */
-  width: clamp(120px, 15vw, 350px);
-  min-width: 100px; /* 降低最小宽度限制 */
-  max-width: 350px;
+  width: clamp(100px, 12vw, 280px);
+  min-width: 80px; /* 降低最小宽度限制 */
+  max-width: 280px;
   height: auto;
-  min-height: 100px;
+  min-height: 80px;
   aspect-ratio: 1 / 1; /* 保持正方形 */
 }
 
@@ -297,7 +297,7 @@ button.btn:hover {
   align-items: center;
   justify-content: center;
   margin: 0 25px;
-  min-width: 150px;
+  min-width: 100px;
   width: auto;
   position: relative;
   flex-shrink: 0;
@@ -306,7 +306,7 @@ button.btn:hover {
 
 .reaction-arrow .arrow-text {
   font-family: "Times New Roman", Times, serif;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 700;
   font-style: italic;
   color: #ffffff;
@@ -330,7 +330,7 @@ button.btn:hover {
   top: 50%;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 2px;
   background: #ffffff;
   transform: translateY(-50%);
   border-radius: 2px;
@@ -341,7 +341,7 @@ button.btn:hover {
   content: "";
   position: absolute;
   top: 50%;
-  right: -4px;
+  right: -10px;
   width: 0;
   height: 0;
   border-top: 10px solid transparent;
@@ -353,11 +353,12 @@ button.btn:hover {
 
 /* 加号符号 */
 .plus-sign {
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 200;
   color: var(--text);
-  margin: 0 10px;
+  margin: 0 6px;
   align-self: center;
+  flex-shrink: 0;
 }
 
 /* 问号占位符 (与 .structure 尺寸一致) */
@@ -366,13 +367,13 @@ button.btn:hover {
   align-items: center;
   justify-content: center;
   flex: 1 1 auto; /* 允许伸展和收缩 */
-  width: clamp(120px, 15vw, 350px);
-  min-width: 100px;
-  max-width: 350px;
+  width: clamp(100px, 12vw, 280px);
+  min-width: 80px;
+  max-width: 280px;
   height: auto;
-  min-height: 100px;
+  min-height: 80px;
   aspect-ratio: 1 / 1;
-  font-size: clamp(40px, 6vw, 80px);
+  font-size: clamp(30px, 5vw, 60px);
   font-weight: 800;
   color: rgba(255, 255, 255, 0.1);
   border: none;

@@ -55,6 +55,83 @@ function selectValidMolecule(pool, maxAttempts = 10) {
     const sorted = [...pool].sort((a, b) => a.length - b.length);
     return sorted[0] || null;
 }
+
+/**
+ * 重新渲染现有题目的结构式（不生成新题目）
+ * 当用户调整基准尺寸、键宽、字号等参数时使用
+ */
+export function refreshExistingStructures() {
+    if (!appState.currentProblemsData || appState.currentProblemsData.length === 0) {
+        return;
+    }
+    
+    const problems = document.querySelectorAll(".problem");
+    problems.forEach((problemEl, idx) => {
+        const data = appState.currentProblemsData[idx];
+        if (!data) return;
+        
+        // 重新渲染反应物
+        const reactantContainer = problemEl.querySelector(".structure-container:not(.answer-structure)");
+        if (reactantContainer) {
+            reactantContainer.innerHTML = "";
+            reactantContainer.style.display = "flex";
+            reactantContainer.style.alignItems = "center";
+            reactantContainer.style.justifyContent = "center";
+            reactantContainer.style.gap = "10px";
+            
+            // 反应物1
+            if (data.r1) {
+                const w1 = document.createElement("div");
+                w1.className = "structure reactant";
+                w1.style.flex = "1";
+                w1.appendChild(createStructureSVG(data.r1));
+                reactantContainer.appendChild(w1);
+            }
+            
+            // 反应物2（如果存在）
+            if (data.r2) {
+                const plus = document.createElement("div");
+                plus.className = "plus-sign";
+                plus.textContent = "+";
+                reactantContainer.appendChild(plus);
+                
+                const w2 = document.createElement("div");
+                w2.className = "structure reactant";
+                w2.style.flex = "1";
+                w2.appendChild(createStructureSVG(data.r2));
+                reactantContainer.appendChild(w2);
+            }
+        }
+        
+        // 重新渲染产物（如果答案正在显示）
+        const answerContainer = problemEl.querySelector(".structure-container.answer-structure");
+        if (answerContainer && problemEl.classList.contains("show")) {
+            answerContainer.innerHTML = "";
+            
+            const products = Array.isArray(data.products) ? data.products : [data.products];
+            const validProducts = products.filter(smi => 
+                smi && typeof smi === 'string' && smi !== 'FAILED' && smi !== '?'
+            );
+            
+            validProducts.forEach((smi, i) => {
+                if (i > 0) {
+                    const plus = document.createElement("div");
+                    plus.className = "plus-sign";
+                    plus.textContent = "+";
+                    answerContainer.appendChild(plus);
+                }
+                
+                const structDiv = document.createElement("div");
+                structDiv.className = "structure product";
+                structDiv.appendChild(createStructureSVG(smi));
+                answerContainer.appendChild(structDiv);
+            });
+        }
+    });
+    
+    console.log("🔄 已刷新现有结构式");
+}
+
 /**
  * 生成化学反应题目
  */

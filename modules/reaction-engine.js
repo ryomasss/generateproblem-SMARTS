@@ -160,12 +160,26 @@ async function tryServerRDKit(smarts, reactantSmiles) {
             body: JSON.stringify({ smarts, reactants: reactantSmiles })
         });
 
-        if (!response.ok) {
-            console.warn(`服务器返回错误: ${response.status}`);
-            return null;
+        // 尝试解析 JSON 响应（即使是 500 错误也可能有 JSON 数据）
+        let data;
+        try {
+            data = await response.json();
+        } catch (jsonError) {
+            if (!response.ok) {
+                console.warn(`服务器返回错误: ${response.status} (非 JSON 响应)`);
+                return null;
+            }
+            throw jsonError;
         }
 
-        const data = await response.json();
+        if (!response.ok) {
+            console.warn(`服务器返回错误: ${response.status}${data.error ? ` - ${data.error}` : ''}`);
+            // 即使 500 错误，如果有 products 数据仍然使用
+            if (data.products && data.products.length > 0) {
+                return data.products;
+            }
+            return null;
+        }
         
         if (data.error) {
             console.warn(`服务器返回错误信息: ${data.error}`);
@@ -327,8 +341,12 @@ export function getPredefinedProduct(rxnKey, r1Smiles, r2Smiles) {
             'CC(=C)C': 'CC(=O)C'
         },
         'benzene_halogenation_br': {
-            'Cc1ccccc1': 'C(Br)c1ccccc1',
-            'c1ccccc1': 'BrC1=CC=CC=C1'
+            'Cc1ccccc1': 'Brc1ccccc1C',     // 甲苯 -> 溴甲苯
+            'c1ccccc1': 'Brc1ccccc1',       // 苯 -> 溴苯
+            'CCc1ccccc1': 'Brc1ccccc1CC',   // 乙苯 -> 溴乙苯
+            'c1ccc(C)cc1': 'Brc1ccc(C)cc1', // 甲苯(异构) -> 溴甲苯
+            'c1ccc(O)cc1': 'Brc1ccc(O)cc1', // 苯酚 -> 溴苯酚
+            '_default': 'Brc1ccccc1'         // 默认返回溴苯
         },
         'benzene_nitration': {
             'c1ccccc1': '[N+](=O)([O-])c1ccccc1',
@@ -405,11 +423,20 @@ export function getPredefinedProduct(rxnKey, r1Smiles, r2Smiles) {
         const safeR2 = r2Smiles || "";
         
         for (const [reactant, product] of Object.entries(reactionProducts)) {
+            // 跳过 _default 条目
+            if (reactant === '_default') continue;
+            
             if (safeR1.includes(reactant) || safeR2.includes(reactant) || 
                 safeR1.startsWith(reactant) || safeR2.startsWith(reactant) ||
                 safeR1.endsWith(reactant) || safeR2.endsWith(reactant)) {
                 return [product];
             }
+        }
+        
+        // 检查是否有 _default 回退产物
+        if (reactionProducts['_default']) {
+            console.log(`📦 使用默认产物: ${reactionProducts['_default']}`);
+            return [reactionProducts['_default']];
         }
         
         // 通用规则推断
@@ -436,6 +463,19 @@ export function getPredefinedProduct(rxnKey, r1Smiles, r2Smiles) {
                         return [safeR1.replace('C#C', 'CC=O')];
                     }
                 }
+            }
+        }
+        
+        // 芳香族反应通用回退
+        if (rxnKey.startsWith('benzene_')) {
+            if (rxnKey.includes('halogenation_br')) {
+                return ['Brc1ccccc1'];  // 默认返回溴苯
+            } else if (rxnKey.includes('nitration')) {
+                return ['[O-][N+](=O)c1ccccc1'];  // 默认返回硝基苯
+            } else if (rxnKey.includes('friedel_crafts_alkyl')) {
+                return ['CCc1ccccc1'];  // 默认返回乙苯
+            } else if (rxnKey.includes('friedel_crafts_acyl')) {
+                return ['CC(=O)c1ccccc1'];  // 默认返回苯乙酮
             }
         }
     }

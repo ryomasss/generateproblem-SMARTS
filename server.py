@@ -23,6 +23,18 @@ def index():
 def serve_static(path):
     return send_from_directory('.', path)
 
+# Global error handler for all unhandled exceptions
+@app.errorhandler(Exception)
+def handle_exception(e):
+    import traceback
+    error_msg = f"Unhandled exception: {e}\n{traceback.format_exc()}"
+    print(error_msg)
+    return jsonify({'error': str(e), 'products': []}), 500
+
+@app.errorhandler(500)
+def handle_500(e):
+    return jsonify({'error': 'Internal server error', 'products': []}), 500
+
 # Reaction API Endpoint
 @app.route('/api/react', methods=['POST', 'OPTIONS'])
 def run_reaction():

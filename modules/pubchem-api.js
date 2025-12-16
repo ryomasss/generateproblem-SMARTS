@@ -65,23 +65,29 @@ function saveCacheToStorage() {
 
 /**
  * Helper to fetch with retry logic
+ * @param {string} url - URL to fetch
+ * @param {number} retries - Number of retries
+ * @param {number} delay - Initial delay in ms
+ * @returns {Promise<Response>} - Fetch response
  */
-async function fetchWithRetry(url, retries = 3, delay = 1000) {
+async function fetchWithRetry(url, retries = 3, delay = 1500) {
     for (let i = 0; i < retries; i++) {
         try {
             const response = await fetch(url);
             if (response.ok) return response;
             
-            // If 503 or 429 (Too Many Requests), retry
-            if (response.status === 503 || response.status === 429) {
+            // If 500, 503, or 429 (Too Many Requests / Server Issues), retry
+            if (response.status === 500 || response.status === 503 || response.status === 429) {
                 console.warn(`PubChem API ${response.status}. Retrying in ${delay}ms... (${i + 1}/${retries})`);
                 await new Promise(r => setTimeout(r, delay));
                 delay *= 2; // Exponential backoff
                 continue;
             }
             
-            // Other errors, throw immediately
-            throw new Error(`PubChem API error: ${response.status}`);
+            // Other errors, throw immediately with status for fallback handling
+            const error = new Error(`PubChem API error: ${response.status}`);
+            error.status = response.status;
+            throw error;
         } catch (e) {
             if (i === retries - 1) throw e;
             console.warn(`Fetch failed: ${e.message}. Retrying...`);
@@ -100,7 +106,7 @@ function checkMoleculeComplexity(smiles) {
     if (!smiles) return false;
     
     // 1. 限制 SMILES 字符串长度（过长的分子浏览器端 RDKit 可能无法解析）
-    if (smiles.length > 80) {
+    if (smiles.length > 50) {
         console.log(`🚫 分子过于复杂 (长度 ${smiles.length}): ${smiles.substring(0, 40)}...`);
         return false;
     }
@@ -108,8 +114,8 @@ function checkMoleculeComplexity(smiles) {
     // 2. 计算原子数的粗略估计
     const atomCount = smiles.replace(/[\[\]()0-9@\\\\/=#+-]/g, '').length;
     
-    // 3. 过滤掉原子数少于3或多于30的分子
-    if (atomCount < 3 || atomCount > 30) {
+    // 3. 过滤掉原子数少于3或多于20的分子
+    if (atomCount < 3 || atomCount > 20) {
         return false;
     }
     
@@ -117,6 +123,26 @@ function checkMoleculeComplexity(smiles) {
     const peptideBondCount = (smiles.match(/C\(=O\)N/g) || []).length;
     if (peptideBondCount >= 2) {
         console.log(`🚫 可能是生物大分子: ${smiles.substring(0, 40)}...`);
+        return false;
+    }
+    
+    // 5. 排除多卤代化合物（超过2个卤素原子）
+    const halogenCount = (smiles.match(/Cl|Br|F|I/g) || []).length;
+    if (halogenCount > 2) {
+        console.log(`🚫 过多卤素取代 (${halogenCount}个): ${smiles.substring(0, 40)}...`);
+        return false;
+    }
+    
+    // 6. 排除含有复杂杂环或多环的分子（超过2个环）
+    const ringCount = (smiles.match(/[0-9]/g) || []).length / 2;
+    if (ringCount > 2) {
+        console.log(`🚫 环数过多 (${ringCount}): ${smiles.substring(0, 40)}...`);
+        return false;
+    }
+    
+    // 7. 排除含有金属或稀有原子的分子
+    if (/\[(?:Fe|Cu|Zn|Mg|Ca|Na|K|Li|Al|Pd|Pt|Au|Ag|Hg|Pb|Sn|Si|B(?!r)|As|Se)\]/.test(smiles)) {
+        console.log(`🚫 含有金属或稀有元素: ${smiles.substring(0, 40)}...`);
         return false;
     }
     
@@ -143,14 +169,27 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
     cacheStats.misses++;
     console.log(`🔍 从 PubChem 搜索: ${smarts}`);
     
-    // 使用增加的 MaxRecords
-    const url = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastsubstructure/smarts/${encodeURIComponent(smarts)}/cids/JSON?MaxRecords=${CACHE_CONFIG.maxRecords}`;
+    // 尝试使用 fastsubstructure（更快但不稳定），失败时回退到标准 substructure（更慢但更稳定）
+    const fastUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastsubstructure/smarts/${encodeURIComponent(smarts)}/cids/JSON?MaxRecords=${CACHE_CONFIG.maxRecords}`;
+    const standardUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/substructure/smarts/${encodeURIComponent(smarts)}/cids/JSON?MaxRecords=${CACHE_CONFIG.maxRecords}`;
 
     try {
-        const response = await fetchWithRetry(url);
-        if (!response.ok) {
-            if (response.status === 404) return []; // No results
-            throw new Error(`PubChem API error: ${response.status}`);
+        let response;
+        let usedFallback = false;
+        
+        // 首先尝试 fast endpoint
+        try {
+            response = await fetchWithRetry(fastUrl, 2, 1000); // 较少重试次数
+        } catch (fastError) {
+            console.warn(`⚠️ fastsubstructure 失败 (${fastError.message})，尝试标准 substructure...`);
+            usedFallback = true;
+            // 回退到标准 substructure endpoint
+            response = await fetchWithRetry(standardUrl, 3, 2000);
+        }
+        
+        if (!response || !response.ok) {
+            if (response && response.status === 404) return []; // No results
+            throw new Error(`PubChem API error: ${response ? response.status : 'no response'}`);
         }
         
         const data = await response.json();
@@ -159,7 +198,7 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
         const cids = data.IdentifierList.CID;
         if (cids.length === 0) return [];
         
-        console.log(`📥 获取到 ${cids.length} 个 CID`);
+        console.log(`📥 获取到 ${cids.length} 个 CID${usedFallback ? ' (使用标准搜索)' : ''}`);
 
         // Fetch properties (SMILES) for these CIDs
         // 注意：只请求 SMILES，PubChem 会返回 "SMILES" 字段

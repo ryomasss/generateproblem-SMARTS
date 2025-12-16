@@ -3,7 +3,7 @@
 
 import { appState } from './modules/state.js';
 import { $, showStatus } from './modules/utils.js';
-import { generateProblems, toggleAnswers, renderReactionCheckboxes, initDifficultySelector } from './modules/ui-controller.js';
+import { generateProblems, toggleAnswers, renderReactionCheckboxes, initDifficultySelector, refreshExistingStructures } from './modules/ui-controller.js';
 import { loadCacheFromStorage, preloadCommonMolecules, cacheStats } from './modules/pubchem-api.js';
 
 /**
@@ -80,10 +80,11 @@ async function init() {
         generateProblems();
       });
       
-      const inputs = ["structureColor", "baseSize", "bondWidth", "fixedLength"];
-      inputs.forEach(id => {
+      // 渲染参数控件 - 只重新渲染现有结构，不生成新题目
+      const styleInputs = ["structureColor", "baseSize", "bondWidth", "fixedLength", "basePadding", "fontSize"];
+      styleInputs.forEach(id => {
          document.getElementById(id)?.addEventListener("change", () => {
-             if(appState.currentProblemsData.length > 0) generateProblems();
+             if(appState.currentProblemsData.length > 0) refreshExistingStructures();
          });
       });
       

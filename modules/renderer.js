@@ -119,12 +119,11 @@ export function renderStructureSync(smiles, container) {
     // 检查是否为双原子分子
     const diatomicData = diatomicMolecules[smiles];
     if (diatomicData) {
-      // 根据 baseSize 计算字号，与 RDKit SVG 中原子标签大小保持一致
-      // RDKit 的原子标签字号大约是画布尺寸的 1/14 到 1/18
-      const atomFontSize = Math.round(baseSize / 16);
-      // 下标字号设为主字号的 0.7 倍，符合化学式排版标准
-      const subFontSize = Math.round(atomFontSize * 0.7);
-      container.innerHTML = `<div class="structure-text" style="display:flex;align-items:center;justify-content:center;height:${baseSize}px;font-size:${atomFontSize}px;color:${colorHex};font-family:Arial,sans-serif;font-weight:normal;">${diatomicData.symbol}<sub style="font-size:${subFontSize}px;">${diatomicData.count}</sub></div>`;
+      // 使用基准尺寸计算字号，匹配 RDKit 原子标签大小（RDKit 大约是 baseSize/14）
+      const atomFontSize = Math.round(baseSize / 14);
+      // 下标字号设为主字号的 0.6 倍，符合化学式排版标准
+      const subFontSize = Math.round(atomFontSize * 0.6);
+      container.innerHTML = `<div class="structure-text" style="display:flex;align-items:center;justify-content:center;height:${baseSize}px;font-size:${atomFontSize}px;color:${colorHex};font-family:Arial,sans-serif;font-weight:normal;"><span style="display:inline-flex;align-items:baseline;">${diatomicData.symbol}<sub style="font-size:${subFontSize}px;vertical-align:sub;line-height:1;">${diatomicData.count}</sub></span></div>`;
       if (mol && typeof mol.delete === 'function') {
         mol.delete();
         mol = null;  // 防止 finally 块再次删除
