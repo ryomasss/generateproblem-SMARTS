@@ -713,3 +713,143 @@ button.btn:hover {
 .problem.show .structure.product {
   animation: fadeIn 0.5s ease;
 }
+
+/* ========== 反应类型折叠式分类样式 ========== */
+
+.reaction-global-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-small {
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(124, 58, 237, 0.2);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-small:hover {
+  background: rgba(124, 58, 237, 0.4);
+  border-color: var(--accent);
+}
+
+.reaction-category {
+  margin-bottom: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  user-select: none;
+}
+
+.category-header:hover {
+  background: rgba(124, 58, 237, 0.15);
+}
+
+.toggle-icon {
+  font-size: 10px;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+
+.category-count {
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.btn-tiny {
+  padding: 2px 6px;
+  font-size: 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-tiny:hover {
+  background: rgba(124, 58, 237, 0.3);
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.category-content {
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.15);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.reaction-item {
+  display: inline-flex;
+  align-items: center;
+  margin: 3px 6px 3px 0;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reaction-item:hover {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.reaction-item input[type="checkbox"] {
+  margin-right: 6px;
+  width: 14px;
+  height: 14px;
+}
+
+.reaction-number {
+  display: inline-block;
+  background: rgba(124, 58, 237, 0.3);
+  color: #a78bfa;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 10px;
+  margin-right: 4px;
+  font-weight: bold;
+}
+
+/* 滚动条美化 */
+.category-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.category-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.category-content::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.4);
+  border-radius: 3px;
+}
+
+.category-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.6);
+}

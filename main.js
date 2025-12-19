@@ -54,6 +54,22 @@ async function init() {
       $("#gen")?.addEventListener("click", generateProblems);
       $("#toggle")?.addEventListener("click", toggleAnswers);
       
+      // 隐藏/显示反应条件按钮
+      let conditionsHidden = false;
+      $("#toggleConditions")?.addEventListener("click", () => {
+        conditionsHidden = !conditionsHidden;
+        const arrowTexts = document.querySelectorAll('.arrow-text');
+        const btn = $("#toggleConditions");
+        
+        arrowTexts.forEach(el => {
+          el.style.visibility = conditionsHidden ? 'hidden' : 'visible';
+        });
+        
+        if (btn) {
+          btn.textContent = conditionsHidden ? '📋 显示条件' : '📋 隐藏条件';
+        }
+      });
+      
       // 刷新分子库按钮
       $("#refreshMolecules")?.addEventListener("click", async () => {
         if (!confirm("确定要清除缓存并重新从 PubChem 获取分子吗？这可能需要一些时间。")) {

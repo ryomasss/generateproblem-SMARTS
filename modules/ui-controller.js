@@ -168,51 +168,65 @@ export async function generateProblems() {
     const typeKey = availableTypes[Math.floor(Math.random() * availableTypes.length)];
     const def = REACTION_DB[typeKey];
 
-    // 2. 随机选择反应物
+    // 2. 随机选择反应物 - 使用 reactant_info 获取所有反应物
     let r1 = null;
     let r2 = null;
 
-    // 尝试从 PubChem 缓存获取 R1
-    if (def.search_smarts && def.search_smarts[0]) {
+    // 优先使用 reactant_info（如果可用）
+    if (def.reactant_info && def.reactant_info.length > 0) {
+        // 获取第一个反应物类型
+        const info1 = def.reactant_info[0];
+        if (info1 && info1.smarts) {
+            const cacheKey = info1.smarts + (def.smarts ? `|${def.smarts}` : "");
+            const pool = appState.moleculeCache[cacheKey];
+            r1 = selectValidMolecule(pool);
+        }
+        
+        // 获取第二个反应物类型（如果存在）
+        if (def.reactant_info.length > 1) {
+            const info2 = def.reactant_info[1];
+            if (info2 && info2.smarts) {
+                const cacheKey = info2.smarts + (def.smarts ? `|${def.smarts}` : "");
+                const pool = appState.moleculeCache[cacheKey];
+                r2 = selectValidMolecule(pool);
+            }
+        }
+    } else if (def.search_smarts && def.search_smarts[0]) {
+        // 回退到旧的 search_smarts 逻辑
         const s = def.search_smarts[0];
-        // Construct cache key matching pubchem-api.js logic
         const cacheKey = s + (def.smarts ? `|${def.smarts}` : "");
         const pool = appState.moleculeCache[cacheKey];
         r1 = selectValidMolecule(pool);
+        
+        // 获取 R2
+        if (def.search_smarts[1]) {
+            const s2 = def.search_smarts[1];
+            const cacheKey2 = s2 + (def.smarts ? `|${def.smarts}` : "");
+            const pool2 = appState.moleculeCache[cacheKey2];
+            r2 = selectValidMolecule(pool2);
+        }
     }
     
-    // R1 的回退方案
-    if (!r1) {
+    // R1 的回退方案 - 使用本地分子库
+    if (!r1 && def.source && def.source[0]) {
         const poolName1 = def.source[0];
         const pool1 = CHEMICAL_CABINET[poolName1];
         r1 = selectValidMolecule(pool1);
     }
 
-    // 尝试获取 R2（如果需要）
-    if (def.source[1]) {
-        // 尝试从 PubChem 获取 R2
-        if (def.search_smarts && def.search_smarts[1]) {
-            const s = def.search_smarts[1];
-            // Construct cache key matching pubchem-api.js logic
-            const cacheKey = s + (def.smarts ? `|${def.smarts}` : "");
-            const pool = appState.moleculeCache[cacheKey];
-            r2 = selectValidMolecule(pool);
+    // R2 的回退方案（如果需要）
+    if (!r2 && def.source && def.source[1]) {
+        const poolName2 = def.source[1];
+        let pool2 = CHEMICAL_CABINET[poolName2];
+        
+        // 威廉姆逊醚合成的特殊逻辑
+        if (poolName2 === "alcohols" && typeKey === "williamson_ether") {
+            if (CHEMICAL_CABINET["phenols"]) {
+                 pool2 = pool2.concat(CHEMICAL_CABINET["phenols"]);
+            }
         }
         
-        // R2 的回退方案
-        if (!r2) {
-            const poolName2 = def.source[1];
-            let pool2 = CHEMICAL_CABINET[poolName2];
-            
-            // 威廉姆逊醚合成的特殊逻辑
-            if (poolName2 === "alcohols" && typeKey === "williamson_ether") {
-                if (CHEMICAL_CABINET["phenols"]) {
-                     pool2 = pool2.concat(CHEMICAL_CABINET["phenols"]);
-                }
-            }
-            
-            r2 = selectValidMolecule(pool2);
-        }
+        r2 = selectValidMolecule(pool2);
     }
 
     // 安全检查
@@ -369,7 +383,7 @@ export function toggleAnswers() {
 }
 
 /**
- * 渲染反应类型复选框
+ * 渲染反应类型复选框（折叠式分类）
  */
 export function renderReactionCheckboxes() {
     const container = document.getElementById("reactionTypes");
@@ -391,6 +405,11 @@ export function renderReactionCheckboxes() {
         "alcohol": "醇类反应",
         "benzene": "芳香族反应",
         "carbonyl": "醛酮反应",
+        "ether": "醚类反应",
+        "halide": "卤代烃反应",
+        "thiol": "硫醇反应",
+        "cycloalkane": "环烷烃反应",
+        "acid": "羧酸反应",
         "other": "其他反应"
     };
 
@@ -409,32 +428,102 @@ export function renderReactionCheckboxes() {
     // 全局反应编号计数器
     let reactionNumber = 1;
 
+    // 添加全局控制按钮
+    const globalControls = document.createElement("div");
+    globalControls.className = "reaction-global-controls";
+    globalControls.innerHTML = `
+        <button type="button" class="btn-small" id="expandAllCategories">📂 展开全部</button>
+        <button type="button" class="btn-small" id="collapseAllCategories">📁 收起全部</button>
+        <button type="button" class="btn-small" id="selectAllReactions">☑️ 全选</button>
+        <button type="button" class="btn-small" id="deselectAllReactions">☐ 取消全选</button>
+    `;
+    container.appendChild(globalControls);
+
+    // 绑定全局按钮事件
+    setTimeout(() => {
+        document.getElementById("expandAllCategories")?.addEventListener("click", () => {
+            document.querySelectorAll(".category-content").forEach(c => c.style.display = "block");
+            document.querySelectorAll(".category-header .toggle-icon").forEach(i => i.textContent = "▼");
+        });
+        document.getElementById("collapseAllCategories")?.addEventListener("click", () => {
+            document.querySelectorAll(".category-content").forEach(c => c.style.display = "none");
+            document.querySelectorAll(".category-header .toggle-icon").forEach(i => i.textContent = "▶");
+        });
+        document.getElementById("selectAllReactions")?.addEventListener("click", () => {
+            document.querySelectorAll("#reactionTypes input[type='checkbox']").forEach(c => c.checked = true);
+        });
+        document.getElementById("deselectAllReactions")?.addEventListener("click", () => {
+            document.querySelectorAll("#reactionTypes input[type='checkbox']").forEach(c => c.checked = false);
+        });
+    }, 0);
+
     for (let cat in groups) {
-        const groupDiv = document.createElement("div");
-        groupDiv.style.marginBottom = "10px";
-        groupDiv.innerHTML = `<strong>${catNames[cat] || cat}</strong><br/>`;
+        const categoryDiv = document.createElement("div");
+        categoryDiv.className = "reaction-category";
+        
+        const reactionCount = groups[cat].length;
+        
+        // 创建可折叠的标题
+        const header = document.createElement("div");
+        header.className = "category-header";
+        header.innerHTML = `
+            <span class="toggle-icon">▶</span>
+            <strong>${catNames[cat] || cat}</strong>
+            <span class="category-count">(${reactionCount}个反应)</span>
+            <button type="button" class="btn-tiny cat-select-all" data-cat="${cat}">全选</button>
+            <button type="button" class="btn-tiny cat-deselect-all" data-cat="${cat}">取消</button>
+        `;
+        
+        // 创建内容区域（默认折叠）
+        const content = document.createElement("div");
+        content.className = "category-content";
+        content.style.display = "none";
         
         groups[cat].forEach(r => {
             const label = document.createElement("label");
-            label.style.display = "inline-block";
-            label.style.marginRight = "10px";
+            label.className = "reaction-item";
             label.dataset.difficulty = r.difficulty || 1;
+            label.dataset.category = cat;
             
             const diffLevel = r.difficulty || 1;
             const diffColor = difficultyColors[diffLevel];
             const diffStar = difficultyNames[diffLevel];
             
             // 添加反应编号
-            const numberBadge = `<span style="display:inline-block;background:rgba(124,58,237,0.3);color:#a78bfa;padding:1px 5px;border-radius:4px;font-size:10px;margin-right:4px;font-weight:bold;">${reactionNumber}</span>`;
+            const numberBadge = `<span class="reaction-number">${reactionNumber}</span>`;
             
-            label.innerHTML = `<input type="checkbox" value="${r.key}" data-difficulty="${diffLevel}" checked /> ${numberBadge}${r.name} <span style="color:${diffColor};font-size:10px;">${diffStar}</span>`;
-            groupDiv.appendChild(label);
+            label.innerHTML = `<input type="checkbox" value="${r.key}" data-difficulty="${diffLevel}" data-category="${cat}" checked /> ${numberBadge}${r.name} <span style="color:${diffColor};font-size:10px;">${diffStar}</span>`;
+            content.appendChild(label);
             
             reactionNumber++;
         });
-        container.appendChild(groupDiv);
+        
+        categoryDiv.appendChild(header);
+        categoryDiv.appendChild(content);
+        container.appendChild(categoryDiv);
+        
+        // 绑定折叠/展开事件
+        header.addEventListener("click", (e) => {
+            // 如果点击的是按钮，不触发折叠
+            if (e.target.classList.contains("btn-tiny")) return;
+            
+            const isExpanded = content.style.display !== "none";
+            content.style.display = isExpanded ? "none" : "block";
+            header.querySelector(".toggle-icon").textContent = isExpanded ? "▶" : "▼";
+        });
+        
+        // 绑定分类全选/取消按钮
+        header.querySelector(".cat-select-all")?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            content.querySelectorAll("input[type='checkbox']").forEach(c => c.checked = true);
+        });
+        header.querySelector(".cat-deselect-all")?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            content.querySelectorAll("input[type='checkbox']").forEach(c => c.checked = false);
+        });
     }
 }
+
 
 /**
  * 根据难度设置更新复选框状态
@@ -451,13 +540,13 @@ export function updateCheckboxesByDifficulty() {
         
         switch (selectedDifficulty) {
             case "easy":
-                chk.checked = reactionDifficulty === 1;
+                chk.checked = reactionDifficulty === 1;  // 只选难度1
                 break;
             case "medium":
-                chk.checked = reactionDifficulty <= 2;
+                chk.checked = reactionDifficulty === 2;  // 只选难度2
                 break;
             case "hard":
-                chk.checked = true;  // 高级模式包含所有反应
+                chk.checked = reactionDifficulty === 3;  // 只选难度3
                 break;
             case "custom":
                 // 自定义模式不改变复选框状态

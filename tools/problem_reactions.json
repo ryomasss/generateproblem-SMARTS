@@ -1,0 +1,42 @@
+[
+  {
+    "key": "alkene_gen_20",
+    "name": "聚合反应",
+    "smarts": "[C:1]=[C:2]>>-[C:1]-[C:2]-",
+    "issues": [
+      "产物以-结尾 (聚合物表示法)"
+    ]
+  },
+  {
+    "key": "benzene_gen_10",
+    "name": "benzene 反应 10",
+    "smarts": "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Br][Br].[Br][Br].[Br][Br]>>[c:1]1([Br])[c:2][c:3]([Br])[c:4][c:5]([Br])[c:6]1[O].[Br][Br][Br]",
+    "issues": [
+      "3个连续溴原子"
+    ]
+  },
+  {
+    "key": "cycloalkane_gen_11",
+    "name": "KMnO4,H+",
+    "smarts": "[C:1]1[C:2][C:3]=[C:4][C:5][C:6]1>>[C:4](=O)(O)[C:5][C:6][C:1][C:2][C:3](=O)(O)",
+    "issues": [
+      "碳同时连接=O和O，价态不对"
+    ]
+  },
+  {
+    "key": "alkene_gen_45",
+    "name": "聚合反应",
+    "smarts": "[C:1]=[C:2]>>-[C:1]-[C:2]-",
+    "issues": [
+      "产物以-结尾 (聚合物表示法)"
+    ]
+  },
+  {
+    "key": "benzene_gen_70",
+    "name": "benzene 反应 70",
+    "smarts": "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Br][Br].[Br][Br].[Br][Br]>>[c:1]1([Br])[c:2][c:3]([Br])[c:4][c:5]([Br])[c:6]1[O].[Br][Br][Br]",
+    "issues": [
+      "3个连续溴原子"
+    ]
+  }
+]

@@ -335,7 +335,17 @@ export async function prepareMoleculePools(availableTypes) {
     
     for (const typeKey of availableTypes) {
         const def = REACTION_DB[typeKey];
-        if (def && def.search_smarts) {
+        if (!def) continue;
+        
+        // 优先使用 reactant_info（新格式）
+        if (def.reactant_info && def.reactant_info.length > 0) {
+            def.reactant_info.forEach(info => {
+                if (info && info.smarts) {
+                    neededSmarts.add(JSON.stringify({ search: info.smarts, verification: def.smarts }));
+                }
+            });
+        } else if (def.search_smarts) {
+            // 回退到 search_smarts（旧格式）
             def.search_smarts.forEach(s => {
                 if (s) {
                     neededSmarts.add(JSON.stringify({ search: s, verification: def.smarts }));
