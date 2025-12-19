@@ -71,7 +71,10 @@ export function renderStructureSync(smiles, container) {
     return (isNaN(val) || val <= 0) ? def : val;
   };
 
+  // 直接使用用户输入的基准尺寸，确保结构式和双原子分子同步缩放
+  // CSS变量仅用于容器布局，不影响渲染参数
   const baseSize = getSafeNum("baseSize", 300);
+  
   const bondWidth = getSafeNum("bondWidth", 2.0);
   let fixedLength = -1;
   const fixedEl = document.getElementById("fixedLength");
@@ -119,11 +122,13 @@ export function renderStructureSync(smiles, container) {
     // 检查是否为双原子分子
     const diatomicData = diatomicMolecules[smiles];
     if (diatomicData) {
-      // 使用基准尺寸计算字号，匹配 RDKit 原子标签大小（RDKit 大约是 baseSize/14）
+      // 使用与 RDKit 原子标签相同的字号比例（约 baseSize/14）
+      // 这样双原子分子的显示大小与结构式中的原子标签一致
       const atomFontSize = Math.round(baseSize / 14);
       // 下标字号设为主字号的 0.6 倍，符合化学式排版标准
       const subFontSize = Math.round(atomFontSize * 0.6);
-      container.innerHTML = `<div class="structure-text" style="display:flex;align-items:center;justify-content:center;height:${baseSize}px;font-size:${atomFontSize}px;color:${colorHex};font-family:Arial,sans-serif;font-weight:normal;"><span style="display:inline-flex;align-items:baseline;">${diatomicData.symbol}<sub style="font-size:${subFontSize}px;vertical-align:sub;line-height:1;">${diatomicData.count}</sub></span></div>`;
+      
+      container.innerHTML = `<div class="structure-text diatomic-formula" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:${atomFontSize}px;color:${colorHex};font-family:Arial,sans-serif;font-weight:normal;"><span style="display:inline-flex;align-items:baseline;">${diatomicData.symbol}<sub style="font-size:${subFontSize}px;vertical-align:sub;line-height:1;">${diatomicData.count}</sub></span></div>`;
       if (mol && typeof mol.delete === 'function') {
         mol.delete();
         mol = null;  // 防止 finally 块再次删除

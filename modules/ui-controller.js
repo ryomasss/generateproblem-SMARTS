@@ -406,6 +406,9 @@ export function renderReactionCheckboxes() {
         3: "★★★"
     };
 
+    // 全局反应编号计数器
+    let reactionNumber = 1;
+
     for (let cat in groups) {
         const groupDiv = document.createElement("div");
         groupDiv.style.marginBottom = "10px";
@@ -421,8 +424,13 @@ export function renderReactionCheckboxes() {
             const diffColor = difficultyColors[diffLevel];
             const diffStar = difficultyNames[diffLevel];
             
-            label.innerHTML = `<input type="checkbox" value="${r.key}" data-difficulty="${diffLevel}" checked /> ${r.name} <span style="color:${diffColor};font-size:10px;">${diffStar}</span>`;
+            // 添加反应编号
+            const numberBadge = `<span style="display:inline-block;background:rgba(124,58,237,0.3);color:#a78bfa;padding:1px 5px;border-radius:4px;font-size:10px;margin-right:4px;font-weight:bold;">${reactionNumber}</span>`;
+            
+            label.innerHTML = `<input type="checkbox" value="${r.key}" data-difficulty="${diffLevel}" checked /> ${numberBadge}${r.name} <span style="color:${diffColor};font-size:10px;">${diffStar}</span>`;
             groupDiv.appendChild(label);
+            
+            reactionNumber++;
         });
         container.appendChild(groupDiv);
     }
