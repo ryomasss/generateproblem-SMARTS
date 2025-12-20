@@ -334,17 +334,23 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[I][I]"
+      "[C]=[C]",
+      "II"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[I][I]",
-        count: 1
+        smarts: "II",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "II"
       }
     ],
     condition: "烯烃与碘加成"
@@ -358,20 +364,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[H][Br]"
+      "[C]=[C]",
+      "Br"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][Br]",
-        count: 1
+        smarts: "Br",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Br"
       }
     ],
-    condition: "HBr"
+    condition: "烯烃与溴化氢加成"
   },
   alkene_gen_5: {
     category: "alkene",
@@ -382,20 +394,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[H][Cl]"
+      "[C]=[C]",
+      "Cl"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][Cl]",
-        count: 1
+        smarts: "Cl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Cl"
       }
     ],
-    condition: "HCl"
+    condition: "烯烃与氯化氢加成"
   },
   alkene_gen_6: {
     category: "alkene",
@@ -406,20 +424,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[H][I]"
+      "[C]=[C]",
+      "I"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][I]",
-        count: 1
+        smarts: "I",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "I"
       }
     ],
-    condition: "HI"
+    condition: "烯烃与碘化氢加成"
   },
   alkene_gen_7: {
     category: "alkene",
@@ -430,20 +454,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[OH][Br:3]"
+      "[C]=[C]",
+      "OBr"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[OH][Br:3]",
-        count: 1
+        smarts: "OBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OBr"
       }
     ],
-    condition: "HOBr"
+    condition: "烯烃与次溴酸加成"
   },
   alkene_gen_8: {
     category: "alkene",
@@ -454,20 +484,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[OH][Cl:3]"
+      "[C]=[C]",
+      "OCl"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[OH][Cl:3]",
-        count: 1
+        smarts: "OCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OCl"
       }
     ],
-    condition: "HOCl"
+    condition: "烯烃与次氯酸加成"
   },
   alkene_gen_9: {
     category: "alkene",
@@ -478,20 +514,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[OH][I:3]"
+      "[C]=[C]",
+      "OI"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[OH][I:3]",
-        count: 1
+        smarts: "OI",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OI"
       }
     ],
-    condition: "HOI"
+    condition: "烯烃与次碘酸加成"
   },
   alkene_gen_10: {
     category: "alkene",
@@ -502,20 +544,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[O:3][H:4]"
+      "[C]=[C]",
+      "O"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[O:3][H:4]",
-        count: 1
+        smarts: "O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "O"
       }
     ],
-    condition: "H⁺, H₂O"
+    condition: "与水加成"
   },
   alkene_gen_11: {
     category: "alkene",
@@ -526,20 +574,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[O:3]([O]=)S(=[O])[O:4][H]"
+      "[C]=[C]",
+      "[O]([O]=)S(=[O])[O][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[O:3]([O]=)S(=[O])[O:4][H]",
-        count: 1
+        smarts: "[O]([O]=)S(=[O])[O][H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "H₂SO₄"
+    condition: "烯烃与硫酸加成"
   },
   alkene_gen_12: {
     category: "alkene",
@@ -556,11 +610,17 @@ window.REACTION_DB_EXTENDED = {
     reactant_info: [
       {
         smarts: "C=C",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "O=S(=O)(O)O",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "alkene 反应 12"
@@ -574,20 +634,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1][C:2]=[C:3]",
-      "[Br:4][H:5]"
+      "[C][C]=[C]",
+      "Br"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]=[C:3]",
-        count: 1
+        smarts: "[C][C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br:4][H:5]",
-        count: 1
+        smarts: "Br",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Br"
       }
     ],
-    condition: "HBr, ROOR, hν"
+    condition: "自由基加成反应（反马氏规则）"
   },
   alkene_gen_14: {
     category: "alkene",
@@ -598,20 +664,26 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1][C:2]=[C:3]",
-      "[Cl][Cl]"
+      "[C][C]=[C]",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]=[C:3]",
-        count: 1
+        smarts: "[C][C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
-    condition: "Cl₂/Br₂, hν"
+    condition: "a氢的卤化"
   },
   alkene_gen_16: {
     category: "alkene",
@@ -622,15 +694,18 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]"
+      "[C]=[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "OsO₄, NMO"
+    condition: "烯烃氧化为邻二醇"
   },
   alkene_gen_18: {
     category: "alkene",
@@ -641,34 +716,40 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]"
+      "[C]=[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "1. BH₃ 2. H₂O₂/NaOH"
+    condition: "硼氢化反应"
   },
   alkene_gen_20: {
     category: "alkene",
-    name: "烯烃二聚反应",
+    name: "聚合反应",
     difficulty: 2,
-    smarts: "[C:1]=[C:2].[C:3]=[C:4]>>[C:1][C:2][C:3][C:4]",
+    smarts: "[C:1]=[C:2]>>-[C:1]-[C:2]-",
     source: [
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]"
+      "[C]=[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "引发剂, Δ"
+    condition: "聚合反应"
   },
   alkene_gen_21: {
     category: "alkene",
@@ -679,15 +760,18 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]"
+      "[C]=[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 2
+        smarts: "[C]=[C]",
+        count: 2,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "Grubbs Cat."
+    condition: "烯烃复分解反应"
   },
   alkene_gen_22: {
     category: "alkene",
@@ -698,15 +782,18 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]-[C:3]=[C:4]"
+      "[C]=[C]-[C]=[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]-[C:3]=[C:4]",
-        count: 1
+        smarts: "[C]=[C]-[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "Br₂ (低温)"
+    condition: "共轭加成(1,2-加成)"
   },
   alkene_gen_23: {
     category: "alkene",
@@ -717,15 +804,18 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]-[C:3]=[C:4]"
+      "[C]=[C]-[C]=[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]-[C:3]=[C:4]",
-        count: 1
+        smarts: "[C]=[C]-[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "Br₂ (高温)"
+    condition: "共轭加成(1,4-加成)"
   },
   alkyne_gen_1: {
     category: "alkyne",
@@ -736,20 +826,26 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]",
-      "[H:3][Br:4]"
+      "[C]#[C]",
+      "Br"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 1
+        smarts: "[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H:3][Br:4]",
-        count: 1
+        smarts: "Br",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Br"
       }
     ],
-    condition: "HBr"
+    condition: "与HBr加成（马氏规则）内部炔烃"
   },
   alkyne_gen_2: {
     category: "alkyne",
@@ -760,20 +856,26 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C;H1:1]#[C:2]",
-      "[H:3][Br:4]"
+      "[C;H1]#[C]",
+      "Br"
     ],
     reactant_info: [
       {
-        smarts: "[C;H1:1]#[C:2]",
-        count: 1
+        smarts: "[C;H1]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H:3][Br:4]",
-        count: 1
+        smarts: "Br",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Br"
       }
     ],
-    condition: "HBr"
+    condition: "与HBr加成（马氏规则）末端炔烃"
   },
   alkyne_gen_3: {
     category: "alkyne",
@@ -784,17 +886,23 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]",
+      "[C]#[C]",
       "[H][Br][H][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 1
+        smarts: "[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][Br][H][Br]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "alkyne 反应 3"
@@ -808,20 +916,26 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C;H1:1]#[C:2]",
-      "[O:3][H:4]"
+      "[C;H1]#[C]",
+      "O"
     ],
     reactant_info: [
       {
-        smarts: "[C;H1:1]#[C:2]",
-        count: 1
+        smarts: "[C;H1]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[O:3][H:4]",
-        count: 1
+        smarts: "O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "O"
       }
     ],
-    condition: "Hg²⁺, H₂O"
+    condition: "与水加成 末端炔烃生成醛"
   },
   alkyne_gen_5: {
     category: "alkyne",
@@ -832,44 +946,56 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]",
-      "[O:3][H:4]"
+      "[C]#[C]",
+      "O"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 1
+        smarts: "[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[O:3][H:4]",
-        count: 1
+        smarts: "O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "O"
       }
     ],
-    condition: "Hg²⁺, H₂O"
+    condition: "与水加成 内部炔烃生成酮"
   },
   alkyne_gen_6: {
     category: "alkyne",
-    name: "溴加成(反式加成，第一步)",
+    name: "溴加成(反式加成,第一步)",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[Br:3][Br:4]>>[C:1]([Br:3])=[C:2]([Br:4])",
     source: [
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]",
-      "[Br:3][Br:4]"
+      "[C]#[C]",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 1
+        smarts: "[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br:3][Br:4]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
-    condition: "Br₂"
+    condition: "溴加成(反式加成,第一步)"
   },
   alkyne_gen_7: {
     category: "alkyne",
@@ -880,20 +1006,26 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]([Br:3])=[C:2]([Br:4])",
-      "[Br:5][Br:6]"
+      "[C]([Br])=[C]([Br])",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([Br:3])=[C:2]([Br:4])",
-        count: 1
+        smarts: "[C]([Br])=[C]([Br])",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br:5][Br:6]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
-    condition: "Br₂ (过量)"
+    condition: "溴加成第二步"
   },
   alkyne_gen_8: {
     category: "alkyne",
@@ -904,17 +1036,23 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1][C:2]#[C:3]",
-      "[H:4][Br:5]"
+      "[C][C]#[C]",
+      "Br"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]#[C:3]",
-        count: 1
+        smarts: "[C][C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H:4][Br:5]",
-        count: 1
+        smarts: "Br",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Br"
       }
     ],
     condition: "alkyne 反应 8"
@@ -928,17 +1066,23 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1][C:2]#[C:3]",
-      "[H:4][Br:5][H:6][Br:7]"
+      "[C][C]#[C]",
+      "[H][Br][H][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]#[C:3]",
-        count: 1
+        smarts: "[C][C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H:4][Br:5][H:6][Br:7]",
-        count: 1
+        smarts: "[H][Br][H][Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "alkyne 反应 9"
@@ -952,20 +1096,26 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]",
-      "[H:3][C:4]#[N:5]"
+      "[C]#[C]",
+      "[H][C]#[N]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 1
+        smarts: "[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H:3][C:4]#[N:5]",
-        count: 1
+        smarts: "[H][C]#[N]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "HCN, Cu⁺"
+    condition: "与氢氰酸亲核加成"
   },
   alkyne_gen_11: {
     category: "alkyne",
@@ -976,20 +1126,26 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]",
-      "[C:3][C:4][O:5]"
+      "[C]#[C]",
+      "[C][C][O]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 1
+        smarts: "[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:3][C:4][O:5]",
-        count: 1
+        smarts: "[C][C][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "KOH/NaOH"
+    condition: "在强碱(如KOH或NaOH)催化下"
   },
   alkyne_gen_12: {
     category: "alkyne",
@@ -1000,15 +1156,18 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C;H1:1]#[C:2]"
+      "[C;H1]#[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C;H1:1]#[C:2]",
-        count: 1
+        smarts: "[C;H1]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "KMnO₄, H⁺"
+    condition: "高锰酸钾（KMnO₄）氧化末端炔烃"
   },
   alkyne_gen_13: {
     category: "alkyne",
@@ -1019,15 +1178,18 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]"
+      "[C]#[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 1
+        smarts: "[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "KMnO₄, H⁺"
+    condition: "高锰酸钾（KMnO₄）氧化内部炔烃"
   },
   alkyne_gen_15: {
     category: "alkyne",
@@ -1038,44 +1200,56 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]",
+      "[C]#[C]",
       "[H][H][H][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 1
+        smarts: "[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][H][H][H]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "H₂, Pd/C"
+    condition: "完全加氢(生成烷烃)"
   },
   alkyne_gen_16: {
     category: "alkyne",
-    name: "部分加氢(顺式加成，Lindlar催化剂)",
+    name: "部分加氢(顺式加成,Lindlar催化剂)",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[H][H]>>([H])/[C:1]=[C:2]\\([H])",
     source: [
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]",
+      "[C]#[C]",
       "[H][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 1
+        smarts: "[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][H]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[H][H]"
       }
     ],
-    condition: "H₂, Lindlar"
+    condition: "部分加氢(顺式加成,Lindlar催化剂)"
   },
   alkyne_gen_17: {
     category: "alkyne",
@@ -1086,15 +1260,18 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C;H1:1]#[C:2]"
+      "[C;H1]#[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C;H1:1]#[C:2]",
-        count: 1
+        smarts: "[C;H1]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "1. Sia₂BH 2. H₂O₂"
+    condition: "硼氢化-氧化反应 对于末端炔烃（生成醛）"
   },
   alkyne_gen_18: {
     category: "alkyne",
@@ -1105,15 +1282,18 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]"
+      "[C]#[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 2
+        smarts: "[C]#[C]",
+        count: 2,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "CuCl, NH₄Cl"
+    condition: "二聚反应"
   },
   alkyne_gen_19: {
     category: "alkyne",
@@ -1124,15 +1304,18 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]"
+      "[C]#[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 3
+        smarts: "[C]#[C]",
+        count: 3,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "Ni(CO)₄, Δ"
+    condition: "三聚反应"
   },
   alkyne_gen_20: {
     category: "alkyne",
@@ -1143,15 +1326,18 @@ window.REACTION_DB_EXTENDED = {
       "alkynes"
     ],
     search_smarts: [
-      "[C:1]#[C:2]"
+      "[C]#[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]#[C:2]",
-        count: 4
+        smarts: "[C]#[C]",
+        count: 4,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "Ni(CN)₂, Δ"
+    condition: "四聚反应"
   },
   alcohol_gen_1: {
     category: "alcohol",
@@ -1162,20 +1348,26 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[C:1][O:2]",
-      "[Na:3]"
+      "[C][O]",
+      "[Na]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][O:2]",
-        count: 1
+        smarts: "[C][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Na:3]",
-        count: 1
+        smarts: "[Na]",
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Na]"
       }
     ],
-    condition: "Na"
+    condition: "与钠反应"
   },
   alcohol_gen_3: {
     category: "alcohol",
@@ -1186,15 +1378,18 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[C:1][C:2][O:3]"
+      "[C][C][O]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][O:3]",
-        count: 1
+        smarts: "[C][C][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "K₂Cr₂O₇, H⁺"
+    condition: "伯醇→羧酸"
   },
   alcohol_gen_5: {
     category: "alcohol",
@@ -1205,15 +1400,18 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[C:1][C:2][O:3]"
+      "[C][C][O]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][O:3]",
-        count: 1
+        smarts: "[C][C][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "H₂SO₄, Δ"
+    condition: "分子内脱水（消除反应）"
   },
   alcohol_gen_6: {
     category: "alcohol",
@@ -1224,20 +1422,26 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[C:1][O:2]",
-      "[CH:3][O:4]"
+      "[C][O]",
+      "[CH][O]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][O:2]",
-        count: 1
+        smarts: "[C][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[CH:3][O:4]",
-        count: 1
+        smarts: "[CH][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "H₂SO₄, 140°C"
+    condition: "分子间脱水(生成醚)"
   },
   alcohol_gen_7: {
     category: "alcohol",
@@ -1248,17 +1452,23 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[C:1][O:2]",
-      "[C:3](=[O:4])[O:5]"
+      "[C][O]",
+      "[C](=[O])[O]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][O:2]",
-        count: 1
+        smarts: "[C][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:3](=[O:4])[O:5]",
-        count: 1
+        smarts: "[C](=[O])[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "alcohol 反应 7"
@@ -1272,20 +1482,26 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
-      "[C:8][C:9](=O)[O:10]"
+      "[c]1[c][c][c][c][c]1[O]",
+      "[C][C](=O)[O]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:8][C:9](=O)[O:10]",
-        count: 1
+        smarts: "[C][C](=O)[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "Ac₂O or AcCl"
+    condition: "酚的酯化反应"
   },
   alcohol_gen_9: {
     category: "alcohol",
@@ -1296,20 +1512,26 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[C:1][O:2]",
-      "[Br:3]"
+      "[C][O]",
+      "[Br]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][O:2]",
-        count: 1
+        smarts: "[C][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br:3]",
-        count: 1
+        smarts: "[Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "HBr/HCl"
+    condition: "与HX反应"
   },
   alcohol_gen_10: {
     category: "alcohol",
@@ -1320,20 +1542,26 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[C:1][O:2]",
-      "[S:3](=[O:4])([Cl:5])([Cl:6])"
+      "[C][O]",
+      "[S](=[O])([Cl])([Cl])"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][O:2]",
-        count: 1
+        smarts: "[C][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S:3](=[O:4])([Cl:5])([Cl:6])",
-        count: 1
+        smarts: "[S](=[O])([Cl])([Cl])",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "SOCl₂"
+    condition: "与SOCl₂反应"
   },
   alcohol_gen_11: {
     category: "alcohol",
@@ -1344,20 +1572,26 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[C:1][O-:2]",
-      "[C:3][Br:4]"
+      "[C][O-]",
+      "[C][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][O-:2]",
-        count: 1
+        smarts: "[C][O-]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:3][Br:4]",
-        count: 1
+        smarts: "[C][Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "NaH, R-X"
+    condition: "烷氧基负离子与卤代烃反应生成醚"
   },
   alcohol_gen_12: {
     category: "alcohol",
@@ -1368,20 +1602,26 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[C:1][O:2]",
-      "[P:3]([Cl:4])([Cl:5])[Cl:6]"
+      "[C][O]",
+      "[P]([Cl])([Cl])[Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][O:2]",
-        count: 1
+        smarts: "[C][O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[P:3]([Cl:4])([Cl:5])[Cl:6]",
-        count: 1
+        smarts: "[P]([Cl])([Cl])[Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "PCl₃/PBr₃"
+    condition: "与卤化磷反应转化为卤代烃"
   },
   alcohol_gen_13: {
     category: "alcohol",
@@ -1392,20 +1632,26 @@ window.REACTION_DB_EXTENDED = {
       "alcohols"
     ],
     search_smarts: [
-      "[CX4:1][O:2][H]",
-      "[C:3][S:4](=[O])(=[O])[Cl:5]"
+      "[CX4][O][H]",
+      "[C][S](=[O])(=[O])[Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[CX4:1][O:2][H]",
-        count: 1
+        smarts: "[CX4][O][H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:3][S:4](=[O])(=[O])[Cl:5]",
-        count: 1
+        smarts: "[C][S](=[O])(=[O])[Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "TsCl, Py"
+    condition: "生成磺酸酯和氯化氢"
   },
   thiol_gen_1: {
     category: "thiol",
@@ -1416,20 +1662,26 @@ window.REACTION_DB_EXTENDED = {
       "thiols"
     ],
     search_smarts: [
-      "[S:1][H:2]",
-      "[Hg:3]"
+      "[S][H]",
+      "[Hg]"
     ],
     reactant_info: [
       {
-        smarts: "[S:1][H:2]",
-        count: 1
+        smarts: "[S][H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Hg:3]",
-        count: 1
+        smarts: "[Hg]",
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Hg]"
       }
     ],
-    condition: "Hg²⁺/Pb²⁺"
+    condition: "硫醇与重金属反应（解毒应用）"
   },
   thiol_gen_2: {
     category: "thiol",
@@ -1440,15 +1692,18 @@ window.REACTION_DB_EXTENDED = {
       "thiols"
     ],
     search_smarts: [
-      "[S:1][H:2]"
+      "[S][H]"
     ],
     reactant_info: [
       {
-        smarts: "[S:1][H:2]",
-        count: 2
+        smarts: "[S][H]",
+        count: 2,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "I₂/H₂O₂/O₂"
+    condition: "硫醇在稀过氧化氢/碘/空气作用下生成二硫化物"
   },
   ether_gen_1: {
     category: "ether",
@@ -1459,15 +1714,18 @@ window.REACTION_DB_EXTENDED = {
       "ethers"
     ],
     search_smarts: [
-      "[C:1]-[O:2]-[C:3]"
+      "[C]-[O]-[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]-[O:2]-[C:3]",
-        count: 1
+        smarts: "[C]-[O]-[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "[O]"
+    condition: "醚氧化成酮"
   },
   ether_gen_2: {
     category: "ether",
@@ -1478,17 +1736,23 @@ window.REACTION_DB_EXTENDED = {
       "ethers"
     ],
     search_smarts: [
-      "[C:1]-[O:2]-[C:3]",
-      "[C:4][X:5]"
+      "[C]-[O]-[C]",
+      "[C][X]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]-[O:2]-[C:3]",
-        count: 1
+        smarts: "[C]-[O]-[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:4][X:5]",
-        count: 1
+        smarts: "[C][X]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "ether 反应 2"
@@ -1502,20 +1766,26 @@ window.REACTION_DB_EXTENDED = {
       "ethers"
     ],
     search_smarts: [
-      "[C:1]-[O:2]-[C:3]",
-      "[H:4][O:5][H:6]"
+      "[C]-[O]-[C]",
+      "[H][O][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]-[O:2]-[C:3]",
-        count: 1
+        smarts: "[C]-[O]-[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H:4][O:5][H:6]",
-        count: 1
+        smarts: "[H][O][H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "H⁺, H₂O"
+    condition: "酸性条件下与水反应生成两种醇"
   },
   ether_gen_4: {
     category: "ether",
@@ -1526,20 +1796,26 @@ window.REACTION_DB_EXTENDED = {
       "ethers"
     ],
     search_smarts: [
-      "[C:1]1-[O:2]-[C:3]1",
-      "[OH2]"
+      "[C]1-[O]-[C]1",
+      "O"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1-[O:2]-[C:3]1",
-        count: 1
+        smarts: "[C]1-[O]-[C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[OH2]",
-        count: 1
+        smarts: "O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "O"
       }
     ],
-    condition: "H⁺, H₂O"
+    condition: "与水在酸催化下反应生成乙二醇"
   },
   ether_gen_5: {
     category: "ether",
@@ -1550,17 +1826,23 @@ window.REACTION_DB_EXTENDED = {
       "ethers"
     ],
     search_smarts: [
-      "[C:1]1-[O:2]-[C;H2,H1:3]1",
-      "[C-:4]#[N]"
+      "[C]1-[O]-[C;H2,H1]1",
+      "[C-]#N"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1-[O:2]-[C;H2,H1:3]1",
-        count: 1
+        smarts: "[C]1-[O]-[C;H2,H1]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C-:4]#[N]",
-        count: 1
+        smarts: "[C-]#N",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[C-]#N"
       }
     ],
     condition: "在碱性条件下与氰化物反应"
@@ -1574,17 +1856,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[Br][Br]"
+      "[c]1[c][c][c][c][c]1",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "卤代反应"
@@ -1598,17 +1886,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[Cl][Cl]"
+      "[c]1[c][c][c][c][c]1",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "benzene 反应 2"
@@ -1622,17 +1916,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[N+](=O)([O-])[O:7]"
+      "[c]1[c][c][c][c][c]1",
+      "[N+](=O)([O-])[O]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[N+](=O)([O-])[O:7]",
-        count: 1
+        smarts: "[N+](=O)([O-])[O]",
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "O[N+](=O)[O-]"
       }
     ],
     condition: "硝化反应"
@@ -1646,17 +1946,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[S](=O)(=O)O"
+      "[c]1[c][c][c][c][c]1",
+      "OS(=O)(=O)O"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S](=O)(=O)O",
-        count: 1
+        smarts: "OS(=O)(=O)O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OS(=O)(=O)O"
       }
     ],
     condition: "磺化反应"
@@ -1670,17 +1976,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[C:7][C:8][Br:9]"
+      "[c]1[c][c][c][c][c]1",
+      "[C][C][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:7][C:8][Br:9]",
-        count: 1
+        smarts: "[C][C][Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "烷基化反应"
@@ -1694,17 +2006,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[C:7][C:8][Cl:9]"
+      "[c]1[c][c][c][c][c]1",
+      "[C][C][Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:7][C:8][Cl:9]",
-        count: 1
+        smarts: "[C][C][Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "烷基化反应"
@@ -1718,17 +2036,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[C:7][C:8](=O)[Cl]"
+      "[c]1[c][c][c][c][c]1",
+      "[C][C](=O)[Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:7][C:8](=O)[Cl]",
-        count: 1
+        smarts: "[C][C](=O)[Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酰基化反应"
@@ -1742,17 +2066,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[C:7][C:8](=O)[Br]"
+      "[c]1[c][c][c][c][c]1",
+      "[C][C](=O)[Br]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:7][C:8](=O)[Br]",
-        count: 1
+        smarts: "[C][C](=O)[Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酰基化反应"
@@ -1766,41 +2096,53 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-      "[Br][Br]"
+      "[c]1[c][c][c][c][c]1[O]",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "苯酚的溴代反应"
   },
   benzene_gen_10: {
     category: "benzene",
-    name: "苯酚三溴代",
+    name: "benzene 反应 10",
     difficulty: 2,
-    smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[OH].[Br][Br]>>[c:1]1([Br])[c:2][c:3]([Br])[c:4][c:5]([Br])[c:6]1[OH]",
+    smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Br][Br].[Br][Br].[Br][Br]>>[c:1]1([Br])[c:2][c:3]([Br])[c:4][c:5]([Br])[c:6]1[O].[Br][Br][Br]",
     source: [
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-      "[Br][Br]"
+      "[c]1[c][c][c][c][c]1[O]",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 3
+        smarts: "BrBr",
+        count: 3,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "benzene 反应 10"
@@ -1814,17 +2156,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-      "[Cl][Cl]"
+      "[c]1[c][c][c][c][c]1[O]",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "苯酚的氯代反应"
@@ -1838,17 +2186,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-      "[I][I]"
+      "[c]1[c][c][c][c][c]1[O]",
+      "II"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[I][I]",
-        count: 1
+        smarts: "II",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "II"
       }
     ],
     condition: "苯酚的碘代反应"
@@ -1862,17 +2216,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
+      "[c]1[c][c][c][c][c]1[O]",
       "[N+](=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[N+](=O)[O-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[N+](=O)[O-]"
       }
     ],
     condition: "CHCI3 ;15℃苯酚的硝化反应"
@@ -1886,17 +2246,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
+      "[c]1[c][c][c][c][c]1[O]",
       "[N+](=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[N+](=O)[O-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[N+](=O)[O-]"
       }
     ],
     condition: "低极性溶剂 ; 25℃,HONO2(20%)"
@@ -1910,17 +2276,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
-      "[S](=O)(=O)O"
+      "[c]1[c][c][c][c][c]1[O]",
+      "OS(=O)(=O)O"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S](=O)(=O)O",
-        count: 1
+        smarts: "OS(=O)(=O)O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OS(=O)(=O)O"
       }
     ],
     condition: "磺化反应浓H2SO4 ; 25℃"
@@ -1934,17 +2306,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
-      "[S](=O)(=O)O"
+      "[c]1[c][c][c][c][c]1[O]",
+      "OS(=O)(=O)O"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S](=O)(=O)O",
-        count: 1
+        smarts: "OS(=O)(=O)O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OS(=O)(=O)O"
       }
     ],
     condition: "磺化反应浓H2SO4 ; 100℃"
@@ -1958,17 +2336,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]",
+      "[c]1[c][c][c][c][c]1[C]",
       "[N+](=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[N+](=O)[O-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[N+](=O)[O-]"
       }
     ],
     condition: "H2SO4 ; 30℃"
@@ -1982,17 +2366,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[N+](=O)[O-]",
+      "[c]1[c][c][c][c][c]1[N+](=O)[O-]",
       "[N+](=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[N+](=O)[O-]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[N+](=O)[O-]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[N+](=O)[O-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[N+](=O)[O-]"
       }
     ],
     condition: "发烟HNO3 ; H2SO4 ; 90-100℃"
@@ -2006,17 +2396,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-      "[Cl][Cl]"
+      "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-        count: 1
+        smarts: "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "萘FeCl3;加热"
@@ -2030,17 +2426,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-      "[Br][Br]"
+      "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-        count: 1
+        smarts: "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "萘FeCl3;加热"
@@ -2054,17 +2456,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
+      "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
       "[N+](=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-        count: 1
+        smarts: "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[N+](=O)[O-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[N+](=O)[O-]"
       }
     ],
     condition: "benzene 反应 21"
@@ -2078,17 +2486,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-      "[S](=O)(=O)O"
+      "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+      "OS(=O)(=O)O"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-        count: 1
+        smarts: "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S](=O)(=O)O",
-        count: 1
+        smarts: "OS(=O)(=O)O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OS(=O)(=O)O"
       }
     ],
     condition: "benzene 反应 22"
@@ -2102,17 +2516,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-      "[S](=O)(=O)O"
+      "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+      "OS(=O)(=O)O"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-        count: 1
+        smarts: "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S](=O)(=O)O",
-        count: 1
+        smarts: "OS(=O)(=O)O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OS(=O)(=O)O"
       }
     ],
     condition: "benzene 反应 23"
@@ -2126,12 +2546,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1"
+      "[c]1[c][c][c][c][c]1"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "苯在Ni/Pt/Pd/Ru/Rh催化作用下与氢气反应生成环己烷"
@@ -2145,12 +2568,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1"
+      "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-        count: 1
+        smarts: "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "H2,Pd/C"
@@ -2164,17 +2590,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8]",
-      "[Br][Br]"
+      "[c]1[c][c][c][c][c]1[C][C]",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C][C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "在光照或加热条件下"
@@ -2188,17 +2620,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8]",
-      "[Cl][Cl]"
+      "[c]1[c][c][c][c][c]1[C][C]",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C][C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "在光照或加热条件下"
@@ -2212,20 +2650,26 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9]",
-      "[H][Br]"
+      "[c]1[c][c][c][c][c]1[C]=[C][C]",
+      "Br"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]=[C][C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][Br]",
-        count: 1
+        smarts: "Br",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Br"
       }
     ],
-    condition: "HBr/HCl"
+    condition: "与HX反应"
   },
   benzene_gen_30: {
     category: "benzene",
@@ -2236,20 +2680,26 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9]",
-      "[H][Cl]"
+      "[c]1[c][c][c][c][c]1[C]=[C][C]",
+      "Cl"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]=[C][C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][Cl]",
-        count: 1
+        smarts: "Cl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Cl"
       }
     ],
-    condition: "HBr/HCl"
+    condition: "与HX反应"
   },
   benzene_gen_31: {
     category: "benzene",
@@ -2260,17 +2710,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-      "[Cl][Cl]"
+      "[c]1[c][c][c][c][c]1[C]=[C]",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "与X2反应"
@@ -2284,17 +2740,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-      "[Br][Br]"
+      "[c]1[c][c][c][c][c]1[C]=[C]",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "与X2反应"
@@ -2308,17 +2770,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-      "[H][Cl]"
+      "[c]1[c][c][c][c][c]1[C]=[C]",
+      "Cl"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][Cl]",
-        count: 1
+        smarts: "Cl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Cl"
       }
     ],
     condition: "与HX反应(马氏规则)"
@@ -2332,17 +2800,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-      "[H][Br]"
+      "[c]1[c][c][c][c][c]1[C]=[C]",
+      "Br"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][Br]",
-        count: 1
+        smarts: "Br",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Br"
       }
     ],
     condition: "与HX反应(马氏规则)"
@@ -2356,17 +2830,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-      "[OH2:9]"
+      "[c]1[c][c][c][c][c]1[C]=[C]",
+      "O"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[OH2:9]",
-        count: 1
+        smarts: "O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "O"
       }
     ],
     condition: "在H₂SO₄催化下"
@@ -2380,17 +2860,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
+      "[c]1[c][c][c][c][c]1[C]=[C]",
       "[H][O][Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][O][Cl]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "与次氯酸的加成"
@@ -2404,15 +2890,18 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8]"
+      "[c]1[c][c][c][c][c]1[C][C]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C][C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "K₂Cr₂O₇, H⁺"
+    condition: "在重铬酸钾等强氧化剂的氧化下"
   },
   benzene_gen_38: {
     category: "benzene",
@@ -2423,12 +2912,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]"
+      "[c]1[c][c][c][c][c]1[O]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "用K2Cr2O7 ; H2SO4作氧化剂生成对苯醌"
@@ -2442,12 +2934,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4]([O])[c:5][c:6]1[O]"
+      "[c]1[c][c][c]([O])[c][c]1[O]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4]([O])[c:5][c:6]1[O]",
-        count: 1
+        smarts: "[c]1[c][c][c]([O])[c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "Ag2O ; 无水乙醚"
@@ -2461,12 +2956,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][O][c:3][c:4][c:5][c:6]1[O]"
+      "[c]1[c][O][c][c][c][c]1[O]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][O][c:3][c:4][c:5][c:6]1[O]",
-        count: 1
+        smarts: "[c]1[c][O][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "Na2Cr2O7 ; H2SO4,94%"
@@ -2480,22 +2978,31 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
+      "[c]1[c][c][c][c][c]1[O]",
       "[Na+]",
       "[OH-]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Na+]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Na+]"
       },
       {
         smarts: "[OH-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[OH-]"
       }
     ],
     condition: "生成"
@@ -2509,12 +3016,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1"
+      "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
-        count: 1
+        smarts: "[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "CrO3,CH3COOH,25℃"
@@ -2528,17 +3038,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)[H]",
-      "[C:2]#[N:3]"
+      "[C](=O)[H]",
+      "[C]#[N]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)[H]",
-        count: 1
+        smarts: "[C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:2]#[N:3]",
-        count: 1
+        smarts: "[C]#[N]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "醛与氢氰酸的加成"
@@ -2552,17 +3068,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
-      "[C:4]#[N:5]"
+      "[C][C](=O)[C]",
+      "[C]#[N]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:4]#[N:5]",
-        count: 1
+        smarts: "[C]#[N]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酮与氢氰酸的加成"
@@ -2576,17 +3098,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[H]",
-      "[C:3][Mg]([X])"
+      "[C][C](=O)[H]",
+      "[C][Mg]([X])"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[H]",
-        count: 1
+        smarts: "[C][C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:3][Mg]([X])",
-        count: 1
+        smarts: "[C][Mg]([X])",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "醛与格氏试剂加成,无水醚"
@@ -2600,12 +3128,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]([O][Mg]([X]))[C:3]"
+      "[C][C]([O][Mg]([X]))[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([O][Mg]([X]))[C:3]",
-        count: 1
+        smarts: "[C][C]([O][Mg]([X]))[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "醛与格氏试剂加成,H2O"
@@ -2619,17 +3150,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
-      "[C:4][Mg]([X])"
+      "[C][C](=O)[C]",
+      "[C][Mg]([X])"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:4][Mg]([X])",
-        count: 1
+        smarts: "[C][Mg]([X])",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酮与格氏试剂加成,无水醚"
@@ -2643,12 +3180,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]([O][Mg]([X]))([C:4])[C:3]"
+      "[C][C]([O][Mg]([X]))([C])[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([O][Mg]([X]))([C:4])[C:3]",
-        count: 1
+        smarts: "[C][C]([O][Mg]([X]))([C])[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酮与格氏试剂加成,H2O"
@@ -2662,17 +3202,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[H]",
-      "[C:3][Li]"
+      "[C][C](=O)[H]",
+      "[C][Li]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[H]",
-        count: 1
+        smarts: "[C][C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:3][Li]",
-        count: 1
+        smarts: "[C][Li]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "醛与有机锂试剂加成,无水醚"
@@ -2686,12 +3232,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]([O][Li])[C:3]"
+      "[C][C]([O][Li])[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([O][Li])[C:3]",
-        count: 1
+        smarts: "[C][C]([O][Li])[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "醛与有机锂试剂加成, H2O"
@@ -2705,17 +3254,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
-      "[C:4][Li]"
+      "[C][C](=O)[C]",
+      "[C][Li]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:4][Li]",
-        count: 1
+        smarts: "[C][Li]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酮与有机锂试剂加成,无水醚"
@@ -2729,12 +3284,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]([O][Li])([C:4])[C:3]"
+      "[C][C]([O][Li])([C])[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([O][Li])([C:4])[C:3]",
-        count: 1
+        smarts: "[C][C]([O][Li])([C])[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酮与有机锂试剂加成,H2O"
@@ -2748,17 +3306,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)[C:2]",
-      "[Na+][C-:3]#[C:4]"
+      "[C](=O)[C]",
+      "[Na+][C-]#[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)[C:2]",
-        count: 1
+        smarts: "[C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Na+][C-:3]#[C:4]",
-        count: 1
+        smarts: "[Na+][C-]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "碱性条件下"
@@ -2772,17 +3336,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1]([O-][Na+])([C:2])[C:3]#[C:4]",
+      "[C]([O-][Na+])([C])[C]#[C]",
       "[O]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([O-][Na+])([C:2])[C:3]#[C:4]",
-        count: 1
+        smarts: "[C]([O-][Na+])([C])[C]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[O]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "水解反应"
@@ -2796,17 +3366,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3][C:4][C:5](=O)[C:6]1",
-      "[Na+][C-:7]#[C:8]"
+      "[C]1[C][C][C][C](=O)[C]1",
+      "[Na+][C-]#[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3][C:4][C:5](=O)[C:6]1",
-        count: 1
+        smarts: "[C]1[C][C][C][C](=O)[C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Na+][C-:7]#[C:8]",
-        count: 1
+        smarts: "[Na+][C-]#[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "碱性条件下"
@@ -2820,17 +3396,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3][C:4][C:5]([O-][Na+])([C:7]#[C:8])[C:6]1",
+      "[C]1[C][C][C][C]([O-][Na+])([C]#[C])[C]1",
       "[O]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3][C:4][C:5]([O-][Na+])([C:7]#[C:8])[C:6]1",
-        count: 1
+        smarts: "[C]1[C][C][C][C]([O-][Na+])([C]#[C])[C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[O]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "carbonyl 反应 14"
@@ -2844,17 +3426,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)[H]",
-      "[C:2][NH2]"
+      "[C](=O)[H]",
+      "[C][NH2]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)[H]",
-        count: 1
+        smarts: "[C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:2][NH2]",
-        count: 1
+        smarts: "[C][NH2]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "醛与一级胺反应H+第一步"
@@ -2868,12 +3456,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1]([OH2])[NH1][C:2]"
+      "[C]([OH2])[NH1][C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([OH2])[NH1][C:2]",
-        count: 1
+        smarts: "[C]([OH2])[NH1][C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "醛与一级胺反应第二步（消除）"
@@ -2887,17 +3478,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=[O:2])[C:3]",
-      "[NH1:4]"
+      "[C](=[O])[C]",
+      "[NH1]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=[O:2])[C:3]",
-        count: 1
+        smarts: "[C](=[O])[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[NH1:4]",
-        count: 1
+        smarts: "[NH1]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酮与二级胺反应第一步"
@@ -2911,12 +3508,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](-[OH2:2])([C:3])-[N:4]"
+      "[C](-[OH2])([C])-[N]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](-[OH2:2])([C:3])-[N:4]",
-        count: 1
+        smarts: "[C](-[OH2])([C])-[N]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酮与二级胺反应第二步（消除）"
@@ -2930,17 +3530,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)",
-      "[NH2:2]-[OH]"
+      "[C](=O)",
+      "[NH2]-[OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)",
-        count: 1
+        smarts: "[C](=O)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[NH2:2]-[OH]",
-        count: 1
+        smarts: "[NH2]-[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "与胺的衍生物（羟胺）加成后失水"
@@ -2954,17 +3560,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[H]",
+      "[C][C](=O)[H]",
       "[O]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[H]",
-        count: 1
+        smarts: "[C][C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[O]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酸性条件下生成醛水合物"
@@ -2978,17 +3590,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
+      "[C][C](=O)[C]",
       "[O]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[O]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酸性条件下生成酮水合物"
@@ -3002,17 +3620,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)",
-      "[C:2][O:3][H]"
+      "[C](=O)",
+      "[C][O][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)",
-        count: 1
+        smarts: "[C](=O)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:2][O:3][H]",
-        count: 1
+        smarts: "[C][O][H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "H+,半缩醛/酮"
@@ -3026,17 +3650,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1]([O:3][C:2])[OH]",
-      "[C:4][O:5][H]"
+      "[C]([O][C])[OH]",
+      "[C][O][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([O:3][C:2])[OH]",
-        count: 1
+        smarts: "[C]([O][C])[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:4][O:5][H]",
-        count: 1
+        smarts: "[C][O][H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "H+,缩醛/酮"
@@ -3050,20 +3680,26 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]=[O:3]",
+      "[C][C]=[O]",
       "[Na+][O-][S](=O)O"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]=[O:3]",
-        count: 1
+        smarts: "[C][C]=[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Na+][O-][S](=O)O",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "NaHSO₃"
+    condition: "与亚硫酸氢钠加成"
   },
   cycloalkane_gen_1: {
     category: "cycloalkane",
@@ -3074,17 +3710,23 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3]1",
+      "[C]1[C][C]1",
       "[H][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3]1",
-        count: 1
+        smarts: "[C]1[C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][H]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[H][H]"
       }
     ],
     condition: "催化加氢,Ni,80℃"
@@ -3098,17 +3740,23 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3][C:4]1",
+      "[C]1[C][C][C]1",
       "[H][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3][C:4]1",
-        count: 1
+        smarts: "[C]1[C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][H]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[H][H]"
       }
     ],
     condition: "催化加氢,Ni,120℃"
@@ -3122,17 +3770,23 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3][C:4][C:5]1",
+      "[C]1[C][C][C][C]1",
       "[H][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3][C:4][C:5]1",
-        count: 1
+        smarts: "[C]1[C][C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][H]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[H][H]"
       }
     ],
     condition: "催化加氢,Ni,300℃"
@@ -3146,17 +3800,23 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3]1",
-      "[Br][Br]"
+      "[C]1[C][C]1",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3]1",
-        count: 1
+        smarts: "[C]1[C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "cycloalkane 反应 4"
@@ -3170,17 +3830,23 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3][C:4]1",
-      "[Br][Br]"
+      "[C]1[C][C][C]1",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3][C:4]1",
-        count: 1
+        smarts: "[C]1[C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "cycloalkane 反应 5"
@@ -3194,17 +3860,23 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3]1",
-      "[H][Br]"
+      "[C]1[C][C]1",
+      "Br"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3]1",
-        count: 1
+        smarts: "[C]1[C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][Br]",
-        count: 1
+        smarts: "Br",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Br"
       }
     ],
     condition: "cycloalkane 反应 6"
@@ -3218,17 +3890,23 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]([C:4])([C:5])1[C:2][C:3]1",
-      "[H][Br]"
+      "[C]([C])([C])1[C][C]1",
+      "Br"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([C:4])([C:5])1[C:2][C:3]1",
-        count: 1
+        smarts: "[C]([C])([C])1[C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][Br]",
-        count: 1
+        smarts: "Br",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Br"
       }
     ],
     condition: "马氏产物"
@@ -3242,17 +3920,23 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3]1",
-      "[Cl][Cl]"
+      "[C]1[C][C]1",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3]1",
-        count: 1
+        smarts: "[C]1[C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "cycloalkane 反应 8"
@@ -3266,17 +3950,23 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3][C:4][C:5][C:6]1",
-      "[Cl][Cl]"
+      "[C]1[C][C][C][C][C]1",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3][C:4][C:5][C:6]1",
-        count: 1
+        smarts: "[C]1[C][C][C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "cycloalkane 反应 9"
@@ -3290,31 +3980,37 @@ window.REACTION_DB_EXTENDED = {
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2]([C:3])[C:4]=[C:5][C:6]([C:7])1"
+      "[C]1[C]([C])[C]=[C][C]([C])1"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2]([C:3])[C:4]=[C:5][C:6]([C:7])1",
-        count: 1
+        smarts: "[C]1[C]([C])[C]=[C][C]([C])1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "O3,H2O,Zn"
   },
   cycloalkane_gen_11: {
     category: "cycloalkane",
-    name: "环烯烃氧化断裂",
+    name: "KMnO4,H+",
     difficulty: 2,
-    smarts: "[C:1]1[C:2][C:3]=[C:4][C:5][C:6]1>>[C:4](=O)[OH].[C:3](=O)[OH].[C:1][C:2].[C:5][C:6]",
+    smarts: "[C:1]1[C:2][C:3]=[C:4][C:5][C:6]1>>[C:4](=O)(O)[C:5][C:6][C:1][C:2][C:3](=O)(O)",
     source: [
       "cycloalkanes"
     ],
     search_smarts: [
-      "[C:1]1[C:2][C:3]=[C:4][C:5][C:6]1"
+      "[C]1[C][C]=[C][C][C]1"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[C:2][C:3]=[C:4][C:5][C:6]1",
-        count: 1
+        smarts: "[C]1[C][C]=[C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "KMnO4,H+"
@@ -3328,17 +4024,23 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]",
-      "[C:3][C:4](=O)[O:5][O:6][H]"
+      "[C]=[C]",
+      "[C][C](=O)[O][O][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:3][C:4](=O)[O:5][O:6][H]",
-        count: 1
+        smarts: "[C][C](=O)[O][O][H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "烯烃与过氧酸反应"
@@ -3352,12 +4054,15 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2]"
+      "[C]=[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "烯烃的臭氧氧化-分解反应第一步"
@@ -3371,12 +4076,15 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]1[O][C:2][O][O]1"
+      "[C]1[O][C][O][O]1"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[O][C:2][O][O]1",
-        count: 1
+        smarts: "[C]1[O][C][O][O]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "烯烃的臭氧氧化-分解反应第二步"
@@ -3390,17 +4098,23 @@ window.REACTION_DB_EXTENDED = {
       "alkenes"
     ],
     search_smarts: [
-      "[C:1]=[C:2][C:3]=[C:4]",
-      "[C:5]=[C:6]"
+      "[C]=[C][C]=[C]",
+      "[C]=[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2][C:3]=[C:4]",
-        count: 1
+        smarts: "[C]=[C][C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:5]=[C:6]",
-        count: 1
+        smarts: "[C]=[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "alkene 反应 49"
@@ -3414,17 +4128,23 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][F,Cl,Br,I]",
+      "[C][F,Cl,Br,I]",
       "[OH-]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][F,Cl,Br,I]",
-        count: 1
+        smarts: "[C][F,Cl,Br,I]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[OH-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[OH-]"
       }
     ],
     condition: "生成醇"
@@ -3438,17 +4158,23 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][F,Cl,Br,I]",
+      "[C][F,Cl,Br,I]",
       "[C-]#N"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][F,Cl,Br,I]",
-        count: 1
+        smarts: "[C][F,Cl,Br,I]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[C-]#N",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[C-]#N"
       }
     ],
     condition: "生成腈"
@@ -3462,17 +4188,23 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][F,Cl,Br,I]",
-      "[O-][C:2]"
+      "[C][F,Cl,Br,I]",
+      "[O-][C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][F,Cl,Br,I]",
-        count: 1
+        smarts: "[C][F,Cl,Br,I]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[O-][C:2]",
-        count: 1
+        smarts: "[O-][C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "生成醚"
@@ -3486,17 +4218,23 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][F,Cl,Br,I]",
-      "[NH2]"
+      "[C][F,Cl,Br,I]",
+      "N"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][F,Cl,Br,I]",
-        count: 1
+        smarts: "[C][F,Cl,Br,I]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[NH2]",
-        count: 1
+        smarts: "N",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "N"
       }
     ],
     condition: "生成胺"
@@ -3510,22 +4248,31 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][F,Cl,Br,I]",
+      "[C][F,Cl,Br,I]",
       "[Ag+]",
       "[O-][N+](=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][F,Cl,Br,I]",
-        count: 1
+        smarts: "[C][F,Cl,Br,I]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Ag+]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[O-][N+](=O)[O-]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "生成硝酸酯"
@@ -3539,12 +4286,15 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3]([Br])[C:4]"
+      "[C][C][C]([Br])[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3]([Br])[C:4]",
-        count: 1
+        smarts: "[C][C][C]([Br])[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "KOH,C2H5OH,加热"
@@ -3558,12 +4308,15 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3]([C:5])([Br])[C:4]"
+      "[C][C][C]([C])([Br])[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3]([C:5])([Br])[C:4]",
-        count: 1
+        smarts: "[C][C][C]([C])([Br])[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "KOH,C2H5OH,加热"
@@ -3577,17 +4330,23 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][Br]",
+      "[C][Br]",
       "[Mg]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][Br]",
-        count: 1
+        smarts: "[C][Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Mg]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Mg]"
       }
     ],
     condition: "halide 反应 8"
@@ -3601,17 +4360,23 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][I]",
+      "[C][I]",
       "[Mg]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][I]",
-        count: 1
+        smarts: "[C][I]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Mg]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Mg]"
       }
     ],
     condition: "halide 反应 9"
@@ -3625,17 +4390,23 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][Cl]",
+      "[C][Cl]",
       "[Mg]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][Cl]",
-        count: 1
+        smarts: "[C][Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Mg]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Mg]"
       }
     ],
     condition: "halide 反应 10"
@@ -3649,17 +4420,23 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][F,Cl,Br,I]",
+      "[C][F,Cl,Br,I]",
       "[Mg]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][F,Cl,Br,I]",
-        count: 1
+        smarts: "[C][F,Cl,Br,I]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Mg]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Mg]"
       }
     ],
     condition: "halide 反应 11"
@@ -3673,12 +4450,15 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][Br]"
+      "[C][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][Br]",
-        count: 1
+        smarts: "[C][Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "LiAlH4"
@@ -3692,12 +4472,15 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][Cl]"
+      "[C][Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][Cl]",
-        count: 1
+        smarts: "[C][Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "LiAlH4"
@@ -3711,12 +4494,15 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][I]"
+      "[C][I]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][I]",
-        count: 1
+        smarts: "[C][I]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "LiAlH4"
@@ -3730,17 +4516,23 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][F,Cl,Br,I]",
+      "[C][F,Cl,Br,I]",
       "[H2]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][F,Cl,Br,I]",
-        count: 1
+        smarts: "[C][F,Cl,Br,I]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H2]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "halide 反应 15"
@@ -3754,12 +4546,15 @@ window.REACTION_DB_EXTENDED = {
       "halides"
     ],
     search_smarts: [
-      "[C:1][F,Cl,Br,I]"
+      "[C][F,Cl,Br,I]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][F,Cl,Br,I]",
-        count: 2
+        smarts: "[C][F,Cl,Br,I]",
+        count: 2,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "halide 反应 16"
@@ -3773,17 +4568,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[Cl][Cl]"
+      "[c]1[c][c][c][c][c]1",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "卤代反应"
@@ -3797,17 +4598,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1",
-      "[Br][Br]"
+      "[nH]1[c][c][c][c]1",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "吡咯的卤代反应"
@@ -3821,17 +4628,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1",
-      "[Cl][Cl]"
+      "[nH]1[c][c][c][c]1",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "吡咯的卤代反应"
@@ -3845,17 +4658,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
-      "[Br][Br]"
+      "[o]1[c][c][c][c]1",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "呋喃的卤代反应"
@@ -3869,17 +4688,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
-      "[Cl][Cl]"
+      "[o]1[c][c][c][c]1",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "呋喃的卤代反应"
@@ -3893,17 +4718,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2][c:3][c:4]1",
-      "[Br][Br]"
+      "[s]1[c][c][c][c]1",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "噻吩的卤代反应"
@@ -3917,17 +4748,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2][c:3][c:4]1",
-      "[Cl][Cl]"
+      "[s]1[c][c][c][c]1",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "噻吩的卤代反应"
@@ -3941,17 +4778,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1",
+      "[nH]1[c][c][c][c]1",
       "CC(=O)OC(=O)C"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "CC(=O)OC(=O)C",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "CC(=O)OC(=O)C"
       }
     ],
     condition: "吡咯与乙酸酐反应,加热"
@@ -3965,17 +4808,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
+      "[o]1[c][c][c][c]1",
       "CC(=O)OC(=O)C"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "CC(=O)OC(=O)C",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "CC(=O)OC(=O)C"
       }
     ],
     condition: "呋喃与乙酸酐反应,加热"
@@ -3989,17 +4838,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1",
+      "[nH]1[c][c][c][c]1",
       "[N+](=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[N+](=O)[O-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[N+](=O)[O-]"
       }
     ],
     condition: "吡咯的硝化反应,乙酰硝基酯"
@@ -4013,17 +4868,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
+      "[o]1[c][c][c][c]1",
       "[N+](=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[N+](=O)[O-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[N+](=O)[O-]"
       }
     ],
     condition: "呋喃的硝化反应,乙酰硝基酯"
@@ -4037,17 +4898,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1",
-      "[S](=O)(=O)O"
+      "[nH]1[c][c][c][c]1",
+      "OS(=O)(=O)O"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S](=O)(=O)O",
-        count: 1
+        smarts: "OS(=O)(=O)O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OS(=O)(=O)O"
       }
     ],
     condition: "吡咯的磺化反应"
@@ -4061,17 +4928,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
-      "[S](=O)(=O)O"
+      "[o]1[c][c][c][c]1",
+      "OS(=O)(=O)O"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S](=O)(=O)O",
-        count: 1
+        smarts: "OS(=O)(=O)O",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "OS(=O)(=O)O"
       }
     ],
     condition: "呋喃的磺化反应"
@@ -4085,17 +4958,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[C:7][C:8][Br]"
+      "[c]1[c][c][c][c][c]1",
+      "[C][C][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:7][C:8][Br]",
-        count: 1
+        smarts: "[C][C][Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "烷基化反应"
@@ -4109,17 +4988,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-      "[C:7][C:8][Cl]"
+      "[c]1[c][c][c][c][c]1",
+      "[C][C][Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:7][C:8][Cl]",
-        count: 1
+        smarts: "[C][C][Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "烷基化反应"
@@ -4133,17 +5018,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1",
-      "[C:5][C:6][Cl]"
+      "[nH]1[c][c][c][c]1",
+      "[C][C][Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:5][C:6][Cl]",
-        count: 1
+        smarts: "[C][C][Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "吡咯的烷基化反应"
@@ -4157,17 +5048,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
-      "[C:5][C:6][Cl]"
+      "[o]1[c][c][c][c]1",
+      "[C][C][Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:5][C:6][Cl]",
-        count: 1
+        smarts: "[C][C][Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "呋喃的烷基化反应"
@@ -4181,17 +5078,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1",
-      "[C:5][C:6](=O)[Cl]"
+      "[nH]1[c][c][c][c]1",
+      "[C][C](=O)[Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:5][C:6](=O)[Cl]",
-        count: 1
+        smarts: "[C][C](=O)[Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "吡咯的酰基化反应"
@@ -4205,17 +5108,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
-      "[C:5][C:6](=O)[Cl]"
+      "[o]1[c][c][c][c]1",
+      "[C][C](=O)[Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:5][C:6](=O)[Cl]",
-        count: 1
+        smarts: "[C][C](=O)[Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "呋喃的酰基化反应"
@@ -4229,17 +5138,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2][c:3][c:4]1",
-      "[C:5](=O)[Cl]"
+      "[s]1[c][c][c][c]1",
+      "[C](=O)[Cl]"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:5](=O)[Cl]",
-        count: 1
+        smarts: "[C](=O)[Cl]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "噻吩的Vilsmeier甲酰化"
@@ -4253,17 +5168,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1",
-      "[C:5](=O)[H]"
+      "[nH]1[c][c][c][c]1",
+      "[C](=O)[H]"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:5](=O)[H]",
-        count: 1
+        smarts: "[C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "Vilsmeier-Haack反应,POCl₃"
@@ -4277,12 +5198,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1"
+      "[nH]1[c][c][c][c]1"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "吡咯的催化加氢"
@@ -4296,12 +5220,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1"
+      "[o]1[c][c][c][c]1"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "呋喃的催化加氢"
@@ -4315,12 +5242,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2][c:3][c:4]1"
+      "[s]1[c][c][c][c]1"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "噻吩的部分加氢"
@@ -4334,12 +5264,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2][c:3][c:4]1"
+      "[s]1[c][c][c][c]1"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "噻吩的完全加氢"
@@ -4353,17 +5286,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
+      "[o]1[c][c][c][c]1",
       "[Li]"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Li]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Li]"
       }
     ],
     condition: "呋喃在强碱条件下"
@@ -4377,17 +5316,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2][c:3][c:4]1",
+      "[s]1[c][c][c][c]1",
       "[Li]"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Li]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Li]"
       }
     ],
     condition: "噻吩在强碱条件下"
@@ -4401,12 +5346,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1"
+      "[o]1[c][c][c][c]1"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "呋喃在酸性条件下"
@@ -4420,17 +5368,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
-      "[C:5]=[C:6]1"
+      "[o]1[c][c][c][c]1",
+      "[C]=[C]1"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:5]=[C:6]1",
-        count: 1
+        smarts: "[C]=[C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "呋喃作为双烯体,乙烯作为亲双烯体"
@@ -4444,17 +5398,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1",
-      "[Nu:5]"
+      "[o]1[c][c][c][c]1",
+      "[Nu]"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Nu:5]",
-        count: 1
+        smarts: "[Nu]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "在酸性条件下"
@@ -4468,17 +5428,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2]([N+](=O)[O-])[c:3][c:4]1",
-      "[Nu:5]"
+      "[s]1[c][c]([N+](=O)[O-])[c][c]1",
+      "[Nu]"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2]([N+](=O)[O-])[c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c][c]([N+](=O)[O-])[c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Nu:5]",
-        count: 1
+        smarts: "[Nu]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "硝基活化"
@@ -4492,17 +5458,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1]([N+](=O)[O-])[c:2][c:3][c:4]1",
-      "[Nu:5]"
+      "[s]1[c]([N+](=O)[O-])[c][c][c]1",
+      "[Nu]"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1]([N+](=O)[O-])[c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c]([N+](=O)[O-])[c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Nu:5]",
-        count: 1
+        smarts: "[Nu]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "硝基活化"
@@ -4516,12 +5488,15 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[o]1[c:1][c:2][c:3][c:4]1"
+      "[o]1[c][c][c][c]1"
     ],
     reactant_info: [
       {
-        smarts: "[o]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[o]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "呋喃氧化生成顺丁烯二酸酐"
@@ -4535,17 +5510,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2][c:3][c:4]1",
-      "[O:5]"
+      "[s]1[c][c][c][c]1",
+      "[O]"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[O:5]",
-        count: 1
+        smarts: "[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "噻吩氧化为亚砜（形式电核表示法）"
@@ -4559,17 +5540,23 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2][c:3][c:4]1",
-      "[O:5]"
+      "[s]1[c][c][c][c]1",
+      "[O]"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[s]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[O:5]",
-        count: 2
+        smarts: "[O]",
+        count: 2,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "噻吩氧化为砜（形式电核表示法）"
@@ -4583,22 +5570,31 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
+      "[c]1[c][c][c][c][c]1[O]",
       "[Na+]",
       "[OH-]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[O]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[Na+]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Na+]"
       },
       {
         smarts: "[OH-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[OH-]"
       }
     ],
     condition: "生成"
@@ -4612,49 +5608,64 @@ window.REACTION_DB_EXTENDED = {
       "benzenes"
     ],
     search_smarts: [
-      "[nH]1[c:1][c:2][c:3][c:4]1",
+      "[nH]1[c][c][c][c]1",
       "[K+]",
       "[OH-]"
     ],
     reactant_info: [
       {
-        smarts: "[nH]1[c:1][c:2][c:3][c:4]1",
-        count: 1
+        smarts: "[nH]1[c][c][c][c]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[K+]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[OH-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[OH-]"
       }
     ],
     condition: "吡咯的酸性"
   },
   benzene_gen_118: {
     category: "benzene",
-    name: "Suzuki偶联，溴噻吩和苯硼酸反应",
+    name: "Suzuki偶联,溴噻吩和苯硼酸反应",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4](Br)1.[B]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)(O)(O)>>[s]1[c:1][c:2][c:3][c:4]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)1",
     source: [
       "benzenes"
     ],
     search_smarts: [
-      "[s]1[c:1][c:2][c:3][c:4](Br)1",
-      "[B]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)(O)(O)"
+      "[s]1[c][c][c][c](Br)1",
+      "[B]([c]1[c][c][c][c][c]1)(O)(O)"
     ],
     reactant_info: [
       {
-        smarts: "[s]1[c:1][c:2][c:3][c:4](Br)1",
-        count: 1
+        smarts: "[s]1[c][c][c][c](Br)1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[B]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)(O)(O)",
-        count: 1
+        smarts: "[B]([c]1[c][c][c][c][c]1)(O)(O)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "Suzuki偶联，溴噻吩和苯硼酸反应"
+    condition: "Suzuki偶联,溴噻吩和苯硼酸反应"
   },
   carbonyl_gen_49: {
     category: "carbonyl",
@@ -4665,20 +5676,26 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)",
+      "[C](=O)",
       "[S](=O)(=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)",
-        count: 1
+        smarts: "[C](=O)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[S](=O)(=O)[O-]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "NaHSO₃"
+    condition: "与亚硫酸氢钠加成"
   },
   carbonyl_gen_50: {
     category: "carbonyl",
@@ -4689,17 +5706,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)",
-      "[S:3][H]"
+      "[C][C](=O)",
+      "[S][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)",
-        count: 1
+        smarts: "[C][C](=O)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S:3][H]",
-        count: 1
+        smarts: "[S][H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "与硫醇（RSH）的加成生成半缩硫醛/酮"
@@ -4713,17 +5736,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]([OH])[S:3]",
-      "[S:4][H]"
+      "[C][C]([OH])[S]",
+      "[S][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([OH])[S:3]",
-        count: 1
+        smarts: "[C][C]([OH])[S]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[S:4][H]",
-        count: 1
+        smarts: "[S][H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "缩合脱水（形成缩硫醛/酮）"
@@ -4737,17 +5766,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]=[C:3][C:4](=O)[C:5]",
-      "[Br][Br]"
+      "[C][C]=[C][C](=O)[C]",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5]",
-        count: 1
+        smarts: "[C][C]=[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "与卤素加成"
@@ -4761,17 +5796,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]=[C:3][C:4](=O)[C:5]",
+      "[C][C]=[C][C](=O)[C]",
       "[H][O][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5]",
-        count: 1
+        smarts: "[C][C]=[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][O][Br]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "与次卤酸加成"
@@ -4785,39 +5826,48 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]=[C:3][C:4](=O)[C:5]",
-      "[H][Cl]"
+      "[C][C]=[C][C](=O)[C]",
+      "Cl"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5]",
-        count: 1
+        smarts: "[C][C]=[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[H][Cl]",
-        count: 1
+        smarts: "Cl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "Cl"
       }
     ],
     condition: "与卤化氢加成,1-4共轭加成"
   },
   carbonyl_gen_55: {
     category: "carbonyl",
-    name: "互变异构，烯醇不稳定",
+    name: "互变异构,烯醇不稳定",
     difficulty: 2,
     smarts: "[C:1][C:2]([Cl])[C:3]=[C:4]([OH])[C:5]>>[C:1][C:2]([Cl])[C:3][C:4](=O)[C:5]",
     source: [
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]([Cl])[C:3]=[C:4]([OH])[C:5]"
+      "[C][C]([Cl])[C]=[C]([OH])[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([Cl])[C:3]=[C:4]([OH])[C:5]",
-        count: 1
+        smarts: "[C][C]([Cl])[C]=[C]([OH])[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "互变异构，烯醇不稳定"
+    condition: "互变异构,烯醇不稳定"
   },
   carbonyl_gen_56: {
     category: "carbonyl",
@@ -4828,39 +5878,48 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]=[C:3][C:4](=O)[C:5]",
-      "[C:6][NH2]"
+      "[C][C]=[C][C](=O)[C]",
+      "[C][NH2]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5]",
-        count: 1
+        smarts: "[C][C]=[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:6][NH2]",
-        count: 1
+        smarts: "[C][NH2]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "与胺加成,1-4共轭加成"
   },
   carbonyl_gen_57: {
     category: "carbonyl",
-    name: "互变异构，烯醇不稳定",
+    name: "互变异构,烯醇不稳定",
     difficulty: 2,
     smarts: "[C:1][C:2]([NH][C:6])[C:3]=[C:4]([OH])[C:5]>>[C:1][C:2]([NH][C:6])[C:3][C:4](=O)[C:5]",
     source: [
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]([NH][C:6])[C:3]=[C:4]([OH])[C:5]"
+      "[C][C]([NH][C])[C]=[C]([OH])[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([NH][C:6])[C:3]=[C:4]([OH])[C:5]",
-        count: 1
+        smarts: "[C][C]([NH][C])[C]=[C]([OH])[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "互变异构，烯醇不稳定"
+    condition: "互变异构,烯醇不稳定"
   },
   carbonyl_gen_58: {
     category: "carbonyl",
@@ -4871,17 +5930,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)([H])[C:2]=[C:3]([c:4]1[c:5][c:6][c:7][c:8][c:9]1)",
-      "[Br][Mg]([c:10]1[c:11][c:12][c:13][c:14][c:15]1)"
+      "[C](=O)([H])[C]=[C]([c]1[c][c][c][c][c]1)",
+      "[Br][Mg]([c]1[c][c][c][c][c]1)"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)([H])[C:2]=[C:3]([c:4]1[c:5][c:6][c:7][c:8][c:9]1)",
-        count: 1
+        smarts: "[C](=O)([H])[C]=[C]([c]1[c][c][c][c][c]1)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Mg]([c:10]1[c:11][c:12][c:13][c:14][c:15]1)",
-        count: 1
+        smarts: "[Br][Mg]([c]1[c][c][c][c][c]1)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "carbonyl 反应 58"
@@ -4895,17 +5960,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)([H])[C:2]=[C:3]([c:4]1[c:5][c:6][c:7][c:8][c:9]1)",
-      "[C:10][C:11][Mg][Br]"
+      "[C](=O)([H])[C]=[C]([c]1[c][c][c][c][c]1)",
+      "[C][C][Mg][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)([H])[C:2]=[C:3]([c:4]1[c:5][c:6][c:7][c:8][c:9]1)",
-        count: 1
+        smarts: "[C](=O)([H])[C]=[C]([c]1[c][c][c][c][c]1)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:10][C:11][Mg][Br]",
-        count: 1
+        smarts: "[C][C][Mg][Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "carbonyl 反应 59"
@@ -4919,17 +5990,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)=[C:2][C:3](=O)[C:4]",
-      "[Br][Mg]([c:11]1[c:12][c:13][c:14][c:15][c:16]1)"
+      "[C]([c]1[c][c][c][c][c]1)=[C][C](=O)[C]",
+      "[Br][Mg]([c]1[c][c][c][c][c]1)"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)=[C:2][C:3](=O)[C:4]",
-        count: 1
+        smarts: "[C]([c]1[c][c][c][c][c]1)=[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Mg]([c:11]1[c:12][c:13][c:14][c:15][c:16]1)",
-        count: 1
+        smarts: "[Br][Mg]([c]1[c][c][c][c][c]1)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "carbonyl 反应 60"
@@ -4943,17 +6020,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)=[C:2][C:3](=O)[C:4]",
-      "[C:11][C:12][Mg][Br]"
+      "[C]([c]1[c][c][c][c][c]1)=[C][C](=O)[C]",
+      "[C][C][Mg][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)=[C:2][C:3](=O)[C:4]",
-        count: 1
+        smarts: "[C]([c]1[c][c][c][c][c]1)=[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:11][C:12][Mg][Br]",
-        count: 1
+        smarts: "[C][C][Mg][Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "carbonyl 反应 61"
@@ -4967,12 +6050,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]"
+      "[C][C](=O)[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "在H+/OH-作用下发生烯醇化反应"
@@ -4986,12 +6072,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3](=O)[C:4]"
+      "[C][C][C](=O)[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3](=O)[C:4]",
-        count: 1
+        smarts: "[C][C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "热力学控制的产物"
@@ -5005,12 +6094,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3](=O)[C:4]"
+      "[C][C][C](=O)[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3](=O)[C:4]",
-        count: 1
+        smarts: "[C][C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "动力学控制的产物"
@@ -5024,17 +6116,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)[C:2]",
-      "[Br][Br]"
+      "[C](=O)[C]",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)[C:2]",
-        count: 1
+        smarts: "[C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "在H+/OH-催化作用下"
@@ -5048,22 +6146,31 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
+      "[C][C](=O)[C]",
       "[OH-]",
-      "[Cl][Cl]"
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[OH-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[OH-]"
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "卤仿反应"
@@ -5077,22 +6184,31 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
+      "[C][C](=O)[C]",
       "[OH-]",
-      "[Br][Br]"
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[OH-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[OH-]"
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "卤仿反应"
@@ -5106,22 +6222,31 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
+      "[C][C](=O)[C]",
       "[OH-]",
-      "[I][I]"
+      "II"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[OH-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[OH-]"
       },
       {
-        smarts: "[I][I]",
-        count: 1
+        smarts: "II",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "II"
       }
     ],
     condition: "卤仿反应"
@@ -5135,12 +6260,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[H]"
+      "[C][C](=O)[H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[H]",
-        count: 2
+        smarts: "[C][C](=O)[H]",
+        count: 2,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "H+/OH-"
@@ -5154,12 +6282,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]"
+      "[C][C](=O)[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 2
+        smarts: "[C][C](=O)[C]",
+        count: 2,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "H+/OH-"
@@ -5173,17 +6304,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3][C:4][C:5][C:6][C:7](=O)[H]",
-      "[C:8][C:9](=O)[C:10]"
+      "[C][C][C][C][C][C][C](=O)[H]",
+      "[C][C](=O)[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3][C:4][C:5][C:6][C:7](=O)[H]",
-        count: 1
+        smarts: "[C][C][C][C][C][C][C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:8][C:9](=O)[C:10]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "OH-"
@@ -5197,12 +6334,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3][C:4][C:5][C:6][C:7]([OH])[C:8][C:9](=O)[C:10]"
+      "[C][C][C][C][C][C][C]([OH])[C][C](=O)[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3][C:4][C:5][C:6][C:7]([OH])[C:8][C:9](=O)[C:10]",
-        count: 1
+        smarts: "[C][C][C][C][C][C][C]([OH])[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "-H2O"
@@ -5216,12 +6356,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1]([C:2])([C:3])=[N:4][OH]"
+      "[C]([C])([C])=[N][OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([C:2])([C:3])=[N:4][OH]",
-        count: 1
+        smarts: "[C]([C])([C])=[N][OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "Beckmann重排, H+"
@@ -5235,17 +6378,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]([Br])[C:3](=O)[C:4]",
+      "[C][C]([Br])[C](=O)[C]",
       "[OH-]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([Br])[C:3](=O)[C:4]",
-        count: 1
+        smarts: "[C][C]([Br])[C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[OH-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[OH-]"
       }
     ],
     condition: "Favorski重排"
@@ -5259,17 +6408,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]([Cl])[C:3](=O)[C:4]",
+      "[C][C]([Cl])[C](=O)[C]",
       "[OH-]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([Cl])[C:3](=O)[C:4]",
-        count: 1
+        smarts: "[C][C]([Cl])[C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[OH-]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[OH-]"
       }
     ],
     condition: "Favorski重排"
@@ -5283,17 +6438,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
-      "[C:4][C:5](=O)[O][OH]"
+      "[C][C](=O)[C]",
+      "[C][C](=O)[O][OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:4][C:5](=O)[O][OH]",
-        count: 1
+        smarts: "[C][C](=O)[O][OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "CH3COOEt,40℃,Baeyer-Villiger氧化重排"
@@ -5307,17 +6468,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)1[C:2]([Br])[C:3][C:4][C:5][C:6]1",
-      "[C:7][C:8][O-]"
+      "[C](=O)1[C]([Br])[C][C][C][C]1",
+      "[C][C][O-]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)1[C:2]([Br])[C:3][C:4][C:5][C:6]1",
-        count: 1
+        smarts: "[C](=O)1[C]([Br])[C][C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:7][C:8][O-]",
-        count: 1
+        smarts: "[C][C][O-]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "Et2O,加热"
@@ -5331,12 +6498,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)([c:3]1[c:4][c:5][c:6][c:7][c:8]1)[C:2](=O)([c:9]1[c:10][c:11][c:12][c:13][c:14]1)"
+      "[C](=O)([c]1[c][c][c][c][c]1)[C](=O)([c]1[c][c][c][c][c]1)"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)([c:3]1[c:4][c:5][c:6][c:7][c:8]1)[C:2](=O)([c:9]1[c:10][c:11][c:12][c:13][c:14]1)",
-        count: 1
+        smarts: "[C](=O)([c]1[c][c][c][c][c]1)[C](=O)([c]1[c][c][c][c][c]1)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "carbonyl 反应 78"
@@ -5350,12 +6520,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[H]"
+      "[C][C](=O)[H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[H]",
-        count: 1
+        smarts: "[C][C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "KMnO4, H2SO4 醛的氧化"
@@ -5369,12 +6542,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3](=O)[C:4][C:5]"
+      "[C][C][C](=O)[C][C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3](=O)[C:4][C:5]",
-        count: 1
+        smarts: "[C][C][C](=O)[C][C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "酮的氧化"
@@ -5388,12 +6564,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)1[C:2][C:3][C:4][C:5][C:6]1"
+      "[C](=O)1[C][C][C][C][C]1"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)1[C:2][C:3][C:4][C:5][C:6]1",
-        count: 1
+        smarts: "[C](=O)1[C][C][C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "生成己二酸"
@@ -5407,12 +6586,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)"
+      "[C](=O)"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)",
-        count: 1
+        smarts: "[C](=O)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "Clemmensen还原法,Zn-Hg ,HCl,加热"
@@ -5426,15 +6608,18 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]"
+      "[C][C](=O)[C]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
-    condition: "Wolff-Kishner-Huang Minlon还..."
+    condition: "Wolff-Kishner-Huang Minlon还原法, NH2NH2,KOH,(HOCH2CH2)2O,180℃"
   },
   carbonyl_gen_84: {
     category: "carbonyl",
@@ -5445,17 +6630,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)",
-      "[C:2]([SH])[C:3]([SH])"
+      "[C](=O)",
+      "[C]([SH])[C]([SH])"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)",
-        count: 1
+        smarts: "[C](=O)",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:2]([SH])[C:3]([SH])",
-        count: 1
+        smarts: "[C]([SH])[C]([SH])",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "H+,缩硫酮氢解法第一步"
@@ -5469,12 +6660,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1]1[S][C:2][C:3][S]"
+      "[C]1[S][C][C][S]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]1[S][C:2][C:3][S]",
-        count: 1
+        smarts: "[C]1[S][C][C][S]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "H2,Ni, 缩硫酮氢解法第二步"
@@ -5488,17 +6682,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[H]",
+      "[C][C](=O)[H]",
       "[H][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[H]",
-        count: 1
+        smarts: "[C][C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][H]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[H][H]"
       }
     ],
     condition: "Pt,0.3MPa,25℃"
@@ -5512,17 +6712,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
+      "[C][C](=O)[C]",
       "[H][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][H]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[H][H]"
       }
     ],
     condition: "Pt,0.3MPa,25℃"
@@ -5536,17 +6742,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)1[C:2]=[C:3]([C:7])[C:4][C:5][C:6]1",
+      "[C](=O)1[C]=[C]([C])[C][C][C]1",
       "[H][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)1[C:2]=[C:3]([C:7])[C:4][C:5][C:6]1",
-        count: 1
+        smarts: "[C](=O)1[C]=[C]([C])[C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][H]",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "[H][H]"
       }
     ],
     condition: "carbonyl 反应 88"
@@ -5560,17 +6772,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1](=O)1[C:2]=[C:3]([C:7])[C:4][C:5][C:6]1",
+      "[C](=O)1[C]=[C]([C])[C][C][C]1",
       "[H][H][H][H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)1[C:2]=[C:3]([C:7])[C:4][C:5][C:6]1",
-        count: 1
+        smarts: "[C](=O)1[C]=[C]([C])[C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[H][H][H][H]",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "carbonyl 反应 89"
@@ -5584,12 +6802,15 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2]=[C:3][C:4][C:5][C:6](=O)[H]"
+      "[C][C]=[C][C][C][C](=O)[H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]=[C:3][C:4][C:5][C:6](=O)[H]",
-        count: 1
+        smarts: "[C][C]=[C][C][C][C](=O)[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "LiAlH4,H2O,加热"
@@ -5603,17 +6824,23 @@ window.REACTION_DB_EXTENDED = {
       "carbonyls"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[C:3]",
-      "[C:4]([C:5])([C:6])([O-])[H]"
+      "[C][C](=O)[C]",
+      "[C]([C])([C])([O-])[H]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[C:3]",
-        count: 1
+        smarts: "[C][C](=O)[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:4]([C:5])([C:6])([O-])[H]",
-        count: 1
+        smarts: "[C]([C])([C])([O-])[H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "异丙醇铝,H2O,Meerwein-Ponndorf反应"
@@ -5627,17 +6854,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[OH]",
-      "[Br][Br]"
+      "[C][C](=O)[OH]",
+      "BrBr"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[OH]",
-        count: 1
+        smarts: "[C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Br][Br]",
-        count: 1
+        smarts: "BrBr",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "BrBr"
       }
     ],
     condition: "PBr3,70℃"
@@ -5651,17 +6884,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[OH]",
-      "[Cl][Cl]"
+      "[C][C](=O)[OH]",
+      "ClCl"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[OH]",
-        count: 1
+        smarts: "[C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[Cl][Cl]",
-        count: 1
+        smarts: "ClCl",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "ClCl"
       }
     ],
     condition: "I2催化"
@@ -5675,17 +6914,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1]([C:3])([OH])[C:2](=O)[OH]",
-      "[C:4](=O)([OH])[C:5]([C:6])([OH])"
+      "[C]([C])([OH])[C](=O)[OH]",
+      "[C](=O)([OH])[C]([C])([OH])"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([C:3])([OH])[C:2](=O)[OH]",
-        count: 1
+        smarts: "[C]([C])([OH])[C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:4](=O)([OH])[C:5]([C:6])([OH])",
-        count: 1
+        smarts: "[C](=O)([OH])[C]([C])([OH])",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "加热,分子间"
@@ -5699,12 +6944,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2]([OH])[C:3][C:4][C:5](=O)[OH]"
+      "[C][C]([OH])[C][C][C](=O)[OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2]([OH])[C:3][C:4][C:5](=O)[OH]",
-        count: 1
+        smarts: "[C][C]([OH])[C][C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "分子内酯化"
@@ -5718,17 +6966,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[OH]",
-      "[C:3][NH2]"
+      "[C][C](=O)[OH]",
+      "[C][NH2]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[OH]",
-        count: 1
+        smarts: "[C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:3][NH2]",
-        count: 1
+        smarts: "[C][NH2]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "acid 反应 6"
@@ -5742,17 +6996,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[OH]",
-      "[NH3]"
+      "[C][C](=O)[OH]",
+      "N"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[OH]",
-        count: 1
+        smarts: "[C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[NH3]",
-        count: 1
+        smarts: "N",
+        count: 1,
+        isReagent: true,
+        skip: false,
+        smiles: "N"
       }
     ],
     condition: "acid 反应 7"
@@ -5766,12 +7026,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[O][NH4]"
+      "[C][C](=O)[O][NH4]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[O][NH4]",
-        count: 1
+        smarts: "[C][C](=O)[O][NH4]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "100℃"
@@ -5785,17 +7048,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH]",
-      "[c:8]1[c:9][c:10][c:11][c:12][c:13]1[NH2]"
+      "[c]1[c][c][c][c][c]1[C](=O)[OH]",
+      "[c]1[c][c][c][c][c]1[NH2]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[c:8]1[c:9][c:10][c:11][c:12][c:13]1[NH2]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[NH2]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "acid 反应 9"
@@ -5809,17 +7078,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH]",
+      "[c]1[c][c][c][c][c]1[C](=O)[OH]",
       "[S](=O)(Cl)(Cl)"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[S](=O)(Cl)(Cl)",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "ClS(Cl)=O"
       }
     ],
     condition: "acid 反应 10"
@@ -5833,17 +7108,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3][C:4](=O)[OH]",
+      "[C][C][C][C](=O)[OH]",
       "[P](Cl)(Cl)(Cl)"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3][C:4](=O)[OH]",
-        count: 3
+        smarts: "[C][C][C][C](=O)[OH]",
+        count: 3,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[P](Cl)(Cl)(Cl)",
-        count: 1
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "ClP(Cl)Cl"
       }
     ],
     condition: "acid 反应 11"
@@ -5857,17 +7138,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3][C:4][C:5][C:6][C:7][C:8](=O)[OH]",
+      "[C][C][C][C][C][C][C][C](=O)[OH]",
       "[P](Cl)(Cl)(Cl)(Cl)(Cl)"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3][C:4][C:5][C:6][C:7][C:8](=O)[OH]",
-        count: 1
+        smarts: "[C][C][C][C][C][C][C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
         smarts: "[P](Cl)(Cl)(Cl)(Cl)(Cl)",
-        count: 1
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "acid 反应 12"
@@ -5881,17 +7168,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2](=O)[OH]",
-      "[C:3][Mg][Br]"
+      "[C][C](=O)[OH]",
+      "[C][Mg][Br]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2](=O)[OH]",
-        count: 1
+        smarts: "[C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:3][Mg][Br]",
-        count: 1
+        smarts: "[C][Mg][Br]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "acid 反应 13"
@@ -5905,17 +7198,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH]",
-      "[C:8][Li]"
+      "[c]1[c][c][c][c][c]1[C](=O)[OH]",
+      "[C][Li]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:8][Li]",
-        count: 1
+        smarts: "[C][Li]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "acid 反应 14"
@@ -5929,17 +7228,23 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[O-][Li+]",
-      "[C:9][Li]"
+      "[c]1[c][c][c][c][c]1[C](=O)[O-][Li+]",
+      "[C][Li]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[O-][Li+]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C](=O)[O-][Li+]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       },
       {
-        smarts: "[C:9][Li]",
-        count: 1
+        smarts: "[C][Li]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "acid 反应 15"
@@ -5953,12 +7258,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([O-][Li+])([O-][Li+])[C:9]"
+      "[c]1[c][c][c][c][c]1[C]([O-][Li+])([O-][Li+])[C]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([O-][Li+])([O-][Li+])[C:9]",
-        count: 1
+        smarts: "[c]1[c][c][c][c][c]1[C]([O-][Li+])([O-][Li+])[C]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "H2O"
@@ -5972,12 +7280,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1]=[C:2][C:3][C:4](=O)[OH]"
+      "[C]=[C][C][C](=O)[OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]=[C:2][C:3][C:4](=O)[OH]",
-        count: 1
+        smarts: "[C]=[C][C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "LiAlH4,H2O"
@@ -5991,12 +7302,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[c:1]1[c:2][c:3]([N+](=O)[O-])[c:4][c:5][c:6]1[C:7](=O)[OH]"
+      "[c]1[c][c]([N+](=O)[O-])[c][c][c]1[C](=O)[OH]"
     ],
     reactant_info: [
       {
-        smarts: "[c:1]1[c:2][c:3]([N+](=O)[O-])[c:4][c:5][c:6]1[C:7](=O)[OH]",
-        count: 1
+        smarts: "[c]1[c][c]([N+](=O)[O-])[c][c][c]1[C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "B2H6,H2O"
@@ -6010,12 +7324,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1][C:2][C:3](=O)[OH]"
+      "[C][C][C](=O)[OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1][C:2][C:3](=O)[OH]",
-        count: 1
+        smarts: "[C][C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "加热,碱"
@@ -6029,12 +7346,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1](Cl)(Cl)(Cl)[C:2](=O)[OH]"
+      "[C](Cl)(Cl)(Cl)[C](=O)[OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](Cl)(Cl)(Cl)[C:2](=O)[OH]",
-        count: 1
+        smarts: "[C](Cl)(Cl)(Cl)[C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "-H+,H2O 负离子机理第一步"
@@ -6048,12 +7368,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1](Cl)(Cl)(Cl)[C:2](=O)[O-]"
+      "[C](Cl)(Cl)(Cl)[C](=O)[O-]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](Cl)(Cl)(Cl)[C:2](=O)[O-]",
-        count: 1
+        smarts: "[C](Cl)(Cl)(Cl)[C](=O)[O-]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "加热,H+,负离子机理第二步"
@@ -6067,12 +7390,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1]([C:7])([C:8][C:9](=O)[O-][Ag+])1[C:2][C:3][C:4][C:5][C:6]1"
+      "[C]([C])([C][C](=O)[O-][Ag+])1[C][C][C][C][C]1"
     ],
     reactant_info: [
       {
-        smarts: "[C:1]([C:7])([C:8][C:9](=O)[O-][Ag+])1[C:2][C:3][C:4][C:5][C:6]1",
-        count: 1
+        smarts: "[C]([C])([C][C](=O)[O-][Ag+])1[C][C][C][C][C]1",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "acid 反应 22"
@@ -6086,12 +7412,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1](=O)([OH])[C:2][C:3](=O)[OH]"
+      "[C](=O)([OH])[C][C](=O)[OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)([OH])[C:2][C:3](=O)[OH]",
-        count: 1
+        smarts: "[C](=O)([OH])[C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "140-160℃"
@@ -6105,12 +7434,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1](=O)([OH])[C:2][C:3][C:4](=O)[OH]"
+      "[C](=O)([OH])[C][C][C](=O)[OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)([OH])[C:2][C:3][C:4](=O)[OH]",
-        count: 1
+        smarts: "[C](=O)([OH])[C][C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "300℃"
@@ -6124,12 +7456,15 @@ window.REACTION_DB_EXTENDED = {
       "acids"
     ],
     search_smarts: [
-      "[C:1](=O)([OH])[C:2][C:3][C:4][C:5][C:6](=O)[OH]"
+      "[C](=O)([OH])[C][C][C][C][C](=O)[OH]"
     ],
     reactant_info: [
       {
-        smarts: "[C:1](=O)([OH])[C:2][C:3][C:4][C:5][C:6](=O)[OH]",
-        count: 1
+        smarts: "[C](=O)([OH])[C][C][C][C][C](=O)[OH]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
       }
     ],
     condition: "300℃"
@@ -6140,7 +7475,7 @@ window.REACTION_DB_EXTENDED = {
 window.DIFFICULTY_NAMES = {
   1: "简单",
   2: "中等",
-  3: "困难"
+  3: "高级"
 };
 
 // 根据难度等级获取反应列表

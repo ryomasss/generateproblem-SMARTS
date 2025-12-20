@@ -57,6 +57,78 @@ function selectValidMolecule(pool, maxAttempts = 10) {
 }
 
 /**
+ * 检测是否为简单分子或试剂（如双原子分子、酸、试剂等）
+ * 这些分子可以直接作为 SMILES 使用，不需要从 PubChem 获取
+ * @param {string} smarts - SMARTS 或 SMILES 字符串
+ * @returns {boolean} 是否为简单分子
+ */
+function isSimpleMolecule(smarts) {
+    if (!smarts || typeof smarts !== 'string') return false;
+    
+    // 简单分子和试剂的模式
+    const simpleMolecules = [
+        // 双原子氢卤化物
+        '[H][H]',           // 氢气
+        '[Br][Br]', 'BrBr', // 溴
+        '[Cl][Cl]', 'ClCl', // 氯
+        '[F][F]', 'FF',     // 氟
+        '[I][I]', 'II',     // 碘
+        
+        // 氢卤酸
+        '[H][Br]', '[Br][H]', 'Br', // 氢溴酸
+        '[H][Cl]', '[Cl][H]', 'Cl', // 盐酸
+        '[H][I]', '[I][H]', 'I',    // 氢碘酸
+        '[H][F]', '[F][H]', 'F',    // 氢氟酸
+        
+        // 次卤酸
+        '[OH][Br]', 'OBr',   // 次溴酸
+        '[OH][Cl]', 'OCl',   // 次氯酸
+        '[OH][I]', 'OI',     // 次碘酸
+        
+        // 水和氢氧化物
+        'O', '[O]', '[OH2]', '[O][H]', // 水
+        '[OH-]', 'O=[O]', '[O][O]',    // 氢氧根、氧气
+        
+        // 金属离子（直接使用 SMILES）
+        '[Na+]', '[K+]', '[Li+]',      // 碱金属离子
+        '[Ag+]', '[Cu+]', '[Cu+2]',    // 过渡金属离子
+        '[Hg]', '[Hg+2]',              // 汞
+        '[Mg]', '[Mg+2]',              // 镁
+        '[Zn]', '[Zn+2]',              // 锌
+        
+        // 氮化合物
+        '[NH2]', '[NH3]', 'N',         // 氨
+        '[N+](=O)[O-]',                // 硝基
+        '[N+](=O)([O-])[O]',           // 硝酸
+        
+        // 氰根
+        '[C-]#N', '[C-]#[N]', '[CN-]', // 氰根
+        
+        // 硫化合物
+        '[S](=O)(=O)O', 'OS(=O)(=O)O', // 硫酸
+        '[S](=O)(Cl)(Cl)', 'ClS(Cl)=O', // 亚硫酰氯
+        
+        // 磷化合物
+        '[P](Cl)(Cl)(Cl)', 'ClP(Cl)Cl', // 三氯化磷
+        
+        // 常用有机试剂
+        'CC(=O)OC(=O)C',               // 乙酸酐
+        'CC(=O)O',                      // 乙酸
+        
+        // 格氏试剂骨架
+        '[Mg][Br]', '[Mg][Cl]', '[Mg][I]',
+        
+        // 有机锂
+        '[Li]',
+    ];
+    
+    // 也检查移除原子映射后的模式
+    const normalizedSmarts = smarts.replace(/:\d+/g, '');
+    
+    return simpleMolecules.includes(smarts) || simpleMolecules.includes(normalizedSmarts);
+}
+
+/**
  * 重新渲染现有题目的结构式（不生成新题目）
  * 当用户调整基准尺寸、键宽、字号等参数时使用
  */
@@ -79,28 +151,26 @@ export function refreshExistingStructures() {
             reactantContainer.style.justifyContent = "center";
             reactantContainer.style.gap = "10px";
             
-            // 反应物1
-            if (data.r1) {
-                const w1 = document.createElement("div");
-                w1.className = "structure reactant";
-                w1.style.flex = "1";
-                w1.appendChild(createStructureSVG(data.r1));
-                reactantContainer.appendChild(w1);
-            }
+            // 优先使用 reactants 数组（支持任意数量的反应物）
+            const reactantsToRender = data.reactants || [data.r1, data.r2].filter(Boolean);
             
-            // 反应物2（如果存在）
-            if (data.r2) {
-                const plus = document.createElement("div");
-                plus.className = "plus-sign";
-                plus.textContent = "+";
-                reactantContainer.appendChild(plus);
+            reactantsToRender.forEach((reactant, idx) => {
+                if (!reactant) return;
                 
-                const w2 = document.createElement("div");
-                w2.className = "structure reactant";
-                w2.style.flex = "1";
-                w2.appendChild(createStructureSVG(data.r2));
-                reactantContainer.appendChild(w2);
-            }
+                // 在反应物之间添加加号
+                if (idx > 0) {
+                    const plus = document.createElement("div");
+                    plus.className = "plus-sign";
+                    plus.textContent = "+";
+                    reactantContainer.appendChild(plus);
+                }
+                
+                const wrapper = document.createElement("div");
+                wrapper.className = "structure reactant";
+                wrapper.style.flex = "1";
+                wrapper.appendChild(createStructureSVG(reactant));
+                reactantContainer.appendChild(wrapper);
+            });
         }
         
         // 重新渲染产物（如果答案正在显示）
@@ -169,65 +239,94 @@ export async function generateProblems() {
     const def = REACTION_DB[typeKey];
 
     // 2. 随机选择反应物 - 使用 reactant_info 获取所有反应物
-    let r1 = null;
-    let r2 = null;
+    // 使用 reactants 数组支持任意数量的反应物
+    const reactants = [];
 
     // 优先使用 reactant_info（如果可用）
     if (def.reactant_info && def.reactant_info.length > 0) {
-        // 获取第一个反应物类型
-        const info1 = def.reactant_info[0];
-        if (info1 && info1.smarts) {
-            const cacheKey = info1.smarts + (def.smarts ? `|${def.smarts}` : "");
+        for (const info of def.reactant_info) {
+            if (!info || !info.smarts) continue;
+            
+            // 检查是否应该跳过 PubChem 搜索（如金属离子）
+            if (info.skip) {
+                // 对于 skip=true 的试剂，直接使用预定义的 SMILES
+                if (info.smiles) {
+                    reactants.push(info.smiles);
+                } else if (isSimpleMolecule(info.smarts)) {
+                    reactants.push(info.smarts);
+                }
+                continue;
+            }
+            
+            // 检查是否是简单试剂，可以直接使用 SMILES
+            if (info.isReagent && info.smiles) {
+                // 试剂类型，直接使用预定义的 SMILES
+                reactants.push(info.smiles);
+                continue;
+            }
+            
+            // 从缓存中查找分子
+            const cacheKey = info.smarts + (def.smarts ? `|${def.smarts}` : "");
             const pool = appState.moleculeCache[cacheKey];
-            r1 = selectValidMolecule(pool);
-        }
-        
-        // 获取第二个反应物类型（如果存在）
-        if (def.reactant_info.length > 1) {
-            const info2 = def.reactant_info[1];
-            if (info2 && info2.smarts) {
-                const cacheKey = info2.smarts + (def.smarts ? `|${def.smarts}` : "");
-                const pool = appState.moleculeCache[cacheKey];
-                r2 = selectValidMolecule(pool);
+            const mol = selectValidMolecule(pool);
+            
+            if (mol) {
+                reactants.push(mol);
+            } else if (info.smiles) {
+                // 如果缓存中没有找到，但有预定义 SMILES，使用它
+                reactants.push(info.smiles);
+            } else if (isSimpleMolecule(info.smarts)) {
+                // 对于简单分子，直接使用 SMARTS 作为 SMILES
+                reactants.push(info.smarts);
             }
         }
-    } else if (def.search_smarts && def.search_smarts[0]) {
+    } else if (def.search_smarts && def.search_smarts.length > 0) {
         // 回退到旧的 search_smarts 逻辑
-        const s = def.search_smarts[0];
-        const cacheKey = s + (def.smarts ? `|${def.smarts}` : "");
-        const pool = appState.moleculeCache[cacheKey];
-        r1 = selectValidMolecule(pool);
-        
-        // 获取 R2
-        if (def.search_smarts[1]) {
-            const s2 = def.search_smarts[1];
-            const cacheKey2 = s2 + (def.smarts ? `|${def.smarts}` : "");
-            const pool2 = appState.moleculeCache[cacheKey2];
-            r2 = selectValidMolecule(pool2);
+        for (const s of def.search_smarts) {
+            if (s) {
+                const cacheKey = s + (def.smarts ? `|${def.smarts}` : "");
+                const pool = appState.moleculeCache[cacheKey];
+                const mol = selectValidMolecule(pool);
+                if (mol) {
+                    reactants.push(mol);
+                } else if (isSimpleMolecule(s)) {
+                    reactants.push(s);
+                }
+            }
         }
     }
     
-    // R1 的回退方案 - 使用本地分子库
-    if (!r1 && def.source && def.source[0]) {
-        const poolName1 = def.source[0];
-        const pool1 = CHEMICAL_CABINET[poolName1];
-        r1 = selectValidMolecule(pool1);
-    }
-
-    // R2 的回退方案（如果需要）
-    if (!r2 && def.source && def.source[1]) {
-        const poolName2 = def.source[1];
-        let pool2 = CHEMICAL_CABINET[poolName2];
-        
-        // 威廉姆逊醚合成的特殊逻辑
-        if (poolName2 === "alcohols" && typeKey === "williamson_ether") {
-            if (CHEMICAL_CABINET["phenols"]) {
-                 pool2 = pool2.concat(CHEMICAL_CABINET["phenols"]);
+    // 回退方案 - 使用本地分子库
+    if (def.source) {
+        for (let idx = 0; idx < def.source.length; idx++) {
+            if (reactants[idx]) continue; // 已经有这个位置的反应物了
+            
+            const poolName = def.source[idx];
+            if (!poolName) continue;
+            
+            let pool = CHEMICAL_CABINET[poolName];
+            
+            // 威廉姆逊醚合成的特殊逻辑
+            if (poolName === "alcohols" && typeKey === "williamson_ether") {
+                if (CHEMICAL_CABINET["phenols"]) {
+                    pool = pool.concat(CHEMICAL_CABINET["phenols"]);
+                }
+            }
+            
+            const mol = selectValidMolecule(pool);
+            if (mol) {
+                if (idx < reactants.length) {
+                    reactants[idx] = mol;
+                } else {
+                    reactants.push(mol);
+                }
             }
         }
-        
-        r2 = selectValidMolecule(pool2);
     }
+
+    // 兼容性：保留 r1 和 r2 用于现有代码
+    const r1 = reactants[0] || null;
+    const r2 = reactants[1] || null;
 
     // 安全检查
     if (!r1) {
@@ -239,7 +338,7 @@ export async function generateProblems() {
     const productSmilesArray = await runReactionWithRDKit(typeKey, r1, r2);
 
     appState.currentProblemsData.push({
-      r1, r2, products: productSmilesArray
+      r1, r2, reactants, products: productSmilesArray
     });
 
     // 4. 渲染 UI
@@ -260,26 +359,24 @@ export async function generateProblems() {
     newReactantsBox.style.justifyContent = "center";
     newReactantsBox.style.gap = "10px";
 
-    // 创建并添加反应物 1
-    const w1 = document.createElement("div");
-    w1.className = "structure reactant";
-    w1.style.flex = "1";
-    w1.appendChild(createStructureSVG(r1));
-    newReactantsBox.appendChild(w1);
-
-    // 判断是否存在反应物 2
-    if (r2) {
-        const plus = document.createElement("div");
-        plus.className = "plus-sign";
-        plus.textContent = "+";
-        newReactantsBox.appendChild(plus);
-
-        const w2 = document.createElement("div");
-        w2.className = "structure reactant";
-        w2.style.flex = "1";
-        w2.appendChild(createStructureSVG(r2));
-        newReactantsBox.appendChild(w2);
-    }
+    // 遍历所有反应物并渲染（支持任意数量的反应物）
+    reactants.forEach((reactant, idx) => {
+        if (!reactant) return;
+        
+        // 在反应物之间添加加号
+        if (idx > 0) {
+            const plus = document.createElement("div");
+            plus.className = "plus-sign";
+            plus.textContent = "+";
+            newReactantsBox.appendChild(plus);
+        }
+        
+        const wrapper = document.createElement("div");
+        wrapper.className = "structure reactant";
+        wrapper.style.flex = "1";
+        wrapper.appendChild(createStructureSVG(reactant));
+        newReactantsBox.appendChild(wrapper);
+    });
 
     if (oldReactantBox && eqContainer) {
         eqContainer.replaceChild(newReactantsBox, oldReactantBox);

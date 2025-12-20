@@ -97,7 +97,72 @@ function parse() {
     }
 
     // Extract search_smarts from the reaction SMARTS
-    // Returns: { patterns: [...], reactant_info: [{smarts, count}, ...] }
+    // Returns: { patterns: [...], reactant_info: [{smarts, count, isReagent, smiles}, ...] }
+    
+    // Common reagents lookup - maps SMARTS patterns to searchable SMILES or marks as reagent
+    const COMMON_REAGENTS = {
+        // Diatomic halogens
+        '[Br][Br]': { smiles: 'BrBr', isReagent: true },
+        '[Cl][Cl]': { smiles: 'ClCl', isReagent: true },
+        '[I][I]': { smiles: 'II', isReagent: true },
+        '[F][F]': { smiles: 'FF', isReagent: true },
+        'BrBr': { smiles: 'BrBr', isReagent: true },
+        'ClCl': { smiles: 'ClCl', isReagent: true },
+        
+        // Hydrogen halides
+        '[H][Br]': { smiles: 'Br', isReagent: true },
+        '[H][Cl]': { smiles: 'Cl', isReagent: true },
+        '[H][I]': { smiles: 'I', isReagent: true },
+        '[H][F]': { smiles: 'F', isReagent: true },
+        '[Br][H]': { smiles: 'Br', isReagent: true },
+        '[Cl][H]': { smiles: 'Cl', isReagent: true },
+        
+        // Hypohalous acids
+        '[OH][Br]': { smiles: 'OBr', isReagent: true },
+        '[OH][Cl]': { smiles: 'OCl', isReagent: true },
+        '[OH][I]': { smiles: 'OI', isReagent: true },
+        
+        // Water and hydroxide
+        '[O][H]': { smiles: 'O', isReagent: true },
+        '[OH2]': { smiles: 'O', isReagent: true },
+        'O': { smiles: 'O', isReagent: true },
+        '[OH-]': { smiles: '[OH-]', isReagent: true },
+        '[Na+]': { smiles: '[Na+]', isReagent: true, skip: true },
+        '[Na+].[OH-]': { smiles: '[Na+].[OH-]', isReagent: true, skip: true },
+        
+        // Metals and metal ions (should not search PubChem)
+        '[Hg]': { smiles: '[Hg]', isReagent: true, skip: true },
+        '[Mg]': { smiles: '[Mg]', isReagent: true, skip: true },
+        '[Li]': { smiles: '[Li]', isReagent: true, skip: true },
+        '[Na]': { smiles: '[Na]', isReagent: true, skip: true },
+        '[K]': { smiles: '[K]', isReagent: true, skip: true },
+        
+        // Hydrogen gas
+        '[H][H]': { smiles: '[H][H]', isReagent: true },
+        
+        // Nitrogen compounds
+        '[NH2]': { smiles: 'N', isReagent: true },
+        '[NH3]': { smiles: 'N', isReagent: true },
+        
+        // Cyanide
+        '[C-]#N': { smiles: '[C-]#N', isReagent: true },
+        '[C-]#[N]': { smiles: '[C-]#N', isReagent: true },
+        
+        // Sulfur compounds
+        '[S](=O)(=O)O': { smiles: 'OS(=O)(=O)O', isReagent: true },
+        
+        // Nitro group (for nitration)
+        '[N+](=O)[O-]': { smiles: '[N+](=O)[O-]', isReagent: true, skip: true },
+        '[N+](=O)([O-])[O]': { smiles: 'O[N+](=O)[O-]', isReagent: true, skip: true },
+        
+        // Phosphorus halides
+        '[P](Cl)(Cl)(Cl)': { smiles: 'ClP(Cl)Cl', isReagent: true, skip: true },
+        '[S](=O)(Cl)(Cl)': { smiles: 'ClS(Cl)=O', isReagent: true, skip: true },
+        
+        // Acetic anhydride
+        'CC(=O)OC(=O)C': { smiles: 'CC(=O)OC(=O)C', isReagent: true },
+    };
+    
     function extractSearchSmarts(smarts) {
         // SMARTS format: Reactant1.Reactant2>>Product
         const arrowIdx = smarts.indexOf('>>');
@@ -106,7 +171,6 @@ function parse() {
         const reactantsBlock = smarts.substring(0, arrowIdx).trim();
         
         // Split by `.` but be careful with nested structures
-        // Simple approach: split by `.` that's not inside brackets
         const reactants = [];
         let current = '';
         let bracketDepth = 0;
@@ -124,27 +188,51 @@ function parse() {
         }
         if (current.trim()) reactants.push(current.trim().replace(/\s+/g, ''));
         
-        // Count occurrences of each unique reactant pattern
+        // Process each reactant
         const patternCounts = {};
         reactants.forEach(r => {
-            // Normalize pattern for comparison (remove atom mapping numbers)
+            // Remove atom mapping numbers for normalization
             const normalized = r.replace(/:\d+/g, '');
+            
             if (!patternCounts[normalized]) {
-                patternCounts[normalized] = { original: r, count: 0 };
+                patternCounts[normalized] = { original: r, normalized: normalized, count: 0 };
             }
             patternCounts[normalized].count++;
         });
         
-        // Build output
+        // Build output with proper search patterns
         const patterns = [];
         const reactant_info = [];
         
         for (const key in patternCounts) {
             const info = patternCounts[key];
-            patterns.push(info.original);
+            const normalized = info.normalized;
+            
+            // Check if this is a known reagent
+            const reagentInfo = COMMON_REAGENTS[normalized];
+            
+            let searchPattern = normalized;  // Default: use normalized (no atom mapping)
+            let isReagent = false;
+            let skip = false;
+            let smiles = null;
+            
+            if (reagentInfo) {
+                isReagent = reagentInfo.isReagent || false;
+                skip = reagentInfo.skip || false;
+                smiles = reagentInfo.smiles || null;
+                // For reagents, use the predefined SMILES as search pattern
+                if (smiles && !skip) {
+                    searchPattern = smiles;
+                }
+            }
+            
+            patterns.push(searchPattern);
             reactant_info.push({
-                smarts: info.original,
-                count: info.count
+                smarts: searchPattern,
+                count: info.count,
+                isReagent: isReagent,
+                skip: skip,  // If true, don't search PubChem for this
+                smiles: smiles  // Predefined SMILES to use directly
             });
         }
         
