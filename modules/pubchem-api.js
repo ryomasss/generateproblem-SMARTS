@@ -150,6 +150,81 @@ function checkMoleculeComplexity(smiles) {
 }
 
 /**
+ * 使用异步轮询方式从 PubChem 获取子结构搜索结果
+ * @param {string} smarts - SMARTS 模式
+ * @returns {Promise<number[]>} CID 数组
+ */
+async function fetchCidsWithPolling(smarts) {
+    // 第一步：提交异步搜索请求
+    const submitUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/substructure/smarts/${encodeURIComponent(smarts)}/JSON`;
+    
+    console.log(`🔄 提交异步子结构搜索: ${smarts}`);
+    const submitResponse = await fetchWithRetry(submitUrl, 2, 2000);
+    
+    if (!submitResponse || !submitResponse.ok) {
+        throw new Error(`提交搜索失败: ${submitResponse?.status}`);
+    }
+    
+    const submitData = await submitResponse.json();
+    
+    // 检查是否返回了 ListKey（异步模式）
+    if (!submitData.Waiting || !submitData.Waiting.ListKey) {
+        // 可能直接返回了结果（某些简单查询）
+        if (submitData.IdentifierList?.CID) {
+            return submitData.IdentifierList.CID;
+        }
+        throw new Error('无法获取 ListKey');
+    }
+    
+    const listKey = submitData.Waiting.ListKey;
+    console.log(`📋 获取到 ListKey: ${listKey}`);
+    
+    // 第二步：轮询获取结果
+    const pollUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/listkey/${listKey}/cids/JSON?MaxRecords=${CACHE_CONFIG.maxRecords}`;
+    
+    const maxPolls = 10;
+    const pollDelay = 2000;
+    
+    for (let i = 0; i < maxPolls; i++) {
+        await new Promise(r => setTimeout(r, pollDelay));
+        
+        try {
+            const pollResponse = await fetch(pollUrl);
+            
+            if (pollResponse.status === 202) {
+                // 仍在处理中
+                console.log(`⏳ 搜索进行中... (${i + 1}/${maxPolls})`);
+                continue;
+            }
+            
+            if (!pollResponse.ok) {
+                throw new Error(`轮询失败: ${pollResponse.status}`);
+            }
+            
+            const pollData = await pollResponse.json();
+            
+            // 检查是否仍在等待
+            if (pollData.Waiting) {
+                console.log(`⏳ 搜索进行中... (${i + 1}/${maxPolls})`);
+                continue;
+            }
+            
+            // 获取到结果
+            if (pollData.IdentifierList?.CID) {
+                return pollData.IdentifierList.CID;
+            }
+            
+            return [];
+        } catch (e) {
+            console.warn(`轮询出错: ${e.message}`);
+            if (i === maxPolls - 1) throw e;
+        }
+    }
+    
+    throw new Error('轮询超时');
+}
+
+/**
  * 从 PubChem 获取匹配 SMARTS 的分子
  * @param {string} smarts - SMARTS 模式
  * @param {string} verificationSmarts - 用于验证的反应 SMARTS
@@ -169,39 +244,42 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
     cacheStats.misses++;
     console.log(`🔍 从 PubChem 搜索: ${smarts}`);
     
-    // 尝试使用 fastsubstructure（更快但不稳定），失败时回退到标准 substructure（更慢但更稳定）
+    // 尝试使用 fastsubstructure（更快但不稳定），失败时回退到异步轮询模式
     const fastUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastsubstructure/smarts/${encodeURIComponent(smarts)}/cids/JSON?MaxRecords=${CACHE_CONFIG.maxRecords}`;
-    const standardUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/substructure/smarts/${encodeURIComponent(smarts)}/cids/JSON?MaxRecords=${CACHE_CONFIG.maxRecords}`;
 
     try {
-        let response;
+        let cids = [];
         let usedFallback = false;
         
         // 首先尝试 fast endpoint
         try {
-            response = await fetchWithRetry(fastUrl, 2, 1000); // 较少重试次数
+            const response = await fetchWithRetry(fastUrl, 2, 1000);
+            if (response && response.ok) {
+                const data = await response.json();
+                if (data.IdentifierList?.CID) {
+                    cids = data.IdentifierList.CID;
+                }
+            }
         } catch (fastError) {
-            console.warn(`⚠️ fastsubstructure 失败 (${fastError.message})，尝试标准 substructure...`);
+            console.warn(`⚠️ fastsubstructure 失败 (${fastError.message})，尝试异步轮询模式...`);
             usedFallback = true;
-            // 回退到标准 substructure endpoint
-            response = await fetchWithRetry(standardUrl, 3, 2000);
+            // 回退到异步轮询模式
+            try {
+                cids = await fetchCidsWithPolling(smarts);
+            } catch (pollError) {
+                console.warn(`⚠️ 异步轮询也失败: ${pollError.message}`);
+                return [];
+            }
         }
         
-        if (!response || !response.ok) {
-            if (response && response.status === 404) return []; // No results
-            throw new Error(`PubChem API error: ${response ? response.status : 'no response'}`);
+        if (cids.length === 0) {
+            console.log(`📭 未找到匹配分子: ${smarts}`);
+            return [];
         }
         
-        const data = await response.json();
-        if (!data.IdentifierList || !data.IdentifierList.CID) return [];
-        
-        const cids = data.IdentifierList.CID;
-        if (cids.length === 0) return [];
-        
-        console.log(`📥 获取到 ${cids.length} 个 CID${usedFallback ? ' (使用标准搜索)' : ''}`);
+        console.log(`📥 获取到 ${cids.length} 个 CID${usedFallback ? ' (使用异步轮询)' : ''}`);
 
         // Fetch properties (SMILES) for these CIDs
-        // 注意：只请求 SMILES，PubChem 会返回 "SMILES" 字段
         const cidsStr = cids.join(',');
         const propsUrl = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cidsStr}/property/SMILES/JSON`;
         
@@ -229,11 +307,9 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
             const originalCount = smilesList.length;
             const rdkit = appState.rdkitModule;
             
-            // 创建 SMARTS 模式用于验证（针对脂肪族双键使用更严格的模式）
+            // 创建 SMARTS 模式用于验证
             let verificationPattern = null;
             try {
-                // 对于 C=C（烯烃），使用更严格的 SMARTS 来排除芳香族
-                // [#6;!a]=[#6;!a] 匹配任意两个非芳香碳原子之间的双键
                 let strictSmarts = smarts;
                 if (smarts === "C=C") {
                     strictSmarts = "[#6;!a]=[#6;!a]";  // 排除芳香碳
@@ -251,11 +327,9 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
                     mol = rdkit.get_mol(s);
                     if (!mol || !mol.is_valid()) return false;
                     
-                    // 如果有验证模式，检查分子是否匹配
                     if (verificationPattern) {
                         const matches = mol.get_substruct_match(verificationPattern);
                         if (!matches || matches === "{}") {
-                            console.log(`🚫 过滤不匹配的分子: ${s}`);
                             return false;
                         }
                     }
@@ -270,7 +344,6 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
                 }
             });
             
-            // 清理验证模式
             if (verificationPattern && typeof verificationPattern.delete === "function") {
                 verificationPattern.delete();
             }
