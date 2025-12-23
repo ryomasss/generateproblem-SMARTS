@@ -480,20 +480,23 @@ export function toggleAnswers() {
 }
 
 /**
- * 渲染反应类型复选框（折叠式分类）
+ * 渲染反应类型复选框（折叠式分类 + 子分类）
  */
 export function renderReactionCheckboxes() {
     const container = document.getElementById("reactionTypes");
     if (!container) return;
     container.innerHTML = "";
 
-    // 按类别分组
+    // 按类别分组，然后按子分类再分组
     const groups = {};
     for (let key in REACTION_DB) {
         const r = REACTION_DB[key];
         const cat = r.category || "other";
-        if (!groups[cat]) groups[cat] = [];
-        groups[cat].push({ key, ...r });
+        const subcat = r.subcategory || "general";
+        
+        if (!groups[cat]) groups[cat] = {};
+        if (!groups[cat][subcat]) groups[cat][subcat] = [];
+        groups[cat][subcat].push({ key, ...r });
     }
 
     const catNames = {
@@ -508,6 +511,114 @@ export function renderReactionCheckboxes() {
         "cycloalkane": "环烷烃反应",
         "acid": "羧酸反应",
         "other": "其他反应"
+    };
+
+    // 子分类名称映射
+    const subcatNames = {
+        // 烯烃
+        "addition_halogen": "🧪 卤素加成",
+        "addition_hx": "🧪 HX加成 (马氏)",
+        "addition_hx_anti": "🧪 HX加成 (反马氏)",
+        "addition_water": "💧 水合反应",
+        "addition_hypohalous": "🧪 次卤酸加成",
+        "addition_conjugate": "🔗 共轭加成",
+        "oxidation_epox": "⭕ 环氧化",
+        "oxidation_diol": "⭕ 邻二醇化",
+        "oxidation_cleavage": "✂️ 氧化断裂",
+        "hydrogenation": "🔘 催化氢化",
+        "substitution_alpha": "🔀 α-氢取代",
+        "hydroboration": "🔷 硼氢化",
+        "polymerization": "🔗 聚合反应",
+        "metathesis": "🔄 复分解",
+        "cycloaddition": "⭕ 环加成",
+        
+        // 炔烃
+        "hydrogenation_full": "🔘 完全氢化",
+        "hydrogenation_lindlar": "🔘 部分氢化 (Lindlar)",
+        "hydration_markov": "💧 水合 (马氏→酮)",
+        "hydration_antimarkov": "💧 水合 (反马氏→醛)",
+        "addition_nucleophilic": "🎯 亲核加成",
+        "oxidation": "⚡ 氧化反应",
+        
+        // 苯环
+        "substitution_halogen": "🧪 卤代反应",
+        "substitution_nitration": "💥 硝化反应",
+        "substitution_sulfonation": "💫 磺化反应",
+        "substitution_fc_alkyl": "🔧 傅-克烷基化",
+        "substitution_fc_acyl": "🔧 傅-克酰基化",
+        "reduction": "⬇️ 还原反应",
+        "sidechain_halogen": "🔗 侧链卤化",
+        "sidechain_oxidation": "🔗 侧链氧化",
+        "phenol_halogenation": "🧪 酚卤代",
+        "phenol_nitration": "💥 酚硝化",
+        "phenol_sulfonation": "💫 酚磺化",
+        "oxidation_quinone": "⭕ 醌化",
+        "phenol_acidity": "🧂 酚酸性",
+        
+        // 羰基
+        "reduction_alcohol": "⬇️ 还原→醇",
+        "reduction_ch2": "⬇️ 还原→CH₂",
+        "addition_hcn": "🎯 HCN加成",
+        "addition_grignard": "🎯 格氏加成",
+        "addition_organolithium": "🎯 有机锂加成",
+        "addition_amine": "🎯 胺加成",
+        "aldol": "🔗 羟醛缩合",
+        "acetal": "🔗 缩醛化",
+        "hydrate": "💧 水合物",
+        "bisulfite": "🧂 亚硫酸氢钠",
+        "enolization": "🔄 烯醇化",
+        "haloform": "🧪 卤仿反应",
+        "rearrangement": "🔀 重排反应",
+        "addition_alkynide": "🎯 炔化物加成",
+        "conjugate_addition": "🔗 共轭加成",
+        
+        // 卤代烃
+        "sn_alcohol": "🎯 SN→醇",
+        "sn_ether": "🎯 SN→醚",
+        "sn_nitrile": "🎯 SN→腈",
+        "sn_amine": "🎯 SN→胺",
+        "elimination": "✂️ 消除反应",
+        "grignard_formation": "🔧 格氏试剂生成",
+        "coupling": "🔗 偶联反应",
+        
+        // 醇
+        "oxidation_aldehyde": "⚡ 氧化→醛",
+        "oxidation_ketone": "⚡ 氧化→酮",
+        "oxidation_acid": "⚡ 氧化→酸",
+        "dehydration_ether": "💨 脱水→醚",
+        "esterification": "🔗 酯化反应",
+        "williamson": "🔧 威廉姆逊合成",
+        "metal_reaction": "🔩 金属反应",
+        "halogenation": "🧪 卤代反应",
+        "tosylation": "🔧 磺酸酯化",
+        
+        // 醚
+        "acid_cleavage": "✂️ 酸断裂",
+        "ring_opening": "⭕ 开环反应",
+        
+        // 羧酸
+        "acyl_chloride": "🧪 酰氯生成",
+        "amide_formation": "🔗 酰胺生成",
+        "decarboxylation": "💨 脱羧反应",
+        "alpha_halogenation": "🧪 α-卤代",
+        
+        // 杂环
+        "nitration": "💥 硝化",
+        "sulfonation": "💫 磺化",
+        "acylation": "🔧 酰基化",
+        "alkylation": "🔧 烷基化",
+        "metallation": "🔩 金属化",
+        
+        // 环烷烃
+        "addition": "🔗 加成反应",
+        "substitution": "🔀 取代反应",
+        
+        // 硫醇
+        "metal_binding": "🔩 金属结合",
+        "disulfide_formation": "🔗 二硫化物",
+        
+        // 通用
+        "general": "📋 通用反应"
     };
 
     const difficultyColors = {
@@ -540,11 +651,15 @@ export function renderReactionCheckboxes() {
     setTimeout(() => {
         document.getElementById("expandAllCategories")?.addEventListener("click", () => {
             document.querySelectorAll(".category-content").forEach(c => c.style.display = "block");
+            document.querySelectorAll(".subcategory-content").forEach(c => c.style.display = "block");
             document.querySelectorAll(".category-header .toggle-icon").forEach(i => i.textContent = "▼");
+            document.querySelectorAll(".subcategory-header .toggle-icon").forEach(i => i.textContent = "▼");
         });
         document.getElementById("collapseAllCategories")?.addEventListener("click", () => {
             document.querySelectorAll(".category-content").forEach(c => c.style.display = "none");
+            document.querySelectorAll(".subcategory-content").forEach(c => c.style.display = "none");
             document.querySelectorAll(".category-header .toggle-icon").forEach(i => i.textContent = "▶");
+            document.querySelectorAll(".subcategory-header .toggle-icon").forEach(i => i.textContent = "▶");
         });
         document.getElementById("selectAllReactions")?.addEventListener("click", () => {
             document.querySelectorAll("#reactionTypes input[type='checkbox']").forEach(c => c.checked = true);
@@ -558,55 +673,118 @@ export function renderReactionCheckboxes() {
         const categoryDiv = document.createElement("div");
         categoryDiv.className = "reaction-category";
         
-        const reactionCount = groups[cat].length;
+        // 计算该分类下的总反应数
+        let totalReactions = 0;
+        for (let subcat in groups[cat]) {
+            totalReactions += groups[cat][subcat].length;
+        }
         
-        // 创建可折叠的标题
+        // 创建可折叠的分类标题
         const header = document.createElement("div");
         header.className = "category-header";
         header.innerHTML = `
             <span class="toggle-icon">▶</span>
             <strong>${catNames[cat] || cat}</strong>
-            <span class="category-count">(${reactionCount}个反应)</span>
+            <span class="category-count">(${totalReactions}个反应)</span>
             <button type="button" class="btn-tiny cat-select-all" data-cat="${cat}">全选</button>
             <button type="button" class="btn-tiny cat-deselect-all" data-cat="${cat}">取消</button>
         `;
         
-        // 创建内容区域（默认折叠）
+        // 创建分类内容区域（默认折叠）
         const content = document.createElement("div");
         content.className = "category-content";
         content.style.display = "none";
         
-        groups[cat].forEach(r => {
-            const label = document.createElement("label");
-            label.className = "reaction-item";
-            label.dataset.difficulty = r.difficulty || 1;
-            label.dataset.category = cat;
+        // 遍历子分类
+        for (let subcat in groups[cat]) {
+            const subcatReactions = groups[cat][subcat];
             
-            const diffLevel = r.difficulty || 1;
-            const diffColor = difficultyColors[diffLevel];
-            const diffStar = difficultyNames[diffLevel];
+            // 创建子分类容器
+            const subcatDiv = document.createElement("div");
+            subcatDiv.className = "reaction-subcategory";
             
-            // 添加反应编号
-            const numberBadge = `<span class="reaction-number">${reactionNumber}</span>`;
+            // 子分类标题
+            const subcatHeader = document.createElement("div");
+            subcatHeader.className = "subcategory-header";
+            subcatHeader.innerHTML = `
+                <span class="toggle-icon">▶</span>
+                <span class="subcategory-name">${subcatNames[subcat] || subcat}</span>
+                <span class="subcategory-count">(${subcatReactions.length})</span>
+                <button type="button" class="btn-tiny subcat-select-all">选</button>
+                <button type="button" class="btn-tiny subcat-deselect-all">消</button>
+            `;
             
-            label.innerHTML = `<input type="checkbox" value="${r.key}" data-difficulty="${diffLevel}" data-category="${cat}" checked /> ${numberBadge}${r.name} <span style="color:${diffColor};font-size:10px;">${diffStar}</span>`;
-            content.appendChild(label);
+            // 子分类内容
+            const subcatContent = document.createElement("div");
+            subcatContent.className = "subcategory-content";
+            subcatContent.style.display = "none";
             
-            reactionNumber++;
-        });
+            subcatReactions.forEach(r => {
+                const label = document.createElement("label");
+                label.className = "reaction-item";
+                label.dataset.difficulty = r.difficulty || 1;
+                label.dataset.category = cat;
+                label.dataset.subcategory = subcat;
+                
+                const diffLevel = r.difficulty || 1;
+                const diffColor = difficultyColors[diffLevel];
+                const diffStar = difficultyNames[diffLevel];
+                
+                const numberBadge = `<span class="reaction-number">${reactionNumber}</span>`;
+                
+                label.innerHTML = `<input type="checkbox" value="${r.key}" data-difficulty="${diffLevel}" data-category="${cat}" data-subcategory="${subcat}" checked /> ${numberBadge}${r.name} <span style="color:${diffColor};font-size:10px;">${diffStar}</span>`;
+                subcatContent.appendChild(label);
+                
+                reactionNumber++;
+            });
+            
+            subcatDiv.appendChild(subcatHeader);
+            subcatDiv.appendChild(subcatContent);
+            content.appendChild(subcatDiv);
+            
+            // 绑定子分类折叠/展开事件
+            subcatHeader.addEventListener("click", (e) => {
+                if (e.target.classList.contains("btn-tiny")) return;
+                
+                const isExpanded = subcatContent.style.display !== "none";
+                subcatContent.style.display = isExpanded ? "none" : "block";
+                subcatHeader.querySelector(".toggle-icon").textContent = isExpanded ? "▶" : "▼";
+            });
+            
+            // 子分类全选/取消按钮
+            subcatHeader.querySelector(".subcat-select-all")?.addEventListener("click", (e) => {
+                e.stopPropagation();
+                subcatContent.querySelectorAll("input[type='checkbox']").forEach(c => c.checked = true);
+            });
+            subcatHeader.querySelector(".subcat-deselect-all")?.addEventListener("click", (e) => {
+                e.stopPropagation();
+                subcatContent.querySelectorAll("input[type='checkbox']").forEach(c => c.checked = false);
+            });
+        }
         
         categoryDiv.appendChild(header);
         categoryDiv.appendChild(content);
         container.appendChild(categoryDiv);
         
-        // 绑定折叠/展开事件
+        // 绑定分类折叠/展开事件
         header.addEventListener("click", (e) => {
-            // 如果点击的是按钮，不触发折叠
             if (e.target.classList.contains("btn-tiny")) return;
             
             const isExpanded = content.style.display !== "none";
             content.style.display = isExpanded ? "none" : "block";
             header.querySelector(".toggle-icon").textContent = isExpanded ? "▶" : "▼";
+            
+            // 性能优化：展开时自动预取该分类下的分子数据
+            if (!isExpanded) {
+                const catKeys = [];
+                for (let subcat in groups[cat]) {
+                    groups[cat][subcat].forEach(r => catKeys.push(r.key));
+                }
+                if (catKeys.length > 0) {
+                    console.log(`📡 自动预取分类 [${cat}] 的分子数据...`);
+                    prepareMoleculePools(catKeys);
+                }
+            }
         });
         
         // 绑定分类全选/取消按钮

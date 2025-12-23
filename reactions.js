@@ -6,6 +6,7 @@
 window.REACTION_DB_EXTENDED = {
   alkene_addition_br2: {
     category: "alkene",
+    subcategory: "addition_halogen",
     name: "烯烃与溴加成",
     difficulty: 1,
     smarts: "[C:1]=[C:2].[Br][Br]>>[C:1]([Br])-[C:2]([Br])",
@@ -20,6 +21,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkene_addition_cl2: {
     category: "alkene",
+    subcategory: "addition_halogen",
     name: "烯烃与氯加成",
     difficulty: 1,
     smarts: "[C:1]=[C:2].[Cl][Cl]>>[C:1]([Cl])-[C:2]([Cl])",
@@ -34,6 +36,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkene_addition_hbr: {
     category: "alkene",
+    subcategory: "addition_hx",
     name: "烯烃与HBr加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2]>>[C:1]-[C:2]([Br])",
@@ -48,6 +51,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkene_addition_h2o: {
     category: "alkene",
+    subcategory: "addition_water",
     name: "烯烃水合反应",
     difficulty: 2,
     smarts: "[C:1]=[C:2]>>[C:1]-[C:2]([OH])",
@@ -62,6 +66,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkene_epoxidation: {
     category: "alkene",
+    subcategory: "oxidation_epox",
     name: "烯烃环氧化",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[O:3][O:4][C:5]>>[C:1]1[C:2][O:3]1",
@@ -76,6 +81,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkene_ozonolysis: {
     category: "alkene",
+    subcategory: "oxidation_cleavage",
     name: "烯烃臭氧氧化分解",
     difficulty: 3,
     smarts: "[C:1]=[C:2]>>[C:1]=O.O=[C:2]",
@@ -89,6 +95,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkene_hydrogenation: {
     category: "alkene",
+    subcategory: "hydrogenation",
     name: "烯烃催化氢化",
     difficulty: 1,
     smarts: "[C:1]=[C:2]>>[C:1]-[C:2]",
@@ -103,6 +110,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkyne_addition_hbr_1: {
     category: "alkyne",
+    subcategory: "addition_hx",
     name: "炔烃与HBr加成 (1eq)",
     difficulty: 2,
     smarts: "[C:1]#[C:2]>>[C:1]([Br])=[C:2]",
@@ -117,6 +125,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkyne_hydration_terminal: {
     category: "alkyne",
+    subcategory: "general",
     name: "末端炔烃水合 (Markovnikov)",
     difficulty: 3,
     smarts: "[CH1:1]#[C:2]>>[C:1](=O)-[C:2]",
@@ -131,6 +140,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkyne_hydrogenation_full: {
     category: "alkyne",
+    subcategory: "hydrogenation_full",
     name: "炔烃完全氢化",
     difficulty: 1,
     smarts: "[C:1]#[C:2]>>[C:1]-[C:2]",
@@ -145,6 +155,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkyne_hydrogenation_lindlar: {
     category: "alkyne",
+    subcategory: "hydrogenation_lindlar",
     name: "炔烃部分氢化 (Lindlar)",
     difficulty: 2,
     smarts: "[C:1]#[C:2]>>[C:1]=[C:2]",
@@ -159,6 +170,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alcohol_oxidation_primary: {
     category: "alcohol",
+    subcategory: "oxidation_aldehyde",
     name: "伯醇氧化为醛",
     difficulty: 2,
     smarts: "[C:1][C:2][O:3]>>[C:1][C:2]=[O:3]",
@@ -172,6 +184,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alcohol_oxidation_secondary: {
     category: "alcohol",
+    subcategory: "oxidation_ketone",
     name: "仲醇氧化为酮",
     difficulty: 2,
     smarts: "[C:1][C:2]([O:3])[C:4]>>[C:1][C:2](=[O:3])[C:4]",
@@ -185,6 +198,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alcohol_dehydration_intra: {
     category: "alcohol",
+    subcategory: "elimination",
     name: "醇分子内脱水 (消除)",
     difficulty: 2,
     smarts: "[C:1][C:2][O:3]>>[C:1]=[C:2]",
@@ -198,6 +212,7 @@ window.REACTION_DB_EXTENDED = {
   },
   williamson_ether: {
     category: "alcohol",
+    subcategory: "williamson",
     name: "威廉姆逊醚合成",
     difficulty: 3,
     smarts: "[C:1][O:2].[C:3][Br:4]>>[C:1][O:2][C:3]",
@@ -213,6 +228,7 @@ window.REACTION_DB_EXTENDED = {
   },
   benzene_halogenation_br: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "苯的溴代",
     difficulty: 1,
     smarts: "[c;H1:1].[Br][Br]>>[c:1][Br]",
@@ -227,6 +243,7 @@ window.REACTION_DB_EXTENDED = {
   },
   benzene_nitration: {
     category: "benzene",
+    subcategory: "substitution_nitration",
     name: "苯的硝化",
     difficulty: 1,
     smarts: "[c;H1:1].[N+](=O)([O-])[O]>>[c:1][N+](=O)[O-]",
@@ -241,6 +258,7 @@ window.REACTION_DB_EXTENDED = {
   },
   benzene_friedel_crafts_alkyl: {
     category: "benzene",
+    subcategory: "substitution_fc_alkyl",
     name: "傅-克烷基化",
     difficulty: 2,
     smarts: "[c;H1:1].[C:2][Cl]>>[c:1][C:2]",
@@ -255,6 +273,7 @@ window.REACTION_DB_EXTENDED = {
   },
   benzene_friedel_crafts_acyl: {
     category: "benzene",
+    subcategory: "substitution_fc_acyl",
     name: "傅-克酰基化",
     difficulty: 2,
     smarts: "[c;H1:1].[C:2](=[O:3])[Cl]>>[c:1][C:2](=[O:3])",
@@ -269,6 +288,7 @@ window.REACTION_DB_EXTENDED = {
   },
   carbonyl_reduction_alcohol: {
     category: "carbonyl",
+    subcategory: "reduction_alcohol",
     name: "醛/酮还原为醇",
     difficulty: 1,
     smarts: "[C:1]=[O:2]>>[C:1][O:2]",
@@ -283,6 +303,7 @@ window.REACTION_DB_EXTENDED = {
   },
   grignard_addition: {
     category: "carbonyl",
+    subcategory: "addition_grignard",
     name: "格氏试剂加成",
     difficulty: 3,
     smarts: "[C:1](=[O:2]).[C:3][Mg]>>[C:1]([OH:2])([C:3])",
@@ -298,6 +319,7 @@ window.REACTION_DB_EXTENDED = {
   },
   aldol_condensation: {
     category: "carbonyl",
+    subcategory: "aldol",
     name: "羟醛缩合 (简化)",
     difficulty: 3,
     smarts: "[C:1][C:2](=O).[C:3][C:4](=O)>>[C:1][C:2](=O)[C:3][C:4](=O)",
@@ -312,6 +334,7 @@ window.REACTION_DB_EXTENDED = {
   },
   esterification: {
     category: "alcohol",
+    subcategory: "esterification",
     name: "酯化反应",
     difficulty: 2,
     smarts: "[C:1](=O)O.[O:2]C>>[C:1](=O)[O:2]C",
@@ -327,6 +350,7 @@ window.REACTION_DB_EXTENDED = {
   },
   alkene_gen_3: {
     category: "alkene",
+    subcategory: "addition_halogen",
     name: "烯烃与碘加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[I][I]>>[C:1]([I])-[C:2]([I])",
@@ -353,10 +377,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "II"
       }
     ],
-    condition: "烯烃与碘加成"
+    condition: "室温"
   },
   alkene_gen_4: {
     category: "alkene",
+    subcategory: "addition_hx",
     name: "烯烃与溴化氢加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[H][Br]>>[C:1][H][C:2][Br]",
@@ -383,10 +408,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Br"
       }
     ],
-    condition: "烯烃与溴化氢加成"
+    condition: "室温"
   },
   alkene_gen_5: {
     category: "alkene",
+    subcategory: "addition_hx",
     name: "烯烃与氯化氢加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[H][Cl]>>[C:1][H][C:2][Cl]",
@@ -413,10 +439,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Cl"
       }
     ],
-    condition: "烯烃与氯化氢加成"
+    condition: "室温"
   },
   alkene_gen_6: {
     category: "alkene",
+    subcategory: "addition_hx",
     name: "烯烃与碘化氢加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[H][I]>>[C:1][H][C:2][I]",
@@ -443,10 +470,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "I"
       }
     ],
-    condition: "烯烃与碘化氢加成"
+    condition: "室温"
   },
   alkene_gen_7: {
     category: "alkene",
+    subcategory: "addition_hypohalous",
     name: "烯烃与次溴酸加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[OH][Br:3]>>[C:1][Br:3][C:2][OH]",
@@ -473,10 +501,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OBr"
       }
     ],
-    condition: "烯烃与次溴酸加成"
+    condition: "室温"
   },
   alkene_gen_8: {
     category: "alkene",
+    subcategory: "addition_hypohalous",
     name: "烯烃与次氯酸加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[OH][Cl:3]>>[C:1][Cl:3][C:2][OH]",
@@ -503,10 +532,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OCl"
       }
     ],
-    condition: "烯烃与次氯酸加成"
+    condition: "室温"
   },
   alkene_gen_9: {
     category: "alkene",
+    subcategory: "addition_hypohalous",
     name: "烯烃与次碘酸加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[OH][I:3]>>[C:1][I:3][C:2][OH]",
@@ -533,10 +563,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OI"
       }
     ],
-    condition: "烯烃与次碘酸加成"
+    condition: "室温"
   },
   alkene_gen_10: {
     category: "alkene",
+    subcategory: "addition_water",
     name: "与水加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[O:3][H:4]>>[C:1](-[H:4])-[C:2]-[O:3]",
@@ -563,10 +594,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "O"
       }
     ],
-    condition: "与水加成"
+    condition: "室温"
   },
   alkene_gen_11: {
     category: "alkene",
+    subcategory: "addition_water",
     name: "烯烃与硫酸加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[O:3]([O]=)S(=[O])[O:4][H]>>[C:1][C:2][O:3]([O]=)S(=[O])([O:4])[H]",
@@ -593,10 +625,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烯烃与硫酸加成"
+    condition: "室温"
   },
   alkene_gen_12: {
     category: "alkene",
+    subcategory: "general",
     name: "alkene 反应 12",
     difficulty: 2,
     smarts: "C=C.O=S(=O)(O)O>>CC-O-S(=O)(=O)O",
@@ -623,10 +656,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "alkene 反应 12"
+    condition: "室温"
   },
   alkene_gen_13: {
     category: "alkene",
+    subcategory: "addition_hx_anti",
     name: "自由基加成反应（反马氏规则）",
     difficulty: 2,
     smarts: "[C:1][C:2]=[C:3].[Br:4][H:5]>>[C:1][C:2][H:5][C:3][Br:4]",
@@ -653,10 +687,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Br"
       }
     ],
-    condition: "自由基加成反应（反马氏规则）"
+    condition: "室温"
   },
   alkene_gen_14: {
     category: "alkene",
+    subcategory: "substitution_alpha",
     name: "a氢的卤化",
     difficulty: 2,
     smarts: "[C:1][C:2]=[C:3].[Cl][Cl]>>[Cl][C:1][C:2]=[C:3]",
@@ -683,10 +718,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "a氢的卤化"
+    condition: "室温"
   },
   alkene_gen_16: {
     category: "alkene",
+    subcategory: "oxidation_diol",
     name: "烯烃氧化为邻二醇",
     difficulty: 2,
     smarts: "[C:1]=[C:2]>>[C:1]([OH])-[C:2]([OH])",
@@ -705,10 +741,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烯烃氧化为邻二醇"
+    condition: "室温"
   },
   alkene_gen_18: {
     category: "alkene",
+    subcategory: "hydrogenation",
     name: "硼氢化反应",
     difficulty: 2,
     smarts: "[C:1]=[C:2]>>[C:1][H][C:2][B]",
@@ -727,10 +764,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "硼氢化反应"
+    condition: "室温"
   },
   alkene_gen_20: {
     category: "alkene",
+    subcategory: "polymerization",
     name: "聚合反应",
     difficulty: 2,
     smarts: "[C:1]=[C:2]>>-[C:1]-[C:2]-",
@@ -749,10 +787,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "聚合反应"
+    condition: "室温"
   },
   alkene_gen_21: {
     category: "alkene",
+    subcategory: "metathesis",
     name: "烯烃复分解反应",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[C:3]=[C:4]>>[C:1]=[C:3].[C:2]=[C:4]",
@@ -771,10 +810,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烯烃复分解反应"
+    condition: "室温"
   },
   alkene_gen_22: {
     category: "alkene",
+    subcategory: "addition_conjugate",
     name: "共轭加成(1,2-加成)",
     difficulty: 2,
     smarts: "[C:1]=[C:2]-[C:3]=[C:4]>>[C:1][Br]-[C:2]=[C:3]-[C:4][Br]",
@@ -793,10 +833,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "共轭加成(1,2-加成)"
+    condition: "室温"
   },
   alkene_gen_23: {
     category: "alkene",
+    subcategory: "addition_conjugate",
     name: "共轭加成(1,4-加成)",
     difficulty: 2,
     smarts: "[C:1]=[C:2]-[C:3]=[C:4]>>[C:1][Br]-[C:2]-[C:3]=[C:4][Br]",
@@ -815,10 +856,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "共轭加成(1,4-加成)"
+    condition: "室温"
   },
   alkyne_gen_1: {
     category: "alkyne",
+    subcategory: "addition_hx",
     name: "与HBr加成（马氏规则）内部炔烃",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[H:3][Br:4]>>[C:1]([Br:4])=[C:2][H:3]",
@@ -845,10 +887,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Br"
       }
     ],
-    condition: "与HBr加成（马氏规则）内部炔烃"
+    condition: "室温"
   },
   alkyne_gen_2: {
     category: "alkyne",
+    subcategory: "addition_hx",
     name: "与HBr加成（马氏规则）末端炔烃",
     difficulty: 2,
     smarts: "[C;H1:1]#[C:2].[H:3][Br:4]>>[C:1]([H:3])=[C:2][Br:4]",
@@ -875,10 +918,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Br"
       }
     ],
-    condition: "与HBr加成（马氏规则）末端炔烃"
+    condition: "室温"
   },
   alkyne_gen_3: {
     category: "alkyne",
+    subcategory: "general",
     name: "alkyne 反应 3",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[H][Br][H][Br]>>[C:1][C:2]([Br])([Br])",
@@ -905,10 +949,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "alkyne 反应 3"
+    condition: "室温"
   },
   alkyne_gen_4: {
     category: "alkyne",
+    subcategory: "hydration_antimarkov",
     name: "与水加成 末端炔烃生成醛",
     difficulty: 2,
     smarts: "[C;H1:1]#[C:2].[O:3][H:4]>>[C:1](=[O:3])-[C:2]([H:4])",
@@ -935,10 +980,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "O"
       }
     ],
-    condition: "与水加成 末端炔烃生成醛"
+    condition: "室温"
   },
   alkyne_gen_5: {
     category: "alkyne",
+    subcategory: "hydration_markov",
     name: "与水加成 内部炔烃生成酮",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[O:3][H:4]>>[C:1](=[O:3])-[C:2]",
@@ -965,10 +1011,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "O"
       }
     ],
-    condition: "与水加成 内部炔烃生成酮"
+    condition: "室温"
   },
   alkyne_gen_6: {
     category: "alkyne",
+    subcategory: "addition_halogen",
     name: "溴加成(反式加成,第一步)",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[Br:3][Br:4]>>[C:1]([Br:3])=[C:2]([Br:4])",
@@ -995,10 +1042,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "溴加成(反式加成,第一步)"
+    condition: "室温"
   },
   alkyne_gen_7: {
     category: "alkyne",
+    subcategory: "addition_halogen",
     name: "溴加成第二步",
     difficulty: 2,
     smarts: "[C:1]([Br:3])=[C:2]([Br:4]).[Br:5][Br:6]>>[C:1]([Br:3])([Br:5])-[C:2]([Br:4])([Br:6])",
@@ -1025,10 +1073,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "溴加成第二步"
+    condition: "室温"
   },
   alkyne_gen_8: {
     category: "alkyne",
+    subcategory: "general",
     name: "alkyne 反应 8",
     difficulty: 2,
     smarts: "[C:1][C:2]#[C:3].[H:4][Br:5]>>[C:1][C:2]([H:4])=[C:3]([Br:5])",
@@ -1055,10 +1104,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Br"
       }
     ],
-    condition: "alkyne 反应 8"
+    condition: "室温"
   },
   alkyne_gen_9: {
     category: "alkyne",
+    subcategory: "general",
     name: "alkyne 反应 9",
     difficulty: 2,
     smarts: "[C:1][C:2]#[C:3].[H:4][Br:5][H:6][Br:7]>>[C:1][C:2]([H:4])([Br:7])[C:3]([H:6])([Br:5])",
@@ -1085,10 +1135,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "alkyne 反应 9"
+    condition: "室温"
   },
   alkyne_gen_10: {
     category: "alkyne",
+    subcategory: "addition_nucleophilic",
     name: "与氢氰酸亲核加成",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[H:3][C:4]#[N:5]>>[C:1]=[C:2][C:4]#[N:5]",
@@ -1115,10 +1166,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与氢氰酸亲核加成"
+    condition: "室温"
   },
   alkyne_gen_11: {
     category: "alkyne",
+    subcategory: "general",
     name: "在强碱(如KOH或NaOH)催化下",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[C:3][C:4][O:5]>>[C:1]=[C:2][O:5][C:4][C:3]",
@@ -1145,10 +1197,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "在强碱(如KOH或NaOH)催化下"
+    condition: "室温"
   },
   alkyne_gen_12: {
     category: "alkyne",
+    subcategory: "oxidation",
     name: "高锰酸钾（KMnO₄）氧化末端炔烃",
     difficulty: 2,
     smarts: "[C;H1:1]#[C:2]>>[C:1](=O)[OH].[C:2](=O)[OH]",
@@ -1167,10 +1220,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "高锰酸钾（KMnO₄）氧化末端炔烃"
+    condition: "室温"
   },
   alkyne_gen_13: {
     category: "alkyne",
+    subcategory: "oxidation",
     name: "高锰酸钾（KMnO₄）氧化内部炔烃",
     difficulty: 2,
     smarts: "[C:1]#[C:2]>>[C:1](=O)[OH].[C:2](=O)[OH]",
@@ -1189,10 +1243,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "高锰酸钾（KMnO₄）氧化内部炔烃"
+    condition: "室温"
   },
   alkyne_gen_15: {
     category: "alkyne",
+    subcategory: "hydrogenation_full",
     name: "完全加氢(生成烷烃)",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[H][H][H][H]>>[C:1]([H])([H])-[C:2]([H])([H])",
@@ -1219,10 +1274,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "完全加氢(生成烷烃)"
+    condition: "室温"
   },
   alkyne_gen_16: {
     category: "alkyne",
+    subcategory: "hydrogenation_lindlar",
     name: "部分加氢(顺式加成,Lindlar催化剂)",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[H][H]>>([H])/[C:1]=[C:2]\\([H])",
@@ -1249,10 +1305,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[H][H]"
       }
     ],
-    condition: "部分加氢(顺式加成,Lindlar催化剂)"
+    condition: "室温"
   },
   alkyne_gen_17: {
     category: "alkyne",
+    subcategory: "hydration_antimarkov",
     name: "硼氢化-氧化反应 对于末端炔烃（生成醛）",
     difficulty: 2,
     smarts: "[C;H1:1]#[C:2]>>[C:1](=O)-[C:2]",
@@ -1271,10 +1328,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "硼氢化-氧化反应 对于末端炔烃（生成醛）"
+    condition: "室温"
   },
   alkyne_gen_18: {
     category: "alkyne",
+    subcategory: "polymerization",
     name: "二聚反应",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[C:3]#[C:4]>>[C:1]=[C:2][C:3]#[C:4]",
@@ -1293,10 +1351,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "二聚反应"
+    condition: "室温"
   },
   alkyne_gen_19: {
     category: "alkyne",
+    subcategory: "polymerization",
     name: "三聚反应",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[C:3]#[C:4].[C:5]#[C:6]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
@@ -1315,10 +1374,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "三聚反应"
+    condition: "室温"
   },
   alkyne_gen_20: {
     category: "alkyne",
+    subcategory: "polymerization",
     name: "四聚反应",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[C:3]#[C:4].[C:5]#[C:6].[C:7]#[C:8]>>[C:1]1=[C:2][C:3]=[C:4][C:5]=[C:6][C:7]=[C:8]1",
@@ -1337,10 +1397,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "四聚反应"
+    condition: "室温"
   },
   alcohol_gen_1: {
     category: "alcohol",
+    subcategory: "metal_reaction",
     name: "与钠反应",
     difficulty: 2,
     smarts: "[C:1][O:2].[Na:3]>>[C:1][O-:2].[Na+:3].[H][H]",
@@ -1367,10 +1428,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[Na]"
       }
     ],
-    condition: "与钠反应"
+    condition: "室温"
   },
   alcohol_gen_3: {
     category: "alcohol",
+    subcategory: "oxidation_acid",
     name: "伯醇→羧酸",
     difficulty: 2,
     smarts: "[C:1][C:2][O:3]>>[C:1][C:2](=[O:3])[O]",
@@ -1389,10 +1451,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "伯醇→羧酸"
+    condition: "室温"
   },
   alcohol_gen_5: {
     category: "alcohol",
+    subcategory: "elimination",
     name: "分子内脱水（消除反应）",
     difficulty: 2,
     smarts: "[C:1][C:2][O:3]>>[C:1]=[C:2].[O:3]",
@@ -1411,10 +1474,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "分子内脱水（消除反应）"
+    condition: "室温"
   },
   alcohol_gen_6: {
     category: "alcohol",
+    subcategory: "dehydration_ether",
     name: "分子间脱水(生成醚)",
     difficulty: 2,
     smarts: "[C:1][O:2].[CH:3][O:4]>>[C:1][O:2][C:3].[O:4]",
@@ -1441,10 +1505,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "分子间脱水(生成醚)"
+    condition: "室温"
   },
   alcohol_gen_7: {
     category: "alcohol",
+    subcategory: "general",
     name: "alcohol 反应 7",
     difficulty: 2,
     smarts: "[C:1][O:2].[C:3](=[O:4])[O:5]>>[C:3](=[O:4])[O:2][C:1].[O:5]",
@@ -1471,10 +1536,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "alcohol 反应 7"
+    condition: "室温"
   },
   alcohol_gen_8: {
     category: "alcohol",
+    subcategory: "esterification",
     name: "酚的酯化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[C:8][C:9](=O)[O:10]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7][C:9](=O)[C:8].[O:10]",
@@ -1501,10 +1567,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酚的酯化反应"
+    condition: "室温"
   },
   alcohol_gen_9: {
     category: "alcohol",
+    subcategory: "halogenation",
     name: "与HX反应",
     difficulty: 2,
     smarts: "[C:1][O:2].[Br:3]>>[C:1][Br:3].[O:2]",
@@ -1531,10 +1598,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与HX反应"
+    condition: "室温"
   },
   alcohol_gen_10: {
     category: "alcohol",
+    subcategory: "halogenation",
     name: "与SOCl₂反应",
     difficulty: 2,
     smarts: "[C:1][O:2].[S:3](=[O:4])([Cl:5])([Cl:6])>>[C:1][Cl:6].[S:3](=[O:4])(=[O]).[Cl:5]",
@@ -1561,10 +1629,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与SOCl₂反应"
+    condition: "室温"
   },
   alcohol_gen_11: {
     category: "alcohol",
+    subcategory: "dehydration_ether",
     name: "烷氧基负离子与卤代烃反应生成醚",
     difficulty: 2,
     smarts: "[C:1][O-:2].[C:3][Br:4]>>[C:1][O:2][C:3].[Br-:4]",
@@ -1591,10 +1660,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烷氧基负离子与卤代烃反应生成醚"
+    condition: "室温"
   },
   alcohol_gen_12: {
     category: "alcohol",
+    subcategory: "halogenation",
     name: "与卤化磷反应转化为卤代烃",
     difficulty: 2,
     smarts: "[C:1][O:2].[P:3]([Cl:4])([Cl:5])[Cl:6]>>[C:1][Cl:4].[P:3](=[O:2])([Cl:5])[Cl:6]",
@@ -1621,10 +1691,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与卤化磷反应转化为卤代烃"
+    condition: "室温"
   },
   alcohol_gen_13: {
     category: "alcohol",
+    subcategory: "tosylation",
     name: "生成磺酸酯和氯化氢",
     difficulty: 2,
     smarts: "[CX4:1][O:2][H].[C:3][S:4](=[O])(=[O])[Cl:5]>>[CX4:1][O:2][S:4](=[O])(=[O])[C:3]+[H][Cl:5]",
@@ -1651,10 +1722,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "生成磺酸酯和氯化氢"
+    condition: "室温"
   },
   thiol_gen_1: {
     category: "thiol",
+    subcategory: "metal_binding",
     name: "硫醇与重金属反应（解毒应用）",
     difficulty: 2,
     smarts: "[S:1][H:2].[Hg:3]>>[S:1][Hg:3].[H:2]",
@@ -1681,10 +1753,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[Hg]"
       }
     ],
-    condition: "硫醇与重金属反应（解毒应用）"
+    condition: "室温"
   },
   thiol_gen_2: {
     category: "thiol",
+    subcategory: "disulfide_formation",
     name: "硫醇在稀过氧化氢/碘/空气作用下生成二硫化物",
     difficulty: 2,
     smarts: "[S:1][H:2].[S:3][H:4]>>[S:1]-[S:3].[H:2][H:4]",
@@ -1703,10 +1776,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "硫醇在稀过氧化氢/碘/空气作用下生成二硫化物"
+    condition: "室温"
   },
   ether_gen_1: {
     category: "ether",
+    subcategory: "oxidation",
     name: "醚氧化成酮",
     difficulty: 2,
     smarts: "[C:1]-[O:2]-[C:3]>>[C:1](=O)-[C:3]",
@@ -1725,10 +1799,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "醚氧化成酮"
+    condition: "室温"
   },
   ether_gen_2: {
     category: "ether",
+    subcategory: "general",
     name: "ether 反应 2",
     difficulty: 2,
     smarts: "[C:1]-[O:2]-[C:3].[C:4][X:5]>>[C:1]-[O:2]-[C:4].[C:3][X:5]",
@@ -1755,10 +1830,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "ether 反应 2"
+    condition: "室温"
   },
   ether_gen_3: {
     category: "ether",
+    subcategory: "general",
     name: "酸性条件下与水反应生成两种醇",
     difficulty: 2,
     smarts: "[C:1]-[O:2]-[C:3].[H:4][O:5][H:6]>>[C:1]-[O:5][H:6].[C:3]-[O:5][H:4]",
@@ -1785,10 +1861,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酸性条件下与水反应生成两种醇"
+    condition: "室温"
   },
   ether_gen_4: {
     category: "ether",
+    subcategory: "ring_opening",
     name: "与水在酸催化下反应生成乙二醇",
     difficulty: 2,
     smarts: "[C:1]1-[O:2]-[C:3]1.[OH2]>>[C:1]([OH])-[O:2]-[C:3][OH]",
@@ -1815,10 +1892,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "O"
       }
     ],
-    condition: "与水在酸催化下反应生成乙二醇"
+    condition: "室温"
   },
   ether_gen_5: {
     category: "ether",
+    subcategory: "general",
     name: "在碱性条件下与氰化物反应",
     difficulty: 2,
     smarts: "[C:1]1-[O:2]-[C;H2,H1:3]1.[C-:4]#[N]>>[C:1]([O:2])-[C:3]-[C:4]#[N]",
@@ -1845,10 +1923,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[C-]#N"
       }
     ],
-    condition: "在碱性条件下与氰化物反应"
+    condition: "室温"
   },
   benzene_gen_1: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "卤代反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[Br][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[Br].[Br]",
@@ -1875,10 +1954,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "卤代反应"
+    condition: "室温"
   },
   benzene_gen_2: {
     category: "benzene",
+    subcategory: "general",
     name: "benzene 反应 2",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[Cl].[Cl]#卤代反应",
@@ -1905,10 +1985,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "benzene 反应 2"
+    condition: "室温"
   },
   benzene_gen_3: {
     category: "benzene",
+    subcategory: "substitution_nitration",
     name: "硝化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[N+](=O)([O-])[O:7]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[N+](=O)[O-].[O:7]",
@@ -1935,10 +2016,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "O[N+](=O)[O-]"
       }
     ],
-    condition: "硝化反应"
+    condition: "室温"
   },
   benzene_gen_4: {
     category: "benzene",
+    subcategory: "substitution_sulfonation",
     name: "磺化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[S](=O)(=O)O",
@@ -1965,10 +2047,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OS(=O)(=O)O"
       }
     ],
-    condition: "磺化反应"
+    condition: "室温"
   },
   benzene_gen_5: {
     category: "benzene",
+    subcategory: "substitution_fc_alkyl",
     name: "烷基化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8][Br:9]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Br]",
@@ -1995,10 +2078,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烷基化反应"
+    condition: "室温"
   },
   benzene_gen_6: {
     category: "benzene",
+    subcategory: "substitution_fc_alkyl",
     name: "烷基化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8][Cl:9]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Cl]",
@@ -2025,10 +2109,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烷基化反应"
+    condition: "室温"
   },
   benzene_gen_7: {
     category: "benzene",
+    subcategory: "substitution_fc_acyl",
     name: "酰基化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8](=O)[Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:8](=O)[C:7].[Cl]",
@@ -2055,10 +2140,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酰基化反应"
+    condition: "室温"
   },
   benzene_gen_8: {
     category: "benzene",
+    subcategory: "substitution_fc_acyl",
     name: "酰基化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8](=O)[Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:8](=O)[C:7].[Br]",
@@ -2085,10 +2171,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酰基化反应"
+    condition: "室温"
   },
   benzene_gen_9: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "苯酚的溴代反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Br][Br]>>[c:1]1[c:2][c:3]([Br])[c:4][c:5][c:6]1[O].[Br]",
@@ -2115,10 +2202,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "苯酚的溴代反应"
+    condition: "室温"
   },
   benzene_gen_10: {
     category: "benzene",
+    subcategory: "general",
     name: "benzene 反应 10",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Br][Br].[Br][Br].[Br][Br]>>[c:1]1([Br])[c:2][c:3]([Br])[c:4][c:5]([Br])[c:6]1[O].[Br][Br][Br]",
@@ -2145,10 +2233,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "benzene 反应 10"
+    condition: "室温"
   },
   benzene_gen_11: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "苯酚的氯代反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Cl][Cl]>>[c:1]1[c:2][c:3]([Cl])[c:4][c:5][c:6]1[O].[Cl]",
@@ -2175,10 +2264,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "苯酚的氯代反应"
+    condition: "室温"
   },
   benzene_gen_12: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "苯酚的碘代反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[I][I]>>[c:1]1[c:2][c:3]([I])[c:4][c:5][c:6]1[O].[I]",
@@ -2205,10 +2295,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "II"
       }
     ],
-    condition: "苯酚的碘代反应"
+    condition: "室温"
   },
   benzene_gen_13: {
     category: "benzene",
+    subcategory: "substitution_nitration",
     name: "CHCI3 ;15℃苯酚的硝化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[N+](=O)[O-]>>[c:1]1[c:2][c:3]([N+](=O)[O-])[c:4][c:5][c:6]1[O:7]",
@@ -2235,10 +2326,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[N+](=O)[O-]"
       }
     ],
-    condition: "CHCI3 ;15℃苯酚的硝化反应"
+    condition: "室温"
   },
   benzene_gen_14: {
     category: "benzene",
+    subcategory: "general",
     name: "低极性溶剂 ; 25℃,HONO2(20%)",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4][c:5]([N+](=O)[O-])[c:6]1[O:7]",
@@ -2265,10 +2357,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[N+](=O)[O-]"
       }
     ],
-    condition: "低极性溶剂 ; 25℃,HONO2(20%)"
+    condition: "室温"
   },
   benzene_gen_15: {
     category: "benzene",
+    subcategory: "substitution_sulfonation",
     name: "磺化反应浓H2SO4 ; 25℃",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4][c:5]([S](=O)(=O)O)[c:6]1[O:7]",
@@ -2295,10 +2388,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OS(=O)(=O)O"
       }
     ],
-    condition: "磺化反应浓H2SO4 ; 25℃"
+    condition: "室温"
   },
   benzene_gen_16: {
     category: "benzene",
+    subcategory: "substitution_sulfonation",
     name: "磺化反应浓H2SO4 ; 100℃",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[S](=O)(=O)O>>[c:1]1[c:2][c:3]([S](=O)(=O)O)[c:4][c:5][c:6]1[O:7]",
@@ -2325,10 +2419,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OS(=O)(=O)O"
       }
     ],
-    condition: "磺化反应浓H2SO4 ; 100℃"
+    condition: "室温"
   },
   benzene_gen_17: {
     category: "benzene",
+    subcategory: "general",
     name: "H2SO4 ; 30℃",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7].[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4][c:5]([N+](=O)[O-])[c:6]1[C:7]",
@@ -2355,10 +2450,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[N+](=O)[O-]"
       }
     ],
-    condition: "H2SO4 ; 30℃"
+    condition: "室温"
   },
   benzene_gen_18: {
     category: "benzene",
+    subcategory: "general",
     name: "发烟HNO3 ; H2SO4 ; 90-100℃",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[N+](=O)[O-].[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4]([N+](=O)[O-])[c:5][c:6]1[N+](=O)[O-]",
@@ -2385,10 +2481,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[N+](=O)[O-]"
       }
     ],
-    condition: "发烟HNO3 ; H2SO4 ; 90-100℃"
+    condition: "室温"
   },
   benzene_gen_19: {
     category: "benzene",
+    subcategory: "general",
     name: "萘FeCl3;加热",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[Cl][Cl]>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[Cl].[Cl]",
@@ -2415,10 +2512,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "萘FeCl3;加热"
+    condition: "室温"
   },
   benzene_gen_20: {
     category: "benzene",
+    subcategory: "general",
     name: "萘FeCl3;加热",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[Br][Br]>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[Br].[Br]",
@@ -2445,10 +2543,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "萘FeCl3;加热"
+    condition: "室温"
   },
   benzene_gen_21: {
     category: "benzene",
+    subcategory: "general",
     name: "benzene 反应 21",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[N+](=O)[O-]",
@@ -2475,10 +2574,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[N+](=O)[O-]"
       }
     ],
-    condition: "benzene 反应 21"
+    condition: "室温"
   },
   benzene_gen_22: {
     category: "benzene",
+    subcategory: "general",
     name: "benzene 反应 22",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[S](=O)(=O)O",
@@ -2505,10 +2605,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OS(=O)(=O)O"
       }
     ],
-    condition: "benzene 反应 22"
+    condition: "室温"
   },
   benzene_gen_23: {
     category: "benzene",
+    subcategory: "general",
     name: "benzene 反应 23",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[S](=O)(=O)O>>[c:1]1([S](=O)(=O)O)[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
@@ -2535,10 +2636,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OS(=O)(=O)O"
       }
     ],
-    condition: "benzene 反应 23"
+    condition: "室温"
   },
   benzene_gen_24: {
     category: "benzene",
+    subcategory: "reduction",
     name: "苯在Ni/Pt/Pd/Ru/Rh催化作用下与氢气反应生成环己烷",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1>>[C:1]1[C:2][C:3][C:4][C:5][C:6]1",
@@ -2557,10 +2659,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "苯在Ni/Pt/Pd/Ru/Rh催化作用下与氢气反应生成环己烷"
+    condition: "室温"
   },
   benzene_gen_25: {
     category: "benzene",
+    subcategory: "general",
     name: "H2,Pd/C",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1>>[C:1]1[C:2][C:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[C:10]1",
@@ -2579,10 +2682,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "H2,Pd/C"
+    condition: "室温"
   },
   benzene_gen_27: {
     category: "benzene",
+    subcategory: "sidechain_halogen",
     name: "在光照或加热条件下",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Br][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8].[Br]",
@@ -2609,10 +2713,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "在光照或加热条件下"
+    condition: "室温"
   },
   benzene_gen_28: {
     category: "benzene",
+    subcategory: "sidechain_halogen",
     name: "在光照或加热条件下",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8].[Cl]",
@@ -2639,10 +2744,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "在光照或加热条件下"
+    condition: "室温"
   },
   benzene_gen_29: {
     category: "benzene",
+    subcategory: "general",
     name: "与HX反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9].[H][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8][C:9]",
@@ -2669,10 +2775,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Br"
       }
     ],
-    condition: "与HX反应"
+    condition: "室温"
   },
   benzene_gen_30: {
     category: "benzene",
+    subcategory: "general",
     name: "与HX反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9].[H][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8][C:9]",
@@ -2699,10 +2806,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Cl"
       }
     ],
-    condition: "与HX反应"
+    condition: "室温"
   },
   benzene_gen_31: {
     category: "benzene",
+    subcategory: "general",
     name: "与X2反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8][Cl]",
@@ -2729,10 +2837,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "与X2反应"
+    condition: "室温"
   },
   benzene_gen_32: {
     category: "benzene",
+    subcategory: "general",
     name: "与X2反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[Br][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8][Br]",
@@ -2759,10 +2868,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "与X2反应"
+    condition: "室温"
   },
   benzene_gen_33: {
     category: "benzene",
+    subcategory: "general",
     name: "与HX反应(马氏规则)",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[H][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8]",
@@ -2789,10 +2899,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Cl"
       }
     ],
-    condition: "与HX反应(马氏规则)"
+    condition: "室温"
   },
   benzene_gen_34: {
     category: "benzene",
+    subcategory: "general",
     name: "与HX反应(马氏规则)",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[H][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8]",
@@ -2819,10 +2930,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Br"
       }
     ],
-    condition: "与HX反应(马氏规则)"
+    condition: "室温"
   },
   benzene_gen_35: {
     category: "benzene",
+    subcategory: "general",
     name: "在H₂SO₄催化下",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[OH2:9]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([OH:9])[C:8]",
@@ -2849,10 +2961,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "O"
       }
     ],
-    condition: "在H₂SO₄催化下"
+    condition: "室温"
   },
   benzene_gen_36: {
     category: "benzene",
+    subcategory: "general",
     name: "与次氯酸的加成",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[H][O][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([OH])[C:8][Cl]",
@@ -2879,10 +2992,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与次氯酸的加成"
+    condition: "室温"
   },
   benzene_gen_37: {
     category: "benzene",
+    subcategory: "sidechain_oxidation",
     name: "在重铬酸钾等强氧化剂的氧化下",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)O",
@@ -2901,10 +3015,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "在重铬酸钾等强氧化剂的氧化下"
+    condition: "室温"
   },
   benzene_gen_38: {
     category: "benzene",
+    subcategory: "oxidation_quinone",
     name: "用K2Cr2O7 ; H2SO4作氧化剂生成对苯醌",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O]>>[C:1]1=[C:2][C:3](=[O])[C:4]=[C:5][C:6]1=[O]",
@@ -2923,10 +3038,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "用K2Cr2O7 ; H2SO4作氧化剂生成对苯醌"
+    condition: "室温"
   },
   benzene_gen_39: {
     category: "benzene",
+    subcategory: "general",
     name: "Ag2O ; 无水乙醚",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4]([O])[c:5][c:6]1[O]>>[C:1]1=[C:2][C:3]=[C:4][C:5](=[O])[C:6]1=[O]",
@@ -2945,10 +3061,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "Ag2O ; 无水乙醚"
+    condition: "室温"
   },
   benzene_gen_40: {
     category: "benzene",
+    subcategory: "general",
     name: "Na2Cr2O7 ; H2SO4,94%",
     difficulty: 2,
     smarts: "[c:1]1[c:2][O][c:3][c:4][c:5][c:6]1[O]>>[C:1]1=[C:2][C:3](=[O])[C:4]=[C:5][C:6]1=[O]",
@@ -2967,10 +3084,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "Na2Cr2O7 ; H2SO4,94%"
+    condition: "室温"
   },
   benzene_gen_41: {
     category: "benzene",
+    subcategory: "general",
     name: "生成",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Na+].[OH-]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O][Na+].O",
@@ -3005,10 +3123,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[OH-]"
       }
     ],
-    condition: "生成"
+    condition: "室温"
   },
   benzene_gen_42: {
     category: "benzene",
+    subcategory: "general",
     name: "CrO3,CH3COOH,25℃",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1>>[C:1]1[C:2][C:3](=O)[c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[C:10]1(=O)",
@@ -3027,10 +3146,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "CrO3,CH3COOH,25℃"
+    condition: "室温"
   },
   carbonyl_gen_1: {
     category: "carbonyl",
+    subcategory: "addition_hcn",
     name: "醛与氢氰酸的加成",
     difficulty: 2,
     smarts: "[C:1](=O)[H].[C:2]#[N:3]>>[C:1]([OH])[C:2]([N:3])",
@@ -3057,10 +3177,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "醛与氢氰酸的加成"
+    condition: "室温"
   },
   carbonyl_gen_2: {
     category: "carbonyl",
+    subcategory: "addition_hcn",
     name: "酮与氢氰酸的加成",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[C:4]#[N:5]>>[C:1][C:2]([OH])([C:4][N:5])[C:3]",
@@ -3087,10 +3208,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酮与氢氰酸的加成"
+    condition: "室温"
   },
   carbonyl_gen_3: {
     category: "carbonyl",
+    subcategory: "addition_grignard",
     name: "醛与格氏试剂加成,无水醚",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[H].[C:3][Mg]([X])>>[C:1][C:2]([O][Mg]([X]))[C:3]",
@@ -3117,10 +3239,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "醛与格氏试剂加成,无水醚"
+    condition: "室温"
   },
   carbonyl_gen_4: {
     category: "carbonyl",
+    subcategory: "addition_grignard",
     name: "醛与格氏试剂加成,H2O",
     difficulty: 2,
     smarts: "[C:1][C:2]([O][Mg]([X]))[C:3]>>[C:1][C:2]([OH])[C:3]",
@@ -3139,10 +3262,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "醛与格氏试剂加成,H2O"
+    condition: "室温"
   },
   carbonyl_gen_5: {
     category: "carbonyl",
+    subcategory: "addition_grignard",
     name: "酮与格氏试剂加成,无水醚",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][Mg]([X])>>[C:1][C:2]([O][Mg]([X]))([C:4])[C:3]",
@@ -3169,10 +3293,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酮与格氏试剂加成,无水醚"
+    condition: "室温"
   },
   carbonyl_gen_6: {
     category: "carbonyl",
+    subcategory: "addition_grignard",
     name: "酮与格氏试剂加成,H2O",
     difficulty: 2,
     smarts: "[C:1][C:2]([O][Mg]([X]))([C:4])[C:3]>>[C:1][C:2]([OH])([C:4])[C:3]",
@@ -3191,10 +3316,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酮与格氏试剂加成,H2O"
+    condition: "室温"
   },
   carbonyl_gen_7: {
     category: "carbonyl",
+    subcategory: "addition_organolithium",
     name: "醛与有机锂试剂加成,无水醚",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[H].[C:3][Li]>>[C:1][C:2]([O][Li])[C:3]",
@@ -3221,10 +3347,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "醛与有机锂试剂加成,无水醚"
+    condition: "室温"
   },
   carbonyl_gen_8: {
     category: "carbonyl",
+    subcategory: "addition_organolithium",
     name: "醛与有机锂试剂加成, H2O",
     difficulty: 2,
     smarts: "[C:1][C:2]([O][Li])[C:3]>>[C:1][C:2]([OH])[C:3]",
@@ -3243,10 +3370,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "醛与有机锂试剂加成, H2O"
+    condition: "室温"
   },
   carbonyl_gen_9: {
     category: "carbonyl",
+    subcategory: "addition_organolithium",
     name: "酮与有机锂试剂加成,无水醚",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][Li]>>[C:1][C:2]([O][Li])([C:4])[C:3]",
@@ -3273,10 +3401,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酮与有机锂试剂加成,无水醚"
+    condition: "室温"
   },
   carbonyl_gen_10: {
     category: "carbonyl",
+    subcategory: "addition_organolithium",
     name: "酮与有机锂试剂加成,H2O",
     difficulty: 2,
     smarts: "[C:1][C:2]([O][Li])([C:4])[C:3]>>[C:1][C:2]([OH])([C:4])[C:3]",
@@ -3295,10 +3424,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酮与有机锂试剂加成,H2O"
+    condition: "室温"
   },
   carbonyl_gen_11: {
     category: "carbonyl",
+    subcategory: "general",
     name: "碱性条件下",
     difficulty: 2,
     smarts: "[C:1](=O)[C:2].[Na+][C-:3]#[C:4]>>[C:1]([O-][Na+])([C:2])[C:3]#[C:4]",
@@ -3325,10 +3455,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "碱性条件下"
+    condition: "室温"
   },
   carbonyl_gen_12: {
     category: "carbonyl",
+    subcategory: "general",
     name: "水解反应",
     difficulty: 2,
     smarts: "[C:1]([O-][Na+])([C:2])[C:3]#[C:4].[O]>>[C:1]([OH])([C:2])[C:3]#[C:4].[Na+][OH-]",
@@ -3355,10 +3486,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "水解反应"
+    condition: "室温"
   },
   carbonyl_gen_13: {
     category: "carbonyl",
+    subcategory: "general",
     name: "碱性条件下",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5](=O)[C:6]1.[Na+][C-:7]#[C:8]>>[C:1]1[C:2][C:3][C:4][C:5]([O-][Na+])([C:7]#[C:8])[C:6]1",
@@ -3385,10 +3517,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "碱性条件下"
+    condition: "室温"
   },
   carbonyl_gen_14: {
     category: "carbonyl",
+    subcategory: "general",
     name: "carbonyl 反应 14",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5]([O-][Na+])([C:7]#[C:8])[C:6]1.[O]>>[C:1]1[C:2][C:3][C:4][C:5]([OH])([C:7]#[C:8])[C:6]1.[Na+][OH-]#水解",
@@ -3415,10 +3548,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "carbonyl 反应 14"
+    condition: "室温"
   },
   carbonyl_gen_15: {
     category: "carbonyl",
+    subcategory: "addition_amine",
     name: "醛与一级胺反应H+第一步",
     difficulty: 2,
     smarts: "[C:1](=O)[H].[C:2][NH2]>>[C:1]([OH2])[NH1][C:2]",
@@ -3445,10 +3579,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "醛与一级胺反应H+第一步"
+    condition: "室温"
   },
   carbonyl_gen_16: {
     category: "carbonyl",
+    subcategory: "addition_amine",
     name: "醛与一级胺反应第二步（消除）",
     difficulty: 2,
     smarts: "[C:1]([OH2])[NH1][C:2]>>[C:1]=[N][C:2].[O]",
@@ -3467,10 +3602,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "醛与一级胺反应第二步（消除）"
+    condition: "室温"
   },
   carbonyl_gen_17: {
     category: "carbonyl",
+    subcategory: "addition_amine",
     name: "酮与二级胺反应第一步",
     difficulty: 2,
     smarts: "[C:1](=[O:2])[C:3].[NH1:4]>>[C:1](-[OH2:2])([C:3])-[N:4]",
@@ -3497,10 +3633,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酮与二级胺反应第一步"
+    condition: "室温"
   },
   carbonyl_gen_18: {
     category: "carbonyl",
+    subcategory: "addition_amine",
     name: "酮与二级胺反应第二步（消除）",
     difficulty: 2,
     smarts: "[C:1](-[OH2:2])([C:3])-[N:4]>>[C:3]=[C:1]-[N:4].[O:2]",
@@ -3519,10 +3656,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酮与二级胺反应第二步（消除）"
+    condition: "室温"
   },
   carbonyl_gen_19: {
     category: "carbonyl",
+    subcategory: "addition_amine",
     name: "与胺的衍生物（羟胺）加成后失水",
     difficulty: 2,
     smarts: "[C:1](=O).[NH2:2]-[OH]>>[C:1]=[N:2]-[OH]",
@@ -3549,10 +3687,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与胺的衍生物（羟胺）加成后失水"
+    condition: "室温"
   },
   carbonyl_gen_20: {
     category: "carbonyl",
+    subcategory: "hydrate",
     name: "酸性条件下生成醛水合物",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[H].[O]>>[C:1][C:2]([OH])([OH])[H]",
@@ -3579,10 +3718,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酸性条件下生成醛水合物"
+    condition: "室温"
   },
   carbonyl_gen_21: {
     category: "carbonyl",
+    subcategory: "hydrate",
     name: "酸性条件下生成酮水合物",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[O]>>[C:1][C:2]([OH])([OH])[C:3]",
@@ -3609,10 +3749,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酸性条件下生成酮水合物"
+    condition: "室温"
   },
   carbonyl_gen_22: {
     category: "carbonyl",
+    subcategory: "acetal",
     name: "H+,半缩醛/酮",
     difficulty: 2,
     smarts: "[C:1](=O).[C:2][O:3][H]>>[C:1]([O:3][C:2])[OH]",
@@ -3639,10 +3780,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "H+,半缩醛/酮"
+    condition: "室温"
   },
   carbonyl_gen_23: {
     category: "carbonyl",
+    subcategory: "acetal",
     name: "H+,缩醛/酮",
     difficulty: 2,
     smarts: "[C:1]([O:3][C:2])[OH].[C:4][O:5][H]>>[C:1]([O:3][C:2])[O:5][C:4].[O]",
@@ -3669,10 +3811,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "H+,缩醛/酮"
+    condition: "室温"
   },
   carbonyl_gen_24: {
     category: "carbonyl",
+    subcategory: "bisulfite",
     name: "与亚硫酸氢钠加成",
     difficulty: 2,
     smarts: "[C:1][C:2]=[O:3].[Na+][O-][S](=O)O>>[C:1][C:2]([OH:3])[S]([O-])(=O)O[Na+]",
@@ -3699,10 +3842,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与亚硫酸氢钠加成"
+    condition: "室温"
   },
   cycloalkane_gen_1: {
     category: "cycloalkane",
+    subcategory: "ring_opening",
     name: "催化加氢,Ni,80℃",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3]1.[H][H]>>[C:1][C:2][C:3]",
@@ -3729,10 +3873,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[H][H]"
       }
     ],
-    condition: "催化加氢,Ni,80℃"
+    condition: "室温"
   },
   cycloalkane_gen_2: {
     category: "cycloalkane",
+    subcategory: "ring_opening",
     name: "催化加氢,Ni,120℃",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3][C:4]1.[H][H]>>[C:1][C:2][C:3][C:4]",
@@ -3759,10 +3904,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[H][H]"
       }
     ],
-    condition: "催化加氢,Ni,120℃"
+    condition: "室温"
   },
   cycloalkane_gen_3: {
     category: "cycloalkane",
+    subcategory: "ring_opening",
     name: "催化加氢,Ni,300℃",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5]1.[H][H]>>[C:1][C:2][C:3][C:4][C:5]",
@@ -3789,10 +3935,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[H][H]"
       }
     ],
-    condition: "催化加氢,Ni,300℃"
+    condition: "室温"
   },
   cycloalkane_gen_4: {
     category: "cycloalkane",
+    subcategory: "general",
     name: "cycloalkane 反应 4",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3]1.[Br][Br]>>[C:1]([Br])[C:2][C:3]([Br])",
@@ -3819,10 +3966,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "cycloalkane 反应 4"
+    condition: "室温"
   },
   cycloalkane_gen_5: {
     category: "cycloalkane",
+    subcategory: "general",
     name: "cycloalkane 反应 5",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3][C:4]1.[Br][Br]>>[C:1]([Br])[C:2][C:3][C:4]([Br])",
@@ -3849,10 +3997,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "cycloalkane 反应 5"
+    condition: "室温"
   },
   cycloalkane_gen_6: {
     category: "cycloalkane",
+    subcategory: "general",
     name: "cycloalkane 反应 6",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3]1.[H][Br]>>[C:1][C:2][C:3][Br]",
@@ -3879,10 +4028,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Br"
       }
     ],
-    condition: "cycloalkane 反应 6"
+    condition: "室温"
   },
   cycloalkane_gen_7: {
     category: "cycloalkane",
+    subcategory: "general",
     name: "马氏产物",
     difficulty: 2,
     smarts: "[C:1]([C:4])([C:5])1[C:2][C:3]1.[H][Br]>>[C:1]([Br])([C:4])([C:5])[C:2][C:3]",
@@ -3909,10 +4059,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Br"
       }
     ],
-    condition: "马氏产物"
+    condition: "室温"
   },
   cycloalkane_gen_8: {
     category: "cycloalkane",
+    subcategory: "general",
     name: "cycloalkane 反应 8",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3]1.[Cl][Cl]>>[C:1]1[C:2]([Cl])[C:3]1.[Cl]",
@@ -3939,10 +4090,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "cycloalkane 反应 8"
+    condition: "室温"
   },
   cycloalkane_gen_9: {
     category: "cycloalkane",
+    subcategory: "general",
     name: "cycloalkane 反应 9",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5][C:6]1.[Cl][Cl]>>[C:1]1[C:2][C:3][C:4][C:5]([Cl])[C:6]1.[Cl]",
@@ -3969,10 +4121,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "cycloalkane 反应 9"
+    condition: "室温"
   },
   cycloalkane_gen_10: {
     category: "cycloalkane",
+    subcategory: "general",
     name: "O3,H2O,Zn",
     difficulty: 2,
     smarts: "[C:1]1[C:2]([C:3])[C:4]=[C:5][C:6]([C:7])1>>[C:5](=O)[C:6]([C:7])[C:1][C:2]([C:3])[C:4](=O)",
@@ -3991,10 +4144,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "O3,H2O,Zn"
+    condition: "室温"
   },
   cycloalkane_gen_11: {
     category: "cycloalkane",
+    subcategory: "general",
     name: "KMnO4,H+",
     difficulty: 2,
     smarts: "[C:1]1[C:2][C:3]=[C:4][C:5][C:6]1>>[C:4](=O)(O)[C:5][C:6][C:1][C:2][C:3](=O)(O)",
@@ -4013,10 +4167,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "KMnO4,H+"
+    condition: "室温"
   },
   alkene_gen_39: {
     category: "alkene",
+    subcategory: "oxidation_epox",
     name: "烯烃与过氧酸反应",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[C:3][C:4](=O)[O:5][O:6][H]>>[C:1]1[C:2][O:6]1.[C:3][C:4](=O)[O:5][H]",
@@ -4043,10 +4198,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烯烃与过氧酸反应"
+    condition: "室温"
   },
   alkene_gen_41: {
     category: "alkene",
+    subcategory: "oxidation_cleavage",
     name: "烯烃的臭氧氧化-分解反应第一步",
     difficulty: 2,
     smarts: "[C:1]=[C:2]>>[C:1]1[O][C:2][O][O]1",
@@ -4065,10 +4221,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烯烃的臭氧氧化-分解反应第一步"
+    condition: "室温"
   },
   alkene_gen_42: {
     category: "alkene",
+    subcategory: "oxidation_cleavage",
     name: "烯烃的臭氧氧化-分解反应第二步",
     difficulty: 2,
     smarts: "[C:1]1[O][C:2][O][O]1>>[C:1]=O.O=[C:2]",
@@ -4087,10 +4244,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烯烃的臭氧氧化-分解反应第二步"
+    condition: "室温"
   },
   alkene_gen_49: {
     category: "alkene",
+    subcategory: "general",
     name: "alkene 反应 49",
     difficulty: 2,
     smarts: "[C:1]=[C:2][C:3]=[C:4].[C:5]=[C:6]>>[C:1]1[C:2]=[C:3][C:4][C:5][C:6]1",
@@ -4117,10 +4275,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "alkene 反应 49"
+    condition: "室温"
   },
   halide_gen_1: {
     category: "halide",
+    subcategory: "sn_alcohol",
     name: "生成醇",
     difficulty: 2,
     smarts: "[C:1][F,Cl,Br,I].[OH-]>>[C:1][OH].[F,Cl,Br,I-]",
@@ -4147,10 +4306,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[OH-]"
       }
     ],
-    condition: "生成醇"
+    condition: "室温"
   },
   halide_gen_2: {
     category: "halide",
+    subcategory: "sn_nitrile",
     name: "生成腈",
     difficulty: 2,
     smarts: "[C:1][F,Cl,Br,I].[C-]#N>>[C:1][C#N].[F,Cl,Br,I-]",
@@ -4177,10 +4337,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[C-]#N"
       }
     ],
-    condition: "生成腈"
+    condition: "室温"
   },
   halide_gen_3: {
     category: "halide",
+    subcategory: "sn_ether",
     name: "生成醚",
     difficulty: 2,
     smarts: "[C:1][F,Cl,Br,I].[O-][C:2]>>[C:1][O][C:2].[F,Cl,Br,I-]",
@@ -4207,10 +4368,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "生成醚"
+    condition: "室温"
   },
   halide_gen_4: {
     category: "halide",
+    subcategory: "sn_amine",
     name: "生成胺",
     difficulty: 2,
     smarts: "[C:1][F,Cl,Br,I].[NH2]>>[C:1][NH2]",
@@ -4237,10 +4399,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "N"
       }
     ],
-    condition: "生成胺"
+    condition: "室温"
   },
   halide_gen_5: {
     category: "halide",
+    subcategory: "general",
     name: "生成硝酸酯",
     difficulty: 2,
     smarts: "[C:1][F,Cl,Br,I].[Ag+].[O-][N+](=O)[O-]>>[C:1][O][N+](=O)[O-].[Ag][F,Cl,Br,I]",
@@ -4275,10 +4438,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "生成硝酸酯"
+    condition: "室温"
   },
   halide_gen_6: {
     category: "halide",
+    subcategory: "general",
     name: "KOH,C2H5OH,加热",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3]([Br])[C:4]>>[C:1][C:2]=[C:3][C:4].[C:1][C:2][C:3]=[C:4]",
@@ -4297,10 +4461,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "KOH,C2H5OH,加热"
+    condition: "室温"
   },
   halide_gen_7: {
     category: "halide",
+    subcategory: "general",
     name: "KOH,C2H5OH,加热",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3]([C:5])([Br])[C:4]>>[C:1][C:2]=[C:3]([C:5])[C:4].[C:1][C:2][C:3]([C:5])=[C:4]",
@@ -4319,10 +4484,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "KOH,C2H5OH,加热"
+    condition: "室温"
   },
   halide_gen_8: {
     category: "halide",
+    subcategory: "general",
     name: "halide 反应 8",
     difficulty: 2,
     smarts: "[C:1][Br].[Mg]>>[C:1][Mg][Br]",
@@ -4349,10 +4515,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[Mg]"
       }
     ],
-    condition: "halide 反应 8"
+    condition: "室温"
   },
   halide_gen_9: {
     category: "halide",
+    subcategory: "general",
     name: "halide 反应 9",
     difficulty: 2,
     smarts: "[C:1][I].[Mg]>>[C:1][Mg][I]",
@@ -4379,10 +4546,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[Mg]"
       }
     ],
-    condition: "halide 反应 9"
+    condition: "室温"
   },
   halide_gen_10: {
     category: "halide",
+    subcategory: "general",
     name: "halide 反应 10",
     difficulty: 2,
     smarts: "[C:1][Cl].[Mg]>>[C:1][Mg][Cl]",
@@ -4409,10 +4577,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[Mg]"
       }
     ],
-    condition: "halide 反应 10"
+    condition: "室温"
   },
   halide_gen_11: {
     category: "halide",
+    subcategory: "general",
     name: "halide 反应 11",
     difficulty: 2,
     smarts: "[C:1][F,Cl,Br,I].[Mg]>>[C:1][Mg][F,Cl,Br,I]",
@@ -4439,10 +4608,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[Mg]"
       }
     ],
-    condition: "halide 反应 11"
+    condition: "室温"
   },
   halide_gen_12: {
     category: "halide",
+    subcategory: "reduction",
     name: "LiAlH4",
     difficulty: 2,
     smarts: "[C:1][Br]>>[C:1][H]",
@@ -4461,10 +4631,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "LiAlH4"
+    condition: "室温"
   },
   halide_gen_13: {
     category: "halide",
+    subcategory: "reduction",
     name: "LiAlH4",
     difficulty: 2,
     smarts: "[C:1][Cl]>>[C:1][H]",
@@ -4483,10 +4654,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "LiAlH4"
+    condition: "室温"
   },
   halide_gen_14: {
     category: "halide",
+    subcategory: "reduction",
     name: "LiAlH4",
     difficulty: 2,
     smarts: "[C:1][I]>>[C:1][H]",
@@ -4505,10 +4677,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "LiAlH4"
+    condition: "室温"
   },
   halide_gen_15: {
     category: "halide",
+    subcategory: "general",
     name: "halide 反应 15",
     difficulty: 2,
     smarts: "[C:1][F,Cl,Br,I].[H2]>>[C:1][H]",
@@ -4535,10 +4708,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "halide 反应 15"
+    condition: "室温"
   },
   halide_gen_16: {
     category: "halide",
+    subcategory: "general",
     name: "halide 反应 16",
     difficulty: 2,
     smarts: "[C:1][F,Cl,Br,I].[C:2][F,Cl,Br,I]>>[C:1][C:2]",
@@ -4557,10 +4731,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "halide 反应 16"
+    condition: "室温"
   },
   benzene_gen_44: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "卤代反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[Cl].[Cl]",
@@ -4587,10 +4762,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "卤代反应"
+    condition: "室温"
   },
   benzene_gen_45: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "吡咯的卤代反应",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[Br][Br]>>[nH]1[c:1]([Br])[c:2][c:3][c:4]1.[Br]",
@@ -4617,10 +4793,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "吡咯的卤代反应"
+    condition: "室温"
   },
   benzene_gen_46: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "吡咯的卤代反应",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[Cl][Cl]>>[nH]1[c:1]([Cl])[c:2][c:3][c:4]1.[Cl]",
@@ -4647,10 +4824,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "吡咯的卤代反应"
+    condition: "室温"
   },
   benzene_gen_47: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "呋喃的卤代反应",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[Br][Br]>>[o]1[c:1]([Br])[c:2][c:3][c:4]1.[Br]",
@@ -4677,10 +4855,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "呋喃的卤代反应"
+    condition: "室温"
   },
   benzene_gen_48: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "呋喃的卤代反应",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[Cl][Cl]>>[o]1[c:1]([Cl])[c:2][c:3][c:4]1.[Cl]",
@@ -4707,10 +4886,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "呋喃的卤代反应"
+    condition: "室温"
   },
   benzene_gen_49: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "噻吩的卤代反应",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1.[Br][Br]>>[s]1[c:1]([Br])[c:2][c:3][c:4]1.[Br]",
@@ -4737,10 +4917,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "噻吩的卤代反应"
+    condition: "室温"
   },
   benzene_gen_50: {
     category: "benzene",
+    subcategory: "substitution_halogen",
     name: "噻吩的卤代反应",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1.[Cl][Cl]>>[s]1[c:1]([Cl])[c:2][c:3][c:4]1.[Cl]",
@@ -4767,10 +4948,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "噻吩的卤代反应"
+    condition: "室温"
   },
   benzene_gen_51: {
     category: "benzene",
+    subcategory: "general",
     name: "吡咯与乙酸酐反应,加热",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.CC(=O)OC(=O)C>>[nH]1[c:1](C(=O)C)[c:2][c:3][c:4]1",
@@ -4797,10 +4979,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "CC(=O)OC(=O)C"
       }
     ],
-    condition: "吡咯与乙酸酐反应,加热"
+    condition: "室温"
   },
   benzene_gen_52: {
     category: "benzene",
+    subcategory: "general",
     name: "呋喃与乙酸酐反应,加热",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.CC(=O)OC(=O)C>>[o]1[c:1](C(=O)C)[c:2][c:3][c:4]1",
@@ -4827,10 +5010,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "CC(=O)OC(=O)C"
       }
     ],
-    condition: "呋喃与乙酸酐反应,加热"
+    condition: "室温"
   },
   benzene_gen_53: {
     category: "benzene",
+    subcategory: "substitution_nitration",
     name: "吡咯的硝化反应,乙酰硝基酯",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[N+](=O)[O-]>>[nH]1[c:1]([N+](=O)[O-])[c:2][c:3][c:4]1",
@@ -4857,10 +5041,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[N+](=O)[O-]"
       }
     ],
-    condition: "吡咯的硝化反应,乙酰硝基酯"
+    condition: "室温"
   },
   benzene_gen_54: {
     category: "benzene",
+    subcategory: "substitution_nitration",
     name: "呋喃的硝化反应,乙酰硝基酯",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[N+](=O)[O-]>>[o]1[c:1]([N+](=O)[O-])[c:2][c:3][c:4]1",
@@ -4887,10 +5072,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[N+](=O)[O-]"
       }
     ],
-    condition: "呋喃的硝化反应,乙酰硝基酯"
+    condition: "室温"
   },
   benzene_gen_57: {
     category: "benzene",
+    subcategory: "substitution_sulfonation",
     name: "吡咯的磺化反应",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[S](=O)(=O)O>>[nH]1[c:1]([S](=O)(=O)O)[c:2][c:3][c:4]1",
@@ -4917,10 +5103,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OS(=O)(=O)O"
       }
     ],
-    condition: "吡咯的磺化反应"
+    condition: "室温"
   },
   benzene_gen_58: {
     category: "benzene",
+    subcategory: "substitution_sulfonation",
     name: "呋喃的磺化反应",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[S](=O)(=O)O>>[o]1[c:1]([S](=O)(=O)O)[c:2][c:3][c:4]1",
@@ -4947,10 +5134,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "OS(=O)(=O)O"
       }
     ],
-    condition: "呋喃的磺化反应"
+    condition: "室温"
   },
   benzene_gen_59: {
     category: "benzene",
+    subcategory: "substitution_fc_alkyl",
     name: "烷基化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Br]",
@@ -4977,10 +5165,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烷基化反应"
+    condition: "室温"
   },
   benzene_gen_60: {
     category: "benzene",
+    subcategory: "substitution_fc_alkyl",
     name: "烷基化反应",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Cl]",
@@ -5007,10 +5196,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "烷基化反应"
+    condition: "室温"
   },
   benzene_gen_61: {
     category: "benzene",
+    subcategory: "substitution_fc_alkyl",
     name: "吡咯的烷基化反应",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[C:5][C:6][Cl]>>[nH]1[c:1]([C:5][C:6])[c:2][c:3][c:4]1.[Cl]",
@@ -5037,10 +5227,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "吡咯的烷基化反应"
+    condition: "室温"
   },
   benzene_gen_62: {
     category: "benzene",
+    subcategory: "substitution_fc_alkyl",
     name: "呋喃的烷基化反应",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[C:5][C:6][Cl]>>[o]1[c:1]([C:5][C:6])[c:2][c:3][c:4]1.[Cl]",
@@ -5067,10 +5258,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "呋喃的烷基化反应"
+    condition: "室温"
   },
   benzene_gen_63: {
     category: "benzene",
+    subcategory: "substitution_fc_acyl",
     name: "吡咯的酰基化反应",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[C:5][C:6](=O)[Cl]>>[nH]1[c:1]([C:6](=O)[C:5])[c:2][c:3][c:4]1.[Cl]",
@@ -5097,10 +5289,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "吡咯的酰基化反应"
+    condition: "室温"
   },
   benzene_gen_64: {
     category: "benzene",
+    subcategory: "substitution_fc_acyl",
     name: "呋喃的酰基化反应",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[C:5][C:6](=O)[Cl]>>[o]1[c:1]([C:6](=O)[C:5])[c:2][c:3][c:4]1.[Cl]",
@@ -5127,10 +5320,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "呋喃的酰基化反应"
+    condition: "室温"
   },
   benzene_gen_65: {
     category: "benzene",
+    subcategory: "general",
     name: "噻吩的Vilsmeier甲酰化",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1.[C:5](=O)[Cl]>>[s]1[c:1]([C:6](=O))[c:2][c:3][c:4]1",
@@ -5157,10 +5351,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "噻吩的Vilsmeier甲酰化"
+    condition: "室温"
   },
   benzene_gen_66: {
     category: "benzene",
+    subcategory: "general",
     name: "Vilsmeier-Haack反应,POCl₃",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[C:5](=O)[H]>>[nH]1[c:1]([C:5](=O)[H])[c:2][c:3][c:4]1",
@@ -5187,10 +5382,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "Vilsmeier-Haack反应,POCl₃"
+    condition: "室温"
   },
   benzene_gen_87: {
     category: "benzene",
+    subcategory: "general",
     name: "吡咯的催化加氢",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1>>[NH]1[C:1][C:2][C:3][C:4]1",
@@ -5209,10 +5405,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "吡咯的催化加氢"
+    condition: "室温"
   },
   benzene_gen_88: {
     category: "benzene",
+    subcategory: "general",
     name: "呋喃的催化加氢",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1>>[O]1[C:1][C:2][C:3][C:4]1",
@@ -5231,10 +5428,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "呋喃的催化加氢"
+    condition: "室温"
   },
   benzene_gen_89: {
     category: "benzene",
+    subcategory: "general",
     name: "噻吩的部分加氢",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1>>[S]1[C:1][C:2][C:3]=[C:4]1",
@@ -5253,10 +5451,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "噻吩的部分加氢"
+    condition: "室温"
   },
   benzene_gen_90: {
     category: "benzene",
+    subcategory: "general",
     name: "噻吩的完全加氢",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1>>[S]1[C:1][C:2][C:3][C:4]1",
@@ -5275,10 +5474,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "噻吩的完全加氢"
+    condition: "室温"
   },
   benzene_gen_91: {
     category: "benzene",
+    subcategory: "general",
     name: "呋喃在强碱条件下",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[Li]>>[o]1[c:1]([Li])[c:2][c:3][c:4]1",
@@ -5305,10 +5505,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[Li]"
       }
     ],
-    condition: "呋喃在强碱条件下"
+    condition: "室温"
   },
   benzene_gen_92: {
     category: "benzene",
+    subcategory: "general",
     name: "噻吩在强碱条件下",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1.[Li]>>[s]1[c:1]([Li])[c:2][c:3][c:4]1",
@@ -5335,10 +5536,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[Li]"
       }
     ],
-    condition: "噻吩在强碱条件下"
+    condition: "室温"
   },
   benzene_gen_93: {
     category: "benzene",
+    subcategory: "phenol_acidity",
     name: "呋喃在酸性条件下",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1>>[C:1](=O)[C:2]=[C:3][C:4](=O)",
@@ -5357,10 +5559,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "呋喃在酸性条件下"
+    condition: "室温"
   },
   benzene_gen_94: {
     category: "benzene",
+    subcategory: "general",
     name: "呋喃作为双烯体,乙烯作为亲双烯体",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[C:5]=[C:6]1>>[O]1[C:1]2[C:2]=[C:3][C:4]1[C:5][C:6]2",
@@ -5387,10 +5590,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "呋喃作为双烯体,乙烯作为亲双烯体"
+    condition: "室温"
   },
   benzene_gen_97: {
     category: "benzene",
+    subcategory: "phenol_acidity",
     name: "在酸性条件下",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[Nu:5]>>[o]1[c:1]([Nu:5])[c:2][c:3][c:4]1",
@@ -5417,10 +5621,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "在酸性条件下"
+    condition: "室温"
   },
   benzene_gen_106: {
     category: "benzene",
+    subcategory: "general",
     name: "硝基活化",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2]([N+](=O)[O-])[c:3][c:4]1.[Nu:5]>>[s]1[c:1]([Nu:5])[c:2]([N+](=O)[O-])[c:3][c:4]1",
@@ -5447,10 +5652,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "硝基活化"
+    condition: "室温"
   },
   benzene_gen_107: {
     category: "benzene",
+    subcategory: "general",
     name: "硝基活化",
     difficulty: 2,
     smarts: "[s]1[c:1]([N+](=O)[O-])[c:2][c:3][c:4]1.[Nu:5]>>[s]1[c:1]([N+](=O)[O-])[c:2]([Nu:5])[c:3][c:4]1",
@@ -5477,10 +5683,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "硝基活化"
+    condition: "室温"
   },
   benzene_gen_112: {
     category: "benzene",
+    subcategory: "general",
     name: "呋喃氧化生成顺丁烯二酸酐",
     difficulty: 2,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1>>[O]1[C:1](=O)[C:2]=[C:3][C:4]1(=O)",
@@ -5499,10 +5706,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "呋喃氧化生成顺丁烯二酸酐"
+    condition: "室温"
   },
   benzene_gen_113: {
     category: "benzene",
+    subcategory: "general",
     name: "噻吩氧化为亚砜（形式电核表示法）",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1.[O:5]>>[S+]([O-:5])1[C:1][C:2][C:3][C:4]1",
@@ -5529,10 +5737,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "噻吩氧化为亚砜（形式电核表示法）"
+    condition: "室温"
   },
   benzene_gen_114: {
     category: "benzene",
+    subcategory: "general",
     name: "噻吩氧化为砜（形式电核表示法）",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1.[O:5].[O:6]>>[S+2]([O-:5])([O-:6])1[C:1][C:2][C:3][C:4]1",
@@ -5559,10 +5768,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "噻吩氧化为砜（形式电核表示法）"
+    condition: "室温"
   },
   benzene_gen_115: {
     category: "benzene",
+    subcategory: "general",
     name: "生成",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Na+].[OH-]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O][Na+].[O]",
@@ -5597,10 +5807,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[OH-]"
       }
     ],
-    condition: "生成"
+    condition: "室温"
   },
   benzene_gen_117: {
     category: "benzene",
+    subcategory: "phenol_acidity",
     name: "吡咯的酸性",
     difficulty: 2,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[K+].[OH-]>>[n-]1([K+])[c:1][c:2][c:3][c:4]1.[O]",
@@ -5635,10 +5846,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[OH-]"
       }
     ],
-    condition: "吡咯的酸性"
+    condition: "室温"
   },
   benzene_gen_118: {
     category: "benzene",
+    subcategory: "general",
     name: "Suzuki偶联,溴噻吩和苯硼酸反应",
     difficulty: 2,
     smarts: "[s]1[c:1][c:2][c:3][c:4](Br)1.[B]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)(O)(O)>>[s]1[c:1][c:2][c:3][c:4]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)1",
@@ -5665,10 +5877,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "Suzuki偶联,溴噻吩和苯硼酸反应"
+    condition: "室温"
   },
   carbonyl_gen_49: {
     category: "carbonyl",
+    subcategory: "bisulfite",
     name: "与亚硫酸氢钠加成",
     difficulty: 2,
     smarts: "[C:1](=O).[S](=O)(=O)[O-]>>[C:1]([OH])([S](=O)(=O)[O-])",
@@ -5695,10 +5908,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与亚硫酸氢钠加成"
+    condition: "室温"
   },
   carbonyl_gen_50: {
     category: "carbonyl",
+    subcategory: "general",
     name: "与硫醇（RSH）的加成生成半缩硫醛/酮",
     difficulty: 2,
     smarts: "[C:1][C:2](=O).[S:3][H]>>[C:1][C:2]([OH])([S:3])",
@@ -5725,10 +5939,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与硫醇（RSH）的加成生成半缩硫醛/酮"
+    condition: "室温"
   },
   carbonyl_gen_51: {
     category: "carbonyl",
+    subcategory: "general",
     name: "缩合脱水（形成缩硫醛/酮）",
     difficulty: 2,
     smarts: "[C:1][C:2]([OH])[S:3].[S:4][H]>>[C:1][C:2]([S:3])([S:4]).[O]",
@@ -5755,10 +5970,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "缩合脱水（形成缩硫醛/酮）"
+    condition: "室温"
   },
   carbonyl_gen_52: {
     category: "carbonyl",
+    subcategory: "general",
     name: "与卤素加成",
     difficulty: 2,
     smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5].[Br][Br]>>[C:1][C:2]([Br])[C:3]([Br])[C:4](=O)[C:5]",
@@ -5785,10 +6001,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "与卤素加成"
+    condition: "室温"
   },
   carbonyl_gen_53: {
     category: "carbonyl",
+    subcategory: "general",
     name: "与次卤酸加成",
     difficulty: 2,
     smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5].[H][O][Br]>>[C:1][C:2]([OH])[C:3]([Br])[C:4](=O)[C:5]",
@@ -5815,10 +6032,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与次卤酸加成"
+    condition: "室温"
   },
   carbonyl_gen_54: {
     category: "carbonyl",
+    subcategory: "general",
     name: "与卤化氢加成,1-4共轭加成",
     difficulty: 2,
     smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5].[H][Cl]>>[C:1][C:2]([Cl])[C:3]=[C:4]([OH])[C:5]",
@@ -5845,10 +6063,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "Cl"
       }
     ],
-    condition: "与卤化氢加成,1-4共轭加成"
+    condition: "室温"
   },
   carbonyl_gen_55: {
     category: "carbonyl",
+    subcategory: "enolization",
     name: "互变异构,烯醇不稳定",
     difficulty: 2,
     smarts: "[C:1][C:2]([Cl])[C:3]=[C:4]([OH])[C:5]>>[C:1][C:2]([Cl])[C:3][C:4](=O)[C:5]",
@@ -5867,10 +6086,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "互变异构,烯醇不稳定"
+    condition: "室温"
   },
   carbonyl_gen_56: {
     category: "carbonyl",
+    subcategory: "addition_amine",
     name: "与胺加成,1-4共轭加成",
     difficulty: 2,
     smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5].[C:6][NH2]>>[C:1][C:2]([NH][C:6])[C:3]=[C:4]([OH])[C:5]",
@@ -5897,10 +6117,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "与胺加成,1-4共轭加成"
+    condition: "室温"
   },
   carbonyl_gen_57: {
     category: "carbonyl",
+    subcategory: "enolization",
     name: "互变异构,烯醇不稳定",
     difficulty: 2,
     smarts: "[C:1][C:2]([NH][C:6])[C:3]=[C:4]([OH])[C:5]>>[C:1][C:2]([NH][C:6])[C:3][C:4](=O)[C:5]",
@@ -5919,10 +6140,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "互变异构,烯醇不稳定"
+    condition: "室温"
   },
   carbonyl_gen_58: {
     category: "carbonyl",
+    subcategory: "general",
     name: "carbonyl 反应 58",
     difficulty: 2,
     smarts: "[C:1](=O)([H])[C:2]=[C:3]([c:4]1[c:5][c:6][c:7][c:8][c:9]1).[Br][Mg]([c:10]1[c:11][c:12][c:13][c:14][c:15]1)>>",
@@ -5949,10 +6171,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "carbonyl 反应 58"
+    condition: "室温"
   },
   carbonyl_gen_59: {
     category: "carbonyl",
+    subcategory: "general",
     name: "carbonyl 反应 59",
     difficulty: 2,
     smarts: "[C:1](=O)([H])[C:2]=[C:3]([c:4]1[c:5][c:6][c:7][c:8][c:9]1).[C:10][C:11][Mg][Br]>>",
@@ -5979,10 +6202,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "carbonyl 反应 59"
+    condition: "室温"
   },
   carbonyl_gen_60: {
     category: "carbonyl",
+    subcategory: "general",
     name: "carbonyl 反应 60",
     difficulty: 2,
     smarts: "[C:1]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)=[C:2][C:3](=O)[C:4].[Br][Mg]([c:11]1[c:12][c:13][c:14][c:15][c:16]1)>>",
@@ -6009,10 +6233,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "carbonyl 反应 60"
+    condition: "室温"
   },
   carbonyl_gen_61: {
     category: "carbonyl",
+    subcategory: "general",
     name: "carbonyl 反应 61",
     difficulty: 2,
     smarts: "[C:1]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)=[C:2][C:3](=O)[C:4].[C:11][C:12][Mg][Br]>>",
@@ -6039,10 +6264,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "carbonyl 反应 61"
+    condition: "室温"
   },
   carbonyl_gen_62: {
     category: "carbonyl",
+    subcategory: "enolization",
     name: "在H+/OH-作用下发生烯醇化反应",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3]>>[C:1][C:2]([OH])=[C:3]",
@@ -6061,10 +6287,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "在H+/OH-作用下发生烯醇化反应"
+    condition: "室温"
   },
   carbonyl_gen_63: {
     category: "carbonyl",
+    subcategory: "general",
     name: "热力学控制的产物",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3](=O)[C:4]>>[C:1][C:2]=[C:3]([OH])[C:4]",
@@ -6083,10 +6310,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "热力学控制的产物"
+    condition: "室温"
   },
   carbonyl_gen_64: {
     category: "carbonyl",
+    subcategory: "general",
     name: "动力学控制的产物",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3](=O)[C:4]>>[C:1][C:2][C:3]([OH])=[C:4]",
@@ -6105,10 +6333,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "动力学控制的产物"
+    condition: "室温"
   },
   carbonyl_gen_65: {
     category: "carbonyl",
+    subcategory: "general",
     name: "在H+/OH-催化作用下",
     difficulty: 2,
     smarts: "[C:1](=O)[C:2].[Br][Br]>>[C:1](=O)[C:2][Br].[Br]",
@@ -6135,10 +6364,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "在H+/OH-催化作用下"
+    condition: "室温"
   },
   carbonyl_gen_66: {
     category: "carbonyl",
+    subcategory: "haloform",
     name: "卤仿反应",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[OH-].[Cl][Cl]>>[C:1][C:2](=O)[O-].[C:3]([H])([Cl])([Cl])[Cl]",
@@ -6173,10 +6403,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "卤仿反应"
+    condition: "室温"
   },
   carbonyl_gen_67: {
     category: "carbonyl",
+    subcategory: "haloform",
     name: "卤仿反应",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[OH-].[Br][Br]>>[C:1][C:2](=O)[O-].[C:3]([H])([Br])([Br])[Br]",
@@ -6211,10 +6442,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "卤仿反应"
+    condition: "室温"
   },
   carbonyl_gen_68: {
     category: "carbonyl",
+    subcategory: "haloform",
     name: "卤仿反应",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[OH-].[I][I]>>[C:1][C:2](=O)[O-].[C:3]([H])([I])([I])[I]",
@@ -6249,10 +6481,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "II"
       }
     ],
-    condition: "卤仿反应"
+    condition: "室温"
   },
   carbonyl_gen_69: {
     category: "carbonyl",
+    subcategory: "general",
     name: "H+/OH-",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[H].[C:3][C:4](=O)[H]>>[C:1][C:2]([OH])[C:3][C:4](=O)[H]",
@@ -6271,10 +6504,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "H+/OH-"
+    condition: "室温"
   },
   carbonyl_gen_70: {
     category: "carbonyl",
+    subcategory: "general",
     name: "H+/OH-",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][C:5](=O)[C:6]>>[C:1][C:2]([OH])([C:3])[C:4][C:5](=O)[C:6]",
@@ -6293,10 +6527,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "H+/OH-"
+    condition: "室温"
   },
   carbonyl_gen_71: {
     category: "carbonyl",
+    subcategory: "general",
     name: "OH-",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3][C:4][C:5][C:6][C:7](=O)[H].[C:8][C:9](=O)[C:10]>>[C:1][C:2][C:3][C:4][C:5][C:6][C:7]([OH])[C:8][C:9](=O)[C:10]",
@@ -6323,10 +6558,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "OH-"
+    condition: "室温"
   },
   carbonyl_gen_72: {
     category: "carbonyl",
+    subcategory: "general",
     name: "-H2O",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3][C:4][C:5][C:6][C:7]([OH])[C:8][C:9](=O)[C:10]>>[C:1][C:2][C:3][C:4][C:5][C:6]/[C:7]=[C:8]/[C:9](=O)[C:10]",
@@ -6345,10 +6581,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "-H2O"
+    condition: "室温"
   },
   carbonyl_gen_73: {
     category: "carbonyl",
+    subcategory: "rearrangement",
     name: "Beckmann重排, H+",
     difficulty: 2,
     smarts: "[C:1]([C:2])([C:3])=[N:4][OH]>>[C:2][C:1](=O)[N:4][H][C:3]",
@@ -6367,10 +6604,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "Beckmann重排, H+"
+    condition: "室温"
   },
   carbonyl_gen_74: {
     category: "carbonyl",
+    subcategory: "rearrangement",
     name: "Favorski重排",
     difficulty: 2,
     smarts: "[C:1][C:2]([Br])[C:3](=O)[C:4].[OH-]>>[C:1][C:2]([C:4])[C:3](=O)[OH].[Br-]",
@@ -6397,10 +6635,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[OH-]"
       }
     ],
-    condition: "Favorski重排"
+    condition: "室温"
   },
   carbonyl_gen_75: {
     category: "carbonyl",
+    subcategory: "rearrangement",
     name: "Favorski重排",
     difficulty: 2,
     smarts: "[C:1][C:2]([Cl])[C:3](=O)[C:4].[OH-]>>[C:1][C:2]([C:4])[C:3](=O)[OH].[Cl-]",
@@ -6427,10 +6666,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[OH-]"
       }
     ],
-    condition: "Favorski重排"
+    condition: "室温"
   },
   carbonyl_gen_76: {
     category: "carbonyl",
+    subcategory: "rearrangement",
     name: "CH3COOEt,40℃,Baeyer-Villiger氧化重排",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][C:5](=O)[O][OH]>>[C:1][C:2](=O)[O][C:3].[C:4][C:5](=O)[OH]",
@@ -6457,10 +6697,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "CH3COOEt,40℃,Baeyer-Villiger氧化重排"
+    condition: "室温"
   },
   carbonyl_gen_77: {
     category: "carbonyl",
+    subcategory: "general",
     name: "Et2O,加热",
     difficulty: 2,
     smarts: "[C:1](=O)1[C:2]([Br])[C:3][C:4][C:5][C:6]1.[C:7][C:8][O-]>>[C:2]([C:1](=O)[O][C:8][C:7])1[C:3][C:4][C:5][C:6]1.[Br-]",
@@ -6487,10 +6728,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "Et2O,加热"
+    condition: "室温"
   },
   carbonyl_gen_78: {
     category: "carbonyl",
+    subcategory: "general",
     name: "carbonyl 反应 78",
     difficulty: 2,
     smarts: "[C:1](=O)([c:3]1[c:4][c:5][c:6][c:7][c:8]1)[C:2](=O)([c:9]1[c:10][c:11][c:12][c:13][c:14]1)>>",
@@ -6509,10 +6751,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "carbonyl 反应 78"
+    condition: "室温"
   },
   carbonyl_gen_79: {
     category: "carbonyl",
+    subcategory: "general",
     name: "KMnO4, H2SO4 醛的氧化",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[H]>>[C:1][C:2](=O)[OH]",
@@ -6531,10 +6774,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "KMnO4, H2SO4 醛的氧化"
+    condition: "室温"
   },
   carbonyl_gen_80: {
     category: "carbonyl",
+    subcategory: "general",
     name: "酮的氧化",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3](=O)[C:4][C:5]>>[C:5][C:4](=O)[OH].[C:1][C:2][C:3](=O)[OH]",
@@ -6553,10 +6797,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "酮的氧化"
+    condition: "室温"
   },
   carbonyl_gen_81: {
     category: "carbonyl",
+    subcategory: "general",
     name: "生成己二酸",
     difficulty: 2,
     smarts: "[C:1](=O)1[C:2][C:3][C:4][C:5][C:6]1>>[C:2](=O)[OH][C:3][C:4][C:5][C:6][C:1](=O)[OH]",
@@ -6575,10 +6820,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "生成己二酸"
+    condition: "室温"
   },
   carbonyl_gen_82: {
     category: "carbonyl",
+    subcategory: "reduction_ch2",
     name: "Clemmensen还原法,Zn-Hg ,HCl,加热",
     difficulty: 2,
     smarts: "[C:1](=O)>>[CH2:1]",
@@ -6597,10 +6843,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "Clemmensen还原法,Zn-Hg ,HCl,加热"
+    condition: "室温"
   },
   carbonyl_gen_83: {
     category: "carbonyl",
+    subcategory: "reduction_ch2",
     name: "Wolff-Kishner-Huang Minlon还原法, NH2NH2,KOH,(HOCH2CH2)2O,180℃",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3]>>[C:1][C:2][C:3]",
@@ -6619,10 +6866,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "Wolff-Kishner-Huang Minlon还原法, NH2NH2,KOH,(HOCH2CH2)2O,180℃"
+    condition: "室温"
   },
   carbonyl_gen_84: {
     category: "carbonyl",
+    subcategory: "general",
     name: "H+,缩硫酮氢解法第一步",
     difficulty: 2,
     smarts: "[C:1](=O).[C:2]([SH])[C:3]([SH])>>[C:1]1[S][C:2][C:3][S]",
@@ -6649,10 +6897,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "H+,缩硫酮氢解法第一步"
+    condition: "室温"
   },
   carbonyl_gen_85: {
     category: "carbonyl",
+    subcategory: "general",
     name: "H2,Ni, 缩硫酮氢解法第二步",
     difficulty: 2,
     smarts: "[C:1]1[S][C:2][C:3][S]>>[CH2:1]",
@@ -6671,10 +6920,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "H2,Ni, 缩硫酮氢解法第二步"
+    condition: "室温"
   },
   carbonyl_gen_86: {
     category: "carbonyl",
+    subcategory: "general",
     name: "Pt,0.3MPa,25℃",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[H].[H][H]>>[C:1][C:2][OH]",
@@ -6701,10 +6951,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[H][H]"
       }
     ],
-    condition: "Pt,0.3MPa,25℃"
+    condition: "室温"
   },
   carbonyl_gen_87: {
     category: "carbonyl",
+    subcategory: "general",
     name: "Pt,0.3MPa,25℃",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[H][H]>>[C:1][C:2]([OH])[C:3]",
@@ -6731,10 +6982,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[H][H]"
       }
     ],
-    condition: "Pt,0.3MPa,25℃"
+    condition: "室温"
   },
   carbonyl_gen_88: {
     category: "carbonyl",
+    subcategory: "general",
     name: "carbonyl 反应 88",
     difficulty: 2,
     smarts: "[C:1](=O)1[C:2]=[C:3]([C:7])[C:4][C:5][C:6]1.[H][H]>>[C:1](=O)1[C:2][C:3]([C:7])[C:4][C:5][C:6]1",
@@ -6761,10 +7013,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "[H][H]"
       }
     ],
-    condition: "carbonyl 反应 88"
+    condition: "室温"
   },
   carbonyl_gen_89: {
     category: "carbonyl",
+    subcategory: "general",
     name: "carbonyl 反应 89",
     difficulty: 2,
     smarts: "[C:1](=O)1[C:2]=[C:3]([C:7])[C:4][C:5][C:6]1.[H][H][H][H]>>[C:1]([OH])1[C:2][C:3]([C:7])[C:4][C:5][C:6]1",
@@ -6791,10 +7044,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "carbonyl 反应 89"
+    condition: "室温"
   },
   carbonyl_gen_90: {
     category: "carbonyl",
+    subcategory: "reduction_alcohol",
     name: "LiAlH4,H2O,加热",
     difficulty: 2,
     smarts: "[C:1][C:2]=[C:3][C:4][C:5][C:6](=O)[H]>>[C:1][C:2]=[C:3][C:4][C:5][C:6][OH]",
@@ -6813,10 +7067,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "LiAlH4,H2O,加热"
+    condition: "室温"
   },
   carbonyl_gen_91: {
     category: "carbonyl",
+    subcategory: "general",
     name: "异丙醇铝,H2O,Meerwein-Ponndorf反应",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[C:3].[C:4]([C:5])([C:6])([O-])[H]>>[C:1][C:2]([OH])([H])[C:3].[C:5][C:4](=O)[C:6]",
@@ -6843,10 +7098,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "异丙醇铝,H2O,Meerwein-Ponndorf反应"
+    condition: "室温"
   },
   acid_gen_1: {
     category: "acid",
+    subcategory: "general",
     name: "PBr3,70℃",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[OH].[Br][Br]>>[C:1]([Br])[C:2](=O)[OH].[Br]",
@@ -6873,10 +7129,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "BrBr"
       }
     ],
-    condition: "PBr3,70℃"
+    condition: "室温"
   },
   acid_gen_2: {
     category: "acid",
+    subcategory: "general",
     name: "I2催化",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[OH].[Cl][Cl]>>[C:1]([Cl])[C:2](=O)[OH].[Cl]",
@@ -6903,10 +7160,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClCl"
       }
     ],
-    condition: "I2催化"
+    condition: "室温"
   },
   acid_gen_4: {
     category: "acid",
+    subcategory: "general",
     name: "加热,分子间",
     difficulty: 2,
     smarts: "[C:1]([C:3])([OH])[C:2](=O)[OH].[C:4](=O)([OH])[C:5]([C:6])([OH])>>[C:1]([C:3])1[C:2](=O)[O][C:5]([C:6])[C:4](=O)[O]1",
@@ -6933,10 +7191,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "加热,分子间"
+    condition: "室温"
   },
   acid_gen_5: {
     category: "acid",
+    subcategory: "esterification",
     name: "分子内酯化",
     difficulty: 2,
     smarts: "[C:1][C:2]([OH])[C:3][C:4][C:5](=O)[OH]>>[C:2]([C:1])1[C:3][C:4][C:5](=O)[O]1",
@@ -6955,10 +7214,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "分子内酯化"
+    condition: "室温"
   },
   acid_gen_6: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 6",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[OH].[C:3][NH2]>>[C:1][C:2](=O)[O][NH2][C:3]",
@@ -6985,10 +7245,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "acid 反应 6"
+    condition: "室温"
   },
   acid_gen_7: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 7",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[OH].[NH3]>>[C:1][C:2](=O)[O][NH4]",
@@ -7015,10 +7276,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "N"
       }
     ],
-    condition: "acid 反应 7"
+    condition: "室温"
   },
   acid_gen_8: {
     category: "acid",
+    subcategory: "general",
     name: "100℃",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[O][NH4]>>[C:1][C:2](=O)[NH2].[O]",
@@ -7037,10 +7299,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "100℃"
+    condition: "室温"
   },
   acid_gen_9: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 9",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH].[c:8]1[c:9][c:10][c:11][c:12][c:13]1[NH2]>>",
@@ -7067,10 +7330,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "acid 反应 9"
+    condition: "室温"
   },
   acid_gen_10: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 10",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH].[S](=O)(Cl)(Cl)>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)(Cl).[S](=O)(=O).[Cl]",
@@ -7097,10 +7361,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClS(Cl)=O"
       }
     ],
-    condition: "acid 反应 10"
+    condition: "室温"
   },
   acid_gen_11: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 11",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3][C:4](=O)[OH].[C:5][C:6][C:7][C:8](=O)[OH].[C:9][C:10][C:11][C:12](=O)[OH].[P](Cl)(Cl)(Cl)>>",
@@ -7127,10 +7392,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: "ClP(Cl)Cl"
       }
     ],
-    condition: "acid 反应 11"
+    condition: "室温"
   },
   acid_gen_12: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 12",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3][C:4][C:5][C:6][C:7][C:8](=O)[OH].[P](Cl)(Cl)(Cl)(Cl)(Cl)>>",
@@ -7157,10 +7423,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "acid 反应 12"
+    condition: "室温"
   },
   acid_gen_13: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 13",
     difficulty: 2,
     smarts: "[C:1][C:2](=O)[OH].[C:3][Mg][Br]>>[C:1][C:2](=O)[O][Mg][Br].[C:3]",
@@ -7187,10 +7454,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "acid 反应 13"
+    condition: "室温"
   },
   acid_gen_14: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 14",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH].[C:8][Li]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[O-][Li+]",
@@ -7217,10 +7485,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "acid 反应 14"
+    condition: "室温"
   },
   acid_gen_15: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 15",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[O-][Li+].[C:9][Li]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([O-][Li+])([O-][Li+])[C:9]",
@@ -7247,10 +7516,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "acid 反应 15"
+    condition: "室温"
   },
   acid_gen_16: {
     category: "acid",
+    subcategory: "general",
     name: "H2O",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([O-][Li+])([O-][Li+])[C:9]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[C:9]",
@@ -7269,10 +7539,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "H2O"
+    condition: "室温"
   },
   acid_gen_17: {
     category: "acid",
+    subcategory: "general",
     name: "LiAlH4,H2O",
     difficulty: 2,
     smarts: "[C:1]=[C:2][C:3][C:4](=O)[OH]>>[C:1]=[C:2][C:3][C:4][OH]",
@@ -7291,10 +7562,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "LiAlH4,H2O"
+    condition: "室温"
   },
   acid_gen_18: {
     category: "acid",
+    subcategory: "general",
     name: "B2H6,H2O",
     difficulty: 2,
     smarts: "[c:1]1[c:2][c:3]([N+](=O)[O-])[c:4][c:5][c:6]1[C:7](=O)[OH]>>[c:1]1[c:2][c:3]([N+](=O)[O-])[c:4][c:5][c:6]1[C:7][OH]",
@@ -7313,10 +7585,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "B2H6,H2O"
+    condition: "室温"
   },
   acid_gen_19: {
     category: "acid",
+    subcategory: "general",
     name: "加热,碱",
     difficulty: 2,
     smarts: "[C:1][C:2][C:3](=O)[OH]>>[C:1][C:2].[C:3](=O)(=O)",
@@ -7335,10 +7608,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "加热,碱"
+    condition: "室温"
   },
   acid_gen_20: {
     category: "acid",
+    subcategory: "general",
     name: "-H+,H2O 负离子机理第一步",
     difficulty: 2,
     smarts: "[C:1](Cl)(Cl)(Cl)[C:2](=O)[OH]>>[C:1](Cl)(Cl)(Cl)[C:2](=O)[O-]",
@@ -7357,10 +7631,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "-H+,H2O 负离子机理第一步"
+    condition: "室温"
   },
   acid_gen_21: {
     category: "acid",
+    subcategory: "general",
     name: "加热,H+,负离子机理第二步",
     difficulty: 2,
     smarts: "[C:1](Cl)(Cl)(Cl)[C:2](=O)[O-]>>[C:1](Cl)(Cl)(Cl).[C:2](=O)(=O)",
@@ -7379,10 +7654,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "加热,H+,负离子机理第二步"
+    condition: "室温"
   },
   acid_gen_22: {
     category: "acid",
+    subcategory: "general",
     name: "acid 反应 22",
     difficulty: 2,
     smarts: "[C:1]([C:7])([C:8][C:9](=O)[O-][Ag+])1[C:2][C:3][C:4][C:5][C:6]1>>[C:1]([C:7])([C:8][Br])1[C:2][C:3][C:4][C:5][C:6]1",
@@ -7401,10 +7677,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "acid 反应 22"
+    condition: "室温"
   },
   acid_gen_23: {
     category: "acid",
+    subcategory: "general",
     name: "140-160℃",
     difficulty: 2,
     smarts: "[C:1](=O)([OH])[C:2][C:3](=O)[OH]>>[C:2][C:3](=O)[OH].[C:1](=O)(=O)",
@@ -7423,10 +7700,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "140-160℃"
+    condition: "室温"
   },
   acid_gen_24: {
     category: "acid",
+    subcategory: "general",
     name: "300℃",
     difficulty: 2,
     smarts: "[C:1](=O)([OH])[C:2][C:3][C:4](=O)[OH]>>[C:1](=O)1[C:2][C:3][C:4](=O)[O]1.[O]",
@@ -7445,10 +7723,11 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "300℃"
+    condition: "室温"
   },
   acid_gen_25: {
     category: "acid",
+    subcategory: "general",
     name: "300℃",
     difficulty: 2,
     smarts: "[C:1](=O)([OH])[C:2][C:3][C:4][C:5][C:6](=O)[OH]>>[C:1](=O)1[C:2][C:3][C:4][C:5]1.[C:6](=O)(=O).[O]",
@@ -7467,7 +7746,7 @@ window.REACTION_DB_EXTENDED = {
         smiles: null
       }
     ],
-    condition: "300℃"
+    condition: "室温"
   }
 };
 

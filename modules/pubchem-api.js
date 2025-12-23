@@ -100,9 +100,10 @@ async function fetchWithRetry(url, retries = 3, delay = 1500) {
 /**
  * 检查分子复杂度是否合适（过滤太简单或太复杂的分子）
  * @param {string} smiles - SMILES 字符串
+ * @param {string} targetReactionCategory - 目标反应的分类（可选）
  * @returns {boolean} 是否通过复杂度检查
  */
-function checkMoleculeComplexity(smiles) {
+function checkMoleculeComplexity(smiles, targetReactionCategory = null) {
     if (!smiles) return false;
     
     // 1. 限制 SMILES 字符串长度（过长的分子浏览器端 RDKit 可能无法解析）
@@ -144,6 +145,81 @@ function checkMoleculeComplexity(smiles) {
     if (/\[(?:Fe|Cu|Zn|Mg|Ca|Na|K|Li|Al|Pd|Pt|Au|Ag|Hg|Pb|Sn|Si|B(?!r)|As|Se)\]/.test(smiles)) {
         console.log(`🚫 含有金属或稀有元素: ${smiles.substring(0, 40)}...`);
         return false;
+    }
+    
+    // ========== 新增：干扰性官能团检测 ==========
+    
+    // 8. 排除含有强吸电子基团的分子（可能干扰亲电反应）
+    const strongEWGPatterns = [
+        /\[N\+\]\(=O\)\[O-\]/,      // 硝基 -NO2
+        /C\(=O\)\[O-\]/,            // 羧酸根
+        /S\(=O\)\(=O\)/,            // 磺酰基
+        /C#N/,                       // 氰基 -CN
+        /\[N\+\]#\[C-\]/,           // 异氰基
+    ];
+    
+    const ewgCount = strongEWGPatterns.filter(p => p.test(smiles)).length;
+    if (ewgCount >= 2) {
+        console.log(`🚫 含有多个强吸电子基 (${ewgCount}个): ${smiles.substring(0, 40)}...`);
+        return false;
+    }
+    
+    // 9. 排除复杂杂环化合物（吡啶、嘧啶、三唑等可能干扰反应）
+    const complexHeterocycles = [
+        /n1ccnc1/,     // 咪唑
+        /n1cccc1/,     // 吡咯 (小写n表示芳香氮)
+        /n1ccccc1/,    // 吡啶
+        /n1nccc1/,     // 吡唑
+        /n1nncn1/,     // 三唑
+        /n1cncnc1/,    // 嘧啶
+        /O=C1NC/,      // 内酰胺
+    ];
+    
+    // 对于非杂环反应，排除复杂杂环
+    if (targetReactionCategory !== 'heterocycle') {
+        const heterocycleCount = complexHeterocycles.filter(p => p.test(smiles.toLowerCase())).length;
+        if (heterocycleCount >= 1 && targetReactionCategory !== 'benzene') {
+            console.log(`🚫 含有复杂杂环: ${smiles.substring(0, 40)}...`);
+            return false;
+        }
+    }
+    
+    // 10. 排除含有保护基的分子（如TBS、Boc等）
+    const protectingGroups = [
+        /\[Si\]\(C\)\(C\)C/,        // TBS 保护基
+        /OC\(=O\)OC\(C\)\(C\)C/,    // Boc 保护基
+        /Cc1ccccc1C/,               // 苄基保护基
+    ];
+    
+    for (const pg of protectingGroups) {
+        if (pg.test(smiles)) {
+            console.log(`🚫 含有保护基: ${smiles.substring(0, 40)}...`);
+            return false;
+        }
+    }
+    
+    // 11. 排除多官能团化合物（可能产生竞争反应）
+    let functionalGroupCount = 0;
+    
+    // 检测各种官能团
+    if (/C=C(?![a-z])/.test(smiles)) functionalGroupCount++;  // 烯烃 (非芳香)
+    if (/C#C/.test(smiles)) functionalGroupCount++;           // 炔烃
+    if (/C=O(?![a-zA-Z])/.test(smiles)) functionalGroupCount++;  // 羰基
+    if (/[^c]O[^=]/.test(smiles) && /O/.test(smiles)) functionalGroupCount++;  // 醚/醇
+    if (/N(?![+\]])/.test(smiles) && !/n/.test(smiles)) functionalGroupCount++;  // 胺 (非芳香氮)
+    
+    // 如果多于3种主要官能团，可能产生竞争反应
+    if (functionalGroupCount > 3) {
+        console.log(`🚫 官能团过多 (${functionalGroupCount}种): ${smiles.substring(0, 40)}...`);
+        return false;
+    }
+    
+    // 12. 对于烯烃/炔烃反应，排除已含卤素的底物（避免歧义）
+    if (targetReactionCategory === 'alkene' || targetReactionCategory === 'alkyne') {
+        if (halogenCount > 0 && smiles.match(/C=C|C#C/)) {
+            console.log(`🚫 烯炔底物已含卤素: ${smiles.substring(0, 40)}...`);
+            return false;
+        }
     }
     
     return true;
@@ -369,93 +445,100 @@ export async function fetchMoleculesFromPubChem(smarts, verificationSmarts = nul
 }
 
 /**
- * 预加载常用分子到缓存
+ * 助手函数：并行执行任务队列并限制并发数
+ * @param {Array} items - 任务项数组
+ * @param {number} concurrency - 最大并发数
+ * @param {Function} taskFn - 执行具体任务的函数
  */
-export async function preloadCommonMolecules() {
-    const commonSmarts = [
-        "C=C",           // 烯烃
-        "C#C",           // 炔烃
-        "c1ccccc1",      // 苯环
-        "[CH2][OH]",     // 伯醇
-        "[CH]([OH])",    // 仲醇
-        "C=O",           // 羰基
-        "[CX3](=O)[OH]"  // 羧酸
-    ];
+async function runTaskQueue(items, concurrency, taskFn) {
+    const results = [];
+    const executing = new Set();
     
-    console.log("🚀 预加载常用分子...");
-    showStatus("预加载分子库...", "loading");
-    
-    for (const smarts of commonSmarts) {
-        // 跳过已缓存的
-        if (appState.moleculeCache[smarts] && appState.moleculeCache[smarts].length > 0) {
-            console.log(`📦 已缓存: ${smarts}`);
-            continue;
+    for (const item of items) {
+        const promise = taskFn(item).then(result => {
+            executing.delete(promise);
+            return result;
+        });
+        results.push(promise);
+        executing.add(promise);
+        
+        if (executing.size >= concurrency) {
+            await Promise.race(executing);
         }
-        await fetchMoleculesFromPubChem(smarts);
-        // 增加延迟到 1 秒，避免触发 PubChem 限流
-        await new Promise(r => setTimeout(r, 1000));
     }
     
-    console.log("✅ 预加载完成");
+    return Promise.all(results);
 }
 
 /**
- * 为选定的反应类型准备分子池
+ * 预加载常用分子到缓存 (增强版：覆盖各主要分类)
+ */
+export async function preloadCommonMolecules() {
+    const commonSmartsLists = [
+        // 第一梯队：最常用
+        ["C=C", "C#C", "c1ccccc1", "[CH2][OH]"],
+        // 第二梯队：常见含氧/含氮
+        ["[CH]([OH])", "C=O", "[CX3](=O)[OH]", "COC", "C1CO1"],
+        // 第三梯队：卤代烃/酚/其他
+        ["[CX4][F,Cl,Br,I]", "Oc1ccccc1", "N", "S", "C1CC1"]
+    ];
+    
+    console.log("🚀 启动加速：预加载关键分子库...");
+    showStatus("正在加速初始化分子库...", "loading");
+    
+    for (const group of commonSmartsLists) {
+        await runTaskQueue(group, 2, async (smarts) => {
+            if (!appState.moleculeCache[smarts] || appState.moleculeCache[smarts].length === 0) {
+                await fetchMoleculesFromPubChem(smarts);
+            }
+        });
+        // 组间稍微延迟
+        await new Promise(r => setTimeout(r, 500));
+    }
+    
+    console.log("✅ 常用分子库预热完成");
+}
+
+/**
+ * 为选定的反应类型准备分子池 (并行优化版)
  * @param {string[]} availableTypes - 可用的反应类型键数组
  */
 export async function prepareMoleculePools(availableTypes) {
-    const neededSmarts = new Set();
+    const neededItemsMap = new Map(); // 使用 Map 防止重复
     
     for (const typeKey of availableTypes) {
         const def = REACTION_DB[typeKey];
         if (!def) continue;
         
-        // 优先使用 reactant_info（新格式）
-        if (def.reactant_info && def.reactant_info.length > 0) {
-            def.reactant_info.forEach(info => {
-                if (info && info.smarts) {
-                    neededSmarts.add(JSON.stringify({ search: info.smarts, verification: def.smarts }));
+        const infos = def.reactant_info || 
+                     (def.search_smarts ? def.search_smarts.map(s => ({ smarts: s })) : []);
+        
+        infos.forEach(info => {
+            if (info && info.smarts && !info.skip) {
+                const cacheKey = info.smarts + (def.smarts ? `|${def.smarts}` : "");
+                if (!appState.moleculeCache[cacheKey] || appState.moleculeCache[cacheKey].length === 0) {
+                    neededItemsMap.set(cacheKey, { search: info.smarts, verification: def.smarts });
                 }
-            });
-        } else if (def.search_smarts) {
-            // 回退到 search_smarts（旧格式）
-            def.search_smarts.forEach(s => {
-                if (s) {
-                    neededSmarts.add(JSON.stringify({ search: s, verification: def.smarts }));
-                }
-            });
-        }
+            }
+        });
     }
     
-    if (neededSmarts.size === 0) return;
-    
-    // 计算需要从网络获取的数量
-    const smartsList = Array.from(neededSmarts);
-    let needFetch = 0;
-    for (const jsonStr of smartsList) {
-        const item = JSON.parse(jsonStr);
-        const cacheKey = item.search + (item.verification ? `|${item.verification}` : "");
-        if (!appState.moleculeCache[cacheKey] || appState.moleculeCache[cacheKey].length === 0) {
-            needFetch++;
-        }
-    }
-    
-    if (needFetch === 0) {
-        showStatus("使用缓存数据", "success");
+    const neededList = Array.from(neededItemsMap.values());
+    if (neededList.length === 0) {
+        showStatus("就绪 (使用本地缓存)", "success");
         return;
     }
     
-    showStatus(`正在从 PubChem 获取 ${needFetch}/${neededSmarts.size} 类分子...`, "loading");
+    showStatus(`正在从云端获取 ${neededList.length} 类分子资源...`, "loading");
     
-    // Fetch sequentially to avoid hitting rate limits
-    for (const jsonStr of smartsList) {
-        const item = JSON.parse(jsonStr);
+    // 并行获取，并发量限制为 3
+    await runTaskQueue(neededList, 3, async (item) => {
         await fetchMoleculesFromPubChem(item.search, item.verification);
-        // 增加延迟到 1 秒，避免触发限流
-        await new Promise(r => setTimeout(r, 1000));
-    }
+        // PubChem 请求之间的轻微随机延迟，提高抗封锁性
+        await new Promise(r => setTimeout(r, 300 + Math.random() * 400));
+    });
     
-    console.log(`📊 缓存统计: 命中=${cacheStats.hits}, 未命中=${cacheStats.misses}`);
+    console.log(`📊 缓存状态: 命中=${cacheStats.hits}, 新增=${cacheStats.misses}`);
 }
 
 /**

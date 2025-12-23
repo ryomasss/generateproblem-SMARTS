@@ -853,3 +853,56 @@ button.btn:hover {
 .category-content::-webkit-scrollbar-thumb:hover {
   background: rgba(124, 58, 237, 0.6);
 }
+
+/* ========== 子分类样式 ========== */
+
+.reaction-subcategory {
+  margin-bottom: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.subcategory-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(34, 211, 238, 0.05);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  user-select: none;
+  font-size: 12px;
+}
+
+.subcategory-header:hover {
+  background: rgba(34, 211, 238, 0.15);
+}
+
+.subcategory-header .toggle-icon {
+  font-size: 8px;
+  color: var(--accent2);
+}
+
+.subcategory-name {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.subcategory-count {
+  font-size: 10px;
+  color: var(--muted);
+  margin-left: auto;
+  margin-right: 6px;
+}
+
+.subcategory-content {
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.subcategory-content .reaction-item {
+  display: block;
+  margin: 2px 0;
+}
