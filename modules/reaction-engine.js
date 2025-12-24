@@ -414,6 +414,19 @@ export function getPredefinedProduct(rxnKey, r1Smiles, r2Smiles) {
         'esterification': {
             'CC(=O)O': 'CC(=O)OC',  // 乙酸 + 甲醇 -> 乙酸甲酯
             'CCC(=O)O': 'CCC(=O)OCC'  // 丙酸 + 乙醇 -> 丙酸乙酯
+        },
+        // ========== 硫醇反应预定义产物 ==========
+        'thiol_oxidation_disulfide': {
+            'CS': 'CSSC',           // 甲硫醇 -> 二甲基二硫化物
+            'CCS': 'CCSSCC',        // 乙硫醇 -> 二乙基二硫化物
+            'CCCS': 'CCCSSSCCC',    // 丙硫醇 -> 二丙基二硫化物
+            '_default': 'CSSCC'     // 默认
+        },
+        'thiol_metal_binding': {
+            'CS': 'CS[Ag]',         // 甲硫醇银
+            'CCS': 'CCS[Ag]',       // 乙硫醇银
+            'CCCS': 'CCCS[Ag]',     // 丙硫醇银
+            '_default': 'CCS[Ag]'   // 默认
         }
     };
     

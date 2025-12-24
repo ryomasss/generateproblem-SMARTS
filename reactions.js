@@ -7747,6 +7747,63 @@ window.REACTION_DB_EXTENDED = {
       }
     ],
     condition: "室温"
+  },
+  // ========== 硫醇反应 ==========
+  thiol_oxidation_disulfide: {
+    category: "thiol",
+    subcategory: "disulfide_formation",
+    name: "硫醇氧化为二硫化物",
+    difficulty: 2,
+    // 2 R-SH → R-S-S-R (硫醇被氧化偶联生成二硫键)
+    smarts: "[C:1][S:2][H].[C:3][S:4][H]>>[C:1][S:2][S:4][C:3]",
+    source: [
+      "thiols",
+      "thiols"
+    ],
+    search_smarts: [
+      "[CX4][SX2H]"
+    ],
+    reactant_info: [
+      {
+        smarts: "[CX4][SX2H]",
+        count: 2,
+        isReagent: false,
+        skip: false,
+        smiles: null
+      }
+    ],
+    condition: "稀H₂O₂ 或 I₂ 或 空气氧化"
+  },
+  thiol_metal_binding: {
+    category: "thiol",
+    subcategory: "metal_binding",
+    name: "硫醇与重金属离子反应",
+    difficulty: 2,
+    // R-SH + Ag⁺ → R-S-Ag (生成硫醇银沉淀)
+    smarts: "[C:1][S:2][H].[Ag+]>>[C:1][S:2][Ag]",
+    source: [
+      "thiols"
+    ],
+    search_smarts: [
+      "[CX4][SX2H]"
+    ],
+    reactant_info: [
+      {
+        smarts: "[CX4][SX2H]",
+        count: 1,
+        isReagent: false,
+        skip: false,
+        smiles: null
+      },
+      {
+        smarts: "[Ag+]",
+        count: 1,
+        isReagent: true,
+        skip: true,
+        smiles: "[Ag+]"
+      }
+    ],
+    condition: "AgNO₃ 溶液"
   }
 };
 

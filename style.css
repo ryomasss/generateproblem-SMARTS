@@ -352,10 +352,10 @@ button.btn:hover {
 }
 
 .reaction-arrow .arrow-text {
-  font-family: "Times New Roman", Times, serif;
+  font-family: Arial, sans-serif;
   font-size: calc(16px * var(--scale-factor));
   font-weight: 700;
-  font-style: italic;
+  font-style: normal;
   color: #ffffff;
   margin-bottom: calc(8px * var(--scale-factor));
   padding: 0 calc(10px * var(--scale-factor));

@@ -53,7 +53,7 @@ def after_request(response):
 # Serve static files (HTML, JS, CSS)
 @app.route('/')
 def index():
-    return send_from_directory('.', 'random.html')
+    return send_from_directory('.', 'index.html')
 
 @app.route('/<path:path>')
 def serve_static(path):
@@ -82,7 +82,15 @@ def handle_exception(e):
     import traceback
     error_msg = f"Unhandled exception: {e}\n{traceback.format_exc()}"
     print(error_msg)
+    # Check if it's a 404 error
+    from werkzeug.exceptions import NotFound
+    if isinstance(e, NotFound):
+        return jsonify({'error': '404 Not Found: The requested URL was not found on the server.', 'products': []}), 404
     return jsonify({'error': str(e), 'products': []}), 500
+
+@app.errorhandler(404)
+def handle_404(e):
+    return jsonify({'error': '404 Not Found: The requested URL was not found on the server.', 'products': []}), 404
 
 @app.errorhandler(500)
 def handle_500(e):
