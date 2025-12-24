@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2025-12-24T23:16:58.390649",
+    "reactants": [
+      "CCOC(=O)CC(C(=O)OCC)SP(=S)(OC)OC"
+    ],
+    "product": "CCOC(=O)C(CC(O)OCC)SP(=S)(OC)OC",
+    "smarts": "[C:1]=[O:2]>>[C:1][O:2]",
+    "reaction_name": null,
+    "similarity": 0.9647,
+    "reason": "Product too similar to reactant - possibly no effective reaction",
+    "validation_type": "ai_chemberta"
+  }
+]
