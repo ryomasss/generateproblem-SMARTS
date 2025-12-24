@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>有机化学反应出题器 - RDKit重构版</title>
+  <title>有机化学反应出题器 (SMARTS & AI 增强版)</title>
 
   <link rel="icon" href="data:," />
   <link rel="stylesheet" href="style.css" />
@@ -30,9 +30,9 @@
   </script>
 </head>
 <body>
-  <h1>有机化学反应出题器 - RDKit重构版</h1>
+  <h1>有机化学反应出题器 (SMARTS & AI 增强版)</h1>
   <div class="sub">
-    使用 RDKit.js 和 SMILES 渲染化学结构式
+    结合 RDKit SMARTS 引擎与 ChemBERTa AI 验证模型的智能化有机化学练习系统
   </div>
   <div class="container">
     <section class="card panel">
@@ -46,13 +46,8 @@
       <label class="mt-10">反应类型 (请至少选择一项)</label>
      <label class="mt-10">选择生成的反应类型：</label>
       <div id="reactionTypes">
-       <label><input type="checkbox" id="chk_amide" value="amide" checked /> 酰胺成反应</label><br />
-  <label><input type="checkbox" id="chk_ester" value="ester" /> 酯化反应</label><br />
-  <label><input type="checkbox" id="chk_alkyl" value="alkyl" /> 醚化反应 (威廉姆逊合成)</label><br />
-  <label><input type="checkbox" id="chk_alkene_br2" value="alkene_br2" /> 烯烃溴化 (亲电加成)</label><br />
-  <label><input type="checkbox" id="chk_alkene_hx" value="alkene_hx" /> 烯烃氢卤化 (马氏规则)</label><br />
-  <label><input type="checkbox" id="chk_alkyne_red" value="alkyne_red" /> 炔烃还原 (完全氢化)</label><br />
-</div>
+        <div class="loading">正在加载反应数据库...</div>
+      </div>
 
  <div class="adaptive-controls">
   <div class="size-controls">
@@ -97,14 +92,12 @@
       </div>
 
       <div class="smiles-help">
-        <strong>化学式英文对照：</strong>
+        <strong>常见化学片段对照：</strong>
         <ul>
-          <li>Benzene - 苯</li>
-          <li>Bromobenzene - 溴苯</li>
-          <li>Toluene - 甲苯</li>
-          <li>Nitrobenzene - 硝基苯</li>
-          <li>Ethanol - 乙醇</li>
-          <li>Acetone - 丙酮</li>
+          <li><strong>苯环系列：</strong> Benzene (c1ccccc1), Toluene (Cc1ccccc1), Phenol (Oc1ccccc1)</li>
+          <li><strong>羰基系列：</strong> Acetone (CC(=O)C), Acetic Acid (CC(=O)O), Ethyl Acetate (CC(=O)OCC)</li>
+          <li><strong>常用试剂：</strong> mCPBA, PCC, LiAlH4, NaBH4, Grignard (RMgX)</li>
+          <li><strong>其他：</strong> Pyridine, Pyrrole, Furan, Thiophene</li>
         </ul>
       </div>
     </section>

@@ -4,6 +4,42 @@ from flask import Flask, request, jsonify, send_from_directory
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
+# AI Validation configuration
+AI_VALIDATION_ENABLED = True  # Set to False to disable AI validation
+
+# Data logging configuration
+DATA_LOGGING_ENABLED = True  # Set to False to disable data logging
+
+# Lazy import of ai_validator (only when needed)
+ai_validator = None
+reaction_logger = None
+
+def get_ai_validator():
+    """Lazy load ai_validator module to avoid slow startup"""
+    global ai_validator
+    if ai_validator is None and AI_VALIDATION_ENABLED:
+        try:
+            import ai_validator as av
+            ai_validator = av
+            print("[INFO] AI Validator module loaded successfully")
+        except ImportError as e:
+            print(f"[WARNING] Could not load AI Validator: {e}")
+            return None
+    return ai_validator
+
+def get_reaction_logger():
+    """Lazy load reaction_logger module"""
+    global reaction_logger
+    if reaction_logger is None and DATA_LOGGING_ENABLED:
+        try:
+            import reaction_logger as rl
+            reaction_logger = rl
+            print("[INFO] Reaction Logger module loaded successfully")
+        except ImportError as e:
+            print(f"[WARNING] Could not load Reaction Logger: {e}")
+            return None
+    return reaction_logger
+
 app = Flask(__name__, static_folder='.')
 
 # Add CORS headers to all responses
@@ -17,11 +53,28 @@ def after_request(response):
 # Serve static files (HTML, JS, CSS)
 @app.route('/')
 def index():
-    return send_from_directory('.', 'random.html')
+    return send_from_directory('.', 'index.html')
 
 @app.route('/<path:path>')
 def serve_static(path):
     return send_from_directory('.', path)
+
+# Statistics API Endpoint
+@app.route('/api/stats', methods=['GET'])
+def get_stats():
+    """Get reaction validation statistics and failed reactions log"""
+    logger = get_reaction_logger()
+    if logger:
+        summary = logger.get_summary()
+        return jsonify({
+            'success': True,
+            'data': summary
+        })
+    else:
+        return jsonify({
+            'success': False,
+            'error': 'Reaction logger not available'
+        })
 
 # Global error handler for all unhandled exceptions
 @app.errorhandler(Exception)
@@ -29,7 +82,15 @@ def handle_exception(e):
     import traceback
     error_msg = f"Unhandled exception: {e}\n{traceback.format_exc()}"
     print(error_msg)
+    # Check if it's a 404 error
+    from werkzeug.exceptions import NotFound
+    if isinstance(e, NotFound):
+        return jsonify({'error': '404 Not Found: The requested URL was not found on the server.', 'products': []}), 404
     return jsonify({'error': str(e), 'products': []}), 500
+
+@app.errorhandler(404)
+def handle_404(e):
+    return jsonify({'error': '404 Not Found: The requested URL was not found on the server.', 'products': []}), 404
 
 @app.errorhandler(500)
 def handle_500(e):
@@ -138,26 +199,92 @@ def run_reaction():
                     # 验证：重新解析 SMILES 确保有效
                     verify_mol = Chem.MolFromSmiles(smi)
                     if verify_mol is None:
-                        print(f"  ⚠️ 产物 SMILES 无法重新解析: {smi}")
+                        print(f"  [!] Product SMILES cannot be reparsed: {smi}")
                         continue
                     
                     # 过滤过于复杂的分子（长度 > 80 或原子数 > 30）
                     if len(smi) > 80:
-                        print(f"  ⚠️ 产物过于复杂 (长度 {len(smi)}): {smi[:40]}...")
+                        print(f"  [!] Product too complex (length {len(smi)}): {smi[:40]}...")
                         continue
                     
                     atom_count = verify_mol.GetNumAtoms()
                     if atom_count > 30:
-                        print(f"  ⚠️ 产物原子数过多 ({atom_count}): {smi[:40]}...")
+                        print(f"  [!] Product atom count too high ({atom_count}): {smi[:40]}...")
                         continue
                     
                     unique_products.add(smi)
-                    print(f"  ✅ Product: {smi}")
+                    print(f"  [OK] Product: {smi}")
                 except Exception as sanitize_error:
                     print(f"  Sanitization error: {sanitize_error}")
                     continue
 
         result = list(unique_products)
+        
+        # AI Validation step
+        validated_products = []
+        validation_results = []
+        
+        validator = get_ai_validator()
+        if validator and len(result) > 0:
+            print(f"\n[AI] Starting AI validation for {len(result)} products...")
+            
+            for product_smiles in result:
+                try:
+                    # Use all reactants for validation
+                    validation = validator.check_reaction_validity(
+                        reactants_smiles, 
+                        product_smiles
+                    )
+                    
+                    validation_info = {
+                        'product': product_smiles,
+                        'similarity': validation['similarity'],
+                        'is_valid': validation['is_valid'],
+                        'reason': validation['reason']
+                    }
+                    validation_results.append(validation_info)
+                    
+                    if validation['is_valid']:
+                        validated_products.append(product_smiles)
+                        print(f"  [OK] {product_smiles}: similarity={validation['similarity']:.4f} (VALID)")
+                    else:
+                        print(f"  [X] {product_smiles}: similarity={validation['similarity']:.4f} - {validation['reason']}")
+                        # Log failed reaction for learning
+                        logger = get_reaction_logger()
+                        if logger:
+                            logger.log_failed_reaction(
+                                reactants=reactants_smiles,
+                                product=product_smiles,
+                                smarts=smarts,
+                                validation_result=validation,
+                                reaction_name=data.get('reaction_name')
+                            )
+                        
+                except Exception as val_error:
+                    print(f"  [!] Validation error for {product_smiles}: {val_error}")
+                    # If validation fails, keep the product by default
+                    validated_products.append(product_smiles)
+                    validation_results.append({
+                        'product': product_smiles,
+                        'similarity': None,
+                        'is_valid': True,
+                        'reason': f'Validation skipped: {val_error}'
+                    })
+            
+            print(f"[AI] Validation complete: {len(validated_products)}/{len(result)} products passed")
+            
+            # Update statistics
+            logger = get_reaction_logger()
+            if logger:
+                failed_count = len(result) - len(validated_products)
+                logger.update_stats(
+                    reaction_name=data.get('reaction_name', 'unknown'),
+                    total_products=len(result),
+                    valid_products=len(validated_products),
+                    failed_products=failed_count
+                )
+            
+            result = validated_products
         
         if len(result) == 0:
             print(f"No valid products generated - reactants may not match SMARTS pattern")
@@ -165,7 +292,14 @@ def run_reaction():
             print(f"Returning {len(result)} unique products")
         
         print(f"{'='*60}\n")
-        return jsonify({'products': result})
+        
+        # Include validation info in response if AI validation was performed
+        response_data = {'products': result}
+        if validation_results:
+            response_data['validation'] = validation_results
+            response_data['ai_validated'] = True
+        
+        return jsonify(response_data)
 
     except Exception as e:
         import traceback

@@ -233,110 +233,89 @@ export async function generateProblems() {
   grid.className = "grid";
   const template = document.getElementById("problem-template");
 
-  for (let i = 0; i < PROBLEM_COUNT; i++) {
+  let attempts = 0;
+  const maxAttempts = PROBLEM_COUNT * 4; // 最多尝试数量，防止死循环
+  let successfulCount = 0;
+
+  while (successfulCount < PROBLEM_COUNT && attempts < maxAttempts) {
+    attempts++;
+    
     // 1. 随机选择反应类型
     const typeKey = availableTypes[Math.floor(Math.random() * availableTypes.length)];
     const def = REACTION_DB[typeKey];
 
-    // 2. 随机选择反应物 - 使用 reactant_info 获取所有反应物
-    // 使用 reactants 数组支持任意数量的反应物
+    // 2. 随机选择反应物
     const reactants = [];
-
-    // 优先使用 reactant_info（如果可用）
     if (def.reactant_info && def.reactant_info.length > 0) {
         for (const info of def.reactant_info) {
             if (!info || !info.smarts) continue;
-            
-            // 检查是否应该跳过 PubChem 搜索（如金属离子）
             if (info.skip) {
-                // 对于 skip=true 的试剂，直接使用预定义的 SMILES
-                if (info.smiles) {
-                    reactants.push(info.smiles);
-                } else if (isSimpleMolecule(info.smarts)) {
-                    reactants.push(info.smarts);
-                }
+                if (info.smiles) reactants.push(info.smiles);
+                else if (isSimpleMolecule(info.smarts)) reactants.push(info.smarts);
                 continue;
             }
-            
-            // 检查是否是简单试剂，可以直接使用 SMILES
             if (info.isReagent && info.smiles) {
-                // 试剂类型，直接使用预定义的 SMILES
                 reactants.push(info.smiles);
                 continue;
             }
-            
-            // 从缓存中查找分子
             const cacheKey = info.smarts + (def.smarts ? `|${def.smarts}` : "");
             const pool = appState.moleculeCache[cacheKey];
             const mol = selectValidMolecule(pool);
-            
-            if (mol) {
-                reactants.push(mol);
-            } else if (info.smiles) {
-                // 如果缓存中没有找到，但有预定义 SMILES，使用它
-                reactants.push(info.smiles);
-            } else if (isSimpleMolecule(info.smarts)) {
-                // 对于简单分子，直接使用 SMARTS 作为 SMILES
-                reactants.push(info.smarts);
-            }
+            if (mol) reactants.push(mol);
+            else if (info.smiles) reactants.push(info.smiles);
+            else if (isSimpleMolecule(info.smarts)) reactants.push(info.smarts);
         }
     } else if (def.search_smarts && def.search_smarts.length > 0) {
-        // 回退到旧的 search_smarts 逻辑
         for (const s of def.search_smarts) {
             if (s) {
                 const cacheKey = s + (def.smarts ? `|${def.smarts}` : "");
                 const pool = appState.moleculeCache[cacheKey];
                 const mol = selectValidMolecule(pool);
-                if (mol) {
-                    reactants.push(mol);
-                } else if (isSimpleMolecule(s)) {
-                    reactants.push(s);
-                }
+                if (mol) reactants.push(mol);
+                else if (isSimpleMolecule(s)) reactants.push(s);
             }
         }
     }
     
-    // 回退方案 - 使用本地分子库
     if (def.source) {
         for (let idx = 0; idx < def.source.length; idx++) {
-            if (reactants[idx]) continue; // 已经有这个位置的反应物了
-            
+            if (reactants[idx]) continue;
             const poolName = def.source[idx];
             if (!poolName) continue;
-            
             let pool = CHEMICAL_CABINET[poolName];
-            
-            // 威廉姆逊醚合成的特殊逻辑
             if (poolName === "alcohols" && typeKey === "williamson_ether") {
-                if (CHEMICAL_CABINET["phenols"]) {
-                    pool = pool.concat(CHEMICAL_CABINET["phenols"]);
-                }
+                if (CHEMICAL_CABINET["phenols"]) pool = pool.concat(CHEMICAL_CABINET["phenols"]);
             }
-            
             const mol = selectValidMolecule(pool);
             if (mol) {
-                if (idx < reactants.length) {
-                    reactants[idx] = mol;
-                } else {
-                    reactants.push(mol);
-                }
+                if (idx < reactants.length) reactants[idx] = mol;
+                else reactants.push(mol);
             }
         }
     }
 
-    // 兼容性：保留 r1 和 r2 用于现有代码
     const r1 = reactants[0] || null;
     const r2 = reactants[1] || null;
 
-    // 安全检查
-    if (!r1) {
-        console.warn(`No reactant 1 found for ${typeKey}`);
-        continue;
+    if (!r1) continue;
+
+    // 3. 生成产物
+    const productSmilesArray = await runReactionWithRDKit(typeKey, r1, r2);
+    
+    // 验证产物有效性
+    const validProducts = (productSmilesArray || []).filter(smi => {
+        if (!smi || typeof smi !== 'string') return false;
+        if (smi === 'FAILED' || smi === '?' || smi.trim() === '') return false;
+        return true;
+    });
+
+    if (validProducts.length === 0) {
+        console.warn(`⚠️ 反应 [${def.name}] 生成失败，正在尝试其他反应物... (尝试次数: ${attempts}/${maxAttempts})`);
+        continue; // 失败了，跳过，不增加 successfulCount
     }
 
-    // 3. 生成产物 (返回数组)
-    const productSmilesArray = await runReactionWithRDKit(typeKey, r1, r2);
-
+    // 成功生成！
+    successfulCount++;
     appState.currentProblemsData.push({
       r1, r2, reactants, products: productSmilesArray
     });
@@ -345,7 +324,7 @@ export async function generateProblems() {
     const clone = template.content.cloneNode(true);
     const problemEl = clone.querySelector(".problem");
 
-    clone.querySelector(".index").textContent = i + 1;
+    clone.querySelector(".index").textContent = successfulCount;
     clone.querySelector(".problem-type").textContent = `${def.name}`;
     clone.querySelector(".arrow-text").innerHTML = def.condition;
 
@@ -359,18 +338,14 @@ export async function generateProblems() {
     newReactantsBox.style.justifyContent = "center";
     newReactantsBox.style.gap = "10px";
 
-    // 遍历所有反应物并渲染（支持任意数量的反应物）
     reactants.forEach((reactant, idx) => {
         if (!reactant) return;
-        
-        // 在反应物之间添加加号
         if (idx > 0) {
             const plus = document.createElement("div");
             plus.className = "plus-sign";
             plus.textContent = "+";
             newReactantsBox.appendChild(plus);
         }
-        
         const wrapper = document.createElement("div");
         wrapper.className = "structure reactant";
         wrapper.style.flex = "1";
@@ -382,59 +357,29 @@ export async function generateProblems() {
         eqContainer.replaceChild(newReactantsBox, oldReactantBox);
     }
 
-      const answerContainer = clone.querySelector(".structure-container.answer-structure");
-      if (answerContainer) {
-          answerContainer.innerHTML = ""; // 清空默认的占位符
-
-          if (Array.isArray(productSmilesArray)) {
-              // 过滤掉无效的产物 SMILES
-              const validProducts = productSmilesArray.filter(smi => {
-                  if (!smi || typeof smi !== 'string') return false;
-                  if (smi === 'FAILED' || smi === '?' || smi.trim() === '') return false;
-                  
-                  // 尝试用 RDKit 验证 SMILES
-                  if (appState.rdkitModule) {
-                      try {
-                          const mol = appState.rdkitModule.get_mol(smi);
-                          if (mol && mol.is_valid()) {
-                              mol.delete();
-                              return true;
-                          }
-                          if (mol) mol.delete();
-                          console.warn(`🔴 产物 SMILES 无效 (RDKit 无法解析): ${smi}`);
-                          return false;
-                      } catch (e) {
-                          console.warn(`🔴 产物 SMILES 验证失败: ${smi}`, e.message);
-                          return false;
-                      }
-                  }
-                  return true;
-              });
-              
-              if (validProducts.length === 0) {
-                  console.warn("⚠️ 没有有效的产物可渲染");
-                  const errorDiv = document.createElement("div");
-                  errorDiv.innerHTML = `<span style="color:#ef4444;font-size:12px;">⚠️ 产物生成失败</span>`;
-                  answerContainer.appendChild(errorDiv);
-              } else {
-                  validProducts.forEach((smi, idx) => {
-                      if (idx > 0) {
-                          const plus = document.createElement("div");
-                          plus.className = "plus-sign";
-                          plus.textContent = "+";
-                          answerContainer.appendChild(plus);
-                      }
-                      
-                      const structDiv = document.createElement("div");
-                      structDiv.className = "structure product";
-                      structDiv.appendChild(createStructureSVG(smi));
-                      answerContainer.appendChild(structDiv);
-                  });
-              }
-          }
-      }
+    const answerContainer = clone.querySelector(".structure-container.answer-structure");
+    if (answerContainer) {
+        answerContainer.innerHTML = "";
+        validProducts.forEach((smi, idx) => {
+            if (idx > 0) {
+                const plus = document.createElement("div");
+                plus.className = "plus-sign";
+                plus.textContent = "+";
+                answerContainer.appendChild(plus);
+            }
+            const structDiv = document.createElement("div");
+            structDiv.className = "structure product";
+            structDiv.appendChild(createStructureSVG(smi));
+            answerContainer.appendChild(structDiv);
+        });
+    }
 
     grid.appendChild(problemEl);
+  }
+
+  if (successfulCount === 0) {
+      showStatus("无法生成有效题目，请尝试选择更多反应类型", "error");
+      return;
   }
 
   problemsEl.appendChild(grid);
