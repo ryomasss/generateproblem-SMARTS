@@ -186,6 +186,21 @@ def show_ai_stats():
         print(f"  Reactants: {entry.get('reactants')}")
         print("")
 
+def run_annotator():
+    """Run the data annotation script"""
+    script_path = os.path.join(BASE_DIR, 'annotate_data.py')
+    if not os.path.exists(script_path):
+        print(f"[Error] Annotator script not found.")
+        return
+    
+    print("\n[Exec] Starting Annotator...")
+    print("This will open an interactive session to label reactions.")
+    try:
+        # Using subprocess.call to allow interactive input
+        subprocess.call([sys.executable, script_path])
+    except Exception as e:
+        print(f"[Error] Could not start annotator: {e}")
+
 # ==========================================
 # Feature 5: Log Cleaning
 # ==========================================
@@ -224,9 +239,10 @@ def main_menu():
         print("3. [Data] Backup: Snapshot critical files")
         print("4. [AI]   Stats: View Validation Success Rates")
         print("5. [AI]   Logs: Clean/Reset Logs")
+        print("6. [AI]   Train: Annotate Failed Reactions (Label for Fine-tuning)")
         print("0. Exit")
         
-        choice = input("\nSelect option (0-5): ")
+        choice = input("\nSelect option (0-6): ")
         
         if choice == '1':
             update_data_pipeline()
@@ -238,6 +254,8 @@ def main_menu():
             show_ai_stats()
         elif choice == '5':
             clean_logs()
+        elif choice == '6':
+            run_annotator()
         elif choice == '0':
             print("Goodbye!")
             break
