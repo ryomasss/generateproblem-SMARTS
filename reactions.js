@@ -7,7 +7,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_1": {
     category: "alkene",
     name: "烯烃与溴加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[Br][Br]>>[C:1]([Br])-[C:2]([Br])",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","BrBr"],
@@ -16,7 +16,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_2": {
     category: "alkene",
     name: "烯烃与氯加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[Cl][Cl]>>[C:1]([Cl])-[C:2]([Cl])",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","ClCl"],
@@ -25,7 +25,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_3": {
     category: "alkene",
     name: "烯烃与碘加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[I][I]>>[C:1]([I])-[C:2]([I])",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","II"],
@@ -34,7 +34,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_4": {
     category: "alkene",
     name: "烯烃与溴化氢加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[H][Br]>>[C:1][H][C:2][Br]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","Br"],
@@ -43,7 +43,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_5": {
     category: "alkene",
     name: "烯烃与氯化氢加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[H][Cl]>>[C:1][H][C:2][Cl]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","Cl"],
@@ -52,7 +52,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_6": {
     category: "alkene",
     name: "烯烃与碘化氢加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[H][I]>>[C:1][H][C:2][I]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","I"],
@@ -88,7 +88,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_10": {
     category: "alkene",
     name: "与水加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[O:3][H:4]>>[C:1](-[H:4])-[C:2]-[O:3]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","O"],
@@ -124,7 +124,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_14": {
     category: "alkene",
     name: "a氢的卤化",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1][C:2]=[C:3].[Cl][Cl]>>[Cl][C:1][C:2]=[C:3]",
     source: ["alkenes"],
     search_smarts: ["[C][C]=[C]","ClCl"],
@@ -133,7 +133,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_15": {
     category: "alkene",
     name: "环氧化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2].[O:3][O:4][C:5]>>[C:1]1[C:2][O:3]1",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","[O][O][C]"],
@@ -151,7 +151,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_17": {
     category: "alkene",
     name: "烯烃的臭氧氧化-分解反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2]>>[C:1]=O.O=[C:2]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
@@ -160,7 +160,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_18": {
     category: "alkene",
     name: "硼氢化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2]>>[C:1][H][C:2][B]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
@@ -169,7 +169,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_19": {
     category: "alkene",
     name: "催化加氢",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2]>>[C:1]-[C:2]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
@@ -187,7 +187,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_21": {
     category: "alkene",
     name: "烯烃复分解反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2].[C:3]=[C:4]>>[C:1]=[C:3].[C:2]=[C:4]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
@@ -196,7 +196,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_22": {
     category: "alkene",
     name: "共轭加成(1,2-加成)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2]-[C:3]=[C:4]>>[C:1][Br]-[C:2]=[C:3]-[C:4][Br]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]-[C]=[C]"],
@@ -205,7 +205,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_23": {
     category: "alkene",
     name: "共轭加成(1,4-加成)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2]-[C:3]=[C:4]>>[C:1][Br]-[C:2]-[C:3]=[C:4][Br]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]-[C]=[C]"],
@@ -223,7 +223,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_2": {
     category: "alkyne",
     name: "与HBr加成（马氏规则）末端炔烃",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C;H1:1]#[C:2].[H:3][Br:4]>>[C:1]([H:3])=[C:2][Br:4]",
     source: ["alkynes"],
     search_smarts: ["[C;H1]#[C]","Br"],
@@ -241,7 +241,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_4": {
     category: "alkyne",
     name: "与水加成 末端炔烃生成醛",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C;H1:1]#[C:2].[O:3][H:4]>>[C:1](=[O:3])-[C:2]([H:4])",
     source: ["alkynes"],
     search_smarts: ["[C;H1]#[C]","O"],
@@ -250,7 +250,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_5": {
     category: "alkyne",
     name: "与水加成 内部炔烃生成酮",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]#[C:2].[O:3][H:4]>>[C:1](=[O:3])-[C:2]",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","O"],
@@ -268,7 +268,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_7": {
     category: "alkyne",
     name: "溴加成第二步",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]([Br:3])=[C:2]([Br:4]).[Br:5][Br:6]>>[C:1]([Br:3])([Br:5])-[C:2]([Br:4])([Br:6])",
     source: ["alkynes"],
     search_smarts: ["[C]([Br])=[C]([Br])","BrBr"],
@@ -286,7 +286,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_9": {
     category: "alkyne",
     name: "alkyne 反应 9",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]#[C:3].[H:4][Br:5][H:6][Br:7]>>[C:1][C:2]([H:4])([Br:7])[C:3]([H:6])([Br:5])",
     source: ["alkynes"],
     search_smarts: ["[C][C]#[C]","[H][Br][H][Br]"],
@@ -331,7 +331,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_14": {
     category: "alkyne",
     name: "臭氧氧化-分解反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]#[C:2]>>[C:1](=O)[OH].[C:2](=O)[OH]",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]"],
@@ -340,7 +340,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_15": {
     category: "alkyne",
     name: "完全加氢(生成烷烃)",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]#[C:2].[H][H][H][H]>>[C:1]([H])([H])-[C:2]([H])([H])",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","[H][H][H][H]"],
@@ -349,7 +349,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_16": {
     category: "alkyne",
     name: "部分加氢(顺式加成,Lindlar催化剂)",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]#[C:2].[H][H]>>([H])/[C:1]=[C:2]\\([H])",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","[H][H]"],
@@ -358,7 +358,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_17": {
     category: "alkyne",
     name: "硼氢化-氧化反应 对于末端炔烃（生成醛）",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C;H1:1]#[C:2]>>[C:1](=O)-[C:2]",
     source: ["alkynes"],
     search_smarts: ["[C;H1]#[C]"],
@@ -376,7 +376,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_19": {
     category: "alkyne",
     name: "三聚反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]#[C:2].[C:3]#[C:4].[C:5]#[C:6]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]"],
@@ -385,7 +385,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_20": {
     category: "alkyne",
     name: "四聚反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]#[C:2].[C:3]#[C:4].[C:5]#[C:6].[C:7]#[C:8]>>[C:1]1=[C:2][C:3]=[C:4][C:5]=[C:6][C:7]=[C:8]1",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]"],
@@ -457,7 +457,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_gen_8": {
     category: "alcohol",
     name: "酚的酯化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[C:8][C:9](=O)[O:10]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7][C:9](=O)[C:8].[O:10]",
     source: ["alcohols"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","[C][C](=O)[O]"],
@@ -475,7 +475,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_gen_10": {
     category: "alcohol",
     name: "与SOCl₂反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][O:2].[S:3](=[O:4])([Cl:5])([Cl:6])>>[C:1][Cl:6].[S:3](=[O:4])(=[O]).[Cl:5]",
     source: ["alcohols"],
     search_smarts: ["[C][O]","[S](=[O])([Cl])([Cl])"],
@@ -493,7 +493,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_gen_12": {
     category: "alcohol",
     name: "与卤化磷反应转化为卤代烃",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1][O:2].[P:3]([Cl:4])([Cl:5])[Cl:6]>>[C:1][Cl:4].[P:3](=[O:2])([Cl:5])[Cl:6]",
     source: ["alcohols"],
     search_smarts: ["[C][O]","[P]([Cl])([Cl])[Cl]"],
@@ -502,7 +502,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_gen_13": {
     category: "alcohol",
     name: "生成磺酸酯和氯化氢",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[CX4:1][O:2][H].[C:3][S:4](=[O])(=[O])[Cl:5]>>[CX4:1][O:2][S:4](=[O])(=[O])[C:3]+[H][Cl:5]",
     source: ["alcohols"],
     search_smarts: ["[CX4][O][H]","[C][S](=[O])(=[O])[Cl]"],
@@ -547,7 +547,7 @@ window.REACTION_DB_EXTENDED = {
   "ether_gen_3": {
     category: "ether",
     name: "酸性条件下与水反应生成两种醇",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]-[O:2]-[C:3].[H:4][O:5][H:6]>>[C:1]-[O:5][H:6].[C:3]-[O:5][H:4]",
     source: ["ethers"],
     search_smarts: ["[C]-[O]-[C]","[H][O][H]"],
@@ -565,7 +565,7 @@ window.REACTION_DB_EXTENDED = {
   "ether_gen_5": {
     category: "ether",
     name: "在碱性条件下与氰化物反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]1-[O:2]-[C;H2,H1:3]1.[C-:4]#[N]>>[C:1]([O:2])-[C:3]-[C:4]#[N]",
     source: ["ethers"],
     search_smarts: ["[C]1-[O]-[C;H2,H1]1","[C-]#N"],
@@ -574,7 +574,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_1": {
     category: "benzene",
     name: "卤代反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[Br][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[Br].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","BrBr"],
@@ -583,7 +583,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_2": {
     category: "benzene",
     name: "benzene 反应 2",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[Cl].[Cl]#卤代反应",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","ClCl"],
@@ -592,7 +592,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_3": {
     category: "benzene",
     name: "硝化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[N+](=O)([O-])[O:7]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[N+](=O)[O-].[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[N+](=O)([O-])[O]"],
@@ -601,7 +601,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_4": {
     category: "benzene",
     name: "磺化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[S](=O)(=O)O",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","OS(=O)(=O)O"],
@@ -610,7 +610,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_5": {
     category: "benzene",
     name: "烷基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8][Br:9]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[C][C][Br]"],
@@ -619,7 +619,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_6": {
     category: "benzene",
     name: "烷基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8][Cl:9]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[C][C][Cl]"],
@@ -628,7 +628,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_7": {
     category: "benzene",
     name: "酰基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8](=O)[Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:8](=O)[C:7].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[C][C](=O)[Cl]"],
@@ -637,7 +637,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_8": {
     category: "benzene",
     name: "酰基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8](=O)[Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:8](=O)[C:7].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[C][C](=O)[Br]"],
@@ -646,7 +646,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_9": {
     category: "benzene",
     name: "苯酚的溴代反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Br][Br]>>[c:1]1[c:2][c:3]([Br])[c:4][c:5][c:6]1[O].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","BrBr"],
@@ -655,7 +655,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_10": {
     category: "benzene",
     name: "benzene 反应 10",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Br][Br].[Br][Br].[Br][Br]>>[c:1]1([Br])[c:2][c:3]([Br])[c:4][c:5]([Br])[c:6]1[O].[Br][Br][Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","BrBr"],
@@ -664,7 +664,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_11": {
     category: "benzene",
     name: "苯酚的氯代反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Cl][Cl]>>[c:1]1[c:2][c:3]([Cl])[c:4][c:5][c:6]1[O].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","ClCl"],
@@ -673,7 +673,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_12": {
     category: "benzene",
     name: "苯酚的碘代反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[I][I]>>[c:1]1[c:2][c:3]([I])[c:4][c:5][c:6]1[O].[I]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","II"],
@@ -682,7 +682,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_13": {
     category: "benzene",
     name: "CHCI3 ;15℃苯酚的硝化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[N+](=O)[O-]>>[c:1]1[c:2][c:3]([N+](=O)[O-])[c:4][c:5][c:6]1[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","[N+](=O)[O-]"],
@@ -691,7 +691,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_14": {
     category: "benzene",
     name: "低极性溶剂 ; 25℃,HONO2(20%)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4][c:5]([N+](=O)[O-])[c:6]1[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","[N+](=O)[O-]"],
@@ -700,7 +700,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_15": {
     category: "benzene",
     name: "磺化反应浓H2SO4 ; 25℃",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4][c:5]([S](=O)(=O)O)[c:6]1[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","OS(=O)(=O)O"],
@@ -709,7 +709,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_16": {
     category: "benzene",
     name: "磺化反应浓H2SO4 ; 100℃",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[S](=O)(=O)O>>[c:1]1[c:2][c:3]([S](=O)(=O)O)[c:4][c:5][c:6]1[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","OS(=O)(=O)O"],
@@ -718,7 +718,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_17": {
     category: "benzene",
     name: "H2SO4 ; 30℃",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7].[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4][c:5]([N+](=O)[O-])[c:6]1[C:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]","[N+](=O)[O-]"],
@@ -727,7 +727,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_18": {
     category: "benzene",
     name: "发烟HNO3 ; H2SO4 ; 90-100℃",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[N+](=O)[O-].[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4]([N+](=O)[O-])[c:5][c:6]1[N+](=O)[O-]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[N+](=O)[O-]","[N+](=O)[O-]"],
@@ -736,7 +736,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_19": {
     category: "benzene",
     name: "萘FeCl3;加热",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[Cl][Cl]>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[Cl].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","ClCl"],
@@ -745,7 +745,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_20": {
     category: "benzene",
     name: "萘FeCl3;加热",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[Br][Br]>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[Br].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","BrBr"],
@@ -754,7 +754,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_21": {
     category: "benzene",
     name: "benzene 反应 21",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[N+](=O)[O-]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","[N+](=O)[O-]"],
@@ -763,7 +763,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_22": {
     category: "benzene",
     name: "benzene 反应 22",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[S](=O)(=O)O",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","OS(=O)(=O)O"],
@@ -772,7 +772,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_23": {
     category: "benzene",
     name: "benzene 反应 23",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[S](=O)(=O)O>>[c:1]1([S](=O)(=O)O)[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","OS(=O)(=O)O"],
@@ -808,7 +808,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_27": {
     category: "benzene",
     name: "在光照或加热条件下",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Br][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C][C]","BrBr"],
@@ -817,7 +817,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_28": {
     category: "benzene",
     name: "在光照或加热条件下",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C][C]","ClCl"],
@@ -826,7 +826,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_29": {
     category: "benzene",
     name: "与HX反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9].[H][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8][C:9]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C][C]","Br"],
@@ -835,7 +835,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_30": {
     category: "benzene",
     name: "与HX反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9].[H][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8][C:9]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C][C]","Cl"],
@@ -844,7 +844,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_31": {
     category: "benzene",
     name: "与X2反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8][Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","ClCl"],
@@ -853,7 +853,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_32": {
     category: "benzene",
     name: "与X2反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[Br][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8][Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","BrBr"],
@@ -862,7 +862,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_33": {
     category: "benzene",
     name: "与HX反应(马氏规则)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[H][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","Cl"],
@@ -871,7 +871,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_34": {
     category: "benzene",
     name: "与HX反应(马氏规则)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[H][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","Br"],
@@ -880,7 +880,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_35": {
     category: "benzene",
     name: "在H₂SO₄催化下",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[OH2:9]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([OH:9])[C:8]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","O"],
@@ -889,7 +889,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_36": {
     category: "benzene",
     name: "与次氯酸的加成",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[H][O][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([OH])[C:8][Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","[H][O][Cl]"],
@@ -934,7 +934,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_41": {
     category: "benzene",
     name: "生成",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Na+].[OH-]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O][Na+].O",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","[Na+]","[OH-]"],
@@ -970,7 +970,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_3": {
     category: "carbonyl",
     name: "醛与格氏试剂加成,无水醚",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[H].[C:3][Mg]([X])>>[C:1][C:2]([O][Mg]([X]))[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[H]","[C][Mg]([X])"],
@@ -979,7 +979,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_4": {
     category: "carbonyl",
     name: "醛与格氏试剂加成,H2O",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([O][Mg]([X]))[C:3]>>[C:1][C:2]([OH])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([O][Mg]([X]))[C]"],
@@ -988,7 +988,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_5": {
     category: "carbonyl",
     name: "酮与格氏试剂加成,无水醚",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][Mg]([X])>>[C:1][C:2]([O][Mg]([X]))([C:4])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]","[C][Mg]([X])"],
@@ -997,7 +997,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_6": {
     category: "carbonyl",
     name: "酮与格氏试剂加成,H2O",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([O][Mg]([X]))([C:4])[C:3]>>[C:1][C:2]([OH])([C:4])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([O][Mg]([X]))([C])[C]"],
@@ -1006,7 +1006,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_7": {
     category: "carbonyl",
     name: "醛与有机锂试剂加成,无水醚",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[H].[C:3][Li]>>[C:1][C:2]([O][Li])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[H]","[C][Li]"],
@@ -1015,7 +1015,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_8": {
     category: "carbonyl",
     name: "醛与有机锂试剂加成, H2O",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([O][Li])[C:3]>>[C:1][C:2]([OH])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([O][Li])[C]"],
@@ -1024,7 +1024,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_9": {
     category: "carbonyl",
     name: "酮与有机锂试剂加成,无水醚",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][Li]>>[C:1][C:2]([O][Li])([C:4])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]","[C][Li]"],
@@ -1033,7 +1033,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_10": {
     category: "carbonyl",
     name: "酮与有机锂试剂加成,H2O",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([O][Li])([C:4])[C:3]>>[C:1][C:2]([OH])([C:4])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([O][Li])([C])[C]"],
@@ -1051,7 +1051,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_12": {
     category: "carbonyl",
     name: "水解反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]([O-][Na+])([C:2])[C:3]#[C:4].[O]>>[C:1]([OH])([C:2])[C:3]#[C:4].[Na+][OH-]",
     source: ["carbonyls"],
     search_smarts: ["[C]([O-][Na+])([C])[C]#[C]","[O]"],
@@ -1060,7 +1060,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_13": {
     category: "carbonyl",
     name: "碱性条件下",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5](=O)[C:6]1.[Na+][C-:7]#[C:8]>>[C:1]1[C:2][C:3][C:4][C:5]([O-][Na+])([C:7]#[C:8])[C:6]1",
     source: ["carbonyls"],
     search_smarts: ["[C]1[C][C][C][C](=O)[C]1","[Na+][C-]#[C]"],
@@ -1069,7 +1069,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_14": {
     category: "carbonyl",
     name: "carbonyl 反应 14",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5]([O-][Na+])([C:7]#[C:8])[C:6]1.[O]>>[C:1]1[C:2][C:3][C:4][C:5]([OH])([C:7]#[C:8])[C:6]1.[Na+][OH-]#水解",
     source: ["carbonyls"],
     search_smarts: ["[C]1[C][C][C][C]([O-][Na+])([C]#[C])[C]1","[O]"],
@@ -1168,7 +1168,7 @@ window.REACTION_DB_EXTENDED = {
   "cycloalkane_gen_1": {
     category: "cycloalkane",
     name: "催化加氢,Ni,80℃",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]1[C:2][C:3]1.[H][H]>>[C:1][C:2][C:3]",
     source: ["cycloalkanes"],
     search_smarts: ["[C]1[C][C]1","[H][H]"],
@@ -1177,7 +1177,7 @@ window.REACTION_DB_EXTENDED = {
   "cycloalkane_gen_2": {
     category: "cycloalkane",
     name: "催化加氢,Ni,120℃",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]1[C:2][C:3][C:4]1.[H][H]>>[C:1][C:2][C:3][C:4]",
     source: ["cycloalkanes"],
     search_smarts: ["[C]1[C][C][C]1","[H][H]"],
@@ -1186,7 +1186,7 @@ window.REACTION_DB_EXTENDED = {
   "cycloalkane_gen_3": {
     category: "cycloalkane",
     name: "催化加氢,Ni,300℃",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5]1.[H][H]>>[C:1][C:2][C:3][C:4][C:5]",
     source: ["cycloalkanes"],
     search_smarts: ["[C]1[C][C][C][C]1","[H][H]"],
@@ -1240,7 +1240,7 @@ window.REACTION_DB_EXTENDED = {
   "cycloalkane_gen_9": {
     category: "cycloalkane",
     name: "cycloalkane 反应 9",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5][C:6]1.[Cl][Cl]>>[C:1]1[C:2][C:3][C:4][C:5]([Cl])[C:6]1.[Cl]",
     source: ["cycloalkanes"],
     search_smarts: ["[C]1[C][C][C][C][C]1","ClCl"],
@@ -1267,7 +1267,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_24": {
     category: "alkene",
     name: "烯烃与溴加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[Br][Br]>>[C:1]([Br])-[C:2]([Br])",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","BrBr"],
@@ -1276,7 +1276,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_25": {
     category: "alkene",
     name: "烯烃与氯加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[Cl][Cl]>>[C:1]([Cl])-[C:2]([Cl])",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","ClCl"],
@@ -1285,7 +1285,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_26": {
     category: "alkene",
     name: "烯烃与碘加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[I][I]>>[C:1]([I])-[C:2]([I])",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","II"],
@@ -1294,7 +1294,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_27": {
     category: "alkene",
     name: "烯烃与溴化氢加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[H][Br]>>[C:1][H][C:2][Br]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","Br"],
@@ -1303,7 +1303,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_28": {
     category: "alkene",
     name: "烯烃与氯化氢加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[H][Cl]>>[C:1][H][C:2][Cl]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","Cl"],
@@ -1312,7 +1312,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_29": {
     category: "alkene",
     name: "烯烃与碘化氢加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[H][I]>>[C:1][H][C:2][I]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","I"],
@@ -1348,7 +1348,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_33": {
     category: "alkene",
     name: "与水加成",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2].[O:3][H:4]>>[C:1](-[H:4])-[C:2]-[O:3]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","O"],
@@ -1384,7 +1384,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_37": {
     category: "alkene",
     name: "a氢的卤化",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1][C:2]=[C:3].[Cl][Cl]>>[Cl][C:1][C:2]=[C:3]",
     source: ["alkenes"],
     search_smarts: ["[C][C]=[C]","ClCl"],
@@ -1393,7 +1393,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_38": {
     category: "alkene",
     name: "环氧化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2].[O:3][O:4][C:5]>>[C:1]1[C:2][O:3]1",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","[O][O][C]"],
@@ -1402,7 +1402,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_39": {
     category: "alkene",
     name: "烯烃与过氧酸反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2].[C:3][C:4](=O)[O:5][O:6][H]>>[C:1]1[C:2][O:6]1.[C:3][C:4](=O)[O:5][H]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","[C][C](=O)[O][O][H]"],
@@ -1420,7 +1420,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_41": {
     category: "alkene",
     name: "烯烃的臭氧氧化-分解反应第一步",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2]>>[C:1]1[O][C:2][O][O]1",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
@@ -1429,7 +1429,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_42": {
     category: "alkene",
     name: "烯烃的臭氧氧化-分解反应第二步",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]1[O][C:2][O][O]1>>[C:1]=O.O=[C:2]",
     source: ["alkenes"],
     search_smarts: ["[C]1[O][C][O][O]1"],
@@ -1438,7 +1438,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_43": {
     category: "alkene",
     name: "硼氢化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2]>>[C:1][H][C:2][B]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
@@ -1447,7 +1447,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_44": {
     category: "alkene",
     name: "催化加氢",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]=[C:2]>>[C:1]-[C:2]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
@@ -1465,7 +1465,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_46": {
     category: "alkene",
     name: "烯烃复分解反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2].[C:3]=[C:4]>>[C:1]=[C:3].[C:2]=[C:4]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
@@ -1474,7 +1474,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_47": {
     category: "alkene",
     name: "共轭加成(1,2-加成)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2]-[C:3]=[C:4]>>[C:1][Br]-[C:2]=[C:3]-[C:4][Br]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]-[C]=[C]"],
@@ -1483,7 +1483,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_48": {
     category: "alkene",
     name: "共轭加成(1,4-加成)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2]-[C:3]=[C:4]>>[C:1][Br]-[C:2]-[C:3]=[C:4][Br]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]-[C]=[C]"],
@@ -1492,7 +1492,7 @@ window.REACTION_DB_EXTENDED = {
   "alkene_gen_49": {
     category: "alkene",
     name: "alkene 反应 49",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]=[C:2][C:3]=[C:4].[C:5]=[C:6]>>[C:1]1[C:2]=[C:3][C:4][C:5][C:6]1",
     source: ["alkenes"],
     search_smarts: ["[C]=[C][C]=[C]","[C]=[C]"],
@@ -1510,7 +1510,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_22": {
     category: "alkyne",
     name: "与HBr加成（马氏规则）末端炔烃",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C;H1:1]#[C:2].[H:3][Br:4]>>[C:1]([H:3])=[C:2][Br:4]",
     source: ["alkynes"],
     search_smarts: ["[C;H1]#[C]","Br"],
@@ -1528,7 +1528,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_24": {
     category: "alkyne",
     name: "与水加成 末端炔烃生成醛",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C;H1:1]#[C:2].[O:3][H:4]>>[C:1](=[O:3])-[C:2]([H:4])",
     source: ["alkynes"],
     search_smarts: ["[C;H1]#[C]","O"],
@@ -1537,7 +1537,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_25": {
     category: "alkyne",
     name: "与水加成 内部炔烃生成酮",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]#[C:2].[O:3][H:4]>>[C:1](=[O:3])-[C:2]",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","O"],
@@ -1555,7 +1555,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_27": {
     category: "alkyne",
     name: "溴加成第二步",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]([Br:3])=[C:2]([Br:4]).[Br:5][Br:6]>>[C:1]([Br:3])([Br:5])-[C:2]([Br:4])([Br:6])",
     source: ["alkynes"],
     search_smarts: ["[C]([Br])=[C]([Br])","BrBr"],
@@ -1573,7 +1573,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_29": {
     category: "alkyne",
     name: "alkyne 反应 29",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]#[C:3].[H:4][Br:5][H:6][Br:7]>>[C:1][C:2]([H:4])([Br:7])[C:3]([H:6])([Br:5])",
     source: ["alkynes"],
     search_smarts: ["[C][C]#[C]","[H][Br][H][Br]"],
@@ -1618,7 +1618,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_34": {
     category: "alkyne",
     name: "臭氧氧化-分解反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]#[C:2]>>[C:1](=O)[OH].[C:2](=O)[OH]",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]"],
@@ -1627,7 +1627,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_35": {
     category: "alkyne",
     name: "完全加氢(生成烷烃)",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]#[C:2].[H][H][H][H]>>[C:1]([H])([H])-[C:2]([H])([H])",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","[H][H][H][H]"],
@@ -1636,7 +1636,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_36": {
     category: "alkyne",
     name: "部分加氢(顺式加成,Lindlar催化剂)",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]#[C:2].[H][H]>>([H])/[C:1]=[C:2]\\([H])",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","[H][H]"],
@@ -1645,7 +1645,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_37": {
     category: "alkyne",
     name: "硼氢化-氧化反应 对于末端炔烃（生成醛）",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C;H1:1]#[C:2]>>[C:1](=O)-[C:2]",
     source: ["alkynes"],
     search_smarts: ["[C;H1]#[C]"],
@@ -1663,7 +1663,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_39": {
     category: "alkyne",
     name: "三聚反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]#[C:2].[C:3]#[C:4].[C:5]#[C:6]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]"],
@@ -1672,7 +1672,7 @@ window.REACTION_DB_EXTENDED = {
   "alkyne_gen_40": {
     category: "alkyne",
     name: "四聚反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]#[C:2].[C:3]#[C:4].[C:5]#[C:6].[C:7]#[C:8]>>[C:1]1=[C:2][C:3]=[C:4][C:5]=[C:6][C:7]=[C:8]1",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]"],
@@ -1888,7 +1888,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_gen_21": {
     category: "alcohol",
     name: "酚的酯化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[C:8][C:9](=O)[O:10]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7][C:9](=O)[C:8].[O:10]",
     source: ["alcohols"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","[C][C](=O)[O]"],
@@ -1906,7 +1906,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_gen_23": {
     category: "alcohol",
     name: "与SOCl₂反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][O:2].[S:3](=[O:4])([Cl:5])([Cl:6])>>[C:1][Cl:6].[S:3](=[O:4])(=[O]).[Cl:5]",
     source: ["alcohols"],
     search_smarts: ["[C][O]","[S](=[O])([Cl])([Cl])"],
@@ -1924,7 +1924,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_gen_25": {
     category: "alcohol",
     name: "与卤化磷反应转化为卤代烃",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1][O:2].[P:3]([Cl:4])([Cl:5])[Cl:6]>>[C:1][Cl:4].[P:3](=[O:2])([Cl:5])[Cl:6]",
     source: ["alcohols"],
     search_smarts: ["[C][O]","[P]([Cl])([Cl])[Cl]"],
@@ -1933,7 +1933,7 @@ window.REACTION_DB_EXTENDED = {
   "alcohol_gen_26": {
     category: "alcohol",
     name: "生成磺酸酯和氯化氢",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[CX4:1][O:2][H].[C:3][S:4](=[O])(=[O])[Cl:5]>>[CX4:1][O:2][S:4](=[O])(=[O])[C:3]+[H][Cl:5]",
     source: ["alcohols"],
     search_smarts: ["[CX4][O][H]","[C][S](=[O])(=[O])[Cl]"],
@@ -1978,7 +1978,7 @@ window.REACTION_DB_EXTENDED = {
   "ether_gen_8": {
     category: "ether",
     name: "酸性条件下与水反应生成两种醇",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]-[O:2]-[C:3].[H:4][O:5][H:6]>>[C:1]-[O:5][H:6].[C:3]-[O:5][H:4]",
     source: ["ethers"],
     search_smarts: ["[C]-[O]-[C]","[H][O][H]"],
@@ -1996,7 +1996,7 @@ window.REACTION_DB_EXTENDED = {
   "ether_gen_10": {
     category: "ether",
     name: "在碱性条件下与氰化物反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]1-[O:2]-[C;H2,H1:3]1.[C-:4]#[N]>>[C:1]([O:2])-[C:3]-[C:4]#[N]",
     source: ["ethers"],
     search_smarts: ["[C]1-[O]-[C;H2,H1]1","[C-]#N"],
@@ -2005,7 +2005,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_43": {
     category: "benzene",
     name: "卤代反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[Br][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[Br].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","BrBr"],
@@ -2014,7 +2014,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_44": {
     category: "benzene",
     name: "卤代反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[Cl].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","ClCl"],
@@ -2095,7 +2095,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_53": {
     category: "benzene",
     name: "吡咯的硝化反应,乙酰硝基酯",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[N+](=O)[O-]>>[nH]1[c:1]([N+](=O)[O-])[c:2][c:3][c:4]1",
     source: ["benzenes"],
     search_smarts: ["[nH]1[c][c][c][c]1","[N+](=O)[O-]"],
@@ -2104,7 +2104,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_54": {
     category: "benzene",
     name: "呋喃的硝化反应,乙酰硝基酯",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[N+](=O)[O-]>>[o]1[c:1]([N+](=O)[O-])[c:2][c:3][c:4]1",
     source: ["benzenes"],
     search_smarts: ["[o]1[c][c][c][c]1","[N+](=O)[O-]"],
@@ -2113,7 +2113,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_55": {
     category: "benzene",
     name: "硝化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[N+](=O)([O-])[O:7]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[N+](=O)[O-].[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[N+](=O)([O-])[O]"],
@@ -2122,7 +2122,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_56": {
     category: "benzene",
     name: "磺化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[S](=O)(=O)O",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","OS(=O)(=O)O"],
@@ -2131,7 +2131,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_57": {
     category: "benzene",
     name: "吡咯的磺化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[S](=O)(=O)O>>[nH]1[c:1]([S](=O)(=O)O)[c:2][c:3][c:4]1",
     source: ["benzenes"],
     search_smarts: ["[nH]1[c][c][c][c]1","OS(=O)(=O)O"],
@@ -2140,7 +2140,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_58": {
     category: "benzene",
     name: "呋喃的磺化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[S](=O)(=O)O>>[o]1[c:1]([S](=O)(=O)O)[c:2][c:3][c:4]1",
     source: ["benzenes"],
     search_smarts: ["[o]1[c][c][c][c]1","OS(=O)(=O)O"],
@@ -2149,7 +2149,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_59": {
     category: "benzene",
     name: "烷基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[C][C][Br]"],
@@ -2158,7 +2158,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_60": {
     category: "benzene",
     name: "烷基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[C][C][Cl]"],
@@ -2167,7 +2167,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_61": {
     category: "benzene",
     name: "吡咯的烷基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[C:5][C:6][Cl]>>[nH]1[c:1]([C:5][C:6])[c:2][c:3][c:4]1.[Cl]",
     source: ["benzenes"],
     search_smarts: ["[nH]1[c][c][c][c]1","[C][C][Cl]"],
@@ -2176,7 +2176,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_62": {
     category: "benzene",
     name: "呋喃的烷基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[C:5][C:6][Cl]>>[o]1[c:1]([C:5][C:6])[c:2][c:3][c:4]1.[Cl]",
     source: ["benzenes"],
     search_smarts: ["[o]1[c][c][c][c]1","[C][C][Cl]"],
@@ -2185,7 +2185,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_63": {
     category: "benzene",
     name: "吡咯的酰基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[C:5][C:6](=O)[Cl]>>[nH]1[c:1]([C:6](=O)[C:5])[c:2][c:3][c:4]1.[Cl]",
     source: ["benzenes"],
     search_smarts: ["[nH]1[c][c][c][c]1","[C][C](=O)[Cl]"],
@@ -2194,7 +2194,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_64": {
     category: "benzene",
     name: "呋喃的酰基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[C:5][C:6](=O)[Cl]>>[o]1[c:1]([C:6](=O)[C:5])[c:2][c:3][c:4]1.[Cl]",
     source: ["benzenes"],
     search_smarts: ["[o]1[c][c][c][c]1","[C][C](=O)[Cl]"],
@@ -2221,7 +2221,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_67": {
     category: "benzene",
     name: "酰基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8](=O)[Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:8](=O)[C:7].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[C][C](=O)[Cl]"],
@@ -2230,7 +2230,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_68": {
     category: "benzene",
     name: "酰基化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[C:7][C:8](=O)[Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:8](=O)[C:7].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1","[C][C](=O)[Br]"],
@@ -2239,7 +2239,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_69": {
     category: "benzene",
     name: "苯酚的溴代反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Br][Br]>>[c:1]1[c:2][c:3]([Br])[c:4][c:5][c:6]1[O].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","BrBr"],
@@ -2248,7 +2248,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_70": {
     category: "benzene",
     name: "benzene 反应 70",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Br][Br].[Br][Br].[Br][Br]>>[c:1]1([Br])[c:2][c:3]([Br])[c:4][c:5]([Br])[c:6]1[O].[Br][Br][Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","BrBr"],
@@ -2257,7 +2257,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_71": {
     category: "benzene",
     name: "苯酚的氯代反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Cl][Cl]>>[c:1]1[c:2][c:3]([Cl])[c:4][c:5][c:6]1[O].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","ClCl"],
@@ -2266,7 +2266,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_72": {
     category: "benzene",
     name: "苯酚的碘代反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[I][I]>>[c:1]1[c:2][c:3]([I])[c:4][c:5][c:6]1[O].[I]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","II"],
@@ -2275,7 +2275,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_73": {
     category: "benzene",
     name: "CHCI3 ;15℃苯酚的硝化反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[N+](=O)[O-]>>[c:1]1[c:2][c:3]([N+](=O)[O-])[c:4][c:5][c:6]1[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","[N+](=O)[O-]"],
@@ -2284,7 +2284,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_74": {
     category: "benzene",
     name: "低极性溶剂 ; 25℃,HONO2(20%)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4][c:5]([N+](=O)[O-])[c:6]1[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","[N+](=O)[O-]"],
@@ -2293,7 +2293,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_75": {
     category: "benzene",
     name: "磺化反应浓H2SO4 ; 25℃",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4][c:5]([S](=O)(=O)O)[c:6]1[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","OS(=O)(=O)O"],
@@ -2302,7 +2302,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_76": {
     category: "benzene",
     name: "磺化反应浓H2SO4 ; 100℃",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[S](=O)(=O)O>>[c:1]1[c:2][c:3]([S](=O)(=O)O)[c:4][c:5][c:6]1[O:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","OS(=O)(=O)O"],
@@ -2311,7 +2311,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_77": {
     category: "benzene",
     name: "H2SO4 ; 30℃",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7].[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4][c:5]([N+](=O)[O-])[c:6]1[C:7]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]","[N+](=O)[O-]"],
@@ -2320,7 +2320,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_78": {
     category: "benzene",
     name: "发烟HNO3 ; H2SO4 ; 90-100℃",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[N+](=O)[O-].[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4]([N+](=O)[O-])[c:5][c:6]1[N+](=O)[O-]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[N+](=O)[O-]","[N+](=O)[O-]"],
@@ -2329,7 +2329,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_79": {
     category: "benzene",
     name: "萘FeCl3;加热",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[Cl][Cl]>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[Cl].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","ClCl"],
@@ -2338,7 +2338,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_80": {
     category: "benzene",
     name: "萘FeCl3;加热",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[Br][Br]>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[Br].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","BrBr"],
@@ -2347,7 +2347,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_81": {
     category: "benzene",
     name: "benzene 反应 81",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[N+](=O)[O-]>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[N+](=O)[O-]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","[N+](=O)[O-]"],
@@ -2356,7 +2356,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_82": {
     category: "benzene",
     name: "benzene 反应 82",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[S](=O)(=O)O",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","OS(=O)(=O)O"],
@@ -2365,7 +2365,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_83": {
     category: "benzene",
     name: "benzene 反应 83",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[S](=O)(=O)O>>[c:1]1([S](=O)(=O)O)[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","OS(=O)(=O)O"],
@@ -2401,7 +2401,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_87": {
     category: "benzene",
     name: "吡咯的催化加氢",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1>>[NH]1[C:1][C:2][C:3][C:4]1",
     source: ["benzenes"],
     search_smarts: ["[nH]1[c][c][c][c]1"],
@@ -2410,7 +2410,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_88": {
     category: "benzene",
     name: "呋喃的催化加氢",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1>>[O]1[C:1][C:2][C:3][C:4]1",
     source: ["benzenes"],
     search_smarts: ["[o]1[c][c][c][c]1"],
@@ -2419,7 +2419,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_89": {
     category: "benzene",
     name: "噻吩的部分加氢",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1>>[S]1[C:1][C:2][C:3]=[C:4]1",
     source: ["benzenes"],
     search_smarts: ["[s]1[c][c][c][c]1"],
@@ -2428,7 +2428,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_90": {
     category: "benzene",
     name: "噻吩的完全加氢",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1>>[S]1[C:1][C:2][C:3][C:4]1",
     source: ["benzenes"],
     search_smarts: ["[s]1[c][c][c][c]1"],
@@ -2464,7 +2464,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_94": {
     category: "benzene",
     name: "呋喃作为双烯体,乙烯作为亲双烯体",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[C:5]=[C:6]1>>[O]1[C:1]2[C:2]=[C:3][C:4]1[C:5][C:6]2",
     source: ["benzenes"],
     search_smarts: ["[o]1[c][c][c][c]1","[C]=[C]1"],
@@ -2473,7 +2473,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_95": {
     category: "benzene",
     name: "在光照或加热条件下",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Br][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8].[Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C][C]","BrBr"],
@@ -2482,7 +2482,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_96": {
     category: "benzene",
     name: "在光照或加热条件下",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7][C:8].[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8].[Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C][C]","ClCl"],
@@ -2500,7 +2500,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_98": {
     category: "benzene",
     name: "与HX反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9].[H][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8][C:9]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C][C]","Br"],
@@ -2509,7 +2509,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_99": {
     category: "benzene",
     name: "与HX反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8][C:9].[H][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8][C:9]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C][C]","Cl"],
@@ -2518,7 +2518,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_100": {
     category: "benzene",
     name: "与X2反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[Cl][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8][Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","ClCl"],
@@ -2527,7 +2527,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_101": {
     category: "benzene",
     name: "与X2反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[Br][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8][Br]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","BrBr"],
@@ -2536,7 +2536,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_102": {
     category: "benzene",
     name: "与HX反应(马氏规则)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[H][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Cl])[C:8]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","Cl"],
@@ -2545,7 +2545,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_103": {
     category: "benzene",
     name: "与HX反应(马氏规则)",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[H][Br]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([Br])[C:8]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","Br"],
@@ -2554,7 +2554,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_104": {
     category: "benzene",
     name: "在H₂SO₄催化下",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[OH2:9]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([OH:9])[C:8]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","O"],
@@ -2563,7 +2563,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_105": {
     category: "benzene",
     name: "与次氯酸的加成",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]=[C:8].[H][O][Cl]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([OH])[C:8][Cl]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C]=[C]","[H][O][Cl]"],
@@ -2644,7 +2644,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_114": {
     category: "benzene",
     name: "噻吩氧化为砜（形式电核表示法）",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[s]1[c:1][c:2][c:3][c:4]1.[O:5].[O:6]>>[S+2]([O-:5])([O-:6])1[C:1][C:2][C:3][C:4]1",
     source: ["benzenes"],
     search_smarts: ["[s]1[c][c][c][c]1","[O]"],
@@ -2653,7 +2653,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_115": {
     category: "benzene",
     name: "生成",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O].[Na+].[OH-]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O][Na+].[O]",
     source: ["benzenes"],
     search_smarts: ["[c]1[c][c][c][c][c]1[O]","[Na+]","[OH-]"],
@@ -2680,7 +2680,7 @@ window.REACTION_DB_EXTENDED = {
   "benzene_gen_118": {
     category: "benzene",
     name: "Suzuki偶联,溴噻吩和苯硼酸反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[s]1[c:1][c:2][c:3][c:4](Br)1.[B]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)(O)(O)>>[s]1[c:1][c:2][c:3][c:4]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)1",
     source: ["benzenes"],
     search_smarts: ["[s]1[c][c][c][c](Br)1","[B]([c]1[c][c][c][c][c]1)(O)(O)"],
@@ -2707,7 +2707,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_27": {
     category: "carbonyl",
     name: "醛与格氏试剂加成,无水醚",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[H].[C:3][Mg]([X])>>[C:1][C:2]([O][Mg]([X]))[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[H]","[C][Mg]([X])"],
@@ -2716,7 +2716,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_28": {
     category: "carbonyl",
     name: "醛与格氏试剂加成,H2O",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([O][Mg]([X]))[C:3]>>[C:1][C:2]([OH])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([O][Mg]([X]))[C]"],
@@ -2725,7 +2725,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_29": {
     category: "carbonyl",
     name: "酮与格氏试剂加成,无水醚",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][Mg]([X])>>[C:1][C:2]([O][Mg]([X]))([C:4])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]","[C][Mg]([X])"],
@@ -2734,7 +2734,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_30": {
     category: "carbonyl",
     name: "酮与格氏试剂加成,H2O",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([O][Mg]([X]))([C:4])[C:3]>>[C:1][C:2]([OH])([C:4])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([O][Mg]([X]))([C])[C]"],
@@ -2743,7 +2743,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_31": {
     category: "carbonyl",
     name: "醛与有机锂试剂加成,无水醚",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[H].[C:3][Li]>>[C:1][C:2]([O][Li])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[H]","[C][Li]"],
@@ -2752,7 +2752,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_32": {
     category: "carbonyl",
     name: "醛与有机锂试剂加成, H2O",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([O][Li])[C:3]>>[C:1][C:2]([OH])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([O][Li])[C]"],
@@ -2761,7 +2761,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_33": {
     category: "carbonyl",
     name: "酮与有机锂试剂加成,无水醚",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][Li]>>[C:1][C:2]([O][Li])([C:4])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]","[C][Li]"],
@@ -2770,7 +2770,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_34": {
     category: "carbonyl",
     name: "酮与有机锂试剂加成,H2O",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([O][Li])([C:4])[C:3]>>[C:1][C:2]([OH])([C:4])[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([O][Li])([C])[C]"],
@@ -2788,7 +2788,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_36": {
     category: "carbonyl",
     name: "水解反应",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1]([O-][Na+])([C:2])[C:3]#[C:4].[O]>>[C:1]([OH])([C:2])[C:3]#[C:4].[Na+][OH-]",
     source: ["carbonyls"],
     search_smarts: ["[C]([O-][Na+])([C])[C]#[C]","[O]"],
@@ -2797,7 +2797,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_37": {
     category: "carbonyl",
     name: "碱性条件下",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5](=O)[C:6]1.[Na+][C-:7]#[C:8]>>[C:1]1[C:2][C:3][C:4][C:5]([O-][Na+])([C:7]#[C:8])[C:6]1",
     source: ["carbonyls"],
     search_smarts: ["[C]1[C][C][C][C](=O)[C]1","[Na+][C-]#[C]"],
@@ -2806,7 +2806,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_38": {
     category: "carbonyl",
     name: "carbonyl 反应 38",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]1[C:2][C:3][C:4][C:5]([O-][Na+])([C:7]#[C:8])[C:6]1.[O]>>[C:1]1[C:2][C:3][C:4][C:5]([OH])([C:7]#[C:8])[C:6]1.[Na+][OH-]#水解",
     source: ["carbonyls"],
     search_smarts: ["[C]1[C][C][C][C]([O-][Na+])([C]#[C])[C]1","[O]"],
@@ -2950,7 +2950,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_54": {
     category: "carbonyl",
     name: "与卤化氢加成,1-4共轭加成",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5].[H][Cl]>>[C:1][C:2]([Cl])[C:3]=[C:4]([OH])[C:5]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]=[C][C](=O)[C]","Cl"],
@@ -2959,7 +2959,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_55": {
     category: "carbonyl",
     name: "互变异构,烯醇不稳定",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([Cl])[C:3]=[C:4]([OH])[C:5]>>[C:1][C:2]([Cl])[C:3][C:4](=O)[C:5]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([Cl])[C]=[C]([OH])[C]"],
@@ -2968,7 +2968,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_56": {
     category: "carbonyl",
     name: "与胺加成,1-4共轭加成",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]=[C:3][C:4](=O)[C:5].[C:6][NH2]>>[C:1][C:2]([NH][C:6])[C:3]=[C:4]([OH])[C:5]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]=[C][C](=O)[C]","[C][NH2]"],
@@ -2977,7 +2977,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_57": {
     category: "carbonyl",
     name: "互变异构,烯醇不稳定",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([NH][C:6])[C:3]=[C:4]([OH])[C:5]>>[C:1][C:2]([NH][C:6])[C:3][C:4](=O)[C:5]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([NH][C])[C]=[C]([OH])[C]"],
@@ -2986,7 +2986,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_58": {
     category: "carbonyl",
     name: "carbonyl 反应 58",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1](=O)([H])[C:2]=[C:3]([c:4]1[c:5][c:6][c:7][c:8][c:9]1).[Br][Mg]([c:10]1[c:11][c:12][c:13][c:14][c:15]1)>>",
     source: ["carbonyls"],
     search_smarts: ["[C](=O)([H])[C]=[C]([c]1[c][c][c][c][c]1)","[Br][Mg]([c]1[c][c][c][c][c]1)"],
@@ -2995,7 +2995,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_59": {
     category: "carbonyl",
     name: "carbonyl 反应 59",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1](=O)([H])[C:2]=[C:3]([c:4]1[c:5][c:6][c:7][c:8][c:9]1).[C:10][C:11][Mg][Br]>>",
     source: ["carbonyls"],
     search_smarts: ["[C](=O)([H])[C]=[C]([c]1[c][c][c][c][c]1)","[C][C][Mg][Br]"],
@@ -3004,7 +3004,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_60": {
     category: "carbonyl",
     name: "carbonyl 反应 60",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)=[C:2][C:3](=O)[C:4].[Br][Mg]([c:11]1[c:12][c:13][c:14][c:15][c:16]1)>>",
     source: ["carbonyls"],
     search_smarts: ["[C]([c]1[c][c][c][c][c]1)=[C][C](=O)[C]","[Br][Mg]([c]1[c][c][c][c][c]1)"],
@@ -3013,7 +3013,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_61": {
     category: "carbonyl",
     name: "carbonyl 反应 61",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]([c:5]1[c:6][c:7][c:8][c:9][c:10]1)=[C:2][C:3](=O)[C:4].[C:11][C:12][Mg][Br]>>",
     source: ["carbonyls"],
     search_smarts: ["[C]([c]1[c][c][c][c][c]1)=[C][C](=O)[C]","[C][C][Mg][Br]"],
@@ -3022,7 +3022,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_62": {
     category: "carbonyl",
     name: "在H+/OH-作用下发生烯醇化反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3]>>[C:1][C:2]([OH])=[C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]"],
@@ -3058,7 +3058,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_66": {
     category: "carbonyl",
     name: "卤仿反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[OH-].[Cl][Cl]>>[C:1][C:2](=O)[O-].[C:3]([H])([Cl])([Cl])[Cl]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]","[OH-]","ClCl"],
@@ -3067,7 +3067,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_67": {
     category: "carbonyl",
     name: "卤仿反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[OH-].[Br][Br]>>[C:1][C:2](=O)[O-].[C:3]([H])([Br])([Br])[Br]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]","[OH-]","BrBr"],
@@ -3076,7 +3076,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_68": {
     category: "carbonyl",
     name: "卤仿反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[OH-].[I][I]>>[C:1][C:2](=O)[O-].[C:3]([H])([I])([I])[I]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]","[OH-]","II"],
@@ -3094,7 +3094,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_70": {
     category: "carbonyl",
     name: "H+/OH-",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][C:5](=O)[C:6]>>[C:1][C:2]([OH])([C:3])[C:4][C:5](=O)[C:6]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]"],
@@ -3103,7 +3103,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_71": {
     category: "carbonyl",
     name: "OH-",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2][C:3][C:4][C:5][C:6][C:7](=O)[H].[C:8][C:9](=O)[C:10]>>[C:1][C:2][C:3][C:4][C:5][C:6][C:7]([OH])[C:8][C:9](=O)[C:10]",
     source: ["carbonyls"],
     search_smarts: ["[C][C][C][C][C][C][C](=O)[H]","[C][C](=O)[C]"],
@@ -3121,7 +3121,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_73": {
     category: "carbonyl",
     name: "Beckmann重排, H+",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]([C:2])([C:3])=[N:4][OH]>>[C:2][C:1](=O)[N:4][H][C:3]",
     source: ["carbonyls"],
     search_smarts: ["[C]([C])([C])=[N][OH]"],
@@ -3130,7 +3130,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_74": {
     category: "carbonyl",
     name: "Favorski重排",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([Br])[C:3](=O)[C:4].[OH-]>>[C:1][C:2]([C:4])[C:3](=O)[OH].[Br-]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([Br])[C](=O)[C]","[OH-]"],
@@ -3139,7 +3139,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_75": {
     category: "carbonyl",
     name: "Favorski重排",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2]([Cl])[C:3](=O)[C:4].[OH-]>>[C:1][C:2]([C:4])[C:3](=O)[OH].[Cl-]",
     source: ["carbonyls"],
     search_smarts: ["[C][C]([Cl])[C](=O)[C]","[OH-]"],
@@ -3148,7 +3148,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_76": {
     category: "carbonyl",
     name: "CH3COOEt,40℃,Baeyer-Villiger氧化重排",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[C:4][C:5](=O)[O][OH]>>[C:1][C:2](=O)[O][C:3].[C:4][C:5](=O)[OH]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]","[C][C](=O)[O][OH]"],
@@ -3157,7 +3157,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_77": {
     category: "carbonyl",
     name: "Et2O,加热",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1](=O)1[C:2]([Br])[C:3][C:4][C:5][C:6]1.[C:7][C:8][O-]>>[C:2]([C:1](=O)[O][C:8][C:7])1[C:3][C:4][C:5][C:6]1.[Br-]",
     source: ["carbonyls"],
     search_smarts: ["[C](=O)1[C]([Br])[C][C][C][C]1","[C][C][O-]"],
@@ -3256,7 +3256,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_88": {
     category: "carbonyl",
     name: "carbonyl 反应 88",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1](=O)1[C:2]=[C:3]([C:7])[C:4][C:5][C:6]1.[H][H]>>[C:1](=O)1[C:2][C:3]([C:7])[C:4][C:5][C:6]1",
     source: ["carbonyls"],
     search_smarts: ["[C](=O)1[C]=[C]([C])[C][C][C]1","[H][H]"],
@@ -3265,7 +3265,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_89": {
     category: "carbonyl",
     name: "carbonyl 反应 89",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1](=O)1[C:2]=[C:3]([C:7])[C:4][C:5][C:6]1.[H][H][H][H]>>[C:1]([OH])1[C:2][C:3]([C:7])[C:4][C:5][C:6]1",
     source: ["carbonyls"],
     search_smarts: ["[C](=O)1[C]=[C]([C])[C][C][C]1","[H][H][H][H]"],
@@ -3283,7 +3283,7 @@ window.REACTION_DB_EXTENDED = {
   "carbonyl_gen_91": {
     category: "carbonyl",
     name: "异丙醇铝,H2O,Meerwein-Ponndorf反应",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2](=O)[C:3].[C:4]([C:5])([C:6])([O-])[H]>>[C:1][C:2]([OH])([H])[C:3].[C:5][C:4](=O)[C:6]",
     source: ["carbonyls"],
     search_smarts: ["[C][C](=O)[C]","[C]([C])([C])([O-])[H]"],
@@ -3319,7 +3319,7 @@ window.REACTION_DB_EXTENDED = {
   "acid_gen_4": {
     category: "acid",
     name: "加热,分子间",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1]([C:3])([OH])[C:2](=O)[OH].[C:4](=O)([OH])[C:5]([C:6])([OH])>>[C:1]([C:3])1[C:2](=O)[O][C:5]([C:6])[C:4](=O)[O]1",
     source: ["acids"],
     search_smarts: ["[C]([C])([OH])[C](=O)[OH]","[C](=O)([OH])[C]([C])([OH])"],
@@ -3328,7 +3328,7 @@ window.REACTION_DB_EXTENDED = {
   "acid_gen_5": {
     category: "acid",
     name: "分子内酯化",
-    difficulty: 2,
+    difficulty: 1,
     smarts: "[C:1][C:2]([OH])[C:3][C:4][C:5](=O)[OH]>>[C:2]([C:1])1[C:3][C:4][C:5](=O)[O]1",
     source: ["acids"],
     search_smarts: ["[C][C]([OH])[C][C][C](=O)[OH]"],
@@ -3364,7 +3364,7 @@ window.REACTION_DB_EXTENDED = {
   "acid_gen_9": {
     category: "acid",
     name: "acid 反应 9",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH].[c:8]1[c:9][c:10][c:11][c:12][c:13]1[NH2]>>",
     source: ["acids"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C](=O)[OH]","[c]1[c][c][c][c][c]1[NH2]"],
@@ -3373,7 +3373,7 @@ window.REACTION_DB_EXTENDED = {
   "acid_gen_10": {
     category: "acid",
     name: "acid 反应 10",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH].[S](=O)(Cl)(Cl)>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)(Cl).[S](=O)(=O).[Cl]",
     source: ["acids"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C](=O)[OH]","[S](=O)(Cl)(Cl)"],
@@ -3382,7 +3382,7 @@ window.REACTION_DB_EXTENDED = {
   "acid_gen_11": {
     category: "acid",
     name: "acid 反应 11",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[C:1][C:2][C:3][C:4](=O)[OH].[C:5][C:6][C:7][C:8](=O)[OH].[C:9][C:10][C:11][C:12](=O)[OH].[P](Cl)(Cl)(Cl)>>",
     source: ["acids"],
     search_smarts: ["[C][C][C][C](=O)[OH]","[P](Cl)(Cl)(Cl)"],
@@ -3409,7 +3409,7 @@ window.REACTION_DB_EXTENDED = {
   "acid_gen_14": {
     category: "acid",
     name: "acid 反应 14",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[OH].[C:8][Li]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[O-][Li+]",
     source: ["acids"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C](=O)[OH]","[C][Li]"],
@@ -3418,7 +3418,7 @@ window.REACTION_DB_EXTENDED = {
   "acid_gen_15": {
     category: "acid",
     name: "acid 反应 15",
-    difficulty: 2,
+    difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7](=O)[O-][Li+].[C:9][Li]>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[C:7]([O-][Li+])([O-][Li+])[C:9]",
     source: ["acids"],
     search_smarts: ["[c]1[c][c][c][c][c]1[C](=O)[O-][Li+]","[C][Li]"],
