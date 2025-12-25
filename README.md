@@ -77,3 +77,20 @@ generateproblem-SMARTS/
 - **后端**: Python Flask
 - **化学引擎**: RDKit (Python & JS via WASM)
 - **AI 模型**: ChemBERTa (Transformers)
+
+## 🛠️ 维护与管理
+
+本项目包含一个内置的维护工具 `maintenance.py`，用于数据更新、系统体检和 AI 调优。
+
+### 如何使用
+双击 `maintenance.py` 或在命令行运行：
+```bash
+python maintenance.py
+```
+
+### 功能菜单
+1. **数据更新**：每次修改 `SMARTS.txt` 后，运行此选项将更改同步到 JSON 和 JS 文件。
+2. **系统体检**：检查规则文件是否有语法错误。
+3. **数据备份**：一键备份核心数据文件到 `backups/` 目录。
+4. **AI 统计**：查看 AI 模型的拦截率和常见失败反应。
+5. **日志清理**：重置 AI 拦截日志。
