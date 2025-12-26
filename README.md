@@ -1,6 +1,12 @@
-# 有机化学反应出题器 - RDKit 重构版
+# 有机化学反应出题器 - RDKit + AI 验证版
 
-基于 RDKit.js 的有机化学反应出题系统，支持 SMARTS 反应规则和化学结构式渲染。
+基于 RDKit.js 和 ChemBERTa AI 验证的有机化学反应出题系统。本系统完全依赖 SMARTS 反应规则进行动态产物生成，并利用深度学习模型确保生成的化学反应合理有效。
+
+## 主要更新
+
+- 🚀 **完全动态生成**：移除了所有硬编码的预定义产物，所有反应均由 RDKit 实时计算。
+- 🤖 **AI 智能验证**：集成了 ChemBERTa 模型，自动过滤化学上不合理的反应产物。
+- 🔬 **增强的 RDKit 引擎**：服务器端 RDKit 集成，解决了浏览器端性能和兼容性问题。
 
 ## 快速开始
 
@@ -12,133 +18,79 @@
 
 ### 方法 2：手动启动服务器
 
-如果启动脚本无法运行，可以手动启动：
+由于需要调用 Python 后端的 AI 验证模块，必须通过 Python 服务器启动：
 
 ```bash
 # 在项目目录下打开命令行
-cd c:\Users\ryoma\Desktop\出题器\出题器-SMARTS
+cd c:\Users\ryoma\Desktop\出题器\generateproblem-SMARTS
 
-# 启动 Python HTTP 服务器
-python -m http.server 8000
+# 启动 Python Flask 服务器
+python server.py
 
-# 在浏览器中打开
-# http://localhost:8000/random.html
+# 服务器启动后，请在浏览器访问显示的的地址（通常是 http://localhost:8000）
 ```
-
-## 为什么需要本地服务器？
-
-本应用使用了 WebAssembly（`.wasm` 文件）来运行 RDKit 化学结构库。出于安全原因，浏览器不允许通过 `file://` 协议直接加载 WASM 文件。
-
-**问题：** 直接双击 `random.html` 会导致：
-- ❌ CORS 策略错误
-- ❌ RDKit 引擎无法初始化
-- ❌ 所有化学结构无法渲染
-
-**解决：** 通过本地 HTTP 服务器访问：
-- ✅ 绕过 CORS 限制
-- ✅ RDKit 正常工作
-- ✅ 化学结构正确显示
 
 ## 系统要求
 
-- **Python 3.x**（用于启动本地服务器）
-  - 下载：https://www.python.org/downloads/
-  - 安装时请勾选 "Add Python to PATH"
-  
+- **Python 3.8+**
+  - 需要安装依赖库：`flask`, `rdkit`, `torch`, `transformers`, `scikit-learn`
 - **现代浏览器**（推荐 Chrome 或 Edge）
 
 ## 功能特性
 
-- 🧪 支持多种有机化学反应类型（烯烃、炔烃、醇、苯、醛酮等）
-- 🎨 使用 RDKit 渲染高质量化学结构式
-- ⚗️ 基于 SMARTS 规则的反应预测
-- 📊 可自定义结构式大小、颜色、键长等参数
-- 🖨️ 支持打印作业和答案
-
-## 反应类型
-
-### 烯烃反应
-- 烯烃与溴加成
-- 烯烃与氯加成
-- 烯烃与 HBr 加成
-- 烯烃水合反应
-- 烯烃环氧化
-- 烯烃臭氧氧化分解
-- 烯烃催化氢化
-
-### 炔烃反应
-- 炔烃与 HBr 加成
-- 末端炔烃水合
-- 炔烃完全氢化
-- 炔烃部分氢化（Lindlar）
-
-### 醇类反应
-- 伯醇氧化为醛
-- 仲醇氧化为酮
-- 醇分子内脱水
-- 威廉姆逊醚合成
-
-### 芳香族反应
-- 苯的溴代
-- 苯的硝化
-- 傅-克烷基化
-- 傅-克酰基化
-
-### 醛酮反应
-- 醛/酮还原为醇
-- 格氏试剂加成
-- 羟醛缩合
+- 🧪 **广泛的反应支持**：覆盖烯烃、炔烃、醇、苯、醛酮等多种有机反应。
+- 🎨 **高质量渲染**：使用 RDKit 绘制标准的化学结构式。
+- 🧠 **智能过滤**：利用 AI 剔除错误的反应预测结果。
+- 📊 **高度可定制**：支持调整显示大小、键长、颜色等视觉参数。
 
 ## 文件结构
 
 ```
-出题器-SMARTS/
-├── random.html          # 主页面
-├── script.js            # 核心逻辑
+generateproblem-SMARTS/
+├── index.html           # 主页面
+├── server.py            # Python 后端服务器（处理 RDKit 和 AI 验证）
+├── ai_validator.py      # AI 验证模块 (ChemBERTa)
 ├── reactions.js         # 反应数据库（SMARTS 规则）
+├── modules/             # 前端模块
+│   ├── reaction-engine.js # 反应引擎前端接口
+│   ├── ui-controller.js   # UI 控制逻辑
+│   └── ...
 ├── style.css            # 样式表
 ├── start_server.bat     # 启动脚本
-├── README.md            # 本文档
-└── lib/
-    ├── RDKit_minimal.js   # RDKit JavaScript 库
-    └── RDKit_minimal.wasm # RDKit WebAssembly 二进制
+└── README.md            # 本文档
 ```
 
 ## 常见问题
 
-### Q: 启动脚本显示 "未检测到 Python"？
-**A:** 请安装 Python 并确保在安装时勾选了 "Add Python to PATH" 选项。安装后重启命令行窗口。
+### Q: 为什么生成速度比以前慢？
+**A:** 因为现在每次生成都会经过 AI 模型的验证计算，虽然速度稍慢，但能保证题目质量更高。
 
-### Q: 浏览器显示 "引擎初始化失败"？
-**A:** 确保您是通过 HTTP 服务器访问（`http://localhost:8000`），而不是直接打开 HTML 文件（`file://`）。
+### Q: "服务器连接失败"？
+**A:** 请确保 `server.py` 正在后台运行。本版本不再支持纯静态页面打开。
 
-### Q: 产物结构显示 "⚠️ 无法生成"？
-**A:** 这可能是因为：
-1. 反应物与 SMARTS 规则不匹配
-2. RDKit 反应引擎在该特定结构上失败
-3. 尝试选择其他反应类型或重新生成
+### Q: 产物位置显示 "?"
+**A:** 表示 RDKit 无法根据规则生成产物，或者生成的结果未通过 AI 验证。
 
-### Q: 如何停止服务器？
-**A:** 在命令行窗口中按 `Ctrl + C`，然后关闭窗口。
+## 技术栈
 
-## 技术说明
+- **前端**: HTML5, CSS3, JavaScript (ES6+)
+- **后端**: Python Flask
+- **化学引擎**: RDKit (Python & JS via WASM)
+- **AI 模型**: ChemBERTa (Transformers)
 
-- **RDKit.js**：用于化学结构渲染和反应预测
-- **SMARTS**：用于定义反应规则的化学结构查询语言
-- **SMILES**：用于表示化学结构的简化分子线性输入规范
+## 🛠️ 维护与管理
 
-## 开发者信息
+本项目包含一个内置的维护工具 `maintenance.py`，用于数据更新、系统体检和 AI 调优。
 
-如需修改反应规则，请编辑 `reactions.js` 文件中的 `REACTION_DB_EXTENDED` 对象。
+### 如何使用
+双击 `maintenance.py` 或在命令行运行：
+```bash
+python maintenance.py
+```
 
-每个反应定义包含：
-- `category`: 反应分类
-- `name`: 中文名称
-- `smarts`: SMARTS 反应规则
-- `source`: 反应物来源池
-- `condition`: 反应条件（显示在箭头上方）
-
-## 许可证
-
-本项目使用 RDKit（BSD 许可证）。
-
+### 功能菜单
+1. **数据更新**：每次修改 `SMARTS.txt` 后，运行此选项将更改同步到 JSON 和 JS 文件。
+2. **系统体检**：检查规则文件是否有语法错误。
+3. **数据备份**：一键备份核心数据文件到 `backups/` 目录。
+4. **AI 统计**：查看 AI 模型的拦截率和常见失败反应。
+5. **日志清理**：重置 AI 拦截日志。
