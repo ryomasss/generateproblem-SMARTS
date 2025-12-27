@@ -10,7 +10,7 @@ MODEL_NAME = "seyonec/ChemBERTa-zinc-base-v1"
 
 # Global variables (lazy loading)
 _tokenizer = None
-_model = N
+_model = None
 
 def _load_model():
     """Lazy load model (on first call)"""
