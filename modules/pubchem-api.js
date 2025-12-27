@@ -115,8 +115,8 @@ function checkMoleculeComplexity(smiles, targetReactionCategory = null) {
     // 2. 计算原子数的粗略估计
     const atomCount = smiles.replace(/[\[\]()0-9@\\\\/=#+-]/g, '').length;
     
-    // 3. 过滤掉原子数少于3或多于20的分子
-    if (atomCount < 3 || atomCount > 20) {
+    // 3. 过滤掉原子数少于2或多于20的分子（2原子常见于试剂如 I2, H2）
+    if (atomCount < 2 || atomCount > 20) {
         return false;
     }
     

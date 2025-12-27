@@ -27,7 +27,7 @@ window.REACTION_DB_EXTENDED = {
     name: "烯烃与碘加成",
     difficulty: 1,
     smarts: "[C:1]=[C:2].[I][I]>>[C:1]([I])-[C:2]([I])",
-    source: ["alkenes"],
+    source: ["alkenes", "reagents_i2"],
     search_smarts: ["[C]=[C]","II"],
     condition: "烯烃与碘加成"
   },
@@ -54,7 +54,7 @@ window.REACTION_DB_EXTENDED = {
     name: "烯烃与碘化氢加成",
     difficulty: 1,
     smarts: "[C:1]=[C:2].[H][I]>>[C:1][H][C:2][I]",
-    source: ["alkenes"],
+    source: ["alkenes", "reagents_hi"],
     search_smarts: ["[C]=[C]","I"],
     condition: "烯烃与碘化氢加成"
   },
@@ -81,7 +81,7 @@ window.REACTION_DB_EXTENDED = {
     name: "烯烃与次碘酸加成",
     difficulty: 2,
     smarts: "[C:1]=[C:2].[OH][I:3]>>[C:1][I:3][C:2][OH]",
-    source: ["alkenes"],
+    source: ["alkenes", "reagents_hoi"],
     search_smarts: ["[C]=[C]","OI"],
     condition: "烯烃与次碘酸加成"
   },
@@ -2125,7 +2125,7 @@ window.REACTION_DB_EXTENDED = {
     difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1.[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4][c:5][c:6]1[S](=O)(=O)O",
     source: ["benzenes"],
-    search_smarts: ["[c]1[c][c][c][c][c]1","OS(=O)(=O)O"],
+    search_smarts: ["[c]1[c][c][c][c][c]1","S(=O)(=O)(O)O"],
     condition: "磺化反应"
   },
   "benzene_gen_57": {
@@ -2134,7 +2134,7 @@ window.REACTION_DB_EXTENDED = {
     difficulty: 1,
     smarts: "[nH]1[c:1][c:2][c:3][c:4]1.[S](=O)(=O)O>>[nH]1[c:1]([S](=O)(=O)O)[c:2][c:3][c:4]1",
     source: ["benzenes"],
-    search_smarts: ["[nH]1[c][c][c][c]1","OS(=O)(=O)O"],
+    search_smarts: ["[nH]1[c][c][c][c]1","S(=O)(=O)(O)O"],
     condition: "吡咯的磺化反应"
   },
   "benzene_gen_58": {
@@ -2143,7 +2143,7 @@ window.REACTION_DB_EXTENDED = {
     difficulty: 1,
     smarts: "[o]1[c:1][c:2][c:3][c:4]1.[S](=O)(=O)O>>[o]1[c:1]([S](=O)(=O)O)[c:2][c:3][c:4]1",
     source: ["benzenes"],
-    search_smarts: ["[o]1[c][c][c][c]1","OS(=O)(=O)O"],
+    search_smarts: ["[o]1[c][c][c][c]1","S(=O)(=O)(O)O"],
     condition: "呋喃的磺化反应"
   },
   "benzene_gen_59": {
@@ -2296,7 +2296,7 @@ window.REACTION_DB_EXTENDED = {
     difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4][c:5]([S](=O)(=O)O)[c:6]1[O:7]",
     source: ["benzenes"],
-    search_smarts: ["[c]1[c][c][c][c][c]1[O]","OS(=O)(=O)O"],
+    search_smarts: ["[c]1[c][c][c][c][c]1[O]","S(=O)(=O)(O)O"],
     condition: "磺化反应浓H2SO4 ; 25℃"
   },
   "benzene_gen_76": {
@@ -2305,7 +2305,7 @@ window.REACTION_DB_EXTENDED = {
     difficulty: 1,
     smarts: "[c:1]1[c:2][c:3][c:4][c:5][c:6]1[O:7].[S](=O)(=O)O>>[c:1]1[c:2][c:3]([S](=O)(=O)O)[c:4][c:5][c:6]1[O:7]",
     source: ["benzenes"],
-    search_smarts: ["[c]1[c][c][c][c][c]1[O]","OS(=O)(=O)O"],
+    search_smarts: ["[c]1[c][c][c][c][c]1[O]","S(=O)(=O)(O)O"],
     condition: "磺化反应浓H2SO4 ; 100℃"
   },
   "benzene_gen_77": {
@@ -2359,7 +2359,7 @@ window.REACTION_DB_EXTENDED = {
     difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[S](=O)(=O)O>>[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1[S](=O)(=O)O",
     source: ["benzenes"],
-    search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","OS(=O)(=O)O"],
+    search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","S(=O)(=O)(O)O"],
     condition: "benzene 反应 82"
   },
   "benzene_gen_83": {
@@ -2368,7 +2368,7 @@ window.REACTION_DB_EXTENDED = {
     difficulty: 3,
     smarts: "[c:1]1[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1.[S](=O)(=O)O>>[c:1]1([S](=O)(=O)O)[c:2][c:3][c:4]2[c:5][c:6]1[c:7][c:8][c:9]2[c:10]1",
     source: ["benzenes"],
-    search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","OS(=O)(=O)O"],
+    search_smarts: ["[c]1[c][c][c]2[c][c]1[c][c][c]2[c]1","S(=O)(=O)(O)O"],
     condition: "benzene 反应 83"
   },
   "benzene_gen_84": {
@@ -3552,7 +3552,11 @@ window.CHEMICAL_CABINET_EXTENDED = {
   reagents_br2: ["BrBr"],
   reagents_cl2: ["ClCl"],
   reagents_hbr: ["Br"],
+  reagents_hcl: ["Cl"],
+  reagents_hi: ["I"],
+  reagents_i2: ["II"],
   reagents_h2o: ["O"],
+  reagents_hoi: ["OI"],
   reagents_h2: ["[H][H]"],
   reagents_peracid: ["CC(=O)OO"],
   reagents_hno3: ["[O-][N+](=O)O"],
