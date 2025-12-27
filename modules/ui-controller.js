@@ -28,6 +28,12 @@ function selectValidMolecule(pool, maxAttempts = 10) {
         // 基本检查
         if (!smiles || typeof smiles !== 'string') continue;
         
+        // 混合物检查 (带点的 SMILES 表示混合物，不应用于此类加成反应)
+        if (smiles.includes('.')) {
+            console.log(`🚫 跳过混合物分子: ${smiles}`);
+            continue;
+        }
+        
         // 长度检查
         if (smiles.length > 60) {
             console.log(`🚫 跳过复杂分子: ${smiles.substring(0, 30)}...`);

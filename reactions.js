@@ -9,18 +9,18 @@ window.REACTION_DB_EXTENDED = {
     name: "烯烃与溴加成",
     difficulty: 1,
     smarts: "[C:1]=[C:2].[Br][Br]>>[C:1]([Br])-[C:2]([Br])",
-    source: ["alkenes"],
+    source: ["alkenes", "reagents_br2"],
     search_smarts: ["[C]=[C]","BrBr"],
-    condition: "烯烃与溴加成"
+    condition: "Br₂ / CCl₄"
   },
   "alkene_gen_2": {
     category: "alkene",
     name: "烯烃与氯加成",
     difficulty: 1,
     smarts: "[C:1]=[C:2].[Cl][Cl]>>[C:1]([Cl])-[C:2]([Cl])",
-    source: ["alkenes"],
+    source: ["alkenes", "reagents_cl2"],
     search_smarts: ["[C]=[C]","ClCl"],
-    condition: "烯烃与氯加成"
+    condition: "Cl₂ / CCl₄"
   },
   "alkene_gen_3": {
     category: "alkene",
@@ -29,25 +29,25 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2].[I][I]>>[C:1]([I])-[C:2]([I])",
     source: ["alkenes", "reagents_i2"],
     search_smarts: ["[C]=[C]","II"],
-    condition: "烯烃与碘加成"
+    condition: "I₂ / CCl₄"
   },
   "alkene_gen_4": {
     category: "alkene",
     name: "烯烃与溴化氢加成",
     difficulty: 1,
     smarts: "[C:1]=[C:2].[H][Br]>>[C:1][H][C:2][Br]",
-    source: ["alkenes"],
+    source: ["alkenes", "reagents_hbr"],
     search_smarts: ["[C]=[C]","Br"],
-    condition: "烯烃与溴化氢加成"
+    condition: "HBr"
   },
   "alkene_gen_5": {
     category: "alkene",
     name: "烯烃与氯化氢加成",
     difficulty: 1,
     smarts: "[C:1]=[C:2].[H][Cl]>>[C:1][H][C:2][Cl]",
-    source: ["alkenes"],
+    source: ["alkenes", "reagents_hcl"],
     search_smarts: ["[C]=[C]","Cl"],
-    condition: "烯烃与氯化氢加成"
+    condition: "HCl"
   },
   "alkene_gen_6": {
     category: "alkene",
@@ -56,7 +56,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2].[H][I]>>[C:1][H][C:2][I]",
     source: ["alkenes", "reagents_hi"],
     search_smarts: ["[C]=[C]","I"],
-    condition: "烯烃与碘化氢加成"
+    condition: "HI"
   },
   "alkene_gen_7": {
     category: "alkene",
@@ -65,7 +65,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2].[OH][Br:3]>>[C:1][Br:3][C:2][OH]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","OBr"],
-    condition: "烯烃与次溴酸加成"
+    condition: "Br₂ / H₂O"
   },
   "alkene_gen_8": {
     category: "alkene",
@@ -74,7 +74,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2].[OH][Cl:3]>>[C:1][Cl:3][C:2][OH]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","OCl"],
-    condition: "烯烃与次氯酸加成"
+    condition: "Cl₂ / H₂O"
   },
   "alkene_gen_9": {
     category: "alkene",
@@ -83,7 +83,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2].[OH][I:3]>>[C:1][I:3][C:2][OH]",
     source: ["alkenes", "reagents_hoi"],
     search_smarts: ["[C]=[C]","OI"],
-    condition: "烯烃与次碘酸加成"
+    condition: "I₂ / H₂O"
   },
   "alkene_gen_10": {
     category: "alkene",
@@ -92,7 +92,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2].[O:3][H:4]>>[C:1](-[H:4])-[C:2]-[O:3]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","O"],
-    condition: "与水加成"
+    condition: "H⁺ / H₂O"
   },
   "alkene_gen_11": {
     category: "alkene",
@@ -101,7 +101,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2].[O:3]([O]=)S(=[O])[O:4][H]>>[C:1][C:2][O:3]([O]=)S(=[O])([O:4])[H]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","[O]([O]=)S(=[O])[O][H]"],
-    condition: "烯烃与硫酸加成"
+    condition: "conc. H₂SO₄"
   },
   "alkene_gen_12": {
     category: "alkene",
@@ -110,7 +110,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "C=C.O=S(=O)(O)O>>CC-O-S(=O)(=O)O",
     source: ["alkenes"],
     search_smarts: ["C=C","O=S(=O)(O)O"],
-    condition: "alkene 反应 12"
+    condition: "H₂SO₄"
   },
   "alkene_gen_13": {
     category: "alkene",
@@ -119,7 +119,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1][C:2]=[C:3].[Br:4][H:5]>>[C:1][C:2][H:5][C:3][Br:4]",
     source: ["alkenes"],
     search_smarts: ["[C][C]=[C]","Br"],
-    condition: "自由基加成反应（反马氏规则）"
+    condition: "HBr / ROOR"
   },
   "alkene_gen_14": {
     category: "alkene",
@@ -128,7 +128,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1][C:2]=[C:3].[Cl][Cl]>>[Cl][C:1][C:2]=[C:3]",
     source: ["alkenes"],
     search_smarts: ["[C][C]=[C]","ClCl"],
-    condition: "a氢的卤化"
+    condition: "Cl₂, 500℃"
   },
   "alkene_gen_15": {
     category: "alkene",
@@ -137,7 +137,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2].[O:3][O:4][C:5]>>[C:1]1[C:2][O:3]1",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]","[O][O][C]"],
-    condition: "环氧化反应"
+    condition: "mCPBA"
   },
   "alkene_gen_16": {
     category: "alkene",
@@ -146,7 +146,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2]>>[C:1]([OH])-[C:2]([OH])",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
-    condition: "烯烃氧化为邻二醇"
+    condition: "KMnO₄ / OH⁻"
   },
   "alkene_gen_17": {
     category: "alkene",
@@ -155,7 +155,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2]>>[C:1]=O.O=[C:2]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
-    condition: "烯烃的臭氧氧化-分解反应"
+    condition: "1) O₃, 2) Zn/H₂O"
   },
   "alkene_gen_18": {
     category: "alkene",
@@ -164,7 +164,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2]>>[C:1][H][C:2][B]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
-    condition: "硼氢化反应"
+    condition: "1) BH₃-THF, 2) H₂O₂, OH⁻"
   },
   "alkene_gen_19": {
     category: "alkene",
@@ -173,7 +173,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2]>>[C:1]-[C:2]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
-    condition: "催化加氢"
+    condition: "H₂ / Pd-C"
   },
   "alkene_gen_20": {
     category: "alkene",
@@ -182,7 +182,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2]>>-[C:1]-[C:2]-",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
-    condition: "聚合反应"
+    condition: "Polymerization"
   },
   "alkene_gen_21": {
     category: "alkene",
@@ -191,7 +191,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2].[C:3]=[C:4]>>[C:1]=[C:3].[C:2]=[C:4]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]"],
-    condition: "烯烃复分解反应"
+    condition: "Grubbs Cat."
   },
   "alkene_gen_22": {
     category: "alkene",
@@ -200,7 +200,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2]-[C:3]=[C:4]>>[C:1][Br]-[C:2]=[C:3]-[C:4][Br]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]-[C]=[C]"],
-    condition: "共轭加成(1,2-加成)"
+    condition: "1,2-addition"
   },
   "alkene_gen_23": {
     category: "alkene",
@@ -209,34 +209,34 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]=[C:2]-[C:3]=[C:4]>>[C:1][Br]-[C:2]-[C:3]=[C:4][Br]",
     source: ["alkenes"],
     search_smarts: ["[C]=[C]-[C]=[C]"],
-    condition: "共轭加成(1,4-加成)"
+    condition: "1,4-addition"
   },
   "alkyne_gen_1": {
     category: "alkyne",
     name: "与HBr加成（马氏规则）内部炔烃",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[H:3][Br:4]>>[C:1]([Br:4])=[C:2][H:3]",
-    source: ["alkynes"],
+    source: ["alkynes", "reagents_hbr"],
     search_smarts: ["[C]#[C]","Br"],
-    condition: "与HBr加成（马氏规则）内部炔烃"
+    condition: "HBr"
   },
   "alkyne_gen_2": {
     category: "alkyne",
     name: "与HBr加成（马氏规则）末端炔烃",
     difficulty: 3,
     smarts: "[C;H1:1]#[C:2].[H:3][Br:4]>>[C:1]([H:3])=[C:2][Br:4]",
-    source: ["alkynes"],
+    source: ["alkynes", "reagents_hbr"],
     search_smarts: ["[C;H1]#[C]","Br"],
-    condition: "与HBr加成（马氏规则）末端炔烃"
+    condition: "HBr (Markovnikov)"
   },
   "alkyne_gen_3": {
     category: "alkyne",
     name: "alkyne 反应 3",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[H][Br][H][Br]>>[C:1][C:2]([Br])([Br])",
-    source: ["alkynes"],
+    source: ["alkynes", "reagents_hbr"],
     search_smarts: ["[C]#[C]","[H][Br][H][Br]"],
-    condition: "alkyne 反应 3"
+    condition: "2 HBr"
   },
   "alkyne_gen_4": {
     category: "alkyne",
@@ -245,7 +245,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C;H1:1]#[C:2].[O:3][H:4]>>[C:1](=[O:3])-[C:2]([H:4])",
     source: ["alkynes"],
     search_smarts: ["[C;H1]#[C]","O"],
-    condition: "与水加成 末端炔烃生成醛"
+    condition: "H₂O / HgSO₄, H₂SO₄"
   },
   "alkyne_gen_5": {
     category: "alkyne",
@@ -254,43 +254,43 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]#[C:2].[O:3][H:4]>>[C:1](=[O:3])-[C:2]",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","O"],
-    condition: "与水加成 内部炔烃生成酮"
+    condition: "H₂O / HgSO₄, H₂SO₄"
   },
   "alkyne_gen_6": {
     category: "alkyne",
     name: "溴加成(反式加成,第一步)",
     difficulty: 2,
     smarts: "[C:1]#[C:2].[Br:3][Br:4]>>[C:1]([Br:3])=[C:2]([Br:4])",
-    source: ["alkynes"],
+    source: ["alkynes", "reagents_br2"],
     search_smarts: ["[C]#[C]","BrBr"],
-    condition: "溴加成(反式加成,第一步)"
+    condition: "Br₂ (1 eq)"
   },
   "alkyne_gen_7": {
     category: "alkyne",
     name: "溴加成第二步",
     difficulty: 3,
     smarts: "[C:1]([Br:3])=[C:2]([Br:4]).[Br:5][Br:6]>>[C:1]([Br:3])([Br:5])-[C:2]([Br:4])([Br:6])",
-    source: ["alkynes"],
+    source: ["alkynes", "reagents_br2"],
     search_smarts: ["[C]([Br])=[C]([Br])","BrBr"],
-    condition: "溴加成第二步"
+    condition: "Br₂ (xs)"
   },
   "alkyne_gen_8": {
     category: "alkyne",
     name: "alkyne 反应 8",
     difficulty: 2,
     smarts: "[C:1][C:2]#[C:3].[H:4][Br:5]>>[C:1][C:2]([H:4])=[C:3]([Br:5])",
-    source: ["alkynes"],
+    source: ["alkynes", "reagents_hbr"],
     search_smarts: ["[C][C]#[C]","Br"],
-    condition: "alkyne 反应 8"
+    condition: "HBr"
   },
   "alkyne_gen_9": {
     category: "alkyne",
     name: "alkyne 反应 9",
     difficulty: 3,
     smarts: "[C:1][C:2]#[C:3].[H:4][Br:5][H:6][Br:7]>>[C:1][C:2]([H:4])([Br:7])[C:3]([H:6])([Br:5])",
-    source: ["alkynes"],
+    source: ["alkynes", "reagents_hbr"],
     search_smarts: ["[C][C]#[C]","[H][Br][H][Br]"],
-    condition: "alkyne 反应 9"
+    condition: "2 HBr"
   },
   "alkyne_gen_10": {
     category: "alkyne",
@@ -299,7 +299,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]#[C:2].[H:3][C:4]#[N:5]>>[C:1]=[C:2][C:4]#[N:5]",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","[H][C]#[N]"],
-    condition: "与氢氰酸亲核加成"
+    condition: "HCN"
   },
   "alkyne_gen_11": {
     category: "alkyne",
@@ -308,7 +308,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]#[C:2].[C:3][C:4][O:5]>>[C:1]=[C:2][O:5][C:4][C:3]",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","[C][C][O]"],
-    condition: "在强碱(如KOH或NaOH)催化下"
+    condition: "KOH"
   },
   "alkyne_gen_12": {
     category: "alkyne",
@@ -317,7 +317,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C;H1:1]#[C:2]>>[C:1](=O)[OH].[C:2](=O)[OH]",
     source: ["alkynes"],
     search_smarts: ["[C;H1]#[C]"],
-    condition: "高锰酸钾（KMnO₄）氧化末端炔烃"
+    condition: "KMnO₄ (hot)"
   },
   "alkyne_gen_13": {
     category: "alkyne",
@@ -326,7 +326,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]#[C:2]>>[C:1](=O)[OH].[C:2](=O)[OH]",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]"],
-    condition: "高锰酸钾（KMnO₄）氧化内部炔烃"
+    condition: "KMnO₄"
   },
   "alkyne_gen_14": {
     category: "alkyne",
@@ -335,7 +335,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]#[C:2]>>[C:1](=O)[OH].[C:2](=O)[OH]",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]"],
-    condition: "臭氧氧化-分解反应"
+    condition: "1) O₃, 2) H₂O"
   },
   "alkyne_gen_15": {
     category: "alkyne",
@@ -344,7 +344,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]#[C:2].[H][H][H][H]>>[C:1]([H])([H])-[C:2]([H])([H])",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","[H][H][H][H]"],
-    condition: "完全加氢(生成烷烃)"
+    condition: "H₂ / Pt (xs)"
   },
   "alkyne_gen_16": {
     category: "alkyne",
@@ -353,7 +353,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]#[C:2].[H][H]>>([H])/[C:1]=[C:2]\\([H])",
     source: ["alkynes"],
     search_smarts: ["[C]#[C]","[H][H]"],
-    condition: "部分加氢(顺式加成,Lindlar催化剂)"
+    condition: "H₂ / Lindlar Cat."
   },
   "alkyne_gen_17": {
     category: "alkyne",
@@ -362,7 +362,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C;H1:1]#[C:2]>>[C:1](=O)-[C:2]",
     source: ["alkynes"],
     search_smarts: ["[C;H1]#[C]"],
-    condition: "硼氢化-氧化反应 对于末端炔烃（生成醛）"
+    condition: "1) Sia₂BH, 2) H₂O₂, OH⁻"
   },
   "alkyne_gen_18": {
     category: "alkyne",
@@ -452,7 +452,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1][O:2].[C:3](=[O:4])[O:5]>>[C:3](=[O:4])[O:2][C:1].[O:5]",
     source: ["alcohols"],
     search_smarts: ["[C][O]","[C](=[O])[O]"],
-    condition: "alcohol 反应 7"
+    condition: "RCOOH / H⁺"
   },
   "alcohol_gen_8": {
     category: "alcohol",
@@ -1073,7 +1073,7 @@ window.REACTION_DB_EXTENDED = {
     smarts: "[C:1]1[C:2][C:3][C:4][C:5]([O-][Na+])([C:7]#[C:8])[C:6]1.[O]>>[C:1]1[C:2][C:3][C:4][C:5]([OH])([C:7]#[C:8])[C:6]1.[Na+][OH-]#水解",
     source: ["carbonyls"],
     search_smarts: ["[C]1[C][C][C][C]([O-][Na+])([C]#[C])[C]1","[O]"],
-    condition: "carbonyl 反应 14"
+    condition: "H₃O⁺"
   },
   "carbonyl_gen_15": {
     category: "carbonyl",

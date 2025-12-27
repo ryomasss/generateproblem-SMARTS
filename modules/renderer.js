@@ -96,42 +96,60 @@ export function renderStructureSync(smiles, container) {
       return;
     }
 
-    // 特殊处理：双原子分子 (氢气、卤素等)
-    // 这些分子应以化学式下标形式显示 (如 H₂, Br₂, Cl₂)，而不是结构式
-    // 使用 HTML 格式（元素符号 + 下标数字）以便精确控制样式
-    const diatomicMolecules = {
+    // 特殊处理：双原子分子和常用试剂 (氢气、卤素、水、氢卤酸等)
+    // 这些分子应以化学式形式显示 (如 H₂, Br₂, HCl)，而不是结构式
+    const reagentFormulas = {
       // 氢气
-      '[H][H]': { symbol: 'H', count: '2' },
-      'H': { symbol: 'H', count: '2' },
+      '[H][H]': 'H2', 'H': 'H2',
+      // 氢同位素 (氘和氚)
+      '[2H][2H]': 'D2', '[D][D]': 'D2',     // 氘气
+      '[3H][3H]': 'T2',                      // 氚气
+      '[2H][H]': 'HD', '[H][2H]': 'HD',      // 氢氘化物
       // 卤素
-      'BrBr': { symbol: 'Br', count: '2' },
-      '[Br][Br]': { symbol: 'Br', count: '2' },
-      'ClCl': { symbol: 'Cl', count: '2' },
-      '[Cl][Cl]': { symbol: 'Cl', count: '2' },
-      'FF': { symbol: 'F', count: '2' },
-      '[F][F]': { symbol: 'F', count: '2' },
-      'II': { symbol: 'I', count: '2' },
-      '[I][I]': { symbol: 'I', count: '2' },
+      'BrBr': 'Br2', '[Br][Br]': 'Br2',
+      'ClCl': 'Cl2', '[Cl][Cl]': 'Cl2',
+      'FF': 'F2', '[F][F]': 'F2',
+      'II': 'I2', '[I][I]': 'I2',
       // 氧气和氮气
-      'O=O': { symbol: 'O', count: '2' },
-      '[O]=[O]': { symbol: 'O', count: '2' },
-      'N#N': { symbol: 'N', count: '2' },
-      '[N]#[N]': { symbol: 'N', count: '2' }
+      'O=O': 'O2', '[O]=[O]': 'O2',
+      'N#N': 'N2', '[N]#[N]': 'N2',
+      // 氢卤酸
+      'Br': 'HBr', '[H][Br]': 'HBr', '[Br][H]': 'HBr',
+      'Cl': 'HCl', '[H][Cl]': 'HCl', '[Cl][H]': 'HCl',
+      'I': 'HI', '[H][I]': 'HI', '[I][H]': 'HI', 'HI': 'HI',
+      'F': 'HF', '[H][F]': 'HF', '[F][H]': 'HF',
+      // 水和次卤酸
+      'O': 'H2O', '[OH2]': 'H2O',
+      'OI': 'HOI', '[OH][I]': 'HOI',
+      'OCl': 'HOCl', '[OH][Cl]': 'HOCl',
+      'OBr': 'HOBr', '[OH][Br]': 'HOBr',
+      // 过氧化氢
+      'OO': 'H2O2', '[O][O]': 'H2O2',
+      // 氨
+      'N': 'NH3', '[NH3]': 'NH3',
+      // 硫化物和氧化物
+      'O=S=O': 'SO2',                        // 二氧化硫
+      'O=C=O': 'CO2',                        // 二氧化碳
+      '[C-]#[O+]': 'CO', '[C]=O': 'CO',      // 一氧化碳
+      'SS': 'S2', '[S][S]': 'S2',            // 二硫
+      // 氰化氢
+      'C#N': 'HCN', '[H]C#N': 'HCN'
     };
 
-    // 检查是否为双原子分子
-    const diatomicData = diatomicMolecules[smiles];
-    if (diatomicData) {
-      // 使用与 RDKit 原子标签相同的字号比例（约 baseSize/14）
-      // 这样双原子分子的显示大小与结构式中的原子标签一致
+
+    const formula = reagentFormulas[smiles];
+    if (formula) {
       const atomFontSize = Math.round(baseSize / 14);
-      // 下标字号设为主字号的 0.6 倍，符合化学式排版标准
       const subFontSize = Math.round(atomFontSize * 0.6);
       
-      container.innerHTML = `<div class="structure-text diatomic-formula" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:${atomFontSize}px;color:${colorHex};font-family:Arial,sans-serif;font-weight:normal;"><span style="display:inline-flex;align-items:baseline;">${diatomicData.symbol}<sub style="font-size:${subFontSize}px;vertical-align:sub;line-height:1;">${diatomicData.count}</sub></span></div>`;
+      // 处理化学式中的数字，将其转换为下标
+      const formattedFormula = formula.replace(/(\d+)/g, `<sub style="font-size:${subFontSize}px;vertical-align:sub;line-height:1;">$1</sub>`);
+      
+      container.innerHTML = `<div class="structure-text diatomic-formula" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:${atomFontSize}px;color:${colorHex};font-family:Arial,sans-serif;font-weight:normal;"><span style="display:inline-flex;align-items:baseline;">${formattedFormula}</span></div>`;
+      
       if (mol && typeof mol.delete === 'function') {
         mol.delete();
-        mol = null;  // 防止 finally 块再次删除
+        mol = null;
       }
       return;
     }
